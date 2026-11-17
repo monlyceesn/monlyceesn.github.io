@@ -367,6 +367,8 @@
   .sous-titre-c{font-weight:700;margin:14px 0 4px;color:var(--texte)}
   .carte-outil{background:#fff;border:1px solid var(--bord);border-radius:20px;padding:18px}
   .statut-2027{display:inline-block;margin-top:12px;padding:4px 10px;border-radius:999px;background:var(--jaune-clair);font-size:.78rem;font-weight:600}
+  .annale{border:1px solid var(--bord);border-radius:14px;padding:12px;margin-top:8px}
+  .annale b{display:block}.annale small{color:var(--gris);font-size:.78rem}
   h3.niveau{font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);margin:24px 0 10px}
   header.defile{background:rgba(10,10,10,.95)}
   @media (max-width:700px){ nav.top{background:var(--noir);font-family:var(--sans);font-weight:700;text-transform:none;font-size:1.8rem} }
@@ -989,6 +991,7 @@ const CONCOURS_MAJ = "17 novembre 2026";
 const CONCOURS = [
   { groupe:"⚙️ Ingénierie, sciences et statistique", liste:[
     { nom:"École polytechnique de Thiès (EPT)", type:"Concours", niveau:"Terminale ou bac S1, S2, S3, STIDD", series:["S1","S2"], mois:[2,3,4,5],
+      annales:[{titre:"Épreuves du concours 2024 (maths, physique, anglais, français)", pdf:"annales/ept-2024-epreuves.pdf", taille:"1,1 Mo", pages:12}],
       infos:[["Diplôme visé","Ingénieur en 5 ans : 2 ans de tronc commun puis génie civil, électromécanique, industriel, aérospatial, ou informatique et télécoms"],
         ["Âge (règle 2026)","Moins de 22 ans au 1er octobre de l'année du concours"],
         ["Épreuves","QCM de 3 heures : maths, physique, français, anglais"],
@@ -996,6 +999,7 @@ const CONCOURS = [
         ["En 2026","Inscriptions entre février et mai (les annonces ne donnent pas toutes les mêmes dates)"]],
       site:"concours.ept.edu.sn" },
     { nom:"École supérieure polytechnique de Dakar (ESP) — cycle DUT", type:"Concours", niveau:"Terminale ou bac scientifique et technique (certaines filières de gestion acceptent d'autres séries)", series:["S1","S2"], mois:[2,3,4,5],
+      annales:[{titre:"Tests d'entrée 2015, 2016 et 2017 (maths, physique, français, anglais)", pdf:"annales/esp-tests-dut-2015-2017.pdf", taille:"2,2 Mo", pages:23}],
       infos:[["Diplôme visé","DUT (bac+2), avec possibilité de continuer en cycle ingénieur"],
         ["Frais","5 000 F CFA de frais de dossier (session 2025)"],
         ["En 2026","Inscriptions en général de mi-février à mi-mai"]],
@@ -1016,12 +1020,14 @@ const CONCOURS = [
         ["Avantage","Bourse d'excellence pour les admis"],
         ["En 2026","Candidatures jusqu'au 24 juillet, après les résultats du bac"]] },
     { nom:"Concours commun DIC (8 écoles d'ingénieurs)", type:"Concours", niveau:"Après le bac : niveau Licence 2 de sciences au moins", series:["S1","S2"], mois:[], plusTard:true,
+      annales:[{titre:"Concours d'admission ESP, cycle ingénieur, 2010 à 2015 (maths, physique)", pdf:"annales/esp-concours-ingenieur-2010-2015.pdf", taille:"1,7 Mo", pages:15}],
       infos:[["Écoles","ESP, EPT, IPSL, UFR SI de Thiès, Polytech Diamniadio, ENSA, ENSMG, ISFAR"],
         ["À savoir","Une 2e chance d'entrer en école d'ingénieurs après 2 ans d'université ou de prépa"],
         ["En 2026","Dépôt jusqu'au 20 mai, épreuves les 1er et 2 juin"]],
       site:"e-concours.ucad.sn" } ]},
   { groupe:"🩺 Santé", liste:[
     { nom:"École militaire de santé (EMS) — Dakar", type:"Concours", niveau:"Terminale ou bac S1, S2", series:["S1","S2"], mois:[1,2],
+      annales:[{titre:"Épreuve de SVT, session 2024", pdf:"annales/ems-2024-svt.pdf", taille:"0,5 Mo", pages:6}],
       infos:[["Diplôme visé","Médecin, pharmacien, chirurgien-dentiste ou vétérinaire militaire (officier)"],
         ["Âge","18 à 20 ans pour la médecine ; 22 ans au plus pour pharmacie, dentaire et vétérinaire"],
         ["Conditions","Nationalité sénégalaise, célibataire sans enfant à charge"],
@@ -1524,7 +1530,7 @@ function pageConcours(){
       <h2 class="titre-bloc rv">Comment se préparer</h2>
       <details class="boite-cours rv"><summary><span class="rond-cours">📝</span><span class="tete-cours"><b>Préparer les épreuves</b><small>Méthode sur plusieurs mois</small></span></summary>
         <div class="contenu-cours"><ul class="etapes">
-          <li>Récupère les <b>sujets des années passées</b> du concours visé : c'est le meilleur entraînement.</li>
+          <li>Récupère les <b>sujets des années passées</b> du concours visé : c'est le meilleur entraînement. Les blocs marqués « 📄 sujets disponibles » en contiennent.</li>
           <li>Les concours scientifiques reprennent surtout le programme de Première et Terminale : maîtrise tes cours avant tout.</li>
           <li>Entraîne-toi au <b>QCM chronométré</b> si le concours en comporte : vitesse et précision comptent.</li>
           <li>N'oublie pas le français et l'anglais : ils sont souvent au programme et font la différence.</li>
@@ -1554,13 +1560,20 @@ function pageConcours(){
       return `<h3 class="niveau">${g.groupe}</h3>` + l.map(c => `
         <details class="boite-cours">
           <summary><span class="rond-cours" style="font-size:1.3rem">${c.type === "Sur dossier" ? "📂" : "🎯"}</span>
-            <span class="tete-cours"><b>${c.nom}</b><small>${c.type} · Niveau : ${c.niveau}</small></span></summary>
+            <span class="tete-cours"><b>${c.nom}</b><small>${c.type} · Niveau : ${c.niveau}${c.annales ? " · 📄 sujets disponibles" : ""}</small></span></summary>
           <div class="contenu-cours">
             <p class="statut-2027">${c.plusTard ? "Concours à passer après 2 ans d'études" : "Session 2027 : avis pas encore publié"}</p>
             ${c.infos.map(([t,v]) => `<p class="sous-titre-c">${t}</p><p>${v}</p>`).join("")}
             ${c.site ? `<p class="sous-titre-c">Où s'informer</p><p>Site officiel : <b>${c.site}</b></p>` : ""}
+            ${c.annales ? `<p class="sous-titre-c">📄 Sujets des années passées</p>` + c.annales.map(a => `
+              <div class="annale"><b>${a.titre}</b><small>${a.pages} pages · ${a.taille} · sujet sans corrigé</small>
+                <div class="actions">
+                  <a class="btn plein" href="${a.pdf}" target="_blank" rel="noopener">📖 Ouvrir le sujet</a>
+                  <button class="btn" data-pdf="${a.pdf}" data-titre="${(c.nom.split(" — ")[0] + " : " + a.titre).replace(/"/g,"&quot;")}">${estTelecharge(a.pdf) && horsLignePossible() ? "✅ Disponible hors connexion" : "📥 Télécharger"}</button>
+                </div></div>`).join("") : ""}
           </div></details>`).join("");
     }).join("");
+    document.querySelectorAll("#liste-concours [data-pdf]").forEach(b => b.addEventListener("click", () => telechargerPdf(b)));
   }
   liste();
   const NOMS_MOIS = ["","Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];

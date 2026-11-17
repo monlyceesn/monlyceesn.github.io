@@ -463,7 +463,7 @@ function pageConcours(){
       <h2 class="titre-bloc rv">Comment se préparer</h2>
       <details class="boite-cours rv"><summary><span class="rond-cours">📝</span><span class="tete-cours"><b>Préparer les épreuves</b><small>Méthode sur plusieurs mois</small></span></summary>
         <div class="contenu-cours"><ul class="etapes">
-          <li>Récupère les <b>sujets des années passées</b> du concours visé : c'est le meilleur entraînement.</li>
+          <li>Récupère les <b>sujets des années passées</b> du concours visé : c'est le meilleur entraînement. Les blocs marqués « 📄 sujets disponibles » en contiennent.</li>
           <li>Les concours scientifiques reprennent surtout le programme de Première et Terminale : maîtrise tes cours avant tout.</li>
           <li>Entraîne-toi au <b>QCM chronométré</b> si le concours en comporte : vitesse et précision comptent.</li>
           <li>N'oublie pas le français et l'anglais : ils sont souvent au programme et font la différence.</li>
@@ -493,13 +493,20 @@ function pageConcours(){
       return `<h3 class="niveau">${g.groupe}</h3>` + l.map(c => `
         <details class="boite-cours">
           <summary><span class="rond-cours" style="font-size:1.3rem">${c.type === "Sur dossier" ? "📂" : "🎯"}</span>
-            <span class="tete-cours"><b>${c.nom}</b><small>${c.type} · Niveau : ${c.niveau}</small></span></summary>
+            <span class="tete-cours"><b>${c.nom}</b><small>${c.type} · Niveau : ${c.niveau}${c.annales ? " · 📄 sujets disponibles" : ""}</small></span></summary>
           <div class="contenu-cours">
             <p class="statut-2027">${c.plusTard ? "Concours à passer après 2 ans d'études" : "Session 2027 : avis pas encore publié"}</p>
             ${c.infos.map(([t,v]) => `<p class="sous-titre-c">${t}</p><p>${v}</p>`).join("")}
             ${c.site ? `<p class="sous-titre-c">Où s'informer</p><p>Site officiel : <b>${c.site}</b></p>` : ""}
+            ${c.annales ? `<p class="sous-titre-c">📄 Sujets des années passées</p>` + c.annales.map(a => `
+              <div class="annale"><b>${a.titre}</b><small>${a.pages} pages · ${a.taille} · sujet sans corrigé</small>
+                <div class="actions">
+                  <a class="btn plein" href="${a.pdf}" target="_blank" rel="noopener">📖 Ouvrir le sujet</a>
+                  <button class="btn" data-pdf="${a.pdf}" data-titre="${(c.nom.split(" — ")[0] + " : " + a.titre).replace(/"/g,"&quot;")}">${estTelecharge(a.pdf) && horsLignePossible() ? "✅ Disponible hors connexion" : "📥 Télécharger"}</button>
+                </div></div>`).join("") : ""}
           </div></details>`).join("");
     }).join("");
+    document.querySelectorAll("#liste-concours [data-pdf]").forEach(b => b.addEventListener("click", () => telechargerPdf(b)));
   }
   liste();
   const NOMS_MOIS = ["","Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];

@@ -222,6 +222,7 @@ const CONCOURS_MAJ = "17 novembre 2026";
 const CONCOURS = [
   { groupe:"⚙️ Ingénierie, sciences et statistique", liste:[
     { nom:"École polytechnique de Thiès (EPT)", type:"Concours", niveau:"Terminale ou bac S1, S2, S3, STIDD", series:["S1","S2"], mois:[2,3,4,5],
+      annales:[{titre:"Épreuves du concours 2024 (maths, physique, anglais, français)", pdf:"annales/ept-2024-epreuves.pdf", taille:"1,1 Mo", pages:12}],
       infos:[["Diplôme visé","Ingénieur en 5 ans : 2 ans de tronc commun puis génie civil, électromécanique, industriel, aérospatial, ou informatique et télécoms"],
         ["Âge (règle 2026)","Moins de 22 ans au 1er octobre de l'année du concours"],
         ["Épreuves","QCM de 3 heures : maths, physique, français, anglais"],
@@ -229,6 +230,7 @@ const CONCOURS = [
         ["En 2026","Inscriptions entre février et mai (les annonces ne donnent pas toutes les mêmes dates)"]],
       site:"concours.ept.edu.sn" },
     { nom:"École supérieure polytechnique de Dakar (ESP) — cycle DUT", type:"Concours", niveau:"Terminale ou bac scientifique et technique (certaines filières de gestion acceptent d'autres séries)", series:["S1","S2"], mois:[2,3,4,5],
+      annales:[{titre:"Tests d'entrée 2015, 2016 et 2017 (maths, physique, français, anglais)", pdf:"annales/esp-tests-dut-2015-2017.pdf", taille:"2,2 Mo", pages:23}],
       infos:[["Diplôme visé","DUT (bac+2), avec possibilité de continuer en cycle ingénieur"],
         ["Frais","5 000 F CFA de frais de dossier (session 2025)"],
         ["En 2026","Inscriptions en général de mi-février à mi-mai"]],
@@ -249,12 +251,14 @@ const CONCOURS = [
         ["Avantage","Bourse d'excellence pour les admis"],
         ["En 2026","Candidatures jusqu'au 24 juillet, après les résultats du bac"]] },
     { nom:"Concours commun DIC (8 écoles d'ingénieurs)", type:"Concours", niveau:"Après le bac : niveau Licence 2 de sciences au moins", series:["S1","S2"], mois:[], plusTard:true,
+      annales:[{titre:"Concours d'admission ESP, cycle ingénieur, 2010 à 2015 (maths, physique)", pdf:"annales/esp-concours-ingenieur-2010-2015.pdf", taille:"1,7 Mo", pages:15}],
       infos:[["Écoles","ESP, EPT, IPSL, UFR SI de Thiès, Polytech Diamniadio, ENSA, ENSMG, ISFAR"],
         ["À savoir","Une 2e chance d'entrer en école d'ingénieurs après 2 ans d'université ou de prépa"],
         ["En 2026","Dépôt jusqu'au 20 mai, épreuves les 1er et 2 juin"]],
       site:"e-concours.ucad.sn" } ]},
   { groupe:"🩺 Santé", liste:[
     { nom:"École militaire de santé (EMS) — Dakar", type:"Concours", niveau:"Terminale ou bac S1, S2", series:["S1","S2"], mois:[1,2],
+      annales:[{titre:"Épreuve de SVT, session 2024", pdf:"annales/ems-2024-svt.pdf", taille:"0,5 Mo", pages:6}],
       infos:[["Diplôme visé","Médecin, pharmacien, chirurgien-dentiste ou vétérinaire militaire (officier)"],
         ["Âge","18 à 20 ans pour la médecine ; 22 ans au plus pour pharmacie, dentaire et vétérinaire"],
         ["Conditions","Nationalité sénégalaise, célibataire sans enfant à charge"],
