@@ -65,6 +65,19 @@ for e in bary["exercices"]:
     if "Barycentre</small>" not in e["titre"]: e["titre"] += ' <small style="color:var(--gris);font-weight:600">· Barycentre</small>'
 bary["exercices"] = vect["exercices"] + bary["exercices"]
 bary["quiz"] = vect["quiz"] + bary["quiz"]
+hist2 = json.loads((src / "histoire-lecon1-2nde.json").read_text())
+hist2_cours = [{"type": "fascicule", "id": "hist-2nde-l1", "classe": "2nde-s", "matiere": "histoire",
+  "titre": "Leçon 1 — L'histoire : définition, objet et importance", "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "D'après le programme officiel",
+  "pdf": "cours/histoire-lecon1-2nde.pdf", "taille": "0,2 Mo", "pages": 7, "leger": True,
+  "note": "Cours rédigé à partir du programme officiel du ministère de l'Éducation (classe de Seconde, leçon 1), avec des explications simples (encadrés bleus). À faire relire par un professeur d'histoire-géographie.",
+  "lecons": [{"n": 1, "titre": "Définition de l'histoire", "debut": 1, "fin": 2},
+             {"n": 2, "titre": "L'objet de l'histoire (chronologie, périodes, sources)", "debut": 2, "fin": 4},
+             {"n": 3, "titre": "L'importance de l'histoire et conclusion", "debut": 5, "fin": 5},
+             {"n": 4, "titre": "L'essentiel à retenir et exercices corrigés", "debut": 6, "fin": 7}]}]
+for e in hist2["exercices"]: e["titre"] += ' <small style="color:var(--gris);font-weight:600">· Leçon 1</small>'
+site = site.replace("__HIST2_COURS__", json.dumps(hist2_cours, ensure_ascii=False))
+site = site.replace("__HIST2_EX__", json.dumps(hist2["exercices"], ensure_ascii=False))
+site = site.replace("__HIST2_QUIZ__", json.dumps(hist2["quiz"], ensure_ascii=False))
 site = site.replace("__BARY_COURS__", json.dumps(bary_cours, ensure_ascii=False))
 site = site.replace("__BARY_EX__", json.dumps(bary["exercices"], ensure_ascii=False))
 site = site.replace("__BARY_QUIZ__", json.dumps(bary["quiz"], ensure_ascii=False))

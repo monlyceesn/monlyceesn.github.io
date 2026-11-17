@@ -68,6 +68,12 @@ const CONTENU = {
       exercices: __BARY_EX__,
       quiz: __BARY_QUIZ__,
       conseils: []
+    },
+    "histoire": {
+      cours: __HIST2_COURS__,
+      exercices: __HIST2_EX__,
+      quiz: __HIST2_QUIZ__,
+      conseils: []
     }
   }
 };

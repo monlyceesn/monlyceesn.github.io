@@ -1,0 +1,101 @@
+{
+ "exercices": [
+  {
+   "titre": "Trouver le siècle d'une date",
+   "enonce": "Indique le siècle de chaque date : a) 1960 &nbsp; b) 1444 &nbsp; c) 1900 &nbsp; d) 622 &nbsp; e) 300 av. J.-C.",
+   "indice": "Enlève les deux derniers chiffres et ajoute 1, sauf si la date se termine par « 00 ».",
+   "correction": "a) XX<sup>e</sup> siècle &nbsp; b) XV<sup>e</sup> siècle &nbsp; c) XIX<sup>e</sup> siècle (date en « 00 ») &nbsp; d) VII<sup>e</sup> siècle &nbsp; e) III<sup>e</sup> siècle av. J.-C."
+  },
+  {
+   "titre": "Calculer une durée",
+   "enonce": "a) Combien d'années séparent l'Hégire (622) de l'indépendance du Sénégal (1960) ?<br>b) Combien d'années séparent 30 av. J.-C. de 70 apr. J.-C. ?",
+   "indice": "Pour une date avant et une date après J.-C., on additionne puis on retire 1 (il n'y a pas d'année zéro).",
+   "correction": "a) 1960 − 622 = 1 338 ans.<br>b) 30 + 70 − 1 = 99 ans."
+  },
+  {
+   "titre": "Classer dans la bonne période",
+   "enonce": "Classe dans la bonne période : les pyramides d'Égypte ; l'empire du Mali ; les premiers outils de pierre ; la colonisation de l'Afrique ; la traite atlantique.",
+   "indice": "Repères : écriture (vers 3000 av. J.-C.), 476, 1453/1492, 1789.",
+   "correction": "Outils de pierre → Préhistoire. Pyramides → Antiquité. Empire du Mali → Moyen Âge. Traite atlantique → Temps modernes. Colonisation → Époque contemporaine."
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Que signifie le mot grec « historia » ?",
+   "choix": [
+    "Récit inventé",
+    "Enquête, recherche",
+    "Passé lointain",
+    "Écriture"
+   ],
+   "bonne": 1,
+   "explication": "Historia veut dire enquête : l'historien enquête sur le passé à partir de traces."
+  },
+  {
+   "q": "Qui est souvent appelé le « père de l'histoire » ?",
+   "choix": [
+    "Marc Bloch",
+    "Cheikh Anta Diop",
+    "Hérodote",
+    "Hegel"
+   ],
+   "bonne": 2,
+   "explication": "Hérodote, auteur grec du Ve siècle av. J.-C., a écrit les Enquêtes."
+  },
+  {
+   "q": "En quel siècle se trouve l'année 1960 ?",
+   "choix": [
+    "XIXe siècle",
+    "XXe siècle",
+    "XXIe siècle",
+    "XVIe siècle"
+   ],
+   "bonne": 1,
+   "explication": "19 + 1 = 20 : XXe siècle."
+  },
+  {
+   "q": "Quel événement marque la fin de la Préhistoire ?",
+   "choix": [
+    "La découverte du feu",
+    "L'invention de l'écriture",
+    "La chute de Rome",
+    "L'invention de l'agriculture"
+   ],
+   "bonne": 1,
+   "explication": "La Préhistoire s'arrête avec l'invention de l'écriture, vers 3300-3000 av. J.-C."
+  },
+  {
+   "q": "Dans quelle période se situe l'empire du Mali ?",
+   "choix": [
+    "Antiquité",
+    "Moyen Âge",
+    "Temps modernes",
+    "Époque contemporaine"
+   ],
+   "bonne": 1,
+   "explication": "L'empire du Mali (XIIIe-XVe siècles) appartient au Moyen Âge."
+  },
+  {
+   "q": "Les récits des griots sont des sources…",
+   "choix": [
+    "écrites",
+    "orales",
+    "matérielles",
+    "iconographiques"
+   ],
+   "bonne": 1,
+   "explication": "Ils sont transmis de bouche à oreille : ce sont des sources orales."
+  },
+  {
+   "q": "Combien d'années entre 50 av. J.-C. et 50 apr. J.-C. ?",
+   "choix": [
+    "100 ans",
+    "99 ans",
+    "101 ans",
+    "50 ans"
+   ],
+   "bonne": 1,
+   "explication": "50 + 50 − 1 = 99 ans, car il n'y a pas d'année zéro."
+  }
+ ]
+}

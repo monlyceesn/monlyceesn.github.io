@@ -172,7 +172,7 @@ function pageMatiere(c, m, onglet, garderDefil){
       ${x.leger ? "" : `<p style="font-size:.8rem;color:var(--gris);margin-top:8px">⚠️ Fichier lourd : télécharge-le de préférence en Wi-Fi.</p>`}
       <h4 style="margin:16px 0 4px;font-size:.95rem">${x.credit ? "Sommaire — lis une partie directement ici" : "Sommaire — lis une leçon directement ici"}</h4>
       ${x.lecons.map(l => `<a class="ligne-lecon" href="#lecon-${x.id}-${l.n}">
-        <span class="num-lecon">${l.n}</span><span>${l.titre}</span><small>p. ${l.debut}–${l.fin}</small></a>`).join("")}
+        <span class="num-lecon">${l.n}</span><span>${l.titre}</span><small>p. ${l.debut === l.fin ? l.debut : l.debut + "–" + l.fin}</small></a>`).join("")}
       <p style="font-size:.8rem;color:var(--gris);margin-top:10px">${x.note || "Document partagé avec l'autorisation de son auteur, publié sans modification. L'auteur reste propriétaire de son cours."}</p>
       </div>
     </details>`
