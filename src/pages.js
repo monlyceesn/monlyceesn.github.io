@@ -157,18 +157,18 @@ function pageMatiere(c, m, onglet, garderDefil){
   if(ong === "quiz") return rendreQuiz(corps, c, m, items);
   corps.innerHTML = items.map((x, i) => x.type === "fascicule" ? `
     <div class="exo">
-      <span class="tag">👨‍🏫 Cours de ${x.auteur}</span>
+      <span class="tag">${x.credit ? "📘 " + x.credit : "👨‍🏫 Cours de " + x.auteur}</span>
       <h3 style="margin:.5em 0 .2em">${x.titre}</h3>
       <p style="color:var(--gris);font-size:.88rem">${x.auteur} · ${x.edition} · ${x.pages} pages · ${x.taille}</p>
       <div class="actions">
-        <a class="btn plein" href="${x.pdf}" target="_blank" rel="noopener">📖 Ouvrir le fascicule</a>
+        <a class="btn plein" href="${x.pdf}" target="_blank" rel="noopener">📖 ${x.credit ? "Ouvrir le cours (PDF)" : "Ouvrir le fascicule"}</a>
         ${x.pdf.startsWith("http") ? "" : `<button class="btn" data-pdf="${x.pdf}" data-titre="${x.titre.replace(/"/g,"&quot;")}">${estTelecharge(x.pdf) && horsLignePossible() ? "✅ Disponible hors connexion" : "📥 Télécharger (" + x.taille + ")"}</button>`}
       </div>
-      <p style="font-size:.8rem;color:var(--gris);margin-top:8px">⚠️ Fichier lourd : télécharge-le de préférence en Wi-Fi.</p>
-      <h3 style="margin:16px 0 4px;font-size:1rem">Sommaire — lis une leçon directement ici</h3><p style="font-size:.8rem;color:var(--gris);margin-bottom:6px">Seules les pages de la leçon choisie sont chargées.</p>
+      ${x.leger ? "" : `<p style="font-size:.8rem;color:var(--gris);margin-top:8px">⚠️ Fichier lourd : télécharge-le de préférence en Wi-Fi.</p>`}
+      <h3 style="margin:16px 0 4px;font-size:1rem">${x.credit ? "Sommaire — lis une partie directement ici" : "Sommaire — lis une leçon directement ici"}</h3><p style="font-size:.8rem;color:var(--gris);margin-bottom:6px">Seules les pages de la leçon choisie sont chargées.</p>
       ${x.lecons.map(l => `<a class="ligne-lecon" href="#lecon-${x.id}-${l.n}">
         <span class="num-lecon">${l.n}</span><span>${l.titre}</span><small>p. ${l.debut}–${l.fin}</small></a>`).join("")}
-      <p style="font-size:.8rem;color:var(--gris);margin-top:10px">Document partagé avec l'autorisation de son auteur, publié sans modification. L'auteur reste propriétaire de son cours.</p>
+      <p style="font-size:.8rem;color:var(--gris);margin-top:10px">${x.note || "Document partagé avec l'autorisation de son auteur, publié sans modification. L'auteur reste propriétaire de son cours."}</p>
     </div>`
     : x.tpl ? `
     <div class="exo">
@@ -228,25 +228,25 @@ function pageLecon(id, n){
   memo.ecrire("derniereLecon", {id, n});
   const nb = l.fin - l.debut + 1;
   const prec = f.lecons.find(x => x.n === n - 1), suiv = f.lecons.find(x => x.n === n + 1);
-  afficher(entete(`<a href="#accueil">Accueil</a> › <a href="#${c.id}">${c.nom}</a> › <a href="#${c.id}-${m.id}">${m.nom}</a> › Leçon ${n}`,
-      `Leçon ${n}`, `${l.titre}<br><small>Cours de ${f.auteur} · pages ${l.debut} à ${l.fin} du fascicule</small>`) + `
+  afficher(entete(`<a href="#accueil">Accueil</a> › <a href="#${c.id}">${c.nom}</a> › <a href="#${c.id}-${m.id}">${m.nom}</a> › ${f.lecons.length > 4 ? "Leçon " + n : "Partie " + n}`,
+      `${f.lecons.length > 4 ? "Leçon " + n : f.titre}`, `${l.titre}<br><small>${f.credit || "Cours de " + f.auteur} · pages ${l.debut} à ${l.fin}</small>`) + `
     <section class="section" style="padding-top:18px"><div class="wrap">
       <div class="actions" style="justify-content:space-between;margin:0 0 14px">
-        ${prec ? `<a class="btn" href="#lecon-${id}-${prec.n}">◀ Leçon ${prec.n}</a>` : "<span></span>"}
-        ${suiv ? `<a class="btn" href="#lecon-${id}-${suiv.n}">Leçon ${suiv.n} ▶</a>` : ""}
+        ${prec ? `<a class="btn" href="#lecon-${id}-${prec.n}">◀ ${f.lecons.length > 4 ? "Leçon " + prec.n : "Partie précédente"}</a>` : "<span></span>"}
+        ${suiv ? `<a class="btn" href="#lecon-${id}-${suiv.n}">${f.lecons.length > 4 ? "Leçon " + suiv.n : "Partie suivante"} ▶</a>` : ""}
       </div>
       <p id="etatLecteur" style="color:var(--gris);font-size:.88rem;margin-bottom:10px">⏳ Chargement des ${nb} pages de la leçon…</p>
       <div id="pagesPdf">${Array.from({length: nb}, (_, k) => `
         <div class="page-pdf" data-p="${l.debut + k}"><span>Page ${l.debut + k}</span></div>`).join("")}</div>
       <div class="actions" style="justify-content:space-between;margin-top:14px">
-        ${prec ? `<a class="btn" href="#lecon-${id}-${prec.n}">◀ Leçon ${prec.n}</a>` : "<span></span>"}
-        ${suiv ? `<a class="btn plein" href="#lecon-${id}-${suiv.n}">Leçon ${suiv.n} ▶</a>` : ""}
+        ${prec ? `<a class="btn" href="#lecon-${id}-${prec.n}">◀ ${f.lecons.length > 4 ? "Leçon " + prec.n : "Partie précédente"}</a>` : "<span></span>"}
+        ${suiv ? `<a class="btn plein" href="#lecon-${id}-${suiv.n}">${f.lecons.length > 4 ? "Leçon " + suiv.n : "Partie suivante"} ▶</a>` : ""}
       </div>
-      <p style="font-size:.78rem;color:var(--gris);margin-top:14px">Document de ${f.auteur}, partagé avec son autorisation et affiché sans modification.</p>
+      <p style="font-size:.78rem;color:var(--gris);margin-top:14px">${f.note || `Document de ${f.auteur}, partagé avec son autorisation et affiché sans modification.`}</p>
     </div></section>`);
   const etat = document.getElementById("etatLecteur");
   ouvrirPdf(f.pdf).then(doc => {
-    etat.textContent = `📖 ${nb} page${nb > 1 ? "s" : ""} · seules les pages de cette leçon sont chargées.`;
+    etat.textContent = `📖 ${nb} page${nb > 1 ? "s" : ""} · seules les pages de cette ${f.lecons.length > 4 ? "leçon" : "partie"} sont chargées.`;
     const vues = new IntersectionObserver(es => es.forEach(e => {
       if(!e.isIntersecting) return;
       vues.unobserve(e.target);

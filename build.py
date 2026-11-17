@@ -42,6 +42,18 @@ svt_cours = [dict(fascicule_svt, type="fascicule")]
 svt_ex = [dict(e, titre=f'{e["titre"]} <small style="color:var(--gris);font-weight:600">· {ch["titre"]}</small>')
           for ch in svt["chapitres"] for e in ch["exercices"]]
 svt_quiz = [q for ch in svt["chapitres"] for q in ch["quiz"]]
+bary = json.loads((src / "barycentre-2nde-s.json").read_text())
+bary_cours = [{"type": "fascicule", "id": "bary-2nde", "classe": "2nde-s", "matiere": "maths",
+  "titre": "Le barycentre", "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "Version corrigée",
+  "pdf": "cours/barycentre-2nde-s.pdf", "taille": "0,35 Mo", "pages": 10, "leger": True,
+  "note": "Version réorganisée et corrigée, avec des explications simples (encadrés bleus). À faire relire par un enseignant.",
+  "lecons": [{"n": 1, "titre": "Barycentre de deux points", "debut": 1, "fin": 5},
+             {"n": 2, "titre": "Barycentre de trois points", "debut": 6, "fin": 7},
+             {"n": 3, "titre": "Ensembles de points", "debut": 7, "fin": 8},
+             {"n": 4, "titre": "Exercice corrigé de synthèse", "debut": 9, "fin": 10}]}]
+site = site.replace("__BARY_COURS__", json.dumps(bary_cours, ensure_ascii=False))
+site = site.replace("__BARY_EX__", json.dumps(bary["exercices"], ensure_ascii=False))
+site = site.replace("__BARY_QUIZ__", json.dumps(bary["quiz"], ensure_ascii=False))
 site = site.replace("__SVT_COURS__", json.dumps(svt_cours, ensure_ascii=False))
 site = site.replace("__SVT_EX__", json.dumps(svt_ex, ensure_ascii=False))
 site = site.replace("__SVT_QUIZ__", json.dumps(svt_quiz, ensure_ascii=False))

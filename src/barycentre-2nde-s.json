@@ -1,0 +1,96 @@
+{
+ "exercices": [
+  {
+   "titre": "Placer un barycentre sur une droite",
+   "enonce": "Sur une droite graduée, A est à l'abscisse 2 et B à l'abscisse 8.<br>1) Placer G, barycentre de (A ; 1) et (B ; 2).<br>2) Placer H, barycentre de (A ; 3) et (B ; −1).",
+   "indice": "Utilise <span class=\"vec\">AG</span> = β/(α+β) × <span class=\"vec\">AB</span>. Ici <span class=\"vec\">AB</span> mesure 8 − 2 = 6.",
+   "correction": "1) <span class=\"vec\">AG</span> = 2/3 × <span class=\"vec\">AB</span>, soit 2/3 × 6 = 4. G est à l'abscisse 2 + 4 = <b>6</b> (plus près de B, qui pèse plus).<br>2) α + β = 2 ≠ 0. <span class=\"vec\">AH</span> = −1/2 × <span class=\"vec\">AB</span>, soit −3. H est à l'abscisse 2 − 3 = <b>−1</b>, à l'extérieur de [AB], du côté de A.<br><b>Vérification par la moyenne pondérée :</b> (3×2 + (−1)×8)/2 = −2/2 = −1 ✔"
+  },
+  {
+   "titre": "Reconnaître un barycentre",
+   "enonce": "Dans chaque cas, dire si A est barycentre de B et C, et avec quels coefficients :<br>a) <span class=\"vec\">AB</span> + 2<span class=\"vec\">AC</span> = <span class=\"vec\">0</span><br>b) <span class=\"vec\">BA</span> = 3<span class=\"vec\">CA</span>",
+   "indice": "Il faut une égalité où tous les vecteurs partent de A, avec une somme de coefficients non nulle.",
+   "correction": "a) Déjà de la bonne forme : A est barycentre de <b>(B ; 1) et (C ; 2)</b> (somme 3 ≠ 0).<br>b) <span class=\"vec\">BA</span> = 3<span class=\"vec\">CA</span> ⟺ −<span class=\"vec\">AB</span> = −3<span class=\"vec\">AC</span> ⟺ −<span class=\"vec\">AB</span> + 3<span class=\"vec\">AC</span> = <span class=\"vec\">0</span>. A est barycentre de <b>(B ; −1) et (C ; 3)</b> (somme 2 ≠ 0)."
+  },
+  {
+   "titre": "Coordonnées d'un barycentre",
+   "enonce": "Dans un repère, A(1 ; 3), B(5 ; −1) et C(0 ; 4).<br>1) Calculer les coordonnées de G, barycentre de (A ; 2) et (B ; 2).<br>2) Calculer les coordonnées de K, barycentre de (A ; 1), (B ; 2) et (C ; 1).",
+   "indice": "C'est une moyenne pondérée : (α·x_A + β·x_B + …)/(α + β + …), pareil pour y.",
+   "correction": "1) Poids égaux : G est le milieu de [AB]. x_G = (1 + 5)/2 = 3 ; y_G = (3 − 1)/2 = 1. <b>G(3 ; 1)</b>.<br>2) Somme des poids : 4. x_K = (1 + 10 + 0)/4 = 11/4 ; y_K = (3 − 2 + 4)/4 = 5/4. <b>K(11/4 ; 5/4)</b>."
+  },
+  {
+   "titre": "Ensemble de points : un cercle",
+   "enonce": "A et B sont deux points tels que AB = 6 cm. Déterminer l'ensemble des points M tels que ‖<span class=\"vec\">MA</span> + 2<span class=\"vec\">MB</span>‖ = 9.",
+   "indice": "Introduis G, barycentre de (A ; 1), (B ; 2), puis utilise <span class=\"vec\">MA</span> + 2<span class=\"vec\">MB</span> = 3<span class=\"vec\">MG</span>.",
+   "correction": "1 + 2 = 3 ≠ 0, donc G existe et <span class=\"vec\">MA</span> + 2<span class=\"vec\">MB</span> = 3<span class=\"vec\">MG</span>.<br>La condition devient 3MG = 9, soit MG = 3.<br>L'ensemble est <b>le cercle de centre G et de rayon 3 cm</b>, avec G placé sur [AB] tel que <span class=\"vec\">AG</span> = 2/3 <span class=\"vec\">AB</span> (à 4 cm de A)."
+  }
+ ],
+ "quiz": [
+  {
+   "q": "G est le barycentre de (A ; 5) et (B ; 5). Où se trouve G ?",
+   "choix": [
+    "En A",
+    "Au milieu de [AB]",
+    "En B",
+    "Il n'existe pas"
+   ],
+   "bonne": 1,
+   "explication": "Poids égaux : G est l'isobarycentre, c'est-à-dire le milieu de [AB]."
+  },
+  {
+   "q": "Le barycentre de (A ; 2) et (B ; −2) :",
+   "choix": [
+    "est le milieu de [AB]",
+    "est en A",
+    "n'existe pas",
+    "est en B"
+   ],
+   "bonne": 2,
+   "explication": "La somme des coefficients vaut 0 : il n'y a pas de barycentre."
+  },
+  {
+   "q": "G est le barycentre de (A ; 1) et (B ; 3). Combien vaut AG/AB ?",
+   "choix": [
+    "1/4",
+    "1/3",
+    "3/4",
+    "3"
+   ],
+   "bonne": 2,
+   "explication": "AG = β/(α+β) × AB = 3/4 × AB : G est plus près de B, le point le plus lourd."
+  },
+  {
+   "q": "Le barycentre de (A ; 2), (B ; 4) est aussi celui de :",
+   "choix": [
+    "(A ; 4), (B ; 2)",
+    "(A ; 1), (B ; 2)",
+    "(A ; 2), (B ; 2)",
+    "(A ; 3), (B ; 5)"
+   ],
+   "bonne": 1,
+   "explication": "Homogénéité : on peut diviser les deux coefficients par 2 sans changer le point."
+  },
+  {
+   "q": "A(0 ; 0), B(6 ; 3). Coordonnées du barycentre de (A ; 2), (B ; 1) ?",
+   "choix": [
+    "(3 ; 1,5)",
+    "(2 ; 1)",
+    "(4 ; 2)",
+    "(6 ; 3)"
+   ],
+   "bonne": 1,
+   "explication": "x = (2×0 + 1×6)/3 = 2 et y = (2×0 + 1×3)/3 = 1."
+  },
+  {
+   "q": "Si α + β = 0, le vecteur α·MA + β·MB :",
+   "choix": [
+    "vaut toujours 0",
+    "dépend de M",
+    "est constant, égal à β·AB",
+    "n'existe pas"
+   ],
+   "bonne": 2,
+   "explication": "α·MA + β·MB = (α+β)·MA + β·AB = β·AB : il ne dépend pas de M."
+  }
+ ]
+}

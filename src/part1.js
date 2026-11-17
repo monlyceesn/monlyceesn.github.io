@@ -64,22 +64,9 @@ const CONTENU = {
   },
   "2nde-s": {
     "maths": {
-      cours: [],
-      exercices: [
-        {
-          titre: "Équation du 1er degré",
-          enonce: "Résoudre dans ℝ l'équation : 2x + 3 = 11.",
-          indice: "Isole d'abord le terme en x : que faut-il enlever des deux côtés ?",
-          correction: "On soustrait 3 aux deux membres : 2x = 8.<br>On divise par 2 : x = 4.<br><b>Vérification :</b> 2 × 4 + 3 = 11 ✔<br>L'ensemble des solutions est S = {4}.",
-          demo: true
-        }
-      ],
-      quiz: [
-        {q:"Quelle est la solution de 3x − 6 = 0 ?", choix:["x = −2","x = 2","x = 6","x = 3"], bonne:1,
-         explication:"3x − 6 = 0 donne 3x = 6, donc x = 2."},
-        {q:"Combien vaut 2³ ?", choix:["6","8","9","5"], bonne:1,
-         explication:"2³ = 2 × 2 × 2 = 8."}
-      ],
+      cours: __BARY_COURS__,
+      exercices: __BARY_EX__,
+      quiz: __BARY_QUIZ__,
       conseils: []
     }
   }
