@@ -65,6 +65,22 @@ for e in bary["exercices"]:
     if "Barycentre</small>" not in e["titre"]: e["titre"] += ' <small style="color:var(--gris);font-weight:600">· Barycentre</small>'
 bary["exercices"] = vect["exercices"] + bary["exercices"]
 bary["quiz"] = vect["quiz"] + bary["quiz"]
+tle1 = json.loads((src / "maths-tle-ch1.json").read_text())
+def tle1_cours(classe):
+    return [{"type": "fascicule", "id": f"maths-{classe}-ch1", "classe": classe, "matiere": "maths",
+  "titre": "Chapitre 1 — Continuité, dérivabilité et primitives (rappels et compléments)", "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "Réécrit à partir de notes de cours de Terminale S1",
+  "pdf": "cours/maths-tle-ch1-continuite-derivabilite.pdf", "taille": "0,4 Mo", "pages": 9, "leger": True,
+  "note": "Cours réécrit proprement et illustré à partir de cahiers de cours de Terminale S1 (2018-2019), avec des explications simples (encadrés bleus). À faire relire par un professeur de mathématiques.",
+  "lecons": [{"n": 1, "titre": "Continuité et théorème des valeurs intermédiaires", "debut": 1, "fin": 3},
+             {"n": 2, "titre": "Dérivabilité, bijection et fonction réciproque", "debut": 3, "fin": 5},
+             {"n": 3, "titre": "Rolle, accroissements finis, Cauchy", "debut": 5, "fin": 7},
+             {"n": 4, "titre": "Rappels sur les primitives", "debut": 7, "fin": 8},
+             {"n": 5, "titre": "L'essentiel à retenir et exercices corrigés", "debut": 8, "fin": 9}]}]
+for e in tle1["exercices"]: e["titre"] += ' <small style="color:var(--gris);font-weight:600">· Chapitre 1</small>'
+site = site.replace("__TLE1_COURS_S1__", json.dumps(tle1_cours("tle-s1"), ensure_ascii=False))
+site = site.replace("__TLE1_COURS_S2__", json.dumps(tle1_cours("tle-s2"), ensure_ascii=False))
+site = site.replace("__TLE1_EX__", json.dumps(tle1["exercices"], ensure_ascii=False))
+site = site.replace("__TLE1_QUIZ__", json.dumps(tle1["quiz"], ensure_ascii=False))
 hist2 = json.loads((src / "histoire-lecon1-2nde.json").read_text())
 hist2_cours = [{"type": "fascicule", "id": "hist-2nde-l1", "classe": "2nde-s", "matiere": "histoire",
   "titre": "Leçon 1 — L'histoire : définition, objet et importance", "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "D'après le programme officiel",

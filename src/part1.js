@@ -40,9 +40,18 @@ const CLASSES = [
 const matieresDe = c => c.matieres.map(id => MATIERES.find(m => m.id === id)).filter(Boolean);
 
 const CONTENU = {
+  "tle-s1": {
+    "maths": {
+      cours: __TLE1_COURS_S1__,
+      exercices: __TLE1_EX__,
+      quiz: __TLE1_QUIZ__,
+      conseils: []
+    }
+  },
   "tle-s2": {
     "maths": {
       cours: [
+        ...__TLE1_COURS_S2__,
         {
           titre: "Probabilités — cours complet",
           tpl: "tpl-proba-tle-s2",
@@ -51,8 +60,8 @@ const CONTENU = {
                  "Le schéma de Bernoulli", "Variable aléatoire"]
         }
       ],
-      exercices: __PROBA_EX__,
-      quiz: __PROBA_QUIZ__,
+      exercices: [...__TLE1_EX__, ...__PROBA_EX__],
+      quiz: [...__TLE1_QUIZ__, ...__PROBA_QUIZ__],
       conseils: []
     },
     "svt": {
