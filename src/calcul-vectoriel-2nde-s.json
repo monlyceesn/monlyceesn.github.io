@@ -1,0 +1,107 @@
+{
+ "exercices": [
+  {
+   "titre": "Relation de Chasles",
+   "enonce": "Simplifier : a) <span class=\"vec\">AB</span> + <span class=\"vec\">BC</span> + <span class=\"vec\">CD</span> &nbsp; b) <span class=\"vec\">MA</span> − <span class=\"vec\">MB</span> &nbsp; c) <span class=\"vec\">AB</span> + <span class=\"vec\">CA</span> + <span class=\"vec\">BC</span>",
+   "indice": "Pour b), un « − » change le sens : −<span class=\"vec\">MB</span> = <span class=\"vec\">BM</span>. Pour c), réordonne pour que les lettres s'enchaînent.",
+   "correction": "a) <span class=\"vec\">AB</span> + <span class=\"vec\">BC</span> + <span class=\"vec\">CD</span> = <span class=\"vec\">AC</span> + <span class=\"vec\">CD</span> = <b><span class=\"vec\">AD</span></b>.<br>b) <span class=\"vec\">MA</span> − <span class=\"vec\">MB</span> = <span class=\"vec\">BM</span> + <span class=\"vec\">MA</span> = <b><span class=\"vec\">BA</span></b>.<br>c) <span class=\"vec\">CA</span> + <span class=\"vec\">AB</span> + <span class=\"vec\">BC</span> = <span class=\"vec\">CB</span> + <span class=\"vec\">BC</span> = <b><span class=\"vec\">0</span></b>."
+  },
+  {
+   "titre": "Coordonnées et colinéarité",
+   "enonce": "Dans un repère, A(1 ; 2), B(3 ; 5), C(−1 ; −1) et D(7 ; 11).<br>1) Calculer les coordonnées de <span class=\"vec\">AB</span> et de <span class=\"vec\">CD</span>.<br>2) Les droites (AB) et (CD) sont-elles parallèles ?<br>3) Les points A, B, C sont-ils alignés ?",
+   "indice": "Coordonnées d'un vecteur : (x_arrivée − x_départ ; y_arrivée − y_départ). Puis teste xy' − x'y = 0.",
+   "correction": "1) <span class=\"vec\">AB</span>(2 ; 3) et <span class=\"vec\">CD</span>(8 ; 12).<br>2) 2 × 12 − 8 × 3 = 24 − 24 = 0 : les vecteurs sont colinéaires, donc <b>(AB) // (CD)</b> (en fait <span class=\"vec\">CD</span> = 4<span class=\"vec\">AB</span>).<br>3) <span class=\"vec\">AC</span>(−2 ; −3) : 2 × (−3) − (−2) × 3 = −6 + 6 = 0. <span class=\"vec\">AB</span> et <span class=\"vec\">AC</span> sont colinéaires : <b>A, B, C sont alignés</b>."
+  },
+  {
+   "titre": "Distance et triangle rectangle",
+   "enonce": "Dans un repère orthonormé, A(0 ; 0), B(4 ; 2) et C(1 ; 8).<br>1) Calculer AB, AC et BC.<br>2) Montrer que le triangle ABC est rectangle en B, de deux façons.",
+   "indice": "AB = √((x_B − x_A)² + (y_B − y_A)²). Pour l'angle droit en B : réciproque de Pythagore, ou vecteurs <span class=\"vec\">BA</span> et <span class=\"vec\">BC</span> orthogonaux (xx' + yy' = 0).",
+   "correction": "1) AB = √(16 + 4) = √20 ; AC = √(1 + 64) = √65 ; BC = √(9 + 36) = √45.<br>2) • AB² + BC² = 20 + 45 = 65 = AC² : d'après la réciproque de Pythagore, ABC est rectangle en B.<br>• <span class=\"vec\">BA</span>(−4 ; −2) et <span class=\"vec\">BC</span>(−3 ; 6) : (−4)(−3) + (−2)(6) = 12 − 12 = 0, donc <span class=\"vec\">BA</span> ⊥ <span class=\"vec\">BC</span> : <b>rectangle en B</b>."
+  },
+  {
+   "titre": "Milieu et centre de gravité",
+   "enonce": "A(2 ; 1), B(6 ; 3) et C(1 ; 8).<br>1) Calculer les coordonnées de I, milieu de [BC].<br>2) Calculer les coordonnées du centre de gravité G de ABC en utilisant <span class=\"vec\">AG</span> = 2/3 <span class=\"vec\">AI</span>.",
+   "indice": "Milieu : moyenne des abscisses et des ordonnées. Ensuite G = A + 2/3 × <span class=\"vec\">AI</span>.",
+   "correction": "1) I((6 + 1)/2 ; (3 + 8)/2) = <b>I(3,5 ; 5,5)</b>.<br>2) <span class=\"vec\">AI</span>(1,5 ; 4,5), donc 2/3 <span class=\"vec\">AI</span> = (1 ; 3). G = (2 + 1 ; 1 + 3) = <b>G(3 ; 4)</b>.<br>Vérification : moyenne des sommets ((2 + 6 + 1)/3 ; (1 + 3 + 8)/3) = (3 ; 4) ✔"
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Que vaut AB + BC (en vecteurs) ?",
+   "choix": [
+    "AC",
+    "CA",
+    "BA + CB",
+    "0"
+   ],
+   "bonne": 0,
+   "explication": "Relation de Chasles : la lettre du milieu (B) se répète et disparaît."
+  },
+  {
+   "q": "I est le milieu de [AB]. Quelle égalité est juste ?",
+   "choix": [
+    "IA = IB (vecteurs)",
+    "IA + IB = 0",
+    "AB = IA",
+    "AI = 2 AB"
+   ],
+   "bonne": 1,
+   "explication": "Les vecteurs IA et IB ont la même longueur mais des sens opposés, donc leur somme est nulle."
+  },
+  {
+   "q": "Les vecteurs (2 ; 5) et (4 ; 10) sont :",
+   "choix": [
+    "orthogonaux",
+    "colinéaires",
+    "ni l'un ni l'autre",
+    "égaux"
+   ],
+   "bonne": 1,
+   "explication": "2 × 10 − 4 × 5 = 0 : ils sont colinéaires (le second vaut 2 fois le premier)."
+  },
+  {
+   "q": "Dans un repère orthonormé, (3 ; 2) et (−2 ; 3) sont :",
+   "choix": [
+    "colinéaires",
+    "orthogonaux",
+    "de même sens",
+    "opposés"
+   ],
+   "bonne": 1,
+   "explication": "3 × (−2) + 2 × 3 = 0 : ils sont orthogonaux."
+  },
+  {
+   "q": "Norme du vecteur (3 ; −4) dans un repère orthonormé ?",
+   "choix": [
+    "7",
+    "1",
+    "5",
+    "25"
+   ],
+   "bonne": 2,
+   "explication": "√(3² + (−4)²) = √25 = 5."
+  },
+  {
+   "q": "Si AM = −2 u, alors AM et u :",
+   "choix": [
+    "ont même sens",
+    "sont de sens contraires",
+    "ne sont pas colinéaires",
+    "ont même longueur"
+   ],
+   "bonne": 1,
+   "explication": "Le coefficient −2 est négatif : sens contraire, et longueur doublée."
+  },
+  {
+   "q": "G centre de gravité de ABC. GA + GB + GC vaut :",
+   "choix": [
+    "3 AG",
+    "0",
+    "AB",
+    "2 GI"
+   ],
+   "bonne": 1,
+   "explication": "Propriété du centre de gravité : la somme des trois vecteurs est le vecteur nul."
+  }
+ ]
+}

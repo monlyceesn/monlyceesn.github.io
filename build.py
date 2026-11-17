@@ -51,6 +51,20 @@ bary_cours = [{"type": "fascicule", "id": "bary-2nde", "classe": "2nde-s", "mati
              {"n": 2, "titre": "Barycentre de trois points", "debut": 6, "fin": 7},
              {"n": 3, "titre": "Ensembles de points", "debut": 7, "fin": 8},
              {"n": 4, "titre": "Exercice corrigé de synthèse", "debut": 9, "fin": 10}]}]
+vect = json.loads((src / "calcul-vectoriel-2nde-s.json").read_text())
+bary_cours.append({"type": "fascicule", "id": "vect-2nde", "classe": "2nde-s", "matiere": "maths",
+  "titre": "Le calcul vectoriel", "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "Version corrigée",
+  "pdf": "cours/calcul-vectoriel-2nde-s.pdf", "taille": "0,32 Mo", "pages": 9, "leger": True,
+  "note": "Version réorganisée et corrigée, avec des explications simples (encadrés bleus). À faire relire par un enseignant.",
+  "lecons": [{"n": 1, "titre": "Addition de vecteurs", "debut": 1, "fin": 3},
+             {"n": 2, "titre": "Multiplication par un réel, colinéarité", "debut": 3, "fin": 5},
+             {"n": 3, "titre": "Base, repère et coordonnées", "debut": 6, "fin": 6},
+             {"n": 4, "titre": "Vecteurs et figures (milieu, centre de gravité, Thalès)", "debut": 7, "fin": 9}]})
+for e in vect["exercices"]: e["titre"] += ' <small style="color:var(--gris);font-weight:600">· Calcul vectoriel</small>'
+for e in bary["exercices"]:
+    if "Barycentre</small>" not in e["titre"]: e["titre"] += ' <small style="color:var(--gris);font-weight:600">· Barycentre</small>'
+bary["exercices"] = vect["exercices"] + bary["exercices"]
+bary["quiz"] = vect["quiz"] + bary["quiz"]
 site = site.replace("__BARY_COURS__", json.dumps(bary_cours, ensure_ascii=False))
 site = site.replace("__BARY_EX__", json.dumps(bary["exercices"], ensure_ascii=False))
 site = site.replace("__BARY_QUIZ__", json.dumps(bary["quiz"], ensure_ascii=False))

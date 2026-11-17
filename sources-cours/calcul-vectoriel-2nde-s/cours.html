@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="katex/katex.min.css">
+<script src="katex/katex.min.js"></script>
+<script src="katex/auto-render.min.js"></script>
+<style>
+@page { size: A4; margin: 15mm 15mm 17mm; }
+body { font-family: "DejaVu Sans", Arial, sans-serif; font-size: 10.5pt; color:#000; line-height:1.5; }
+.couv { border:2.5px solid #000; padding:14px 18px; border-radius:8px; margin-bottom:12px; }
+.couv h1 { margin:0; font-size:22pt; } .couv p { margin:4px 0 0; }
+h2 { font-size:14pt; border-bottom:2px solid #000; padding-bottom:3px; margin:20px 0 8px; page-break-after:avoid; }
+h3 { font-size:11.5pt; margin:14px 0 4px; page-break-after:avoid; }
+h4 { font-size:10.5pt; margin:10px 0 2px; text-decoration:underline; page-break-after:avoid; }
+p { margin:5px 0; }
+.def, .prop { border:1.5px solid #000; padding:8px 12px; border-radius:6px; margin:8px 0; page-break-inside:avoid; }
+.def b.t, .prop b.t { display:block; margin-bottom:3px; }
+.ex { border:1px dashed #000; padding:8px 12px; border-radius:6px; margin:8px 0; page-break-inside:avoid; }
+.res { border-left:3px solid #000; padding:4px 0 4px 12px; margin:6px 0 10px; }
+.res > b:first-child { display:block; }
+.attention { border:1.5px solid #000; background:#eee; padding:8px 12px; border-radius:6px; margin:8px 0; page-break-inside:avoid; }
+/* Seuls les encadrés d'explication sont en couleur */
+.explic { background:#e8f1ff; border-left:5px solid #2563eb; color:#0f2a5c; padding:9px 13px; border-radius:6px; margin:10px 0; page-break-inside:avoid; }
+.explic::before { content:"💡 Pour bien comprendre"; display:block; font-weight:bold; color:#1d4ed8; margin-bottom:3px; }
+.fig { text-align:center; margin:8px 0; page-break-inside:avoid; }
+.fig svg { border:1px solid #999; border-radius:6px; }
+.leg { font-size:9pt; margin-top:2px; }
+.calc { margin:4px 0 4px 20px; }
+.sommaire { columns:2; font-size:10pt; }
+.sommaire div { margin:1px 0; }
+.saut { page-break-before:always; }
+.pied { font-size:8.5pt; margin-top:16px; }
+</style></head><body><div class="couv"><h1>Le calcul vectoriel</h1><p>Mathématiques · Seconde S · Mon Lycée SN</p></div>
+
+<div class="sommaire">
+<div><b>I. Addition de vecteurs</b></div>
+<div>1. Activité · 2. Vecteur somme</div>
+<div>3. Translation · 4. Propriétés, Chasles</div>
+<div><b>II. Multiplication par un réel</b></div>
+<div>1. Activité · 2. Définition</div>
+<div>3. Propriétés · 4. Vecteurs colinéaires</div>
+<div><b>III. Base, repère, coordonnées</b></div>
+<div>1. Base et repère · 2. Colinéarité</div>
+<div>3. Orthogonalité · 4. Norme et distance</div>
+<div><b>IV. Vecteurs et figures géométriques</b></div>
+<div>1. Milieu d'un segment</div>
+<div>2. Centre de gravité · 3. Thalès</div>
+</div>
+
+<div class="explic">Un <b>vecteur</b>, c'est un <b>déplacement</b> : une direction, un sens et une longueur. « Fais 3 pas vers l'est » est un vecteur. Peu importe d'où tu pars : partir de la maison ou du marché, « 3 pas vers l'est », c'est le même déplacement. Le vecteur \(\V{AB}\) est le déplacement qui emmène de \(A\) jusqu'à \(B\).</div>
+
+<!-- ================= I ================= -->
+<h2>I. Addition de vecteurs</h2>
+
+<h3>1. Activité de découverte</h3>
+<div class="ex">Soient \(A\) un point, \(\vec u\) et \(\vec v\) deux vecteurs du plan.<br>
+1) Construire \(B\) et \(C\) tels que \(\vec u=\V{AB}\) et \(\vec v=\V{AC}\).<br>
+2) Construire le point \(D\) tel que \([BC]\) et \([AD]\) aient le même milieu.<br>
+3) a) Montrer que \(\V{AC}=\V{BD}\). &nbsp; b) En déduire que \(\V{AB}+\V{AC}=\V{AD}\).</div>
+
+<div class="fig"><svg viewBox="0 0 380 190" width="340" font-family="Arial" font-size="12">
+<defs><marker id="f" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#000"/></marker></defs>
+<line x1="20" y1="60" x2="80" y2="20" stroke="#000" stroke-width="1.6" marker-end="url(#f)"/><text x="38" y="58">u</text>
+<line x1="20" y1="110" x2="70" y2="165" stroke="#000" stroke-width="1.6" marker-end="url(#f)"/><text x="30" y="150">v</text>
+<line x1="160" y1="95" x2="230" y2="45" stroke="#000" stroke-width="1.6" marker-end="url(#f)"/>
+<line x1="160" y1="95" x2="230" y2="160" stroke="#000" stroke-width="1.6" marker-end="url(#f)"/>
+<line x1="230" y1="45" x2="300" y2="110" stroke="#000" stroke-dasharray="4 3" marker-end="url(#f)"/>
+<line x1="230" y1="160" x2="300" y2="110" stroke="#000" stroke-dasharray="4 3" marker-end="url(#f)"/>
+<line x1="160" y1="95" x2="300" y2="110" stroke="#000" stroke-width="3" marker-end="url(#f)"/>
+<g font-weight="bold"><text x="144" y="99">A</text><text x="228" y="38">B</text><text x="226" y="178">C</text><text x="306" y="114">D</text></g>
+<text x="200" y="128" font-size="11">u + v</text>
+</svg><div class="leg">\(ABDC\) est un parallélogramme : le vecteur somme \(\vec u+\vec v\) est sa diagonale \(\V{AD}\).</div></div>
+
+<div class="res"><b>Résolution</b>
+3) a) Les diagonales \([BC]\) et \([AD]\) ont le même milieu, donc \(ABDC\) est un parallélogramme. Ainsi \(\V{AC}=\V{BD}\).<br>
+b) Comme \(\V{AC}=\V{BD}\) : \(\V{AB}+\V{AC}=\V{AB}+\V{BD}=\V{AD}\).</div>
+
+<h3>2. Vecteur somme</h3>
+<div class="def"><b class="t">Définition</b>
+Soient \(A\) un point, \(\vec u\) et \(\vec v\) deux vecteurs, \(B\) et \(C\) les points tels que \(\vec u=\V{AB}\) et \(\vec v=\V{AC}\), et \(D\) le point tel que \(ABDC\) soit un parallélogramme.<br>
+Le <b>vecteur somme</b> de \(\vec u\) et \(\vec v\) est \(\vec w=\V{AD}\). On écrit \(\vec w=\vec u+\vec v\).</div>
+<div class="explic">Additionner deux vecteurs, c'est <b>enchaîner deux déplacements</b>. Tu prends un car rapide de Pikine à Colobane (\(\vec u\)), puis un taxi de Colobane au Plateau (\(\vec v\)) : le trajet total, de Pikine au Plateau, c'est \(\vec u+\vec v\). Sur le dessin, on met les flèches <b>bout à bout</b>.</div>
+
+<h3>3. Translation</h3>
+<div class="def"><b class="t">Définition</b>
+Si \(\V{AB}=\vec u\), on dit que \(B\) est l'<b>image</b> de \(A\) par la <b>translation de vecteur \(\vec u\)</b>, notée \(t_{\vec u}\). On écrit \(t_{\vec u}(A)=B\).</div>
+<div class="explic">Une translation fait <b>glisser</b> toute une figure, sans la tourner ni la déformer, comme quand tu fais glisser ton cahier sur la table. Chaque point bouge du même déplacement \(\vec u\).</div>
+
+<h3>4. Propriétés de l'addition</h3>
+<div class="prop"><b class="t">Propriétés</b>
+• <b>Vecteur nul</b> : \(\V{MM}=\vec 0\) (l'origine et l'extrémité sont confondues).<br>
+• \(\vec u+\vec 0=\vec 0+\vec u=\vec u\) : \(\vec 0\) est l'<b>élément neutre</b>.<br>
+• \(\vec u+\vec v=\vec v+\vec u\) : l'addition est <b>commutative</b>.<br>
+• \((\vec u+\vec v)+\vec w=\vec u+(\vec v+\vec w)\) : l'addition est <b>associative</b>.<br>
+• <b>Vecteur opposé</b> : \(\V{AB}=-\V{BA}\).<br>
+• <b>Relation de Chasles</b> : pour tous points \(A\), \(B\), \(C\) : \(\V{AB}+\V{BC}=\V{AC}\).</div>
+<div class="explic">• Le vecteur nul, c'est « rester sur place ».<br>
+• \(-\V{BA}\), c'est faire le chemin <b>dans l'autre sens</b> : l'aller \(\V{AB}\) et le retour \(\V{BA}\) s'annulent.<br>
+• <b>Chasles</b>, c'est l'escale : aller de \(A\) à \(C\) en passant par \(B\), ou aller directement de \(A\) à \(C\), on arrive au même endroit. Astuce pour la reconnaître : la lettre du milieu se répète (\(A\underline{B}+\underline{B}C\)) et « disparaît ».</div>
+
+<!-- ================= II ================= -->
+<h2>II. Multiplication d'un vecteur par un réel</h2>
+
+<h3>1. Activité</h3>
+<div class="ex">Sur un axe gradué, on place \(A\) et \(B\) tels que \(x_A=0\) et \(x_B=1\). On pose \(\vec u=\V{AB}\).<br>
+1) Placer les points \(M\), \(N\), \(P\) d'abscisses \(-2\), \(3\) et \(\frac12\), puis exprimer \(\V{AM}\), \(\V{AN}\), \(\V{AP}\), \(\V{MN}\) et \(\V{NP}\) en fonction de \(\vec u\).<br>
+2) Construire \(C\) tel que \(\V{AC}=2\vec u\) et \(D\) tel que \(\V{AD}=-3\vec u\).</div>
+<div class="fig"><svg viewBox="0 0 440 70" width="420" font-family="Arial" font-size="11" text-anchor="middle">
+<line x1="15" y1="40" x2="425" y2="40" stroke="#000" stroke-width="1.5"/>
+<g id="axe2"></g>
+</svg></div>
+<div class="res"><b>Résolution</b>
+1) \(\V{AM}=-2\vec u\), \(\V{AN}=3\vec u\), \(\V{AP}=\frac12\vec u\), \(\V{MN}=5\vec u\) (de \(-2\) à \(3\)), \(\V{NP}=-\frac52\vec u\) (de \(3\) à \(\frac12\)).<br>
+2) \(C\) est à l'abscisse \(2\) et \(D\) à l'abscisse \(-3\).</div>
+<div class="explic">Sur un axe, la mesure d'un vecteur \(\V{XY}\) se calcule par « arrivée − départ » : \(\V{MN}\) mesure \(3-(-2)=5\). Le signe dit le sens : positif, on va vers la droite ; négatif, on recule.</div>
+
+<h3>2. Définition</h3>
+<div class="def"><b class="t">Définition</b>
+Soient \(A\) un point, \(\vec u\) un vecteur non nul et \(B\) le point tel que \(\V{AB}=\vec u\). Tout point \(M\) de la droite \((AB)\) a une abscisse \(\alpha\) dans le repère \((A\,;\V{AB})\).<br>
+Le vecteur \(\V{AM}\) est le <b>produit de \(\vec u\) par le réel \(\alpha\)</b> : \(\V{AM}=\alpha\vec u\).<br>
+• Si \(\alpha>0\), \(\alpha\vec u\) et \(\vec u\) ont le <b>même sens</b>.<br>
+• Si \(\alpha<0\), \(\alpha\vec u\) et \(\vec u\) sont de <b>sens contraires</b>.<br>
+• La longueur de \(\alpha\vec u\) est \(|\alpha|\) fois celle de \(\vec u\).</div>
+<div class="explic">Multiplier par 2, c'est faire <b>deux fois</b> le même pas dans la même direction. Multiplier par \(\frac12\), c'est faire un demi-pas. Multiplier par \(-1\), c'est faire le même pas <b>en marche arrière</b>. La direction (la « route ») ne change jamais.</div>
+
+<h3>3. Propriétés</h3>
+<div class="prop"><b class="t">Pour tous vecteurs \(\vec u\), \(\vec v\) et tous réels \(a\), \(b\), \(k\)</b>
+• \(1\cdot\vec u=\vec u\) &nbsp;&nbsp; • \(a(b\vec u)=(ab)\vec u\)<br>
+• \((a+b)\vec u=a\vec u+b\vec u\) &nbsp;&nbsp; • \(a(\vec u+\vec v)=a\vec u+a\vec v\)<br>
+• \(k\vec u=\vec 0 \iff k=0\) ou \(\vec u=\vec 0\)</div>
+<div class="explic">Ces règles ressemblent au calcul avec les nombres : on développe et on factorise comme d'habitude. Exemple : \(3\vec u+2\vec u=5\vec u\), et \(2(\vec u+\vec v)=2\vec u+2\vec v\).</div>
+
+<h3>4. Vecteurs colinéaires</h3>
+<div class="def"><b class="t">Définition</b>
+Deux vecteurs \(\vec u\) et \(\vec v\) sont <b>colinéaires</b> s'il existe un réel \(k\) tel que \(\vec u=k\vec v\) (ou \(\vec v=k\vec u\)).</div>
+<div class="prop"><b class="t">Conséquences</b>
+• Le vecteur nul est colinéaire à tout vecteur.<br>
+• Trois points \(M\), \(N\), \(P\) sont <b>alignés</b> \(\iff\) \(\V{MN}\) et \(\V{MP}\) sont colinéaires.<br>
+• Les droites \((AB)\) et \((CD)\) sont <b>parallèles</b> \(\iff\) \(\V{AB}\) et \(\V{CD}\) sont colinéaires.</div>
+<div class="fig"><svg viewBox="0 0 360 150" width="320" font-family="Arial" font-size="12">
+<line x1="30" y1="30" x2="330" y2="30" stroke="#000"/><g fill="#000"><circle cx="90" cy="30" r="3"/><circle cx="170" cy="30" r="3"/><circle cx="240" cy="30" r="3"/></g>
+<text x="85" y="22">M</text><text x="165" y="22">N</text><text x="235" y="22">P</text><text x="270" y="48" font-size="10">M, N, P alignés</text>
+<line x1="40" y1="85" x2="320" y2="85" stroke="#000"/><line x1="40" y1="125" x2="320" y2="125" stroke="#000"/>
+<defs><marker id="g" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#000"/></marker></defs>
+<line x1="90" y1="85" x2="170" y2="85" stroke="#000" stroke-width="2.5" marker-end="url(#g)"/><text x="84" y="78">A</text><text x="166" y="78">B</text>
+<line x1="250" y1="125" x2="130" y2="125" stroke="#000" stroke-width="2.5" marker-end="url(#g)"/><text x="246" y="118">C</text><text x="124" y="118">D</text>
+<text x="230" y="102" font-size="10">(AB) // (CD) : CD = −1,5 AB</text>
+</svg></div>
+<div class="explic">Des vecteurs colinéaires sont « sur des rails parallèles » : comme deux voitures sur la même route ou sur deux voies parallèles, même si l'une va dans l'autre sens. C'est l'outil n°1 pour <b>prouver un alignement ou un parallélisme</b> : on trouve un \(k\) tel que l'un soit \(k\) fois l'autre.</div>
+
+<div class="ex"><b>Exercice d'application.</b> Soit \(ABC\) un triangle et \(E\) le point défini par \(3\V{EA}+\V{EB}=\vec 0\).<br>
+1) Construire le point \(E\). &nbsp; 2) Construire le point \(F\) tel que \(\V{EF}=\frac14\V{BC}\). &nbsp; 3) Montrer que \(A\), \(C\) et \(F\) sont alignés.</div>
+<div class="res"><b>Résolution</b>
+1) \(3\V{EA}+\V{EB}=\vec 0 \Rightarrow 3\V{EA}+\V{EA}+\V{AB}=\vec 0 \Rightarrow 4\V{EA}+\V{AB}=\vec 0 \Rightarrow \V{AE}=\frac14\V{AB}\).<br>
+\(E\) est sur \([AB]\), au quart du segment en partant de \(A\).<br>
+3) On a \(\V{AB}=4\V{AE}\) et \(\V{BC}=4\V{EF}\). Avec Chasles :<br>
+\(\V{AC}=\V{AB}+\V{BC}=4\V{AE}+4\V{EF}=4(\V{AE}+\V{EF})=4\V{AF}\).<br>
+\(\V{AC}\) et \(\V{AF}\) sont colinéaires, donc <b>\(A\), \(C\) et \(F\) sont alignés</b>. Plus précisément, \(F\) est au quart de \([AC]\) en partant de \(A\).</div>
+<div class="fig"><svg viewBox="0 0 300 220" width="260" font-family="Arial" font-size="12">
+<polygon points="40,110 160,200 270,20" fill="none" stroke="#000" stroke-width="1.5"/>
+<line x1="70" y1="132.5" x2="97.5" y2="87.5" stroke="#000" stroke-dasharray="4 3"/>
+<g fill="#000"><circle cx="40" cy="110" r="3"/><circle cx="160" cy="200" r="3"/><circle cx="270" cy="20" r="3"/><circle cx="70" cy="132.5" r="3"/><circle cx="97.5" cy="87.5" r="3"/></g>
+<g font-weight="bold"><text x="24" y="114">A</text><text x="160" y="216">B</text><text x="276" y="20">C</text><text x="56" y="148">E</text><text x="92" y="80">F</text></g>
+</svg><div class="leg">\(E\) au quart de \([AB]\), \(F\) au quart de \([AC]\) : \((EF)\) est parallèle à \((BC)\).</div></div>
+
+<!-- ================= III ================= -->
+<h2 class="saut">III. Base, repère et coordonnées</h2>
+
+<h3>1. Base et repère</h3>
+<div class="def"><b class="t">Définition</b>
+Deux vecteurs \(\vec u\) et \(\vec v\) <b>non colinéaires</b> forment une <b>base</b> du plan : pour tout vecteur \(\vec w\), il existe deux réels uniques \(\alpha\) et \(\beta\) tels que \(\vec w=\alpha\vec u+\beta\vec v\). \((\alpha\,;\beta)\) sont les <b>coordonnées</b> de \(\vec w\) dans la base \((\vec u,\vec v)\).<br>
+Si \(A\) est un point, le triplet \((A\,;\vec u,\vec v)\) est un <b>repère</b> du plan : pour tout point \(M\), il existe \(x\) et \(y\) tels que \(\V{AM}=x\vec u+y\vec v\). \(A\) est l'<b>origine</b>.<br>
+Si \(\vec u\) et \(\vec v\) sont orthogonaux, le repère est <b>orthogonal</b> ; si de plus \(\|\vec u\|=\|\vec v\|=1\), il est <b>orthonormé</b>.</div>
+<div class="explic">Pense à des indications pour trouver une maison dans un quartier en damier : « 3 rues vers l'est, puis 2 rues vers le nord ». L'est et le nord sont les deux vecteurs de base, et \((3\,;2)\) sont les coordonnées. Il faut deux directions <b>différentes</b> : avec seulement l'est et l'ouest, tu ne pourrais jamais monter vers le nord. C'est pour ça que les vecteurs de base ne doivent pas être colinéaires.</div>
+
+<h3>2. Condition de colinéarité</h3>
+<div class="prop"><b class="t">Propriété</b>
+Dans un repère, \(\vec a\begin{pmatrix}x\\y\end{pmatrix}\) et \(\vec b\begin{pmatrix}x'\\y'\end{pmatrix}\) sont colinéaires si et seulement si \(\;xy'-x'y=0\).</div>
+<div class="explic">Calcul « en croix » : on multiplie en diagonale et on soustrait. Exemple : \(\vec a(2\,;3)\) et \(\vec b(6\,;9)\) : \(2\times9-6\times3=18-18=0\), ils sont colinéaires (en effet \(\vec b=3\vec a\)).</div>
+
+<h3>3. Condition d'orthogonalité</h3>
+<div class="prop"><b class="t">Propriété</b>
+Dans un repère <b>orthonormé</b>, \(\vec a\begin{pmatrix}x\\y\end{pmatrix}\) et \(\vec b\begin{pmatrix}x'\\y'\end{pmatrix}\) sont orthogonaux si et seulement si \(\;xx'+yy'=0\).</div>
+<div class="explic">Attention à ne pas confondre les deux formules : pour la colinéarité on croise (\(xy'-x'y\)), pour l'orthogonalité on multiplie « ligne par ligne » et on <b>additionne</b> (\(xx'+yy'\)). Exemple : \(\vec a(2\,;3)\) et \(\vec b(3\,;-2)\) : \(6-6=0\), ils sont perpendiculaires.</div>
+
+<h3>4. Norme d'un vecteur et distance</h3>
+<div class="def"><b class="t">Définition</b>
+Soient \(\vec u\) non nul et \(B\) tel que \(\V{AB}=\vec u\). La <b>norme</b> de \(\vec u\), notée \(\|\vec u\|\), est la longueur \(AB\) : \(\|\vec u\|=\|\V{AB}\|=AB=d(A,B)\).<br>
+Si \(\|\vec u\|=1\), on dit que \(\vec u\) est <b>unitaire</b> (ou normé).</div>
+<div class="prop"><b class="t">Dans un repère orthonormé</b>
+• Si \(\vec a\begin{pmatrix}x\\y\end{pmatrix}\), alors \(\|\vec a\|=\sqrt{x^2+y^2}\).<br>
+• Si \(A(x_A\,;y_A)\) et \(B(x_B\,;y_B)\), alors \(AB=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}\).</div>
+<div class="explic">C'est le <b>théorème de Pythagore</b> caché : se déplacer de 3 vers la droite et de 4 vers le haut, c'est parcourir l'hypoténuse d'un triangle rectangle, donc \(\sqrt{3^2+4^2}=\sqrt{25}=5\).<br>
+Exemple : \(A(1\,;2)\), \(B(4\,;6)\) : \(AB=\sqrt{3^2+4^2}=5\).</div>
+
+<!-- ================= IV ================= -->
+<h2>IV. Vecteurs et figures géométriques</h2>
+
+<h3>1. Milieu d'un segment</h3>
+<div class="ex"><b>Activité 1.</b> Soient \(A\) et \(B\) deux points et \(I\) le milieu de \([AB]\).<br>
+1) Donner la relation entre \(\V{AB}\) et \(\V{AI}\), \(\V{AB}\) et \(\V{BI}\), \(\V{IA}\) et \(\V{IB}\), \(\V{BA}\) et \(\V{IA}\).<br>
+2) Montrer que, pour tout point \(M\) : \(\V{MA}+\V{MB}=2\V{MI}\).</div>
+<div class="res"><b>Résolution</b>
+1) \(\V{AB}=2\V{AI}\) ; \(\V{AB}=-2\V{BI}\) ; \(\V{IA}=-\V{IB}\) ; \(\V{BA}=2\V{IA}\).<br>
+2) \(\V{MA}+\V{MB}=\V{MI}+\V{IA}+\V{MI}+\V{IB}=2\V{MI}+\underbrace{\V{IA}+\V{IB}}_{=\vec 0}=2\V{MI}\).</div>
+<div class="attention">⚠️ <b>Erreur fréquente</b> : écrire \(\V{IA}=\V{IB}\). Les longueurs \(IA\) et \(IB\) sont égales, mais les vecteurs partent dans des <b>sens opposés</b> : \(\V{IA}=-\V{IB}\), c'est-à-dire \(\V{IA}+\V{IB}=\vec 0\).</div>
+<div class="prop"><b class="t">À retenir</b>
+\(I\) milieu de \([AB]\) \(\iff \V{IA}+\V{IB}=\vec 0 \iff \V{AI}=\frac12\V{AB}\). Et pour tout point \(M\) : \(\V{MA}+\V{MB}=2\V{MI}\).</div>
+
+<h3>2. Centre de gravité d'un triangle</h3>
+<div class="ex"><b>Activité 2.</b> Soit \(ABC\) un triangle de centre de gravité \(G\) et \(I\) le milieu de \([BC]\).<br>
+1) Rappeler la définition du centre de gravité.<br>
+2) a) Exprimer \(\V{GA}\) en fonction de \(\V{GI}\), puis en fonction de \(\V{AI}\). &nbsp; b) En déduire que \(\V{GA}+\V{GB}+\V{GC}=\vec 0\).<br>
+3) Montrer que, pour tout point \(M\) : \(\V{MA}+\V{MB}+\V{MC}=3\V{MG}\).</div>
+<div class="fig"><svg viewBox="0 0 280 210" width="250" font-family="Arial" font-size="12">
+<polygon points="110,20 30,190 250,170" fill="none" stroke="#000" stroke-width="1.5"/>
+<line x1="110" y1="20" x2="140" y2="180" stroke="#000" stroke-dasharray="4 3"/>
+<line x1="30" y1="190" x2="180" y2="95" stroke="#000" stroke-dasharray="4 3"/>
+<line x1="250" y1="170" x2="70" y2="105" stroke="#000" stroke-dasharray="4 3"/>
+<g fill="#000"><circle cx="130" cy="126.7" r="4"/><circle cx="140" cy="180" r="3"/></g>
+<g font-weight="bold"><text x="106" y="14">A</text><text x="14" y="198">B</text><text x="254" y="176">C</text><text x="136" y="122">G</text><text x="136" y="198">I</text></g>
+</svg><div class="leg">Les trois médianes se coupent en \(G\), situé aux \(\frac23\) de chaque médiane en partant du sommet.</div></div>
+<div class="res"><b>Résolution</b>
+1) Le centre de gravité est le point de rencontre des trois <b>médianes</b> (droites qui joignent un sommet au milieu du côté opposé).<br>
+2) a) \(G\) est aux deux tiers de \([AI]\) en partant de \(A\) : \(\V{GA}=-2\V{GI}\) et \(\V{GA}=-\frac23\V{AI}\).<br>
+b) \(\V{GA}+\V{GB}+\V{GC}=\V{GA}+\V{GI}+\V{IB}+\V{GI}+\V{IC}=\V{GA}+2\V{GI}+\underbrace{\V{IB}+\V{IC}}_{=\vec 0}=-2\V{GI}+2\V{GI}=\vec 0\).<br>
+3) \(\V{MA}+\V{MB}+\V{MC}=3\V{MG}+\underbrace{\V{GA}+\V{GB}+\V{GC}}_{=\vec 0}=3\V{MG}\).</div>
+<div class="explic">Le centre de gravité est le point d'équilibre du triangle : découpe un triangle dans du carton, tu peux le faire tenir sur la pointe d'un crayon pile en \(G\). Retiens la règle des « deux tiers » : de chaque sommet, \(G\) est aux \(\frac23\) du chemin vers le milieu du côté opposé.</div>
+
+<h3>3. Théorème de Thalès (forme vectorielle)</h3>
+<div class="prop"><b class="t">Théorème</b>
+Soit \(ABC\) un triangle, \(I\in(AB)\) et \(J\in(AC)\) tels que \((IJ)\) soit parallèle à \((BC)\). Alors il existe un réel \(k\) tel que
+\[\V{AI}=k\V{AB},\qquad \V{AJ}=k\V{AC},\qquad \V{IJ}=k\V{BC}\]
+En particulier, en longueurs : \(\dfrac{AI}{AB}=\dfrac{AJ}{AC}=\dfrac{IJ}{BC}=|k|\).</div>
+<div class="fig"><svg viewBox="0 0 280 200" width="240" font-family="Arial" font-size="12">
+<polygon points="110,20 30,180 240,180" fill="none" stroke="#000" stroke-width="1.5"/>
+<line x1="20" y1="104" x2="260" y2="104" stroke="#000" stroke-dasharray="5 3"/>
+<g fill="#000"><circle cx="68" cy="104" r="3"/><circle cx="178" cy="104" r="3"/></g>
+<g font-weight="bold"><text x="106" y="14">A</text><text x="14" y="190">B</text><text x="244" y="190">C</text><text x="52" y="98">I</text><text x="183" y="98">J</text></g>
+</svg></div>
+<div class="explic">Thalès, c'est l'<b>agrandissement d'une photo</b> : le petit triangle \(AIJ\) est une copie réduite du grand triangle \(ABC\), toutes les longueurs sont multipliées par le même nombre \(k\). Exemple : si \(AI=2\) cm et \(AB=6\) cm, alors \(k=\frac13\) et \(IJ=\frac13 BC\).</div>
+
+<p class="pied">Mon Lycée SN · Calcul vectoriel · Seconde S. Version réorganisée et corrigée du cours, avec des explications ajoutées (encadrés bleus). À faire relire par un enseignant avant diffusion.</p>
+<script>
+(function(){
+  const g=document.getElementById("axe2"); let h="";
+  const X=v=>40+(v+4)*42;
+  for(let v=-4;v<=5;v++){h+=`<line x1="${X(v)}" y1="36" x2="${X(v)}" y2="44" stroke="#000"/><text x="${X(v)}" y="58">${v}</text>`;}
+  for(const [n,v] of [["D",-3],["M",-2],["A",0],["P",0.5],["B",1],["C",2],["N",3]]) h+=`<circle cx="${X(v)}" cy="40" r="3"/><text x="${X(v)}" y="28" font-weight="bold" font-size="12">${n}</text>`;
+  g.innerHTML=h;
+})();
+renderMathInElement(document.body,{delimiters:[{left:"\\[",right:"\\]",display:true},{left:"\\(",right:"\\)",display:false}],
+  macros:{"\\V":"\\overrightarrow{#1}"},throwOnError:false});
+document.body.dataset.pret="1";
+</script>
+</body></html>
