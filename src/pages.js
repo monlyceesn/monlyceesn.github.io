@@ -452,7 +452,11 @@ function pageConcours(){
   afficher(entete(`<a href="#accueil">Accueil</a> › Concours`, "Je prépare un concours",
       "Les concours accessibles avec le bac au Sénégal, le niveau demandé et comment s'y préparer.") + `
     <section class="section"><div class="wrap">
-      <div class="attention rv">⚠️ <b>Beaucoup d'inscriptions se font pendant la Terminale</b>, bien avant les résultats du bac (EPT, EMS, ESP…). Renseigne-toi dès la rentrée de Terminale.</div>
+      <div class="encadre rv"><b>📅 Année scolaire 2026-2027</b><br>
+        Au ${CONCOURS_MAJ}, les avis de la <b>session 2027</b> ne sont pas encore publiés. Les dates ci-dessous sont celles de 2026 : elles te donnent une idée de quand ça se passera, mais elles peuvent changer.</div>
+      <div class="attention rv">⚠️ <b>Beaucoup d'inscriptions se font pendant la Terminale</b>, bien avant les résultats du bac (EMS et ENSOA dès janvier, EPT et ESP dès février).</div>
+      <details class="boite-cours rv" style="margin-top:14px"><summary><span class="rond-cours">🗓️</span><span class="tete-cours"><b>Mon calendrier 2026-2027</b><small>Quand s'inscrire, mois par mois (prévision)</small></span></summary>
+        <div class="contenu-cours" id="calendrier-concours"></div></details>
       <p class="sous-titre-c rv">Afficher les concours ouverts à ma série</p>
       <div class="puces rv" id="f-serie">${[["tous","Tous"],["S1","S1"],["S2","S2"],["L","L1 / L2"]].map(([k,n]) => `<button class="puce ${filtre===k?"actif":""}" data-v="${k}">${n}</button>`).join("")}</div>
       <div id="liste-concours"></div>
@@ -479,7 +483,7 @@ function pageConcours(){
           <li>Vérifie l'âge limite tôt : certains concours (EMS, EPT, ENSA) sont stricts.</li>
           <li>Renseigne-toi sur les engagements : les écoles militaires demandent un engagement dans l'armée.</li>
         </ul></div></details>
-      <p class="rv" style="font-size:.8rem;color:var(--gris);margin-top:16px">Informations vérifiées en novembre 2026 à partir des avis des sessions 2025 et 2026. Les conditions et les dates changent chaque année : vérifie toujours l'avis officiel du concours avant de t'inscrire.</p>
+      <p class="rv" style="font-size:.8rem;color:var(--gris);margin-top:16px">Informations vérifiées le ${CONCOURS_MAJ} à partir des avis des sessions 2025 et 2026. Les conditions et les dates changent chaque année : vérifie toujours l'avis officiel de la session 2027 avant de t'inscrire.</p>
     </div></section>`);
   function liste(){
     const garde = c => filtre === "tous" || c.series.includes(filtre);
@@ -491,12 +495,25 @@ function pageConcours(){
           <summary><span class="rond-cours" style="font-size:1.3rem">${c.type === "Sur dossier" ? "📂" : "🎯"}</span>
             <span class="tete-cours"><b>${c.nom}</b><small>${c.type} · Niveau : ${c.niveau}</small></span></summary>
           <div class="contenu-cours">
+            <p class="statut-2027">${c.plusTard ? "Concours à passer après 2 ans d'études" : "Session 2027 : avis pas encore publié"}</p>
             ${c.infos.map(([t,v]) => `<p class="sous-titre-c">${t}</p><p>${v}</p>`).join("")}
             ${c.site ? `<p class="sous-titre-c">Où s'informer</p><p>Site officiel : <b>${c.site}</b></p>` : ""}
           </div></details>`).join("");
     }).join("");
   }
   liste();
+  const NOMS_MOIS = ["","Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
+  const ordre = [11,12,1,2,3,4,5,6,7,8,9,10];
+  const tous = CONCOURS.flatMap(g => g.liste);
+  document.getElementById("calendrier-concours").innerHTML =
+    `<p style="margin-top:12px;color:var(--gris);font-size:.85rem">D'après les périodes d'inscription de 2026. Vérifie chaque avis officiel quand il sort.</p>` +
+    ordre.map(m => {
+      const l = tous.filter(c => c.mois.includes(m));
+      const an = m >= 11 ? 2026 : 2027;
+      return `<p class="sous-titre-c">${NOMS_MOIS[m]} ${an}</p>` +
+        (l.length ? `<ul class="etapes">${l.map(c => `<li>${c.nom.split(" — ")[0]}</li>`).join("")}</ul>` : `<p style="color:var(--gris)">Pas d'inscription connue à cette période.</p>`);
+    }).join("") +
+    `<p class="sous-titre-c">Août – septembre 2027</p><p>Vœux sur Campusen (en 2026 : du 17 août au 13 septembre).</p>`;
   app.querySelectorAll("#f-serie .puce").forEach(b => b.addEventListener("click", () => {
     filtre = b.dataset.v; memo.ecrire("filtre-concours", filtre);
     app.querySelectorAll("#f-serie .puce").forEach(x => x.classList.toggle("actif", x === b));
