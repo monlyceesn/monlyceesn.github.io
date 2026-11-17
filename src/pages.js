@@ -85,7 +85,8 @@ ${NIVEAUX.map(n => `
       <div class="grille">
         <a class="carte rv" href="#conseils"><span class="fleche">→</span><span class="rond bg-jaune">⏱️</span><b>Minuteur de révision</b><small>25 min de travail, 5 min de pause</small></a>
         <a class="carte rv" style="--d:.08s" href="#conseils"><span class="fleche">→</span><span class="rond bg-vert">💡</span><b>Méthodes de travail</b><small>Apprendre, réviser, réussir le bac</small></a>
-        <a class="carte rv" style="--d:.16s" href="#orientation"><span class="fleche">→</span><span class="rond bg-corail">🧭</span><b>Orientation</b><small>Checklist Campusen</small></a>
+        <a class="carte rv" style="--d:.16s" href="#orientation"><span class="fleche">→</span><span class="rond bg-corail">🧭</span><b>Orientation</b><small>Pistes et checklist Campusen</small></a>
+        <a class="carte rv" style="--d:.24s" href="#concours"><span class="fleche">→</span><span class="rond bg-vert">🎯</span><b>Je prépare un concours</b><small>Concours après le bac et niveaux requis</small></a>
       </div>
     </div></section>`);
   const champ = document.getElementById("cherche"), res = document.getElementById("res");
@@ -356,6 +357,7 @@ function pageOrientation(){
           <li>Demande l'avis de ton professeur de maths et de ton professeur principal : ils connaissent les exigences.</li>
         </ul></div></details>
 
+      <a class="carte rv" href="#concours" style="margin-top:18px"><span class="fleche">→</span><span class="rond bg-jaune">🎯</span><b>Je prépare un concours</b><small>EPT, ESP, ENSA, EMS, ENDSS… niveaux et dates</small></a>
       <h2 class="titre-bloc rv">🏛️ Campusen</h2>
       <div class="encadre rv"><b>Campusen, c'est quoi ?</b><br>
         La plateforme officielle d'orientation des nouveaux bacheliers vers les universités publiques et les ISEP
@@ -444,6 +446,64 @@ function pageOrientation(){
   }));
 }
 
+/* ---------- Concours ---------- */
+function pageConcours(){
+  let filtre = memo.lire("filtre-concours", "tous");
+  afficher(entete(`<a href="#accueil">Accueil</a> › Concours`, "Je prépare un concours",
+      "Les concours accessibles avec le bac au Sénégal, le niveau demandé et comment s'y préparer.") + `
+    <section class="section"><div class="wrap">
+      <div class="attention rv">⚠️ <b>Beaucoup d'inscriptions se font pendant la Terminale</b>, bien avant les résultats du bac (EPT, EMS, ESP…). Renseigne-toi dès la rentrée de Terminale.</div>
+      <p class="sous-titre-c rv">Afficher les concours ouverts à ma série</p>
+      <div class="puces rv" id="f-serie">${[["tous","Tous"],["S1","S1"],["S2","S2"],["L","L1 / L2"]].map(([k,n]) => `<button class="puce ${filtre===k?"actif":""}" data-v="${k}">${n}</button>`).join("")}</div>
+      <div id="liste-concours"></div>
+      <h2 class="titre-bloc rv">Comment se préparer</h2>
+      <details class="boite-cours rv"><summary><span class="rond-cours">📝</span><span class="tete-cours"><b>Préparer les épreuves</b><small>Méthode sur plusieurs mois</small></span></summary>
+        <div class="contenu-cours"><ul class="etapes">
+          <li>Récupère les <b>sujets des années passées</b> du concours visé : c'est le meilleur entraînement.</li>
+          <li>Les concours scientifiques reprennent surtout le programme de Première et Terminale : maîtrise tes cours avant tout.</li>
+          <li>Entraîne-toi au <b>QCM chronométré</b> si le concours en comporte : vitesse et précision comptent.</li>
+          <li>N'oublie pas le français et l'anglais : ils sont souvent au programme et font la différence.</li>
+          <li>Révise à plusieurs, en échangeant les exercices et les corrections.</li>
+        </ul></div></details>
+      <details class="boite-cours rv"><summary><span class="rond-cours">📂</span><span class="tete-cours"><b>Le dossier d'inscription</b><small>Ne pas rater l'étape administrative</small></span></summary>
+        <div class="contenu-cours"><ul class="etapes">
+          <li>Lis l'<b>avis officiel</b> en entier : séries acceptées, âge limite, pièces à fournir, date limite.</li>
+          <li>Prépare tôt les pièces courantes : extrait de naissance, copies légalisées, photos, certificat de scolarité ou relevé du bac.</li>
+          <li>Dépose ton dossier plusieurs jours avant la date limite : les plateformes saturent le dernier jour.</li>
+          <li>Garde une copie de ton reçu et de ta convocation.</li>
+          <li>Méfie-toi des intermédiaires payants : l'inscription se fait auprès de l'école ou sur sa plateforme officielle.</li>
+        </ul></div></details>
+      <details class="boite-cours rv"><summary><span class="rond-cours">🎯</span><span class="tete-cours"><b>Choisir ses concours</b><small>Ne pas tout miser sur un seul</small></span></summary>
+        <div class="contenu-cours"><ul class="etapes">
+          <li>Présente <b>plusieurs concours</b> proches de ton projet, et fais aussi tes vœux sur Campusen.</li>
+          <li>Vérifie l'âge limite tôt : certains concours (EMS, EPT, ENSA) sont stricts.</li>
+          <li>Renseigne-toi sur les engagements : les écoles militaires demandent un engagement dans l'armée.</li>
+        </ul></div></details>
+      <p class="rv" style="font-size:.8rem;color:var(--gris);margin-top:16px">Informations vérifiées en novembre 2026 à partir des avis des sessions 2025 et 2026. Les conditions et les dates changent chaque année : vérifie toujours l'avis officiel du concours avant de t'inscrire.</p>
+    </div></section>`);
+  function liste(){
+    const garde = c => filtre === "tous" || c.series.includes(filtre);
+    document.getElementById("liste-concours").innerHTML = CONCOURS.map(g => {
+      const l = g.liste.filter(garde);
+      if(!l.length) return "";
+      return `<h3 class="niveau">${g.groupe}</h3>` + l.map(c => `
+        <details class="boite-cours">
+          <summary><span class="rond-cours" style="font-size:1.3rem">${c.type === "Sur dossier" ? "📂" : "🎯"}</span>
+            <span class="tete-cours"><b>${c.nom}</b><small>${c.type} · Niveau : ${c.niveau}</small></span></summary>
+          <div class="contenu-cours">
+            ${c.infos.map(([t,v]) => `<p class="sous-titre-c">${t}</p><p>${v}</p>`).join("")}
+            ${c.site ? `<p class="sous-titre-c">Où s'informer</p><p>Site officiel : <b>${c.site}</b></p>` : ""}
+          </div></details>`).join("");
+    }).join("");
+  }
+  liste();
+  app.querySelectorAll("#f-serie .puce").forEach(b => b.addEventListener("click", () => {
+    filtre = b.dataset.v; memo.ecrire("filtre-concours", filtre);
+    app.querySelectorAll("#f-serie .puce").forEach(x => x.classList.toggle("actif", x === b));
+    liste();
+  }));
+}
+
 /* ================= NAVIGATION, EN-TÊTE, INTRO ================= */
 const nav = document.getElementById("nav"), burger = document.getElementById("burger");
 burger.addEventListener("click", () => {
@@ -467,6 +527,7 @@ function router(){
   if(h === "accueil") return pageAccueil();
   if(h === "conseils") return pageConseils();
   if(h === "orientation") return pageOrientation();
+  if(h === "concours") return pageConcours();
   if(h === "telechargements") return pageTelechargements();
   const ml = h.match(/^lecon-(.+)-(\d+)$/);
   if(ml) return pageLecon(ml[1], +ml[2]);

@@ -384,6 +384,7 @@
       <a href="#accueil" data-n="accueil">Accueil</a>
       <a href="#conseils" data-n="conseils">Conseils</a>
       <a href="#orientation" data-n="orientation">Orientation</a>
+      <a href="#concours" data-n="concours">Concours</a>
       <a href="#telechargements" data-n="telechargements">Téléchargements</a>
     </nav>
     <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -979,6 +980,65 @@ const CONSEILS_MOYENNE = {
       "Reste régulier jusqu'au bout : la mention se joue sur les notes du bac, pas sur les bulletins."] }
 };
 
+/* ---------- Concours accessibles après le bac (vérifié en novembre 2026, sessions 2025-2026) ---------- */
+const CONCOURS = [
+  { groupe:"⚙️ Ingénierie, sciences et statistique", liste:[
+    { nom:"École polytechnique de Thiès (EPT)", type:"Concours", niveau:"Terminale ou bac S1, S2, S3, STIDD, T1, T2", series:["S1","S2"],
+      infos:[["Diplôme visé","Ingénieur (tronc commun de 2 ans puis spécialité : génie civil, électromécanique, informatique et télécoms, aéronautique)"],
+        ["Âge","Moins de 22 ans au 1er octobre de l'année du concours"],
+        ["Épreuves","QCM de maths, physique, français et anglais (3 heures)"],
+        ["Calendrier 2026","Dépôt jusqu'au 15 avril 2026, donc pendant la Terminale"]],
+      site:"ept.sn" },
+    { nom:"École supérieure polytechnique de Dakar (ESP) — cycle DUT", type:"Concours", niveau:"Terminale ou bac scientifique et technique (certaines filières de gestion acceptent d'autres séries)", series:["S1","S2"],
+      infos:[["Diplôme visé","DUT (bac+2), avec possibilité de continuer en cycle ingénieur"],
+        ["Calendrier","Inscriptions en général de mi-février à mi-mai"],
+        ["Frais","5 000 F CFA de frais de dossier (session 2025)"]],
+      site:"concours.esp.sn" },
+    { nom:"École nationale supérieure d'agriculture (ENSA) de Thiès", type:"Concours", niveau:"Terminale ou bac S1, S2, S3, S4, S5", series:["S1","S2"],
+      infos:[["Diplôme visé","Ingénieur agronome"],["Conditions","Nationalité sénégalaise, 22 ans au plus au 1er janvier de l'année du concours"],
+        ["Calendrier 2026","Dépôt jusqu'au 15 mai 2026"]],
+      site:"ensa.univ-thies.sn" },
+    { nom:"ENSAE Dakar (statistique et économie)", type:"Concours", niveau:"Bac scientifique", series:["S1","S2"],
+      infos:[["Diplôme visé","Ingénieur statisticien économiste (cycle long de 5 ans) ou analyste statisticien"],
+        ["À savoir","Très sélectif, demande un excellent niveau en maths"]] },
+    { nom:"Classes préparatoires (CPGE) de Thiès", type:"Sur dossier", niveau:"Bac S1, S2, S3 avec mention Bien ou Très bien", series:["S1","S2"],
+      infos:[["Formation","MPSI ou PCSI pendant 2 ans, puis concours des écoles d'ingénieurs"],
+        ["Avantage","Bourse d'excellence pour les admis"],
+        ["Calendrier 2026","Candidatures jusqu'au 24 juillet 2026, après les résultats du bac"]] },
+    { nom:"Concours commun DIC (8 écoles d'ingénieurs)", type:"Concours", niveau:"Après le bac : niveau Licence 2 de sciences au moins", series:["S1","S2"],
+      infos:[["Écoles","ESP, EPT, IPSL, UFR SI de Thiès, Polytech Diamniadio, ENSA, ENSMG, ISFAR"],
+        ["À savoir","Une 2e chance d'entrer en école d'ingénieurs après 2 ans d'université ou de prépa"],
+        ["Calendrier 2026","Dépôt jusqu'au 20 mai 2026, épreuves les 1er et 2 juin"]],
+      site:"e-concours.ucad.sn" } ]},
+  { groupe:"🩺 Santé", liste:[
+    { nom:"École militaire de santé (EMS) — Dakar", type:"Concours", niveau:"Terminale ou bac S1, S2", series:["S1","S2"],
+      infos:[["Diplôme visé","Médecin, pharmacien, chirurgien-dentiste ou vétérinaire militaire (officier)"],
+        ["Âge","18 à 20 ans pour la médecine ; 22 ans au plus pour pharmacie, dentaire et vétérinaire"],
+        ["Conditions","Nationalité sénégalaise, célibataire sans enfant à charge"],
+        ["Calendrier 2026","Dépôt clos le 6 février 2026 (pendant la Terminale), écrits les 6 et 7 juin"]] },
+    { nom:"École nationale de développement sanitaire et social (ENDSS)", type:"Concours", niveau:"Bac L ou S selon la filière", series:["S1","S2","L"],
+      infos:[["Filières","Infirmier, sage-femme, analyses biologiques (S1, S2), préparateur en pharmacie (S), santé communautaire, orthophonie, ergothérapie, psychomotricité (L ou S)…"],
+        ["Épreuves","Dissertation et une matière scientifique (maths ou SVT)"],
+        ["Calendrier 2026","Dépôt en ligne de mi-juin à début août, épreuves mi-août"]],
+      site:"concours.ucad.sn/endss" } ]},
+  { groupe:"📊 Économie, social et enseignement", liste:[
+    { nom:"École supérieure d'économie appliquée (ESEA) — UCAD", type:"Concours", niveau:"Bac L, S ou STEG", series:["S1","S2","L"],
+      infos:[["Âge","24 ans au plus au 31 décembre (session 2025-2026)"],["Domaines","Économie appliquée, gestion, statistique"]],
+      site:"esea.ucad.sn" },
+    { nom:"École nationale des travailleurs sociaux spécialisés (ENTSS)", type:"Concours", niveau:"Bac (1er cycle)", series:["S1","S2","L"],
+      infos:[["Métiers","Éducateur spécialisé, travailleur social"],["Calendrier 2025","Dépôt jusqu'au 13 juin 2025"]] },
+    { nom:"Concours de recrutement d'élèves-maîtres (CREM)", type:"Concours", niveau:"Bac", series:["S1","S2","L"],
+      infos:[["Métier","Enseignant à l'école élémentaire"],["Frais","10 000 F CFA (session 2025)"],["Calendrier 2025","Dépôt jusqu'au 17 octobre 2025"]] } ]},
+  { groupe:"🛠️ BTS et formations techniques", liste:[
+    { nom:"BTS Data et intelligence artificielle — CFPT Sénégal-Japon", type:"Concours", niveau:"Bac S1, S2, S3", series:["S1","S2"],
+      infos:[["Épreuves","Français, maths, anglais"],["Frais","6 000 F CFA"],["Calendrier 2026","Dépôt jusqu'au 21 août 2026"]] },
+    { nom:"Autres BTS publics (logistique, transit, agroalimentaire, industrie…)", type:"Concours", niveau:"Bac, séries selon le BTS", series:["S1","S2","L"],
+      infos:[["Âge","Souvent 30 ans au plus"],["Frais","Environ 6 000 F CFA"],["À savoir","Chaque BTS a sa liste de séries acceptées : par exemple logistique (S, STEG, L2…)"]] } ]},
+  { groupe:"🎖️ Armée", liste:[
+    { nom:"École nationale des sous-officiers d'active (ENSOA)", type:"Concours", niveau:"BFEM (les bacheliers peuvent être admis sur titre)", series:["S1","S2","L"],
+      infos:[["Âge","18 à 21 ans"],["Conditions","Citoyens sénégalais de sexe masculin"]] } ]}
+];
+
 /* ================= AFFICHAGE + ANIMATIONS ================= */
 const COULEURS = ["bg-vert","bg-corail","bg-jaune"];
 const NUM = {"Seconde":"2","Première":"1","Terminale":"T"};
@@ -1065,7 +1125,8 @@ ${NIVEAUX.map(n => `
       <div class="grille">
         <a class="carte rv" href="#conseils"><span class="fleche">→</span><span class="rond bg-jaune">⏱️</span><b>Minuteur de révision</b><small>25 min de travail, 5 min de pause</small></a>
         <a class="carte rv" style="--d:.08s" href="#conseils"><span class="fleche">→</span><span class="rond bg-vert">💡</span><b>Méthodes de travail</b><small>Apprendre, réviser, réussir le bac</small></a>
-        <a class="carte rv" style="--d:.16s" href="#orientation"><span class="fleche">→</span><span class="rond bg-corail">🧭</span><b>Orientation</b><small>Checklist Campusen</small></a>
+        <a class="carte rv" style="--d:.16s" href="#orientation"><span class="fleche">→</span><span class="rond bg-corail">🧭</span><b>Orientation</b><small>Pistes et checklist Campusen</small></a>
+        <a class="carte rv" style="--d:.24s" href="#concours"><span class="fleche">→</span><span class="rond bg-vert">🎯</span><b>Je prépare un concours</b><small>Concours après le bac et niveaux requis</small></a>
       </div>
     </div></section>`);
   const champ = document.getElementById("cherche"), res = document.getElementById("res");
@@ -1336,6 +1397,7 @@ function pageOrientation(){
           <li>Demande l'avis de ton professeur de maths et de ton professeur principal : ils connaissent les exigences.</li>
         </ul></div></details>
 
+      <a class="carte rv" href="#concours" style="margin-top:18px"><span class="fleche">→</span><span class="rond bg-jaune">🎯</span><b>Je prépare un concours</b><small>EPT, ESP, ENSA, EMS, ENDSS… niveaux et dates</small></a>
       <h2 class="titre-bloc rv">🏛️ Campusen</h2>
       <div class="encadre rv"><b>Campusen, c'est quoi ?</b><br>
         La plateforme officielle d'orientation des nouveaux bacheliers vers les universités publiques et les ISEP
@@ -1424,6 +1486,64 @@ function pageOrientation(){
   }));
 }
 
+/* ---------- Concours ---------- */
+function pageConcours(){
+  let filtre = memo.lire("filtre-concours", "tous");
+  afficher(entete(`<a href="#accueil">Accueil</a> › Concours`, "Je prépare un concours",
+      "Les concours accessibles avec le bac au Sénégal, le niveau demandé et comment s'y préparer.") + `
+    <section class="section"><div class="wrap">
+      <div class="attention rv">⚠️ <b>Beaucoup d'inscriptions se font pendant la Terminale</b>, bien avant les résultats du bac (EPT, EMS, ESP…). Renseigne-toi dès la rentrée de Terminale.</div>
+      <p class="sous-titre-c rv">Afficher les concours ouverts à ma série</p>
+      <div class="puces rv" id="f-serie">${[["tous","Tous"],["S1","S1"],["S2","S2"],["L","L1 / L2"]].map(([k,n]) => `<button class="puce ${filtre===k?"actif":""}" data-v="${k}">${n}</button>`).join("")}</div>
+      <div id="liste-concours"></div>
+      <h2 class="titre-bloc rv">Comment se préparer</h2>
+      <details class="boite-cours rv"><summary><span class="rond-cours">📝</span><span class="tete-cours"><b>Préparer les épreuves</b><small>Méthode sur plusieurs mois</small></span></summary>
+        <div class="contenu-cours"><ul class="etapes">
+          <li>Récupère les <b>sujets des années passées</b> du concours visé : c'est le meilleur entraînement.</li>
+          <li>Les concours scientifiques reprennent surtout le programme de Première et Terminale : maîtrise tes cours avant tout.</li>
+          <li>Entraîne-toi au <b>QCM chronométré</b> si le concours en comporte : vitesse et précision comptent.</li>
+          <li>N'oublie pas le français et l'anglais : ils sont souvent au programme et font la différence.</li>
+          <li>Révise à plusieurs, en échangeant les exercices et les corrections.</li>
+        </ul></div></details>
+      <details class="boite-cours rv"><summary><span class="rond-cours">📂</span><span class="tete-cours"><b>Le dossier d'inscription</b><small>Ne pas rater l'étape administrative</small></span></summary>
+        <div class="contenu-cours"><ul class="etapes">
+          <li>Lis l'<b>avis officiel</b> en entier : séries acceptées, âge limite, pièces à fournir, date limite.</li>
+          <li>Prépare tôt les pièces courantes : extrait de naissance, copies légalisées, photos, certificat de scolarité ou relevé du bac.</li>
+          <li>Dépose ton dossier plusieurs jours avant la date limite : les plateformes saturent le dernier jour.</li>
+          <li>Garde une copie de ton reçu et de ta convocation.</li>
+          <li>Méfie-toi des intermédiaires payants : l'inscription se fait auprès de l'école ou sur sa plateforme officielle.</li>
+        </ul></div></details>
+      <details class="boite-cours rv"><summary><span class="rond-cours">🎯</span><span class="tete-cours"><b>Choisir ses concours</b><small>Ne pas tout miser sur un seul</small></span></summary>
+        <div class="contenu-cours"><ul class="etapes">
+          <li>Présente <b>plusieurs concours</b> proches de ton projet, et fais aussi tes vœux sur Campusen.</li>
+          <li>Vérifie l'âge limite tôt : certains concours (EMS, EPT, ENSA) sont stricts.</li>
+          <li>Renseigne-toi sur les engagements : les écoles militaires demandent un engagement dans l'armée.</li>
+        </ul></div></details>
+      <p class="rv" style="font-size:.8rem;color:var(--gris);margin-top:16px">Informations vérifiées en novembre 2026 à partir des avis des sessions 2025 et 2026. Les conditions et les dates changent chaque année : vérifie toujours l'avis officiel du concours avant de t'inscrire.</p>
+    </div></section>`);
+  function liste(){
+    const garde = c => filtre === "tous" || c.series.includes(filtre);
+    document.getElementById("liste-concours").innerHTML = CONCOURS.map(g => {
+      const l = g.liste.filter(garde);
+      if(!l.length) return "";
+      return `<h3 class="niveau">${g.groupe}</h3>` + l.map(c => `
+        <details class="boite-cours">
+          <summary><span class="rond-cours" style="font-size:1.3rem">${c.type === "Sur dossier" ? "📂" : "🎯"}</span>
+            <span class="tete-cours"><b>${c.nom}</b><small>${c.type} · Niveau : ${c.niveau}</small></span></summary>
+          <div class="contenu-cours">
+            ${c.infos.map(([t,v]) => `<p class="sous-titre-c">${t}</p><p>${v}</p>`).join("")}
+            ${c.site ? `<p class="sous-titre-c">Où s'informer</p><p>Site officiel : <b>${c.site}</b></p>` : ""}
+          </div></details>`).join("");
+    }).join("");
+  }
+  liste();
+  app.querySelectorAll("#f-serie .puce").forEach(b => b.addEventListener("click", () => {
+    filtre = b.dataset.v; memo.ecrire("filtre-concours", filtre);
+    app.querySelectorAll("#f-serie .puce").forEach(x => x.classList.toggle("actif", x === b));
+    liste();
+  }));
+}
+
 /* ================= NAVIGATION, EN-TÊTE, INTRO ================= */
 const nav = document.getElementById("nav"), burger = document.getElementById("burger");
 burger.addEventListener("click", () => {
@@ -1447,6 +1567,7 @@ function router(){
   if(h === "accueil") return pageAccueil();
   if(h === "conseils") return pageConseils();
   if(h === "orientation") return pageOrientation();
+  if(h === "concours") return pageConcours();
   if(h === "telechargements") return pageTelechargements();
   const ml = h.match(/^lecon-(.+)-(\d+)$/);
   if(ml) return pageLecon(ml[1], +ml[2]);

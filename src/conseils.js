@@ -213,3 +213,62 @@ const CONSEILS_MOYENNE = {
       "Ne mets pas que des formations prestigieuses : choisis surtout ce qui te correspond.",
       "Reste régulier jusqu'au bout : la mention se joue sur les notes du bac, pas sur les bulletins."] }
 };
+
+/* ---------- Concours accessibles après le bac (vérifié en novembre 2026, sessions 2025-2026) ---------- */
+const CONCOURS = [
+  { groupe:"⚙️ Ingénierie, sciences et statistique", liste:[
+    { nom:"École polytechnique de Thiès (EPT)", type:"Concours", niveau:"Terminale ou bac S1, S2, S3, STIDD, T1, T2", series:["S1","S2"],
+      infos:[["Diplôme visé","Ingénieur (tronc commun de 2 ans puis spécialité : génie civil, électromécanique, informatique et télécoms, aéronautique)"],
+        ["Âge","Moins de 22 ans au 1er octobre de l'année du concours"],
+        ["Épreuves","QCM de maths, physique, français et anglais (3 heures)"],
+        ["Calendrier 2026","Dépôt jusqu'au 15 avril 2026, donc pendant la Terminale"]],
+      site:"ept.sn" },
+    { nom:"École supérieure polytechnique de Dakar (ESP) — cycle DUT", type:"Concours", niveau:"Terminale ou bac scientifique et technique (certaines filières de gestion acceptent d'autres séries)", series:["S1","S2"],
+      infos:[["Diplôme visé","DUT (bac+2), avec possibilité de continuer en cycle ingénieur"],
+        ["Calendrier","Inscriptions en général de mi-février à mi-mai"],
+        ["Frais","5 000 F CFA de frais de dossier (session 2025)"]],
+      site:"concours.esp.sn" },
+    { nom:"École nationale supérieure d'agriculture (ENSA) de Thiès", type:"Concours", niveau:"Terminale ou bac S1, S2, S3, S4, S5", series:["S1","S2"],
+      infos:[["Diplôme visé","Ingénieur agronome"],["Conditions","Nationalité sénégalaise, 22 ans au plus au 1er janvier de l'année du concours"],
+        ["Calendrier 2026","Dépôt jusqu'au 15 mai 2026"]],
+      site:"ensa.univ-thies.sn" },
+    { nom:"ENSAE Dakar (statistique et économie)", type:"Concours", niveau:"Bac scientifique", series:["S1","S2"],
+      infos:[["Diplôme visé","Ingénieur statisticien économiste (cycle long de 5 ans) ou analyste statisticien"],
+        ["À savoir","Très sélectif, demande un excellent niveau en maths"]] },
+    { nom:"Classes préparatoires (CPGE) de Thiès", type:"Sur dossier", niveau:"Bac S1, S2, S3 avec mention Bien ou Très bien", series:["S1","S2"],
+      infos:[["Formation","MPSI ou PCSI pendant 2 ans, puis concours des écoles d'ingénieurs"],
+        ["Avantage","Bourse d'excellence pour les admis"],
+        ["Calendrier 2026","Candidatures jusqu'au 24 juillet 2026, après les résultats du bac"]] },
+    { nom:"Concours commun DIC (8 écoles d'ingénieurs)", type:"Concours", niveau:"Après le bac : niveau Licence 2 de sciences au moins", series:["S1","S2"],
+      infos:[["Écoles","ESP, EPT, IPSL, UFR SI de Thiès, Polytech Diamniadio, ENSA, ENSMG, ISFAR"],
+        ["À savoir","Une 2e chance d'entrer en école d'ingénieurs après 2 ans d'université ou de prépa"],
+        ["Calendrier 2026","Dépôt jusqu'au 20 mai 2026, épreuves les 1er et 2 juin"]],
+      site:"e-concours.ucad.sn" } ]},
+  { groupe:"🩺 Santé", liste:[
+    { nom:"École militaire de santé (EMS) — Dakar", type:"Concours", niveau:"Terminale ou bac S1, S2", series:["S1","S2"],
+      infos:[["Diplôme visé","Médecin, pharmacien, chirurgien-dentiste ou vétérinaire militaire (officier)"],
+        ["Âge","18 à 20 ans pour la médecine ; 22 ans au plus pour pharmacie, dentaire et vétérinaire"],
+        ["Conditions","Nationalité sénégalaise, célibataire sans enfant à charge"],
+        ["Calendrier 2026","Dépôt clos le 6 février 2026 (pendant la Terminale), écrits les 6 et 7 juin"]] },
+    { nom:"École nationale de développement sanitaire et social (ENDSS)", type:"Concours", niveau:"Bac L ou S selon la filière", series:["S1","S2","L"],
+      infos:[["Filières","Infirmier, sage-femme, analyses biologiques (S1, S2), préparateur en pharmacie (S), santé communautaire, orthophonie, ergothérapie, psychomotricité (L ou S)…"],
+        ["Épreuves","Dissertation et une matière scientifique (maths ou SVT)"],
+        ["Calendrier 2026","Dépôt en ligne de mi-juin à début août, épreuves mi-août"]],
+      site:"concours.ucad.sn/endss" } ]},
+  { groupe:"📊 Économie, social et enseignement", liste:[
+    { nom:"École supérieure d'économie appliquée (ESEA) — UCAD", type:"Concours", niveau:"Bac L, S ou STEG", series:["S1","S2","L"],
+      infos:[["Âge","24 ans au plus au 31 décembre (session 2025-2026)"],["Domaines","Économie appliquée, gestion, statistique"]],
+      site:"esea.ucad.sn" },
+    { nom:"École nationale des travailleurs sociaux spécialisés (ENTSS)", type:"Concours", niveau:"Bac (1er cycle)", series:["S1","S2","L"],
+      infos:[["Métiers","Éducateur spécialisé, travailleur social"],["Calendrier 2025","Dépôt jusqu'au 13 juin 2025"]] },
+    { nom:"Concours de recrutement d'élèves-maîtres (CREM)", type:"Concours", niveau:"Bac", series:["S1","S2","L"],
+      infos:[["Métier","Enseignant à l'école élémentaire"],["Frais","10 000 F CFA (session 2025)"],["Calendrier 2025","Dépôt jusqu'au 17 octobre 2025"]] } ]},
+  { groupe:"🛠️ BTS et formations techniques", liste:[
+    { nom:"BTS Data et intelligence artificielle — CFPT Sénégal-Japon", type:"Concours", niveau:"Bac S1, S2, S3", series:["S1","S2"],
+      infos:[["Épreuves","Français, maths, anglais"],["Frais","6 000 F CFA"],["Calendrier 2026","Dépôt jusqu'au 21 août 2026"]] },
+    { nom:"Autres BTS publics (logistique, transit, agroalimentaire, industrie…)", type:"Concours", niveau:"Bac, séries selon le BTS", series:["S1","S2","L"],
+      infos:[["Âge","Souvent 30 ans au plus"],["Frais","Environ 6 000 F CFA"],["À savoir","Chaque BTS a sa liste de séries acceptées : par exemple logistique (S, STEG, L2…)"]] } ]},
+  { groupe:"🎖️ Armée", liste:[
+    { nom:"École nationale des sous-officiers d'active (ENSOA)", type:"Concours", niveau:"BFEM (les bacheliers peuvent être admis sur titre)", series:["S1","S2","L"],
+      infos:[["Âge","18 à 21 ans"],["Conditions","Citoyens sénégalais de sexe masculin"]] } ]}
+];
