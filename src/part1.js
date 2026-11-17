@@ -52,6 +52,7 @@ const CONTENU = {
     "maths": {
       cours: [
         ...__TLE1_COURS_S2__,
+        ...__TLE_MORE_COURS_S2__,
         {
           titre: "Probabilités — cours complet",
           tpl: "tpl-proba-tle-s2",
@@ -60,8 +61,8 @@ const CONTENU = {
                  "Le schéma de Bernoulli", "Variable aléatoire"]
         }
       ],
-      exercices: [...__TLE1_EX__, ...__PROBA_EX__],
-      quiz: [...__TLE1_QUIZ__, ...__PROBA_QUIZ__],
+      exercices: [...__TLE1_EX__, ...__TLE_MORE_EX__, ...__PROBA_EX__],
+      quiz: [...__TLE1_QUIZ__, ...__TLE_MORE_QUIZ__, ...__PROBA_QUIZ__],
       conseils: []
     },
     "svt": {

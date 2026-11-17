@@ -81,7 +81,7 @@ site = site.replace("__TLE1_COURS_S1__", json.dumps(tle1_cours("tle-s1"), ensure
 site = site.replace("__TLE1_COURS_S2__", json.dumps(tle1_cours("tle-s2"), ensure_ascii=False))
 site = site.replace("__TLE1_EX__", json.dumps(tle1["exercices"], ensure_ascii=False))
 site = site.replace("__TLE1_QUIZ__", json.dumps(tle1["quiz"], ensure_ascii=False))
-tle_more_cours, tle_more_ex, tle_more_quiz = [], [], []
+tle_more_cours, tle_more_cours_s2, tle_more_ex, tle_more_quiz = [], [], [], []
 for _n in range(2, 26):
     _d = json.loads((src / f"maths-tle-ch{_n}.json").read_text())
     tle_more_cours.append({"type": "fascicule", "id": f"maths-tle-s1-ch{_n}", "classe": "tle-s1", "matiere": "maths",
@@ -89,10 +89,12 @@ for _n in range(2, 26):
       "pdf": _d["pdf"], "taille": _d["taille"], "pages": _d["pages"], "leger": True,
       "note": "Cours réécrit proprement et illustré à partir de cahiers de cours de Terminale S1 (2018-2019), avec des explications simples (encadrés bleus). À faire relire par un professeur de mathématiques.",
       "lecons": _d["lecons"]})
+    tle_more_cours_s2.append({**tle_more_cours[-1], "id": f"maths-tle-s2-ch{_n}", "classe": "tle-s2"})
     for e in _d["exercices"]: e["titre"] += f' <small style="color:var(--gris);font-weight:600">· Chapitre {_n}</small>'
     tle_more_ex += _d["exercices"]
     tle_more_quiz += _d["quiz"]
 site = site.replace("__TLE_MORE_COURS__", json.dumps(tle_more_cours, ensure_ascii=False))
+site = site.replace("__TLE_MORE_COURS_S2__", json.dumps(tle_more_cours_s2, ensure_ascii=False))
 site = site.replace("__TLE_MORE_EX__", json.dumps(tle_more_ex, ensure_ascii=False))
 site = site.replace("__TLE_MORE_QUIZ__", json.dumps(tle_more_quiz, ensure_ascii=False))
 hist2 = json.loads((src / "histoire-lecon1-2nde.json").read_text())
