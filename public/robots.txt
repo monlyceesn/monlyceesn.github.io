@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://baldemeuse-design.github.io/Mon-lycee-sn/sitemap.xml
