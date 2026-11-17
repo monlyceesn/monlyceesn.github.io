@@ -155,21 +155,26 @@ function pageMatiere(c, m, onglet, garderDefil){
   }
   if(ong === "exercices") return rendreExercices(corps, c, m, items);
   if(ong === "quiz") return rendreQuiz(corps, c, m, items);
+  const ouverts = memo.lire(`ouverts:${c.id}-${m.id}`, items.length === 1 ? [0] : []);
   corps.innerHTML = items.map((x, i) => x.type === "fascicule" ? `
-    <div class="exo">
-      <span class="tag">${x.credit ? "📘 " + x.credit : "👨‍🏫 Cours de " + x.auteur}</span>
-      <h3 style="margin:.5em 0 .2em">${x.titre}</h3>
-      <p style="color:var(--gris);font-size:.88rem">${x.auteur} · ${x.edition} · ${x.pages} pages · ${x.taille}</p>
+    <details class="boite-cours" data-i="${i}" ${ouverts.includes(i) ? "open" : ""}>
+      <summary>
+        <span class="rond-cours">${i + 1}</span>
+        <span class="tete-cours"><b>${x.titre}</b><small>${x.lecons.length} ${x.credit ? "parties" : "leçons"} · ${x.pages} pages · ${x.credit ? x.credit : "Cours de " + x.auteur}</small></span>
+      </summary>
+      <div class="contenu-cours">
+      <p style="color:var(--gris);font-size:.88rem">${x.auteur} · ${x.edition} · ${x.taille}</p>
       <div class="actions">
         <a class="btn plein" href="${x.pdf}" target="_blank" rel="noopener">📖 ${x.credit ? "Ouvrir le cours (PDF)" : "Ouvrir le fascicule"}</a>
         ${x.pdf.startsWith("http") ? "" : `<button class="btn" data-pdf="${x.pdf}" data-titre="${x.titre.replace(/"/g,"&quot;")}">${estTelecharge(x.pdf) && horsLignePossible() ? "✅ Disponible hors connexion" : "📥 Télécharger (" + x.taille + ")"}</button>`}
       </div>
       ${x.leger ? "" : `<p style="font-size:.8rem;color:var(--gris);margin-top:8px">⚠️ Fichier lourd : télécharge-le de préférence en Wi-Fi.</p>`}
-      <h3 style="margin:16px 0 4px;font-size:1rem">${x.credit ? "Sommaire — lis une partie directement ici" : "Sommaire — lis une leçon directement ici"}</h3><p style="font-size:.8rem;color:var(--gris);margin-bottom:6px">Seules les pages de la leçon choisie sont chargées.</p>
+      <h4 style="margin:16px 0 4px;font-size:.95rem">${x.credit ? "Sommaire — lis une partie directement ici" : "Sommaire — lis une leçon directement ici"}</h4>
       ${x.lecons.map(l => `<a class="ligne-lecon" href="#lecon-${x.id}-${l.n}">
         <span class="num-lecon">${l.n}</span><span>${l.titre}</span><small>p. ${l.debut}–${l.fin}</small></a>`).join("")}
       <p style="font-size:.8rem;color:var(--gris);margin-top:10px">${x.note || "Document partagé avec l'autorisation de son auteur, publié sans modification. L'auteur reste propriétaire de son cours."}</p>
-    </div>`
+      </div>
+    </details>`
     : x.tpl ? `
     <div class="exo">
       <span class="tag">📘 Cours Mon Lycée SN</span>
@@ -182,6 +187,10 @@ function pageMatiere(c, m, onglet, garderDefil){
       <div class="lecture" id="lecture${i}" hidden></div>
     </div>`
     : `<details><summary>${x.titre}</summary><div>${x.texte}</div></details>`).join("");
+  corps.querySelectorAll("details.boite-cours").forEach(d => d.addEventListener("toggle", () => {
+    const o = [...corps.querySelectorAll("details.boite-cours[open]")].map(e => +e.dataset.i);
+    memo.ecrire(`ouverts:${c.id}-${m.id}`, o);
+  }));
   corps.querySelectorAll("[data-pdf]").forEach(b => b.addEventListener("click", () => telechargerPdf(b)));
   corps.querySelectorAll("[data-lire]").forEach(b => b.addEventListener("click", () => {
     const x = items[+b.dataset.lire], zone = document.getElementById("lecture" + b.dataset.lire);
