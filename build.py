@@ -157,5 +157,5 @@ with sync_playwright() as p:
 shutil.copytree(ici / "public", dist, dirs_exist_ok=True)
 (dist / ".nojekyll").write_text("")
 for h in dist.glob("*.html"):
-    if h.name != "index.html": h.unlink()   # pages intermédiaires des PDF
+    if h.name != "index.html" and not h.name.startswith("google"): h.unlink()   # pages intermédiaires des PDF
 print("OK", [c["pdf"] for c in COURS])
