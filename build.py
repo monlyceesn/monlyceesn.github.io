@@ -37,7 +37,7 @@ site += "<script>\n" + js + "\n</script>\n</body>\n</html>\n"
 site = site.replace("__PROBA_EX__", json.dumps(proba["exercices"], ensure_ascii=False))
 site = site.replace("__PROBA_QUIZ__", json.dumps(proba["quiz"], ensure_ascii=False))
 if os.environ.get("ARTEFACT"):   # aperçu Claude : fichier trop lourd pour l'aperçu, on pointe vers GitHub
-    fascicule_svt = dict(fascicule_svt, pdf="https://raw.githubusercontent.com/baldemeuse-design/mon-lycee-sn/main/docs/" + fascicule_svt["pdf"])
+    fascicule_svt = dict(fascicule_svt, pdf="https://raw.githubusercontent.com/monlyceesn/monlyceesn.github.io/main/docs/" + fascicule_svt["pdf"])
 svt_cours = [dict(fascicule_svt, type="fascicule")]
 svt_ex = [dict(e, titre=f'{e["titre"]} <small style="color:var(--gris);font-weight:600">· {ch["titre"]}</small>')
           for ch in svt["chapitres"] for e in ch["exercices"]]
