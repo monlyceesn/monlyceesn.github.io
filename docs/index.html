@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#14213d">
+<meta name="theme-color" content="#0a0a0a">
 <meta name="description" content="Mon Lycée SN : cours, exercices corrigés, quiz et orientation pour les lycéens du Sénégal.">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
@@ -15,9 +15,9 @@
 <style>
   /* Identité : fond noir + crème, trio vert / jaune / corail */
   :root{
-    --noir:#14213d; --vert:#2563eb; --vert-clair:#e8efff; --jaune:#fbbf24; --jaune-clair:#fff7e0;
-    --corail:#2563eb; --rouge:#dc2626; --rouge-clair:#fdecec;
-    --texte:#1e2433; --gris:#5b6475; --fond:#f5f7fb; --carte:#fff; --bord:#e3e8f2;
+    --noir:#0a0a0a; --vert:#111111; --vert-clair:#efefef; --jaune:#fbbf24; --jaune-clair:#fff7e0;
+    --corail:#111111; --rouge:#dc2626; --rouge-clair:#fdecec;
+    --texte:#111111; --gris:#5f5f5f; --fond:#f5f5f5; --carte:#fff; --bord:#e2e2e2;
     --display:"Poppins",system-ui,sans-serif; --sans:"Poppins",system-ui,sans-serif;
     --ease:cubic-bezier(.4,0,.2,1); --rebond:cubic-bezier(.4,0,.2,1);
   }
@@ -210,8 +210,7 @@
   .btn:hover::before{transform:none}
   .btn:hover{transform:translateY(-2px)}
   .btn:active{transform:scale(.96)}
-  .btn.plein{background:var(--vert);border-color:var(--vert);color:#fff}
-  .btn.plein::before{background:var(--noir)}
+  .btn.plein{background:var(--jaune);border-color:var(--jaune);color:var(--noir)}
   .btn.gros{padding:15px 28px;font-size:.95rem}
   .btn.jaune{background:var(--jaune);border-color:var(--jaune);color:var(--noir)}
   .btn.jaune::before{background:var(--corail)}
@@ -309,27 +308,27 @@
   h2.titre-bloc{font-size:1.3rem}
   .cours h2{font-size:1.25rem}
   .tribar{width:56px;height:5px}.tribar i{background:var(--vert)!important}
-  .heros{min-height:auto;padding:120px 0 64px;background:linear-gradient(160deg,#14213d 0,#1e3a8a 100%)}
-  .entete{background:linear-gradient(160deg,#14213d 0,#1e3a8a 100%)}
-  .sous-heros{color:#bfdbfe}
+  .heros{min-height:auto;padding:120px 0 64px;background:linear-gradient(160deg,#0a0a0a 0,#2b2b2b 100%)}
+  .entete{background:linear-gradient(160deg,#0a0a0a 0,#2b2b2b 100%)}
+  .sous-heros{color:#e5e5e5}
   .scene{max-width:260px}.scene .logo-centre{inset:8%;background:none}
   .bg-vert,.bg-jaune,.bg-corail{background:var(--vert-clair)}
   .entete .rond{background:rgba(255,255,255,.15)}
   .carte-classe{min-height:120px}
-  .carte-classe.niv-Seconde{background:#3b82f6}
-  .carte-classe.niv-Première{background:#2563eb;color:#fff}
+  .carte-classe.niv-Seconde{background:#404040}
+  .carte-classe.niv-Première{background:#111111;color:#fff}
   .carte-classe.niv-Première small{color:rgba(255,255,255,.85)}
-  .carte-classe.niv-Terminale{background:#14213d}
+  .carte-classe.niv-Terminale{background:#0a0a0a}
   .carte-classe .display{font-size:1.7rem}
   .carte-classe .num{font-family:var(--sans);font-weight:700;font-size:5rem;opacity:.12}
   .carte{border:1px solid var(--bord)}
   .carte-classe{border:none}
-  a.carte:hover{transform:translateY(-3px);box-shadow:0 12px 26px -18px rgba(20,33,61,.45)}
+  a.carte:hover{transform:translateY(-3px);box-shadow:0 12px 26px -18px rgba(10,10,10,.45)}
   a.carte:hover .rond{transform:none}
-  .btn.jaune{background:#fff;border-color:#fff;color:var(--noir)}
-  .btn.jaune::before{background:var(--jaune)}
+  .btn.jaune{background:var(--jaune);border-color:var(--jaune);color:var(--noir)}
+  .btn.jaune::before{background:#fff}
   .btn::before{background:var(--vert-clair)}
-  .btn.plein::before{background:var(--noir)}
+  .btn.plein::before{background:#f5b700}
   .badge i{animation:none}
   .bulle,.lecture,details[open]>*:not(summary){animation-duration:.2s}
   details summary::after{font-family:var(--sans);color:var(--vert)}
@@ -344,14 +343,14 @@
   .ligne-lecon:hover{background:var(--vert-clair)}
   .num-lecon{width:30px;height:30px;border-radius:50%;background:var(--vert-clair);color:var(--vert);font-weight:700;display:grid;place-items:center;font-size:.85rem}
   .ligne-lecon small{color:var(--gris);white-space:nowrap}
-  .page-pdf{background:#fff;border:1px solid var(--bord);border-radius:10px;margin-bottom:12px;aspect-ratio:754/842;display:grid;place-items:center;color:var(--gris);font-size:.85rem;overflow:hidden;box-shadow:0 8px 20px -16px rgba(20,33,61,.4)}
+  .page-pdf{background:#fff;border:1px solid var(--bord);border-radius:10px;margin-bottom:12px;aspect-ratio:754/842;display:grid;place-items:center;color:var(--gris);font-size:.85rem;overflow:hidden;box-shadow:0 8px 20px -16px rgba(10,10,10,.4)}
   .page-pdf canvas{width:100%;height:auto;display:block}
   .page-pdf.rendue{aspect-ratio:auto}
   .vec{display:inline-block;position:relative;padding-top:.45em;line-height:1}
   .vec::before{content:"";position:absolute;left:1px;right:3px;top:.18em;border-top:1.3px solid currentColor}
   .vec::after{content:"";position:absolute;right:0;top:calc(.18em - 2.6px);border:3px solid transparent;border-left:5px solid currentColor;border-right:0}
   details.boite-cours{scroll-margin-top:84px;background:#fff;border:1px solid var(--bord);border-radius:20px;padding:0;margin-bottom:12px;overflow:hidden}
-  details.boite-cours[open]{border-color:var(--vert);box-shadow:0 14px 30px -24px rgba(20,33,61,.5)}
+  details.boite-cours[open]{border-color:var(--vert);box-shadow:0 14px 30px -24px rgba(10,10,10,.5)}
   details.boite-cours>summary{display:flex;align-items:center;gap:14px;padding:16px 18px;font-weight:400}
   details.boite-cours>summary::after{margin-left:auto}
   .rond-cours{width:44px;height:44px;border-radius:14px;background:var(--vert-clair);color:var(--vert);font-weight:700;display:grid;place-items:center;flex-shrink:0;font-size:1.05rem}
@@ -368,7 +367,7 @@
   .sous-titre-c{font-weight:700;margin:14px 0 4px;color:var(--texte)}
   .carte-outil{background:#fff;border:1px solid var(--bord);border-radius:20px;padding:18px}
   h3.niveau{font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);margin:24px 0 10px}
-  header.defile{background:rgba(20,33,61,.95)}
+  header.defile{background:rgba(10,10,10,.95)}
   @media (max-width:700px){ nav.top{background:var(--noir);font-family:var(--sans);font-weight:700;text-transform:none;font-size:1.8rem} }
 
   @media (prefers-reduced-motion: reduce){
@@ -380,7 +379,7 @@
 <body>
 <header id="haut">
   <div class="wrap barre">
-    <a href="#accueil" class="marque" aria-label="Mon Lycée SN, accueil"><svg viewBox="0 0 100 100" aria-hidden="true"><path class="page-g" d="M50 46C38 38 22 38 10 42V86C22 82 38 82 50 90Z" fill="#2563eb"/><path class="page-d" d="M50 46C62 38 78 38 90 42V86C78 82 62 82 50 90Z" fill="#60a5fa"/><g class="toque"><path d="M50 8L88 23L50 38L12 23Z" fill="#fbbf24"/><path d="M80 26V42" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/><circle cx="80" cy="45" r="4" fill="#fbbf24"/></g></svg><b>MON LYCÉE <span>SN</span></b></a>
+    <a href="#accueil" class="marque" aria-label="Mon Lycée SN, accueil"><svg viewBox="0 0 100 100" aria-hidden="true"><path class="page-g" d="M50 46C38 38 22 38 10 42V86C22 82 38 82 50 90Z" fill="#ffffff"/><path class="page-d" d="M50 46C62 38 78 38 90 42V86C78 82 62 82 50 90Z" fill="#d4d4d4"/><g class="toque"><path d="M50 8L88 23L50 38L12 23Z" fill="#fbbf24"/><path d="M80 26V42" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/><circle cx="80" cy="45" r="4" fill="#fbbf24"/></g></svg><b>MON LYCÉE <span>SN</span></b></a>
     <nav class="top" id="nav">
       <a href="#accueil" data-n="accueil">Accueil</a>
       <a href="#conseils" data-n="conseils">Conseils</a>
@@ -646,7 +645,7 @@ V(X) = 65 000 − (50/3)² = 582 500/9 ≈ 64 722 &nbsp;et&nbsp; σ(X) ≈ <b>25
 
 <footer>
   <div class="wrap">
-    <a href="#accueil" class="marque"><svg viewBox="0 0 100 100" aria-hidden="true"><path class="page-g" d="M50 46C38 38 22 38 10 42V86C22 82 38 82 50 90Z" fill="#2563eb"/><path class="page-d" d="M50 46C62 38 78 38 90 42V86C78 82 62 82 50 90Z" fill="#60a5fa"/><g class="toque"><path d="M50 8L88 23L50 38L12 23Z" fill="#fbbf24"/><path d="M80 26V42" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/><circle cx="80" cy="45" r="4" fill="#fbbf24"/></g></svg><b>MON LYCÉE <span>SN</span></b></a>
+    <a href="#accueil" class="marque"><svg viewBox="0 0 100 100" aria-hidden="true"><path class="page-g" d="M50 46C38 38 22 38 10 42V86C22 82 38 82 50 90Z" fill="#ffffff"/><path class="page-d" d="M50 46C62 38 78 38 90 42V86C78 82 62 82 50 90Z" fill="#d4d4d4"/><g class="toque"><path d="M50 8L88 23L50 38L12 23Z" fill="#fbbf24"/><path d="M80 26V42" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/><circle cx="80" cy="45" r="4" fill="#fbbf24"/></g></svg><b>MON LYCÉE <span>SN</span></b></a>
     <p>Cours, exercices corrigés, quiz et orientation pour la série S au Sénégal. Site en construction.</p>
     <div class="tribar"><i></i><i></i><i></i></div>
     <p>Ta progression est enregistrée seulement sur cet appareil.<br>
@@ -655,7 +654,7 @@ V(X) = 65 000 − (50/3)² = 582 500/9 ≈ 64 722 &nbsp;et&nbsp; σ(X) ≈ <b>25
   </div>
 </footer>
 <script>
-const LOGO_GRAND = "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><path class=\"page-g\" d=\"M50 46C38 38 22 38 10 42V86C22 82 38 82 50 90Z\" fill=\"#2563eb\"/><path class=\"page-d\" d=\"M50 46C62 38 78 38 90 42V86C78 82 62 82 50 90Z\" fill=\"#60a5fa\"/><g class=\"toque\"><path d=\"M50 8L88 23L50 38L12 23Z\" fill=\"#fbbf24\"/><path d=\"M80 26V42\" stroke=\"#fbbf24\" stroke-width=\"3\" stroke-linecap=\"round\"/><circle cx=\"80\" cy=\"45\" r=\"4\" fill=\"#fbbf24\"/></g></svg>";
+const LOGO_GRAND = "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><path class=\"page-g\" d=\"M50 46C38 38 22 38 10 42V86C22 82 38 82 50 90Z\" fill=\"#ffffff\"/><path class=\"page-d\" d=\"M50 46C62 38 78 38 90 42V86C78 82 62 82 50 90Z\" fill=\"#d4d4d4\"/><g class=\"toque\"><path d=\"M50 8L88 23L50 38L12 23Z\" fill=\"#fbbf24\"/><path d=\"M80 26V42\" stroke=\"#fbbf24\" stroke-width=\"3\" stroke-linecap=\"round\"/><circle cx=\"80\" cy=\"45\" r=\"4\" fill=\"#fbbf24\"/></g></svg>";
 /* ================= DONNÉES DU SITE =================
    Pour ajouter du contenu : remplir CONTENU[classe][matiere]
    avec les listes cours, exercices, quiz, conseils.          */

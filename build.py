@@ -23,8 +23,8 @@ fascicule_svt = json.loads((src / "fascicule-svt-ts2.json").read_text())
 
 # ---------- Site ----------
 LOGO = ('<svg viewBox="0 0 100 100" aria-hidden="true">'
-        '<path class="page-g" d="M50 46C38 38 22 38 10 42V86C22 82 38 82 50 90Z" fill="#2563eb"/>'
-        '<path class="page-d" d="M50 46C62 38 78 38 90 42V86C78 82 62 82 50 90Z" fill="#60a5fa"/>'
+        '<path class="page-g" d="M50 46C38 38 22 38 10 42V86C22 82 38 82 50 90Z" fill="#ffffff"/>'
+        '<path class="page-d" d="M50 46C62 38 78 38 90 42V86C78 82 62 82 50 90Z" fill="#d4d4d4"/>'
         '<g class="toque"><path d="M50 8L88 23L50 38L12 23Z" fill="#fbbf24"/>'
         '<path d="M80 26V42" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>'
         '<circle cx="80" cy="45" r="4" fill="#fbbf24"/></g></svg>')
