@@ -28,7 +28,7 @@ LOGO = ('<svg viewBox="0 0 100 100" aria-hidden="true">'
         '<g class="toque"><path d="M50 8L88 23L50 38L12 23Z" fill="#fbbf24"/>'
         '<path d="M80 26V42" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>'
         '<circle cx="80" cy="45" r="4" fill="#fbbf24"/></g></svg>')
-js = "".join((src / f).read_text() for f in ["part1.js", "part2.js", "pages.js", "part3.js", "part4.js", "demarrage.js"])
+js = "".join((src / f).read_text() for f in ["part1.js", "part2.js", "conseils.js", "pages.js", "part3.js", "part4.js", "demarrage.js"])
 js = "const LOGO_GRAND = " + json.dumps(LOGO) + ";\n" + js
 modeles = "".join(f'<template id="{c["tpl"]}">{(src / c["fichier"]).read_text()}</template>\n' for c in COURS)
 site = (src / "head.html").read_text().replace("__LOGO__", LOGO)

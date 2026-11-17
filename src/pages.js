@@ -281,23 +281,31 @@ async function rendrePage(doc, el){
 
 /* ---------- Conseils + minuteur ---------- */
 const minuteur = {duree:25*60, reste:25*60, mode:"travail", h:null};
+function boiteProfil(p, i){
+  return `<details class="boite-cours rv" id="profil-${p.id}" style="--d:${Math.min(i,6)*.04}s">
+    <summary><span class="rond-cours" style="font-size:1.3rem">${p.ico}</span>
+      <span class="tete-cours"><b>${p.titre}</b><small>${p.actions.length} conseils + un exemple</small></span></summary>
+    <div class="contenu-cours">
+      <p class="sous-titre-c">🔎 Tu te reconnais si…</p><p>${p.signe}</p>
+      <p class="sous-titre-c">🤔 Pourquoi ça arrive</p><p>${p.pourquoi}</p>
+      <p class="sous-titre-c">✅ Ce que tu peux faire</p>
+      <ul class="etapes">${p.actions.map(l => `<li>${l}</li>`).join("")}</ul>
+      <div class="encadre" style="margin-top:12px"><b>Exemple :</b> ${p.exemple}</div>
+    </div></details>`;
+}
 function pageConseils(){
-  const methodes = [
-    ["Organiser sa semaine", ["Fixe des créneaux courts (30 à 45 min) plutôt qu'une longue séance.",
-      "Revois le cours du jour le soir même, même 10 minutes.", "Garde un jour par semaine pour refaire des exercices."]],
-    ["Bien apprendre un cours", ["Fais une fiche d'une page par chapitre : définitions, formules, un exemple.",
-      "Ferme le cours et essaie de tout réécrire de mémoire.",
-      "Explique le chapitre à un camarade : si tu bloques, c'est là qu'il faut retravailler."]],
-    ["Réussir les exercices", ["Cherche seul au moins 15 minutes avant de regarder la correction.",
-      "Utilise l'indice avant la correction.", "Refais l'exercice sans aide le lendemain.",
-      "Note tes erreurs fréquentes dans un carnet."]],
-    ["Préparer le bac", ["Entraîne-toi sur les sujets officiels des années passées (Office du Bac).",
-      "Fais au moins un sujet complet en temps réel avant l'examen.",
-      "Dors bien la semaine de l'examen : la fatigue fait perdre des points."]]
-  ];
-  afficher(entete(`<a href="#accueil">Accueil</a> › Conseils`, "Conseils", "Des méthodes simples pour mieux apprendre.") + `
+  const matieres = PROFILS_CONSEILS.filter(p => ["maths","pc","svt","francais","langues","hg"].includes(p.id));
+  const habitudes = PROFILS_CONSEILS.filter(p => !matieres.includes(p));
+  afficher(entete(`<a href="#accueil">Accueil</a> › Conseils`, "Conseils", "Choisis ta situation : des conseils adaptés à toi.") + `
     <section class="section"><div class="wrap">
-      <div class="minuteur rv">
+      <h2 class="titre-bloc rv">Ma situation</h2>
+      <p class="rv" style="color:var(--gris);margin-bottom:10px">Touche ce qui te ressemble, la bonne fiche s'ouvre.</p>
+      <div class="puces rv">${PROFILS_CONSEILS.map(p => `<button class="puce" data-profil="${p.id}">${p.ico} ${p.titre.replace(/^J'ai du mal en /,"Difficultés en ")}</button>`).join("")}</div>
+      <h3 class="niveau rv">📚 Difficultés dans une matière</h3>
+      ${matieres.map(boiteProfil).join("")}
+      <h3 class="niveau rv">🧠 Concentration, rythme et organisation</h3>
+      ${habitudes.map(boiteProfil).join("")}
+      <div class="minuteur rv" style="margin-top:26px">
         <span class="eyebrow" style="color:var(--jaune)">Minuteur de révision</span>
         <p style="margin-top:4px">25 minutes de travail concentré, puis 5 minutes de pause.</p>
         <div class="cercle" id="cercle"><div><span><b id="temps">25:00</b><small id="mode">Travail</small></span></div></div>
@@ -306,10 +314,13 @@ function pageConseils(){
           <button class="btn" id="raz">↺ Remettre à zéro</button>
         </div>
       </div>
-      <h2 class="titre-bloc rv">Méthodes</h2>
-      ${methodes.map((x,i) => `<details class="rv" style="--d:${i*.06}s"><summary>${x[0]}</summary>
-        <ul class="etapes">${x[1].map(l => `<li>${l}</li>`).join("")}</ul></details>`).join("")}
+      <p class="rv" style="font-size:.8rem;color:var(--gris);margin-top:16px">Ces conseils sont des méthodes de travail générales. En cas de difficulté qui dure, parles-en à ton professeur principal ou à un adulte de confiance.</p>
     </div></section>`);
+  app.querySelectorAll("[data-profil]").forEach(b => b.addEventListener("click", () => {
+    const d = document.getElementById("profil-" + b.dataset.profil);
+    d.open = true; d.classList.add("vu");
+    d.scrollIntoView({behavior:"smooth", block:"start"});
+  }));
   majMinuteur();
   document.getElementById("go").addEventListener("click", basculer);
   document.getElementById("raz").addEventListener("click", () => {
@@ -318,12 +329,34 @@ function pageConseils(){
   });
 }
 
-/* ---------- Orientation + checklist ---------- */
+/* ---------- Orientation : profil + pistes + checklist ---------- */
 function pageOrientation(){
   const coches = memo.lire("campusen", []);
+  const profil = memo.lire("profil-orient", {serie:"", moyenne:"", fortes:[]});
   afficher(entete(`<a href="#accueil">Accueil</a> › Orientation`, "Orientation",
-      "Pour entrer dans une université publique ou un ISEP, tout passe par <b>Campusen</b>.") + `
+      "Trouve des pistes selon tes matières fortes et tes notes, puis prépare Campusen.") + `
     <section class="section"><div class="wrap">
+      <h2 class="titre-bloc rv">🧭 Mes pistes d'orientation</h2>
+      <div class="carte-outil rv">
+        <p class="sous-titre-c" style="margin-top:0">1. Ma série</p>
+        <div class="puces" id="o-serie">${["S1","S2","L1","L2"].map(x => `<button class="puce ${profil.serie===x?"actif":""}" data-v="${x}">${x}</button>`).join("")}</div>
+        <p class="sous-titre-c">2. Les matières où je suis à l'aise</p>
+        <div class="puces" id="o-fortes">${MATIERES_ORIENT.map(([k,n]) => `<button class="puce ${profil.fortes.includes(k)?"actif":""}" data-v="${k}">${n}</button>`).join("")}</div>
+        <p class="sous-titre-c">3. Ma moyenne générale actuelle</p>
+        <div class="puces" id="o-moy">${[["moins10","Moins de 10"],["10-12","10 à 12"],["12-14","12 à 14"],["plus14","Plus de 14"]].map(([k,n]) => `<button class="puce ${profil.moyenne===k?"actif":""}" data-v="${k}">${n}</button>`).join("")}</div>
+        <p style="font-size:.78rem;color:var(--gris);margin-top:10px">Tes réponses restent sur cet appareil. Rien n'est envoyé.</p>
+      </div>
+      <div id="o-resultat"></div>
+
+      <details class="boite-cours rv" style="margin-top:18px"><summary><span class="rond-cours">🔀</span><span class="tete-cours"><b>En Seconde S : S1 ou S2 ?</b><small>Choisir sa série de Première</small></span></summary>
+        <div class="contenu-cours"><ul class="etapes">
+          <li><b>S1</b> : plus de poids sur les maths et la physique-chimie. Pour ceux qui sont très à l'aise en maths.</li>
+          <li><b>S2</b> : plus d'équilibre, avec une place importante pour la SVT. Pour ceux qui aiment les sciences de la vie.</li>
+          <li>Les deux séries mènent aux études scientifiques. Choisis selon tes notes <b>et</b> ce que tu aimes.</li>
+          <li>Demande l'avis de ton professeur de maths et de ton professeur principal : ils connaissent les exigences.</li>
+        </ul></div></details>
+
+      <h2 class="titre-bloc rv">🏛️ Campusen</h2>
       <div class="encadre rv"><b>Campusen, c'est quoi ?</b><br>
         La plateforme officielle d'orientation des nouveaux bacheliers vers les universités publiques et les ISEP
         (Instituts supérieurs d'enseignement professionnel) du Sénégal.<br>
@@ -341,11 +374,60 @@ function pageOrientation(){
       <h2 class="titre-bloc rv">Bien choisir ses vœux</h2>
       <ul class="etapes rv">
         <li>Classe tes choix par préférence réelle, pas par prestige.</li>
-        <li>Les grandes écoles et écoles spécialisées recrutent souvent en dehors de Campusen (concours, dossiers) : renseigne-toi tôt.</li>
+        <li>Mélange des formations très demandées et des formations plus accessibles qui t'intéressent.</li>
+        <li>Les grandes écoles, CPGE et écoles spécialisées recrutent souvent en dehors de Campusen (concours, dossiers) : renseigne-toi dès le début de la Terminale.</li>
+        <li>Avant de payer une école privée, vérifie que la formation est reconnue par l'État.</li>
       </ul>
-      <h2 class="titre-bloc rv">Fiches métiers</h2>
-      <div class="vide rv">📭 Les fiches métiers arrivent bientôt.</div>
+      <h2 class="titre-bloc rv">Questions à te poser</h2>
+      <ul class="etapes rv">
+        <li>Quelles matières j'aime vraiment, même quand elles sont difficiles ?</li>
+        <li>Je préfère des études longues ou un métier rapidement ?</li>
+        <li>Je préfère la théorie, la pratique, ou le contact avec les gens ?</li>
+        <li>Où est-ce que je peux étudier (ville, logement, coût) ?</li>
+      </ul>
+      <p class="rv" style="font-size:.8rem;color:var(--gris);margin-top:14px">Ces pistes sont des idées à explorer, pas une décision. Parle de ton projet avec ton professeur principal ou le conseiller d'orientation de ton lycée. Infos sur les CPGE et le concours EPT vérifiées en novembre 2026.</p>
     </div></section>`);
+
+  const sauver = () => memo.ecrire("profil-orient", profil);
+  const unique = (id, cle) => app.querySelectorAll(`#${id} .puce`).forEach(b => b.addEventListener("click", () => {
+    profil[cle] = profil[cle] === b.dataset.v ? "" : b.dataset.v;
+    app.querySelectorAll(`#${id} .puce`).forEach(x => x.classList.toggle("actif", x.dataset.v === profil[cle]));
+    sauver(); resultat();
+  }));
+  unique("o-serie", "serie"); unique("o-moy", "moyenne");
+  app.querySelectorAll("#o-fortes .puce").forEach(b => b.addEventListener("click", () => {
+    const v = b.dataset.v;
+    profil.fortes = profil.fortes.includes(v) ? profil.fortes.filter(x => x !== v) : [...profil.fortes, v];
+    b.classList.toggle("actif"); sauver(); resultat();
+  }));
+
+  function resultat(){
+    const zone = document.getElementById("o-resultat");
+    if(!profil.fortes.length && !profil.moyenne){
+      zone.innerHTML = `<div class="vide" style="margin-top:12px">👆 Choisis tes matières fortes et ta moyenne pour voir des pistes.</div>`; return;
+    }
+    const estL = profil.serie.startsWith("L");
+    const pistes = PISTES_ORIENT.map(p => ({p, n: p.cles.filter(k => profil.fortes.includes(k)).length}))
+      .filter(x => x.n > 0 || x.p.cles.length === 0)
+      .sort((a,b) => b.n - a.n);
+    const conseilMoy = CONSEILS_MOYENNE[profil.moyenne];
+    zone.innerHTML = `
+      ${profil.fortes.length ? `<h3 class="niveau">Pistes qui correspondent à tes matières fortes</h3>
+      ${pistes.map(({p,n}) => `
+        <details class="boite-cours">
+          <summary><span class="rond-cours" style="font-size:1.3rem">${p.ico}</span>
+            <span class="tete-cours"><b>${p.titre}</b><small>${p.cles.length ? `${n}/${p.cles.length} matières clés` : "Ouvert à tous les profils"}${estL && p.serieS ? " · souvent réservé aux séries S" : ""}</small></span></summary>
+          <div class="contenu-cours">
+            ${p.cles.length ? `<p class="sous-titre-c">Matières clés</p><p>${p.cles.map(k => MATIERES_ORIENT.find(m => m[0]===k)[1]).join(", ")}</p>` : ""}
+            <p class="sous-titre-c">Exemples de formations</p><p>${p.exemples}</p>
+            <p class="sous-titre-c">À savoir</p><ul class="etapes">${p.savoir.map(l => `<li>${l}</li>`).join("")}</ul>
+            ${estL && p.serieS ? `<div class="attention" style="margin-top:10px">Ces formations demandent en général un bac scientifique. Vérifie les séries acceptées sur Campusen ou auprès de l'établissement.</div>` : ""}
+          </div></details>`).join("")}` : ""}
+      ${conseilMoy ? `<h3 class="niveau">Conseils selon ta moyenne</h3>
+        <div class="encadre"><b>${conseilMoy.titre}</b><ul class="etapes" style="margin-top:8px">${conseilMoy.points.map(l => `<li>${l}</li>`).join("")}</ul></div>` : ""}`;
+  }
+  resultat();
+
   const maj = () => {
     const c = memo.lire("campusen", []);
     document.getElementById("compte").textContent = `${c.length}/${ETAPES_CAMPUSEN.length}`;

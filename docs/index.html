@@ -350,7 +350,7 @@
   .vec{display:inline-block;position:relative;padding-top:.45em;line-height:1}
   .vec::before{content:"";position:absolute;left:1px;right:3px;top:.18em;border-top:1.3px solid currentColor}
   .vec::after{content:"";position:absolute;right:0;top:calc(.18em - 2.6px);border:3px solid transparent;border-left:5px solid currentColor;border-right:0}
-  details.boite-cours{background:#fff;border:1px solid var(--bord);border-radius:20px;padding:0;margin-bottom:12px;overflow:hidden}
+  details.boite-cours{scroll-margin-top:84px;background:#fff;border:1px solid var(--bord);border-radius:20px;padding:0;margin-bottom:12px;overflow:hidden}
   details.boite-cours[open]{border-color:var(--vert);box-shadow:0 14px 30px -24px rgba(20,33,61,.5)}
   details.boite-cours>summary{display:flex;align-items:center;gap:14px;padding:16px 18px;font-weight:400}
   details.boite-cours>summary::after{margin-left:auto}
@@ -361,6 +361,12 @@
   .tete-cours small{color:var(--gris);font-size:.78rem}
   .contenu-cours{padding:0 18px 16px;border-top:1px solid var(--bord)}
   .contenu-cours>p:first-child{margin-top:12px}
+  .puces{display:flex;flex-wrap:wrap;gap:8px}
+  .puce{border:1.5px solid var(--bord);background:#fff;border-radius:999px;padding:8px 14px;font:inherit;font-size:.86rem;font-weight:600;color:var(--texte);cursor:pointer;text-align:left}
+  .puce:hover{border-color:var(--vert)}
+  .puce.actif{background:var(--vert);border-color:var(--vert);color:#fff}
+  .sous-titre-c{font-weight:700;margin:14px 0 4px;color:var(--texte)}
+  .carte-outil{background:#fff;border:1px solid var(--bord);border-radius:20px;padding:18px}
   h3.niveau{font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);margin:24px 0 10px}
   header.defile{background:rgba(20,33,61,.95)}
   @media (max-width:700px){ nav.top{background:var(--noir);font-family:var(--sans);font-weight:700;text-transform:none;font-size:1.8rem} }
@@ -758,6 +764,221 @@ function progressionClasse(cid){
 }
 const jauge = p => p.total ? `<div class="jauge"><i style="width:${Math.round(100*p.fait/p.total)}%"></i></div>` : "";
 
+/* ================= CONTENU : CONSEILS PAR PROFIL + PISTES D'ORIENTATION =================
+   Conseils pédagogiques généraux (pas des règles officielles).
+   Les faits datés sur l'orientation (CPGE, concours EPT, Campusen) ont été vérifiés en novembre 2026
+   et doivent être revérifiés chaque année. */
+
+const PROFILS_CONSEILS = [
+  { id:"maths", ico:"📐", titre:"J'ai du mal en maths",
+    signe:"Tu comprends en classe mais tu bloques seul devant un exercice, ou tu as « décroché » depuis un chapitre.",
+    pourquoi:"En maths, chaque chapitre s'appuie sur les précédents. Un trou dans les bases (fractions, calcul littéral, équations) fait tout tomber ensuite. Ce n'est presque jamais un problème de « don ».",
+    actions:[
+      "Repère le chapitre où tu as décroché et reprends <b>à partir de là</b>, même si c'est un cours de l'an passé.",
+      "Apprends les définitions et propriétés <b>mot pour mot</b> : en maths, un mot change tout.",
+      "Pour chaque exercice, écris d'abord : « Je cherche… / Je sais que… / J'utilise la propriété… ».",
+      "Refais les exemples du cours <b>sans regarder</b> la solution avant d'attaquer les exercices.",
+      "Cherche 15 minutes seul, puis utilise l'indice, et seulement après la correction.",
+      "Garde un carnet d'erreurs : signe oublié, parenthèse mal développée… Relis-le avant chaque devoir.",
+      "Fais un peu de maths <b>tous les jours</b> (20 min) plutôt que 3 heures la veille."],
+    exemple:"Awa n'arrive pas à résoudre les équations du second degré. En reprenant, elle voit que c'est la factorisation qui coince. Elle refait 10 factorisations simples par jour pendant une semaine, et les équations deviennent faciles." },
+
+  { id:"pc", ico:"⚗️", titre:"J'ai du mal en physique-chimie",
+    signe:"Tu connais les formules mais tu ne sais pas laquelle utiliser, ou tu te perds dans les unités.",
+    pourquoi:"La physique-chimie demande trois choses à la fois : comprendre le phénomène, choisir la bonne loi et faire le calcul. Souvent, c'est l'étape « choisir la loi » qui manque de méthode.",
+    actions:[
+      "Commence chaque exercice par un <b>schéma</b> et la liste des données avec leurs unités.",
+      "Convertis tout en unités du système international (m, kg, s, mol…) <b>avant</b> de calculer.",
+      "Fais une fiche par chapitre : chaque formule avec le sens de chaque lettre et son unité.",
+      "Écris la formule littérale d'abord, remplace les nombres seulement à la fin.",
+      "Vérifie si ton résultat est réaliste : une voiture à 3 000 km/h, c'est une erreur.",
+      "Si les maths te bloquent (dérivées, vecteurs), travaille-les en parallèle : elles servent partout en physique."],
+    exemple:"Moussa rate ses exercices de cinématique. En listant les données et unités avant de calculer, il découvre qu'il mélangeait km/h et m/s. Il gagne des points dès le devoir suivant." },
+
+  { id:"svt", ico:"🧬", titre:"J'ai du mal en SVT",
+    signe:"Il y a beaucoup à retenir, tu mélanges les notions, ou tu ne sais pas exploiter un document.",
+    pourquoi:"La SVT mélange par cœur (vocabulaire, mécanismes) et raisonnement (analyser des documents, expériences). Il faut entraîner les deux.",
+    actions:[
+      "Apprends avec des <b>schémas</b> : refais-les de mémoire, avec la légende.",
+      "Fais un lexique des mots-clés de chaque chapitre (ex : synapse, potentiel d'action).",
+      "Pour un document : « Je vois… (décrire) → J'en déduis… (interpréter) → Donc… (conclure) ».",
+      "Raconte un mécanisme comme une histoire, étape par étape, à voix haute.",
+      "Entraîne-toi sur les sujets des années passées : les types de documents reviennent souvent."],
+    exemple:"Fatou confond les étapes de la transmission nerveuse. Elle dessine chaque soir le schéma d'une synapse de mémoire. Au bout d'une semaine, elle peut l'expliquer sans notes." },
+
+  { id:"francais", ico:"✍️", titre:"J'ai du mal en français ou en philosophie",
+    signe:"Tu ne sais pas comment organiser une dissertation, un commentaire, ou tu manques d'idées.",
+    pourquoi:"Ces épreuves notent surtout la <b>méthode</b> : comprendre le sujet, construire un plan, argumenter avec des exemples. Ça s'apprend comme une recette.",
+    actions:[
+      "Avant d'écrire, souligne les mots-clés du sujet et reformule-le avec tes mots.",
+      "Fais toujours un <b>brouillon de plan</b> (2 ou 3 parties, 2 ou 3 arguments chacune).",
+      "Chaque paragraphe : une idée → une explication → un exemple précis.",
+      "Constitue un carnet de citations et d'exemples (auteurs, œuvres, faits de société) réutilisables.",
+      "Lis un peu chaque jour (journal, roman) : le vocabulaire et l'orthographe s'améliorent tout seuls.",
+      "Garde 10 minutes à la fin pour relire l'orthographe et les accords."],
+    exemple:"Ibrahima rendait des copies sans plan. En s'obligeant à 15 minutes de brouillon avant d'écrire, ses idées s'enchaînent et sa note gagne plusieurs points." },
+
+  { id:"langues", ico:"🌍", titre:"J'ai du mal en anglais ou en langues",
+    signe:"Tu comprends un peu mais tu n'oses pas parler, ou tu manques de vocabulaire.",
+    pourquoi:"Une langue s'apprend par contact régulier. Quelques minutes par jour valent mieux qu'une grosse séance.",
+    actions:[
+      "Apprends 5 mots nouveaux par jour, dans une phrase, pas seuls.",
+      "Écoute des chansons, vidéos ou podcasts en anglais avec les sous-titres en anglais.",
+      "Revois les temps de base (présent, passé, futur) jusqu'à les maîtriser parfaitement.",
+      "Écris 3 phrases par jour sur ta journée : c'est un entraînement parfait.",
+      "Parle avec un camarade en anglais 5 minutes, même avec des fautes."],
+    exemple:"Khady regarde un épisode de série par semaine sous-titré en anglais et note 10 expressions. En trois mois, la compréhension écrite devient sa meilleure note." },
+
+  { id:"hg", ico:"🗺️", titre:"J'ai du mal en histoire-géographie",
+    signe:"Tu oublies les dates, les notions, ou tu ne sais pas rédiger une composition.",
+    pourquoi:"L'histoire-géo demande des repères solides et une méthode de rédaction. Sans repères, on récite sans comprendre.",
+    actions:[
+      "Fais une <b>frise chronologique</b> par chapitre avec les dates clés.",
+      "Pour chaque notion, apprends une définition courte et un exemple.",
+      "Entraîne-toi à faire des croquis simples : légende organisée, titre, couleurs.",
+      "Composition : introduction (contexte, problématique, plan) → parties → conclusion.",
+      "Relie les événements entre eux : causes → faits → conséquences."],
+    exemple:"Mamadou mélangeait les dates de la décolonisation. Avec une frise affichée au mur, il la voit chaque jour et la retient sans effort." },
+
+  { id:"concentration", ico:"🎯", titre:"Je n'arrive pas à me concentrer en cours",
+    signe:"Ton esprit part ailleurs, tu décroches au bout de quelques minutes, tu ne sais plus ce que le prof a dit.",
+    pourquoi:"La fatigue, le téléphone, la faim, une place mal choisie ou un retard dans le cours rendent l'attention difficile. Parfois c'est aussi un problème de vue ou d'audition non détecté.",
+    actions:[
+      "Assieds-toi <b>devant</b>, loin des fenêtres et des camarades bavards.",
+      "Prends des notes actives : abréviations, titres, flèches. Écrire aide à rester attentif.",
+      "Pose une question quand tu décroches : c'est la meilleure façon de revenir dans le cours.",
+      "Dors suffisamment et prends un petit-déjeuner : le cerveau a besoin d'énergie.",
+      "Mets le téléphone en silencieux et hors de vue pendant le cours et les révisions.",
+      "Chez toi, travaille avec le minuteur : 25 min concentré, 5 min de pause.",
+      "Si tu vois flou au tableau ou entends mal, parles-en à tes parents : un contrôle de la vue peut tout changer."],
+    exemple:"Aminata décroche toujours après la récréation. En changeant de place et en prenant des notes avec des couleurs, elle suit beaucoup mieux." },
+
+  { id:"lent", ico:"🐢", titre:"Je mets plus de temps que les autres à comprendre",
+    signe:"Tu finis par comprendre, mais toujours après les autres, et tu as peur de prendre du retard.",
+    pourquoi:"Chacun a son rythme. Comprendre lentement n'empêche pas de comprendre <b>en profondeur</b>. Il faut juste s'organiser pour ne pas accumuler de retard.",
+    actions:[
+      "Lis le chapitre <b>avant</b> le cours : tu arrives en classe en ayant déjà vu les notions.",
+      "Revois le cours le soir même, même 15 minutes : c'est là que tout se fixe.",
+      "Découpe : une notion à la fois, avec un exemple, avant de passer à la suivante.",
+      "N'hésite pas à demander au prof de réexpliquer, ou à un camarade après le cours.",
+      "Utilise les leçons de l'appli à ton rythme : relis autant de fois que nécessaire.",
+      "Ne te compare pas : compare-toi à toi-même d'il y a un mois."],
+    exemple:"Cheikh mettait une semaine à comprendre un chapitre. En lisant le cours la veille de la leçon, il comprend dès la classe et rattrape son retard." },
+
+  { id:"stress", ico:"😮‍💨", titre:"Je stresse pendant les devoirs et examens",
+    signe:"Tu connais ton cours mais tu perds tes moyens le jour J, tu as un trou de mémoire.",
+    pourquoi:"Le stress est normal. Il devient gênant quand on n'est pas habitué aux conditions de l'examen.",
+    actions:[
+      "Entraîne-toi en <b>conditions réelles</b> : sujet complet, temps limité, sans aide.",
+      "Le jour J, lis tout le sujet et commence par l'exercice que tu maîtrises le mieux.",
+      "Respire lentement : inspire 4 secondes, bloque 4 secondes, expire 4 secondes.",
+      "Prépare ton matériel la veille et dors bien plutôt que réviser toute la nuit.",
+      "Si le stress t'empêche de dormir ou de manger pendant longtemps, parles-en à un adulte de confiance."],
+    exemple:"Ndèye perdait ses moyens en maths. Après trois sujets faits en temps réel à la maison, le jour du devoir lui a paru « normal »." },
+
+  { id:"motivation", ico:"🔥", titre:"Je manque de motivation",
+    signe:"Tu repousses toujours les révisions, tu ne vois pas à quoi ça sert.",
+    pourquoi:"On se motive mieux avec un objectif clair et des petites victoires visibles.",
+    actions:[
+      "Fixe un objectif précis : « Avoir 12 en maths au prochain trimestre ».",
+      "Commence par 10 minutes seulement : le plus dur, c'est de commencer.",
+      "Coche tes leçons et exercices réussis dans l'appli : voir sa progression motive.",
+      "Pense à ton projet après le bac : regarde la page Orientation.",
+      "Travaille en groupe avec des camarades sérieux, une ou deux fois par semaine."],
+    exemple:"Babacar ne révisait jamais. En visant une école précise et en se fixant 30 minutes par jour, il a vu ses notes monter et a eu envie de continuer." },
+
+  { id:"conditions", ico:"🏠", titre:"Je travaille dans de mauvaises conditions",
+    signe:"Maison bruyante, pas de bureau, coupures d'électricité, peu de connexion.",
+    pourquoi:"Beaucoup d'élèves révisent sans conditions idéales. On peut s'adapter avec un peu d'organisation.",
+    actions:[
+      "Repère un lieu calme : bibliothèque, CDI du lycée, salle de classe après les cours, maison d'un ami.",
+      "Profite des moments calmes : tôt le matin ou tard le soir.",
+      "<b>Télécharge</b> tes cours dans l'appli quand tu as du réseau : tu pourras les lire sans connexion.",
+      "Prépare des fiches papier pour réviser même sans électricité.",
+      "Organise des séances de révision en groupe pour partager les ressources."],
+    exemple:"Ousmane n'avait pas de connexion chez lui. Il télécharge ses leçons au lycée et révise le soir sans réseau." },
+
+  { id:"organisation", ico:"🗓️", titre:"Je n'arrive pas à m'organiser",
+    signe:"Tu révises au dernier moment, tu oublies des devoirs, tu ne sais pas par où commencer.",
+    pourquoi:"Sans planning, tout semble urgent. Un emploi du temps simple soulage beaucoup.",
+    actions:[
+      "Note tous les devoirs et contrôles dans un agenda ou un cahier.",
+      "Fais un planning de la semaine avec des créneaux courts (30 à 45 minutes).",
+      "Revois le cours du jour le soir même, même 10 minutes.",
+      "Garde un jour par semaine pour refaire des exercices.",
+      "Commence par la tâche la plus importante, pas la plus facile.",
+      "Avant le bac : fais au moins un sujet complet en temps réel par matière."],
+    exemple:"Mariama oubliait ses contrôles. Avec un cahier de devoirs et un planning collé au mur, elle ne révise plus la veille au soir." }
+];
+
+/* ---------- Orientation : pistes selon les matières ---------- */
+const MATIERES_ORIENT = [
+  ["maths","Maths"],["pc","Physique-Chimie"],["svt","SVT"],["francais","Français"],
+  ["philo","Philosophie"],["hg","Histoire-Géo"],["langues","Anglais / langues"]
+];
+
+const PISTES_ORIENT = [
+  { ico:"⚙️", titre:"Ingénierie et technologies", cles:["maths","pc"], serieS:true,
+    exemples:"Écoles d'ingénieurs, classes préparatoires (CPGE), licences de sciences (maths, physique).",
+    savoir:["Le concours d'entrée en 1re année de l'École polytechnique de Thiès (EPT) est ouvert aux élèves de Terminale scientifique : l'inscription se fait <b>pendant</b> l'année de Terminale (en 2026, jusqu'au 15 avril), donc avant les résultats du bac.",
+      "Les CPGE du Sénégal (MPSI et PCSI, à Thiès) recrutent sur dossier les bacheliers S1, S2, S3 avec mention Bien ou Très bien (règle 2026).",
+      "Un concours commun (DIC) permet aussi d'entrer dans plusieurs écoles d'ingénieurs à partir d'une Licence 2 de sciences."] },
+  { ico:"💻", titre:"Informatique et numérique", cles:["maths"], serieS:false,
+    exemples:"Licences d'informatique, filières numériques dans certains ISEP, écoles d'ingénieurs en informatique.",
+    savoir:["La logique et les maths comptent plus que le fait de déjà savoir programmer.",
+      "Commence à t'entraîner gratuitement (Scratch, Python) pour savoir si ça te plaît."] },
+  { ico:"🩺", titre:"Santé (médecine, pharmacie, dentaire, paramédical)", cles:["svt","pc"], serieS:true,
+    exemples:"Médecine, pharmacie, odontologie, écoles de sages-femmes et d'infirmiers.",
+    savoir:["Études longues et exigeantes, très demandées : sur Campusen, le classement se fait surtout selon la moyenne au bac.",
+      "Prévois toujours des choix de secours proches (biologie, chimie) dans tes vœux."] },
+  { ico:"🌱", titre:"Biologie, agronomie, environnement", cles:["svt","pc"], serieS:true,
+    exemples:"Licences de biologie, géologie, chimie, écoles d'agronomie, métiers de l'environnement et de l'eau.",
+    savoir:["Secteurs utiles au Sénégal (agriculture, pêche, eau, climat).", "Bonne alternative si la santé ne passe pas."] },
+  { ico:"🔬", titre:"Sciences fondamentales et enseignement", cles:["maths","pc","svt"], serieS:true,
+    exemples:"Licences de maths, physique, chimie ; ensuite master, recherche ou concours de l'enseignement.",
+    savoir:["Si tu aimes expliquer aux autres, l'enseignement des sciences recrute régulièrement."] },
+  { ico:"📊", titre:"Économie, gestion, finance, statistique", cles:["maths","francais"], serieS:false,
+    exemples:"Licences d'économie et de gestion, écoles de commerce, comptabilité, banque, statistique.",
+    savoir:["Les maths y comptent beaucoup (statistiques, calculs financiers), même pour un bachelier L.",
+      "Pour une école privée, vérifie que le diplôme est reconnu par l'État avant de payer."] },
+  { ico:"⚖️", titre:"Droit et sciences politiques", cles:["francais","philo","hg"], serieS:false,
+    exemples:"Licences de droit, sciences politiques, administration ; ensuite magistrature, avocat, fonction publique…",
+    savoir:["Il faut beaucoup lire, rédiger et argumenter : ce sont les compétences de la dissertation."] },
+  { ico:"📰", titre:"Lettres, langues, communication", cles:["francais","langues","philo"], serieS:false,
+    exemples:"Lettres modernes, langues étrangères, traduction, journalisme, communication, tourisme.",
+    savoir:["Une très bonne maîtrise de l'anglais ouvre aussi des portes dans tous les autres secteurs."] },
+  { ico:"🏛️", titre:"Sciences humaines et sociales", cles:["hg","philo","francais"], serieS:false,
+    exemples:"Histoire, géographie, sociologie, philosophie ; ensuite enseignement, urbanisme, ONG, recherche.",
+    savoir:["La géographie mène aussi à des métiers techniques (cartographie, aménagement)."] },
+  { ico:"🛠️", titre:"Formations professionnelles courtes", cles:[], serieS:false,
+    exemples:"ISEP (via Campusen), BTS, formations techniques : un métier en 2 à 3 ans.",
+    savoir:["Bon choix si tu veux travailler vite et apprendre par la pratique.",
+      "Les ISEP sont proposés sur Campusen à côté des universités."] }
+];
+
+const CONSEILS_MOYENNE = {
+  "moins10": { titre:"Moyenne actuelle sous 10", points:[
+      "Ta priorité, c'est d'<b>obtenir le bac</b> : concentre-toi sur les matières à gros coefficient de ta série.",
+      "Travaille avec les sujets des années passées : les mêmes types d'exercices reviennent.",
+      "Repère 2 ou 3 chapitres « faciles à gagner » par matière et maîtrise-les parfaitement.",
+      "Il te reste du temps : une moyenne de trimestre n'est pas la note du bac.",
+      "Pour l'orientation, renseigne-toi déjà sur les formations professionnelles courtes et les ISEP."] },
+  "10-12": { titre:"Moyenne entre 10 et 12", points:[
+      "Sur Campusen, les candidats sont surtout classés selon leur moyenne au bac : chaque point gagné compte.",
+      "Utilise bien tes choix : mélange des formations très demandées et des formations moins demandées qui t'intéressent.",
+      "Pense aux ISEP et aux licences moins demandées liées à tes matières fortes.",
+      "Les concours (comme celui de l'EPT) reposent sur des épreuves écrites : une bonne préparation peut compenser une moyenne moyenne."] },
+  "12-14": { titre:"Moyenne entre 12 et 14", points:[
+      "Tu as un bon dossier : vise les formations qui te plaisent vraiment, mais garde des choix de sécurité.",
+      "Une mention Bien au bac ouvre l'accès aux CPGE (séries S, règle 2026) : vise-la si l'ingénierie t'attire.",
+      "Inscris-toi aux concours qui t'intéressent pendant ta Terminale.",
+      "Travaille les matières clés de la filière visée pour arriver à l'aise en 1re année."] },
+  "plus14": { titre:"Moyenne au-dessus de 14", points:[
+      "Avec une mention Bien ou Très bien en série S, tu peux candidater aux CPGE du Sénégal (règle 2026).",
+      "Tente les concours des grandes écoles et cherche les bourses d'excellence.",
+      "Ne mets pas que des formations prestigieuses : choisis surtout ce qui te correspond.",
+      "Reste régulier jusqu'au bout : la mention se joue sur les notes du bac, pas sur les bulletins."] }
+};
 
 /* ================= AFFICHAGE + ANIMATIONS ================= */
 const COULEURS = ["bg-vert","bg-corail","bg-jaune"];
@@ -1041,23 +1262,31 @@ async function rendrePage(doc, el){
 
 /* ---------- Conseils + minuteur ---------- */
 const minuteur = {duree:25*60, reste:25*60, mode:"travail", h:null};
+function boiteProfil(p, i){
+  return `<details class="boite-cours rv" id="profil-${p.id}" style="--d:${Math.min(i,6)*.04}s">
+    <summary><span class="rond-cours" style="font-size:1.3rem">${p.ico}</span>
+      <span class="tete-cours"><b>${p.titre}</b><small>${p.actions.length} conseils + un exemple</small></span></summary>
+    <div class="contenu-cours">
+      <p class="sous-titre-c">🔎 Tu te reconnais si…</p><p>${p.signe}</p>
+      <p class="sous-titre-c">🤔 Pourquoi ça arrive</p><p>${p.pourquoi}</p>
+      <p class="sous-titre-c">✅ Ce que tu peux faire</p>
+      <ul class="etapes">${p.actions.map(l => `<li>${l}</li>`).join("")}</ul>
+      <div class="encadre" style="margin-top:12px"><b>Exemple :</b> ${p.exemple}</div>
+    </div></details>`;
+}
 function pageConseils(){
-  const methodes = [
-    ["Organiser sa semaine", ["Fixe des créneaux courts (30 à 45 min) plutôt qu'une longue séance.",
-      "Revois le cours du jour le soir même, même 10 minutes.", "Garde un jour par semaine pour refaire des exercices."]],
-    ["Bien apprendre un cours", ["Fais une fiche d'une page par chapitre : définitions, formules, un exemple.",
-      "Ferme le cours et essaie de tout réécrire de mémoire.",
-      "Explique le chapitre à un camarade : si tu bloques, c'est là qu'il faut retravailler."]],
-    ["Réussir les exercices", ["Cherche seul au moins 15 minutes avant de regarder la correction.",
-      "Utilise l'indice avant la correction.", "Refais l'exercice sans aide le lendemain.",
-      "Note tes erreurs fréquentes dans un carnet."]],
-    ["Préparer le bac", ["Entraîne-toi sur les sujets officiels des années passées (Office du Bac).",
-      "Fais au moins un sujet complet en temps réel avant l'examen.",
-      "Dors bien la semaine de l'examen : la fatigue fait perdre des points."]]
-  ];
-  afficher(entete(`<a href="#accueil">Accueil</a> › Conseils`, "Conseils", "Des méthodes simples pour mieux apprendre.") + `
+  const matieres = PROFILS_CONSEILS.filter(p => ["maths","pc","svt","francais","langues","hg"].includes(p.id));
+  const habitudes = PROFILS_CONSEILS.filter(p => !matieres.includes(p));
+  afficher(entete(`<a href="#accueil">Accueil</a> › Conseils`, "Conseils", "Choisis ta situation : des conseils adaptés à toi.") + `
     <section class="section"><div class="wrap">
-      <div class="minuteur rv">
+      <h2 class="titre-bloc rv">Ma situation</h2>
+      <p class="rv" style="color:var(--gris);margin-bottom:10px">Touche ce qui te ressemble, la bonne fiche s'ouvre.</p>
+      <div class="puces rv">${PROFILS_CONSEILS.map(p => `<button class="puce" data-profil="${p.id}">${p.ico} ${p.titre.replace(/^J'ai du mal en /,"Difficultés en ")}</button>`).join("")}</div>
+      <h3 class="niveau rv">📚 Difficultés dans une matière</h3>
+      ${matieres.map(boiteProfil).join("")}
+      <h3 class="niveau rv">🧠 Concentration, rythme et organisation</h3>
+      ${habitudes.map(boiteProfil).join("")}
+      <div class="minuteur rv" style="margin-top:26px">
         <span class="eyebrow" style="color:var(--jaune)">Minuteur de révision</span>
         <p style="margin-top:4px">25 minutes de travail concentré, puis 5 minutes de pause.</p>
         <div class="cercle" id="cercle"><div><span><b id="temps">25:00</b><small id="mode">Travail</small></span></div></div>
@@ -1066,10 +1295,13 @@ function pageConseils(){
           <button class="btn" id="raz">↺ Remettre à zéro</button>
         </div>
       </div>
-      <h2 class="titre-bloc rv">Méthodes</h2>
-      ${methodes.map((x,i) => `<details class="rv" style="--d:${i*.06}s"><summary>${x[0]}</summary>
-        <ul class="etapes">${x[1].map(l => `<li>${l}</li>`).join("")}</ul></details>`).join("")}
+      <p class="rv" style="font-size:.8rem;color:var(--gris);margin-top:16px">Ces conseils sont des méthodes de travail générales. En cas de difficulté qui dure, parles-en à ton professeur principal ou à un adulte de confiance.</p>
     </div></section>`);
+  app.querySelectorAll("[data-profil]").forEach(b => b.addEventListener("click", () => {
+    const d = document.getElementById("profil-" + b.dataset.profil);
+    d.open = true; d.classList.add("vu");
+    d.scrollIntoView({behavior:"smooth", block:"start"});
+  }));
   majMinuteur();
   document.getElementById("go").addEventListener("click", basculer);
   document.getElementById("raz").addEventListener("click", () => {
@@ -1078,12 +1310,34 @@ function pageConseils(){
   });
 }
 
-/* ---------- Orientation + checklist ---------- */
+/* ---------- Orientation : profil + pistes + checklist ---------- */
 function pageOrientation(){
   const coches = memo.lire("campusen", []);
+  const profil = memo.lire("profil-orient", {serie:"", moyenne:"", fortes:[]});
   afficher(entete(`<a href="#accueil">Accueil</a> › Orientation`, "Orientation",
-      "Pour entrer dans une université publique ou un ISEP, tout passe par <b>Campusen</b>.") + `
+      "Trouve des pistes selon tes matières fortes et tes notes, puis prépare Campusen.") + `
     <section class="section"><div class="wrap">
+      <h2 class="titre-bloc rv">🧭 Mes pistes d'orientation</h2>
+      <div class="carte-outil rv">
+        <p class="sous-titre-c" style="margin-top:0">1. Ma série</p>
+        <div class="puces" id="o-serie">${["S1","S2","L1","L2"].map(x => `<button class="puce ${profil.serie===x?"actif":""}" data-v="${x}">${x}</button>`).join("")}</div>
+        <p class="sous-titre-c">2. Les matières où je suis à l'aise</p>
+        <div class="puces" id="o-fortes">${MATIERES_ORIENT.map(([k,n]) => `<button class="puce ${profil.fortes.includes(k)?"actif":""}" data-v="${k}">${n}</button>`).join("")}</div>
+        <p class="sous-titre-c">3. Ma moyenne générale actuelle</p>
+        <div class="puces" id="o-moy">${[["moins10","Moins de 10"],["10-12","10 à 12"],["12-14","12 à 14"],["plus14","Plus de 14"]].map(([k,n]) => `<button class="puce ${profil.moyenne===k?"actif":""}" data-v="${k}">${n}</button>`).join("")}</div>
+        <p style="font-size:.78rem;color:var(--gris);margin-top:10px">Tes réponses restent sur cet appareil. Rien n'est envoyé.</p>
+      </div>
+      <div id="o-resultat"></div>
+
+      <details class="boite-cours rv" style="margin-top:18px"><summary><span class="rond-cours">🔀</span><span class="tete-cours"><b>En Seconde S : S1 ou S2 ?</b><small>Choisir sa série de Première</small></span></summary>
+        <div class="contenu-cours"><ul class="etapes">
+          <li><b>S1</b> : plus de poids sur les maths et la physique-chimie. Pour ceux qui sont très à l'aise en maths.</li>
+          <li><b>S2</b> : plus d'équilibre, avec une place importante pour la SVT. Pour ceux qui aiment les sciences de la vie.</li>
+          <li>Les deux séries mènent aux études scientifiques. Choisis selon tes notes <b>et</b> ce que tu aimes.</li>
+          <li>Demande l'avis de ton professeur de maths et de ton professeur principal : ils connaissent les exigences.</li>
+        </ul></div></details>
+
+      <h2 class="titre-bloc rv">🏛️ Campusen</h2>
       <div class="encadre rv"><b>Campusen, c'est quoi ?</b><br>
         La plateforme officielle d'orientation des nouveaux bacheliers vers les universités publiques et les ISEP
         (Instituts supérieurs d'enseignement professionnel) du Sénégal.<br>
@@ -1101,11 +1355,60 @@ function pageOrientation(){
       <h2 class="titre-bloc rv">Bien choisir ses vœux</h2>
       <ul class="etapes rv">
         <li>Classe tes choix par préférence réelle, pas par prestige.</li>
-        <li>Les grandes écoles et écoles spécialisées recrutent souvent en dehors de Campusen (concours, dossiers) : renseigne-toi tôt.</li>
+        <li>Mélange des formations très demandées et des formations plus accessibles qui t'intéressent.</li>
+        <li>Les grandes écoles, CPGE et écoles spécialisées recrutent souvent en dehors de Campusen (concours, dossiers) : renseigne-toi dès le début de la Terminale.</li>
+        <li>Avant de payer une école privée, vérifie que la formation est reconnue par l'État.</li>
       </ul>
-      <h2 class="titre-bloc rv">Fiches métiers</h2>
-      <div class="vide rv">📭 Les fiches métiers arrivent bientôt.</div>
+      <h2 class="titre-bloc rv">Questions à te poser</h2>
+      <ul class="etapes rv">
+        <li>Quelles matières j'aime vraiment, même quand elles sont difficiles ?</li>
+        <li>Je préfère des études longues ou un métier rapidement ?</li>
+        <li>Je préfère la théorie, la pratique, ou le contact avec les gens ?</li>
+        <li>Où est-ce que je peux étudier (ville, logement, coût) ?</li>
+      </ul>
+      <p class="rv" style="font-size:.8rem;color:var(--gris);margin-top:14px">Ces pistes sont des idées à explorer, pas une décision. Parle de ton projet avec ton professeur principal ou le conseiller d'orientation de ton lycée. Infos sur les CPGE et le concours EPT vérifiées en novembre 2026.</p>
     </div></section>`);
+
+  const sauver = () => memo.ecrire("profil-orient", profil);
+  const unique = (id, cle) => app.querySelectorAll(`#${id} .puce`).forEach(b => b.addEventListener("click", () => {
+    profil[cle] = profil[cle] === b.dataset.v ? "" : b.dataset.v;
+    app.querySelectorAll(`#${id} .puce`).forEach(x => x.classList.toggle("actif", x.dataset.v === profil[cle]));
+    sauver(); resultat();
+  }));
+  unique("o-serie", "serie"); unique("o-moy", "moyenne");
+  app.querySelectorAll("#o-fortes .puce").forEach(b => b.addEventListener("click", () => {
+    const v = b.dataset.v;
+    profil.fortes = profil.fortes.includes(v) ? profil.fortes.filter(x => x !== v) : [...profil.fortes, v];
+    b.classList.toggle("actif"); sauver(); resultat();
+  }));
+
+  function resultat(){
+    const zone = document.getElementById("o-resultat");
+    if(!profil.fortes.length && !profil.moyenne){
+      zone.innerHTML = `<div class="vide" style="margin-top:12px">👆 Choisis tes matières fortes et ta moyenne pour voir des pistes.</div>`; return;
+    }
+    const estL = profil.serie.startsWith("L");
+    const pistes = PISTES_ORIENT.map(p => ({p, n: p.cles.filter(k => profil.fortes.includes(k)).length}))
+      .filter(x => x.n > 0 || x.p.cles.length === 0)
+      .sort((a,b) => b.n - a.n);
+    const conseilMoy = CONSEILS_MOYENNE[profil.moyenne];
+    zone.innerHTML = `
+      ${profil.fortes.length ? `<h3 class="niveau">Pistes qui correspondent à tes matières fortes</h3>
+      ${pistes.map(({p,n}) => `
+        <details class="boite-cours">
+          <summary><span class="rond-cours" style="font-size:1.3rem">${p.ico}</span>
+            <span class="tete-cours"><b>${p.titre}</b><small>${p.cles.length ? `${n}/${p.cles.length} matières clés` : "Ouvert à tous les profils"}${estL && p.serieS ? " · souvent réservé aux séries S" : ""}</small></span></summary>
+          <div class="contenu-cours">
+            ${p.cles.length ? `<p class="sous-titre-c">Matières clés</p><p>${p.cles.map(k => MATIERES_ORIENT.find(m => m[0]===k)[1]).join(", ")}</p>` : ""}
+            <p class="sous-titre-c">Exemples de formations</p><p>${p.exemples}</p>
+            <p class="sous-titre-c">À savoir</p><ul class="etapes">${p.savoir.map(l => `<li>${l}</li>`).join("")}</ul>
+            ${estL && p.serieS ? `<div class="attention" style="margin-top:10px">Ces formations demandent en général un bac scientifique. Vérifie les séries acceptées sur Campusen ou auprès de l'établissement.</div>` : ""}
+          </div></details>`).join("")}` : ""}
+      ${conseilMoy ? `<h3 class="niveau">Conseils selon ta moyenne</h3>
+        <div class="encadre"><b>${conseilMoy.titre}</b><ul class="etapes" style="margin-top:8px">${conseilMoy.points.map(l => `<li>${l}</li>`).join("")}</ul></div>` : ""}`;
+  }
+  resultat();
+
   const maj = () => {
     const c = memo.lire("campusen", []);
     document.getElementById("compte").textContent = `${c.length}/${ETAPES_CAMPUSEN.length}`;

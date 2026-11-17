@@ -350,7 +350,7 @@
   .vec{display:inline-block;position:relative;padding-top:.45em;line-height:1}
   .vec::before{content:"";position:absolute;left:1px;right:3px;top:.18em;border-top:1.3px solid currentColor}
   .vec::after{content:"";position:absolute;right:0;top:calc(.18em - 2.6px);border:3px solid transparent;border-left:5px solid currentColor;border-right:0}
-  details.boite-cours{background:#fff;border:1px solid var(--bord);border-radius:20px;padding:0;margin-bottom:12px;overflow:hidden}
+  details.boite-cours{scroll-margin-top:84px;background:#fff;border:1px solid var(--bord);border-radius:20px;padding:0;margin-bottom:12px;overflow:hidden}
   details.boite-cours[open]{border-color:var(--vert);box-shadow:0 14px 30px -24px rgba(20,33,61,.5)}
   details.boite-cours>summary{display:flex;align-items:center;gap:14px;padding:16px 18px;font-weight:400}
   details.boite-cours>summary::after{margin-left:auto}
@@ -361,6 +361,12 @@
   .tete-cours small{color:var(--gris);font-size:.78rem}
   .contenu-cours{padding:0 18px 16px;border-top:1px solid var(--bord)}
   .contenu-cours>p:first-child{margin-top:12px}
+  .puces{display:flex;flex-wrap:wrap;gap:8px}
+  .puce{border:1.5px solid var(--bord);background:#fff;border-radius:999px;padding:8px 14px;font:inherit;font-size:.86rem;font-weight:600;color:var(--texte);cursor:pointer;text-align:left}
+  .puce:hover{border-color:var(--vert)}
+  .puce.actif{background:var(--vert);border-color:var(--vert);color:#fff}
+  .sous-titre-c{font-weight:700;margin:14px 0 4px;color:var(--texte)}
+  .carte-outil{background:#fff;border:1px solid var(--bord);border-radius:20px;padding:18px}
   h3.niveau{font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);margin:24px 0 10px}
   header.defile{background:rgba(20,33,61,.95)}
   @media (max-width:700px){ nav.top{background:var(--noir);font-family:var(--sans);font-weight:700;text-transform:none;font-size:1.8rem} }
