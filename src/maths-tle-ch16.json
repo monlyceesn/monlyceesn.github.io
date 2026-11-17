@@ -1,0 +1,123 @@
+{
+ "n": 16,
+ "titre": "Chapitre 16 — Les coniques (2/2) : l'hyperbole",
+ "pdf": "cours/maths-tle-ch16-coniques-hyperbole.pdf",
+ "pages": 6,
+ "taille": "0,4 Mo",
+ "note": "Hyperbole : équation réduite, éléments, asymptotes, repère des asymptotes, tangente, définition bifocale.",
+ "lecons": [
+  {
+   "n": 1,
+   "titre": "Définition et équation réduite",
+   "debut": 1,
+   "fin": 2
+  },
+  {
+   "n": 2,
+   "titre": "Étude, asymptotes et les deux orientations",
+   "debut": 3,
+   "fin": 4
+  },
+  {
+   "n": 3,
+   "titre": "Repère des asymptotes",
+   "debut": 4,
+   "fin": 5
+  },
+  {
+   "n": 4,
+   "titre": "Tangente, bifocale, fiche et exercices",
+   "debut": 5,
+   "fin": 6
+  }
+ ],
+ "exercices": [
+  {
+   "titre": "Éléments d'une hyperbole",
+   "enonce": "9x² − 16y² = 144 : donner les éléments caractéristiques.",
+   "indice": "Divise par 144 pour obtenir x²/a² − y²/b² = 1.",
+   "correction": "x²/16 − y²/9 = 1 : a = 4, b = 3, c = 5, e = 5/4. Foyers (±5 ; 0), sommets (±4 ; 0), directrices x = ±16/5, asymptotes y = ±(3/4)x."
+  },
+  {
+   "titre": "Hyperbole équilatère",
+   "enonce": "x² − y² = 25 : excentricité et foyers.",
+   "indice": "Ici a = b = 5.",
+   "correction": "c = 5√2, donc <b>e = √2</b> et les foyers sont (±5√2 ; 0)."
+  },
+  {
+   "titre": "Axe focal vertical",
+   "enonce": "3y² − 5x² = 14 : axe focal et sommets.",
+   "indice": "Le signe « − » est devant x².",
+   "correction": "−x²/(14/5) + y²/(14/3) = 1 : axe focal (Oy), sommets (0 ; ±√(14/3)), e = 2√10/5."
+  },
+  {
+   "titre": "Tangente à une hyperbole",
+   "enonce": "Tangente à x²/9 − y²/4 = 1 au point (5 ; 8/3).",
+   "indice": "Vérifie d'abord que le point est sur la courbe.",
+   "correction": "25/9 − 16/9 = 1 ✓. Tangente : 5x/9 − 2y/3 = 1, soit 5x − 6y = 9, <b>y = (5x − 9)/6</b>."
+  },
+  {
+   "titre": "Définition bifocale",
+   "enonce": "Équation de l'hyperbole de foyers F(5 ; 0), F′(−5 ; 0) telle que |MF − MF′| = 6.",
+   "indice": "2a = 6 et c = 5.",
+   "correction": "a = 3, c = 5, b² = 25 − 9 = 16 : <b>x²/9 − y²/16 = 1</b>."
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Pour une hyperbole x²/a² − y²/b² = 1, on a…",
+   "choix": [
+    "c² = a² − b²",
+    "c² = a² + b²",
+    "c = a + b",
+    "c = ab"
+   ],
+   "bonne": 1,
+   "explication": "c² = a² + b² (pour l'ellipse, ce serait a² − b²)."
+  },
+  {
+   "q": "Les asymptotes de x²/a² − y²/b² = 1 sont…",
+   "choix": [
+    "y = ±(a/b)x",
+    "y = ±(b/a)x",
+    "y = ±ax",
+    "x = ±a"
+   ],
+   "bonne": 1,
+   "explication": "y = ±(b/a)x, obtenues en étudiant f(x) = (b/a)√(x² − a²) en +∞."
+  },
+  {
+   "q": "L'excentricité d'une hyperbole est…",
+   "choix": [
+    "e < 1",
+    "e = 1",
+    "e > 1",
+    "e = 0"
+   ],
+   "bonne": 2,
+   "explication": "e = c/a avec c > a."
+  },
+  {
+   "q": "Dans le repère des asymptotes (avec u(a ; b) et v(a ; −b)), l'équation devient…",
+   "choix": [
+    "Y = 1/(4X)",
+    "Y = 4X",
+    "Y = X²",
+    "XY = 4"
+   ],
+   "bonne": 0,
+   "explication": "On trouve 4XY = 1, soit Y = 1/(4X)."
+  },
+  {
+   "q": "|MF − MF′| = 2a définit…",
+   "choix": [
+    "une ellipse",
+    "une parabole",
+    "une hyperbole",
+    "un cercle"
+   ],
+   "bonne": 2,
+   "explication": "C'est la définition bifocale de l'hyperbole."
+  }
+ ]
+}

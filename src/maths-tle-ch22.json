@@ -1,0 +1,135 @@
+{
+ "n": 22,
+ "titre": "Chapitre 22 — Probabilités (2/2) : variables aléatoires, loi binomiale",
+ "pdf": "cours/maths-tle-ch22-variables-aleatoires-binomiale.pdf",
+ "pages": 6,
+ "taille": "0,4 Mo",
+ "note": "Cours réécrit à partir de notes de Terminale S1 (2018-2019), complété ; à faire relire par un enseignant.",
+ "lecons": [
+  {
+   "n": 1,
+   "titre": "Variable aléatoire et loi de probabilité",
+   "debut": 1,
+   "fin": 2
+  },
+  {
+   "n": 2,
+   "titre": "Espérance, variance, écart-type",
+   "debut": 2,
+   "fin": 2
+  },
+  {
+   "n": 3,
+   "titre": "Fonction de répartition",
+   "debut": 3,
+   "fin": 4
+  },
+  {
+   "n": 4,
+   "titre": "Loi de Bernoulli",
+   "debut": 4,
+   "fin": 4
+  },
+  {
+   "n": 5,
+   "titre": "Loi binomiale",
+   "debut": 4,
+   "fin": 5
+  },
+  {
+   "n": 6,
+   "titre": "Exercices corrigés",
+   "debut": 6,
+   "fin": 6
+  }
+ ],
+ "exercices": [
+  {
+   "titre": "Loi d'une variable aléatoire",
+   "enonce": "Une urne contient 2 boules rouges et 3 noires. On tire simultanément 2 boules ; X est le nombre de boules rouges. Donner la loi de X, E(X), V(X) et σ(X).",
+   "indice": "Il y a C(5,2)=10 tirages possibles.",
+   "correction": "P(X=0)=3/10, P(X=1)=6/10, P(X=2)=1/10. E(X)=0,8 ; E(X²)=1 ; V(X)=1−0,64=0,36 ; σ=0,6."
+  },
+  {
+   "titre": "Jeu équitable",
+   "enonce": "X prend les valeurs −2, 0 et 3 avec les probabilités 0,3 ; 0,5 ; 0,2. Calculer E(X), V(X), σ(X). Le jeu est-il équitable ?",
+   "indice": "Un jeu est équitable si E(X)=0.",
+   "correction": "E(X)=−0,6+0+0,6=0 : équitable. E(X²)=4×0,3+9×0,2=3, V(X)=3, σ=√3≈1,73."
+  },
+  {
+   "titre": "Loi binomiale B(10 ; 0,2)",
+   "enonce": "X suit B(10 ; 0,2). Calculer E(X), V(X), P(X=2) et P(X≥1).",
+   "indice": "P(X≥1)=1−P(X=0).",
+   "correction": "E=2 ; V=10×0,2×0,8=1,6 ; P(X=2)=45×0,2²×0,8⁸≈0,302 ; P(X≥1)=1−0,8¹⁰≈0,893."
+  },
+  {
+   "titre": "L'archer",
+   "enonce": "Un archer atteint sa cible avec la probabilité 0,7, indépendamment à chaque tir. Il tire 4 fois. Probabilité d'atteindre la cible exactement 3 fois ? au moins 3 fois ?",
+   "indice": "X suit B(4 ; 0,7).",
+   "correction": "P(X=3)=4×0,7³×0,3=0,4116. P(X≥3)=0,4116+0,7⁴=0,6517."
+  },
+  {
+   "titre": "Au moins un succès",
+   "enonce": "Combien de fois faut-il répéter une épreuve de probabilité de succès 0,1 pour obtenir au moins un succès avec une probabilité d'au moins 0,95 ?",
+   "indice": "1−0,9ⁿ ≥ 0,95, puis logarithme (ln 0,9 < 0).",
+   "correction": "0,9ⁿ ≤ 0,05 ⇔ n ≥ ln0,05/ln0,9 ≈ 28,4. Il faut n=29."
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Pour une variable aléatoire X, la somme des P(X=xᵢ) vaut :",
+   "choix": [
+    "0",
+    "1",
+    "E(X)",
+    "dépend de X"
+   ],
+   "bonne": 1,
+   "explication": "La loi de probabilité est une probabilité : la somme de toutes les valeurs vaut 1."
+  },
+  {
+   "q": "La formule de König donne :",
+   "choix": [
+    "V(X)=E(X²)−[E(X)]²",
+    "V(X)=E(X)²−E(X²)",
+    "V(X)=E(X)",
+    "V(X)=√σ"
+   ],
+   "bonne": 0,
+   "explication": "V(X)=E(X²)−[E(X)]², et σ(X)=√V(X)."
+  },
+  {
+   "q": "Si X suit B(n ; p), alors E(X) vaut :",
+   "choix": [
+    "p",
+    "np",
+    "np(1−p)",
+    "n/p"
+   ],
+   "bonne": 1,
+   "explication": "E(X)=np et V(X)=np(1−p)."
+  },
+  {
+   "q": "X suit B(4 ; 0,5). P(X=2) vaut :",
+   "choix": [
+    "0,25",
+    "0,375",
+    "0,5",
+    "0,125"
+   ],
+   "bonne": 1,
+   "explication": "C(4,2)×0,5²×0,5²=6/16=0,375."
+  },
+  {
+   "q": "La probabilité d'avoir au moins un succès en n épreuves indépendantes de succès p est :",
+   "choix": [
+    "pⁿ",
+    "1−pⁿ",
+    "1−(1−p)ⁿ",
+    "n·p"
+   ],
+   "bonne": 2,
+   "explication": "Le contraire de « au moins un succès » est « aucun succès », de probabilité (1−p)ⁿ."
+  }
+ ]
+}

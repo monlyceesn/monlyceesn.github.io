@@ -1,0 +1,123 @@
+{
+ "n": 11,
+ "titre": "Chapitre 11 — Calcul intégral (2/3) : fonctions définies par une intégrale, aires, volumes",
+ "pdf": "cours/maths-tle-ch11-calcul-integral-2.pdf",
+ "pages": 6,
+ "taille": "0,4 Mo",
+ "note": "Dérivée de ∫ de U(x) à V(x), aires de domaines plans, volumes de solides (cône, révolution).",
+ "lecons": [
+  {
+   "n": 1,
+   "titre": "Fonctions définies par une intégrale",
+   "debut": 1,
+   "fin": 2
+  },
+  {
+   "n": 2,
+   "titre": "Calcul d'aires",
+   "debut": 2,
+   "fin": 4
+  },
+  {
+   "n": 3,
+   "titre": "Calcul de volumes",
+   "debut": 4,
+   "fin": 5
+  },
+  {
+   "n": 4,
+   "titre": "Fiche et exercices",
+   "debut": 5,
+   "fin": 6
+  }
+ ],
+ "exercices": [
+  {
+   "titre": "Dérivée d'une fonction définie par une intégrale",
+   "enonce": "Soit g(x) = ∫<sub>x</sub><sup>2x</sup> dt/√(1+t⁴). Calculer g'(x).",
+   "indice": "G'(x) = V'(x)f(V(x)) − U'(x)f(U(x)).",
+   "correction": "g'(x) = 2/√(1+16x⁴) − 1/√(1+x⁴)."
+  },
+  {
+   "titre": "Aire sous une courbe négative",
+   "enonce": "Calculer l'aire (en cm²) du domaine limité par f(x) = x² − 1, l'axe des abscisses et les droites x = −1 et x = 1.",
+   "indice": "f ≤ 0 sur [−1 ; 1] : l'aire est −∫f.",
+   "correction": "A = −[x³/3 − x]<sub>−1</sub><sup>1</sup> = −(−2/3 − 2/3) = <b>4/3 cm²</b>."
+  },
+  {
+   "titre": "Aire entre deux courbes",
+   "enonce": "Calculer l'aire entre les courbes y = x et y = x² sur [0 ; 1].",
+   "indice": "Sur [0 ; 1], x ≥ x². Fais « courbe du haut moins courbe du bas ».",
+   "correction": "A = ∫<sub>0</sub><sup>1</sup> (x − x²) dx = [x²/2 − x³/3]<sub>0</sub><sup>1</sup> = <b>1/6 u.a.</b>"
+  },
+  {
+   "titre": "Volume de révolution",
+   "enonce": "Calculer le volume engendré par la rotation de f(x) = √x sur [0 ; 4] autour de (Ox) (unité : 1 cm³).",
+   "indice": "V = π ∫ f²(x) dx.",
+   "correction": "V = π∫<sub>0</sub><sup>4</sup> x dx = π[x²/2]<sub>0</sub><sup>4</sup> = <b>8π cm³</b>."
+  },
+  {
+   "titre": "Primitive définie par une intégrale",
+   "enonce": "Soit F(x) = ∫<sub>1</sub><sup>x</sup> (ln t)/t dt sur ]0 ; +∞[. Calculer F'(x) puis F(x).",
+   "indice": "(ln t)/t est de la forme u'u avec u = ln t.",
+   "correction": "F'(x) = (ln x)/x et F(x) = ½ (ln x)²."
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Pour G(x) = ∫<sub>a</sub><sup>x</sup> f(t) dt, G'(x) = …",
+   "choix": [
+    "f(a)",
+    "f(x)",
+    "F(x) − F(a)",
+    "0"
+   ],
+   "bonne": 1,
+   "explication": "G est la primitive de f qui s'annule en a."
+  },
+  {
+   "q": "L'aire sous la courbe d'une fonction positive sur [a ; b] est…",
+   "choix": [
+    "f(b) − f(a)",
+    "∫<sub>a</sub><sup>b</sup> f(x) dx",
+    "(b−a)f(a)",
+    "f'(b)"
+   ],
+   "bonne": 1,
+   "explication": "Définition de l'intégrale comme aire (en unités d'aire)."
+  },
+  {
+   "q": "Si f ≤ 0 sur [a ; b], l'aire du domaine entre la courbe et l'axe vaut…",
+   "choix": [
+    "∫f",
+    "−∫f",
+    "0",
+    "|f(a)|"
+   ],
+   "bonne": 1,
+   "explication": "L'intégrale est négative, l'aire est son opposée."
+  },
+  {
+   "q": "Le volume d'un cône de rayon R et de hauteur h est…",
+   "choix": [
+    "πR²h",
+    "⅓πR²h",
+    "⅔πR²h",
+    "4/3 πR³"
+   ],
+   "bonne": 1,
+   "explication": "V = ⅓ × aire de la base × hauteur."
+  },
+  {
+   "q": "Le volume de révolution autour de (Ox) de y = f(x) sur [a ; b] est…",
+   "choix": [
+    "π∫ f",
+    "π∫ f²",
+    "∫ f²",
+    "2π∫ f"
+   ],
+   "bonne": 1,
+   "explication": "Chaque section est un disque de rayon |f(x)|, d'aire πf²(x)."
+  }
+ ]
+}

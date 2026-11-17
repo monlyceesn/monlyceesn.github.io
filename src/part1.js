@@ -42,9 +42,9 @@ const matieresDe = c => c.matieres.map(id => MATIERES.find(m => m.id === id)).fi
 const CONTENU = {
   "tle-s1": {
     "maths": {
-      cours: __TLE1_COURS_S1__,
-      exercices: __TLE1_EX__,
-      quiz: __TLE1_QUIZ__,
+      cours: [...__TLE1_COURS_S1__, ...__TLE_MORE_COURS__],
+      exercices: [...__TLE1_EX__, ...__TLE_MORE_EX__],
+      quiz: [...__TLE1_QUIZ__, ...__TLE_MORE_QUIZ__],
       conseils: []
     }
   },

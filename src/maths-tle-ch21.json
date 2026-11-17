@@ -1,0 +1,135 @@
+{
+ "n": 21,
+ "titre": "Chapitre 21 — Probabilités (1/2) : probabilité, conditionnelle, arbres, indépendance",
+ "pdf": "cours/maths-tle-ch21-probabilites-conditionnelles.pdf",
+ "pages": 8,
+ "taille": "0,5 Mo",
+ "note": "Cours réécrit à partir de notes de Terminale S1 (2018-2019), complété ; à faire relire par un enseignant.",
+ "lecons": [
+  {
+   "n": 1,
+   "titre": "Vocabulaire des probabilités",
+   "debut": 1,
+   "fin": 2
+  },
+  {
+   "n": 2,
+   "titre": "Probabilité et équiprobabilité",
+   "debut": 2,
+   "fin": 3
+  },
+  {
+   "n": 3,
+   "titre": "Probabilité conditionnelle",
+   "debut": 3,
+   "fin": 4
+  },
+  {
+   "n": 4,
+   "titre": "Probabilités totales, arbres, Bayes",
+   "debut": 4,
+   "fin": 6
+  },
+  {
+   "n": 5,
+   "titre": "Événements indépendants",
+   "debut": 7,
+   "fin": 7
+  },
+  {
+   "n": 6,
+   "titre": "Exercices corrigés",
+   "debut": 7,
+   "fin": 8
+  }
+ ],
+ "exercices": [
+  {
+   "titre": "Probabilité d'une réunion",
+   "enonce": "Dans un jeu de 32 cartes, on tire une carte au hasard. Quelle est la probabilité d'obtenir un as ou un cœur ?",
+   "indice": "Utiliser P(A∪B)=P(A)+P(B)−P(A∩B).",
+   "correction": "P = 4/32 + 8/32 − 1/32 = 11/32."
+  },
+  {
+   "titre": "Indépendance",
+   "enonce": "P(A)=0,4 ; P(B)=0,5 ; P(A∩B)=0,2. A et B sont-ils indépendants ? Calculer P(A∪B) et P(A|B).",
+   "indice": "Comparer P(A∩B) et P(A)×P(B).",
+   "correction": "P(A)P(B)=0,2=P(A∩B) : indépendants. P(A∪B)=0,4+0,5−0,2=0,7. P(A|B)=0,2/0,5=0,4=P(A)."
+  },
+  {
+   "titre": "Tirage sans remise",
+   "enonce": "Une urne contient 4 boules rouges et 6 noires. On tire deux boules successivement sans remise. Calculer la probabilité d'avoir deux rouges, puis une de chaque couleur.",
+   "indice": "Faire un arbre pondéré.",
+   "correction": "Deux rouges : 4/10 × 3/9 = 2/15. Une de chaque couleur : 4/10×6/9 + 6/10×4/9 = 8/15."
+  },
+  {
+   "titre": "Probabilités totales et Bayes",
+   "enonce": "La machine A produit 60 % des pièces avec 2 % de défauts ; la machine B produit 40 % avec 5 % de défauts. Probabilité qu'une pièce soit défectueuse ? Probabilité qu'elle vienne de B sachant qu'elle est défectueuse ?",
+   "indice": "Arbre : machine puis état de la pièce.",
+   "correction": "P(D)=0,6×0,02+0,4×0,05=0,032. P(B|D)=0,02/0,032=5/8=0,625."
+  },
+  {
+   "titre": "Dé truqué",
+   "enonce": "Un dé truqué a des probabilités p<sub>i</sub> proportionnelles au numéro i (i=1,…,6). Calculer p<sub>i</sub> puis la probabilité d'obtenir un nombre pair.",
+   "indice": "p<sub>i</sub>=k·i et Σp<sub>i</sub>=1.",
+   "correction": "k=1/21, p<sub>i</sub>=i/21. P(pair)=(2+4+6)/21=12/21=4/7."
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Si A et B sont incompatibles, P(A∪B) vaut :",
+   "choix": [
+    "P(A)+P(B)",
+    "P(A)×P(B)",
+    "P(A)+P(B)−P(A∩B) avec P(A∩B)≠0",
+    "1−P(A)"
+   ],
+   "bonne": 0,
+   "explication": "Incompatibles : A∩B=∅, donc P(A∩B)=0 et P(A∪B)=P(A)+P(B)."
+  },
+  {
+   "q": "La probabilité conditionnelle P(A|B) est égale à :",
+   "choix": [
+    "P(A∩B)/P(B)",
+    "P(A∩B)/P(A)",
+    "P(A)×P(B)",
+    "P(B)/P(A)"
+   ],
+   "bonne": 0,
+   "explication": "Définition : P(A|B)=P(A∩B)/P(B), avec P(B)≠0."
+  },
+  {
+   "q": "A et B sont indépendants si et seulement si :",
+   "choix": [
+    "A∩B=∅",
+    "P(A∩B)=P(A)P(B)",
+    "P(A∪B)=1",
+    "P(A)=P(B)"
+   ],
+   "bonne": 1,
+   "explication": "L'indépendance se traduit par P(A∩B)=P(A)×P(B). Ne pas confondre avec incompatibles."
+  },
+  {
+   "q": "Dans un arbre pondéré, la probabilité d'un chemin est :",
+   "choix": [
+    "la somme des probabilités des branches",
+    "le produit des probabilités des branches",
+    "la plus grande probabilité des branches",
+    "la moyenne des branches"
+   ],
+   "bonne": 1,
+   "explication": "On multiplie les probabilités le long du chemin."
+  },
+  {
+   "q": "On tire une carte dans un jeu de 32 cartes. P(roi ou trèfle) vaut :",
+   "choix": [
+    "12/32",
+    "11/32",
+    "4/32",
+    "1/2"
+   ],
+   "bonne": 1,
+   "explication": "4/32 + 8/32 − 1/32 = 11/32 (le roi de trèfle est compté deux fois)."
+  }
+ ]
+}

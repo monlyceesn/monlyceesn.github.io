@@ -1,0 +1,129 @@
+{
+ "n": 25,
+ "titre": "Chapitre 25 — Transformations de l'espace : translations, homothéties, réflexions, rotations",
+ "pdf": "cours/maths-tle-ch25-transformations-espace.pdf",
+ "pages": 6,
+ "taille": "0,4 Mo",
+ "note": "Cours réécrit à partir de notes de Terminale S1 (2019), complété ; à faire relire par un enseignant.",
+ "lecons": [
+  {
+   "n": 1,
+   "titre": "Translations et homothéties",
+   "debut": 1,
+   "fin": 2
+  },
+  {
+   "n": 2,
+   "titre": "Réflexion et rotation",
+   "debut": 2,
+   "fin": 3
+  },
+  {
+   "n": 3,
+   "titre": "Demi-tour",
+   "debut": 3,
+   "fin": 3
+  },
+  {
+   "n": 4,
+   "titre": "Composition de transformations",
+   "debut": 3,
+   "fin": 5
+  },
+  {
+   "n": 5,
+   "titre": "Exercices corrigés",
+   "debut": 5,
+   "fin": 5
+  }
+ ],
+ "exercices": [
+  {
+   "titre": "Translation",
+   "enonce": "u(1,2,3) et M(2,0,−1). Donner l'image de M par t_u, puis l'antécédent de N(0,0,0).",
+   "indice": "MM'=u ; la réciproque est t_{−u}.",
+   "correction": "M'=(3 ; 2 ; 2). L'antécédent de N est t_{−u}(N)=(−1 ; −2 ; −3)."
+  },
+  {
+   "titre": "Homothétie",
+   "enonce": "Image de M(2,1,3) par l'homothétie de centre Ω(1,0,2) et de rapport −2. Un segment AB de longueur 4 a pour image A'B' : quelle longueur ?",
+   "indice": "ΩM'=kΩM ; les distances sont multipliées par |k|.",
+   "correction": "ΩM=(1,1,1) donc ΩM'=(−2,−2,−2) et M'(−1 ; −2 ; 0). A'B'=|−2|×4=8."
+  },
+  {
+   "titre": "Réflexion",
+   "enonce": "Image de O par la réflexion de plan x+y+z−3=0. Quels sont les points invariants ?",
+   "indice": "Le projeté H est le milieu de [OO'].",
+   "correction": "H(1,1,1) donc S(O)=(2,2,2). Les points invariants sont ceux du plan."
+  },
+  {
+   "titre": "Rotation et demi-tour",
+   "enonce": "r est la rotation d'axe (Oz) (orienté par k) d'angle π/2. Image de M(2,3,5), puis image de r(M) par r. Que représente r∘r ?",
+   "indice": "(x,y,z)→(−y, x, z) pour π/2.",
+   "correction": "r(M)=(−3 ; 2 ; 5) ; r(r(M))=(−2 ; −3 ; 5). r∘r est la rotation d'angle π : le demi-tour d'axe (Oz)."
+  },
+  {
+   "titre": "Réflexions de plans parallèles",
+   "enonce": "(P₁) : z=0 et (P₂) : z=3. Décrire S_{P₂}∘S_{P₁} et donner l'image de M(1,2,5).",
+   "indice": "Deux plans parallèles : translation de vecteur 2·H₁H₂.",
+   "correction": "Translation de vecteur (0,0,6) ; M↦(1 ; 2 ; 11)."
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Une homothétie de rapport k multiplie les distances par :",
+   "choix": [
+    "k",
+    "|k|",
+    "1/k",
+    "k²"
+   ],
+   "bonne": 1,
+   "explication": "M'N'=|k|·MN."
+  },
+  {
+   "q": "La composée de deux réflexions de plans parallèles est :",
+   "choix": [
+    "une rotation",
+    "une translation",
+    "une homothétie",
+    "l'identité"
+   ],
+   "bonne": 1,
+   "explication": "Translation de vecteur 2H₁H₂ (perpendiculaire aux plans)."
+  },
+  {
+   "q": "La composée de deux réflexions de plans sécants suivant (Δ) est :",
+   "choix": [
+    "une translation",
+    "une rotation d'axe (Δ)",
+    "un demi-tour d'axe quelconque",
+    "une homothétie"
+   ],
+   "bonne": 1,
+   "explication": "Rotation d'axe (Δ) et d'angle le double de l'angle des plans."
+  },
+  {
+   "q": "Un demi-tour est une rotation d'angle :",
+   "choix": [
+    "π/2",
+    "π",
+    "2π",
+    "π/4"
+   ],
+   "bonne": 1,
+   "explication": "Le demi-tour d'axe (Δ) est la rotation d'axe (Δ) et d'angle π."
+  },
+  {
+   "q": "Le seul ensemble de points invariants d'une réflexion de plan (P) est :",
+   "choix": [
+    "un point",
+    "une droite",
+    "le plan (P)",
+    "tout l'espace"
+   ],
+   "bonne": 2,
+   "explication": "S_P(M)=M ⇔ M∈(P)."
+  }
+ ]
+}

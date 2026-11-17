@@ -1,0 +1,123 @@
+{
+ "n": 15,
+ "titre": "Chapitre 15 — Les coniques (1/2) : la parabole",
+ "pdf": "cours/maths-tle-ch15-coniques-parabole.pdf",
+ "pages": 6,
+ "taille": "0,3 Mo",
+ "note": "Conique par foyer, directrice et excentricité ; parabole : équation réduite, tangente, éléments.",
+ "lecons": [
+  {
+   "n": 1,
+   "titre": "Définition générale d'une conique",
+   "debut": 1,
+   "fin": 1
+  },
+  {
+   "n": 2,
+   "titre": "La parabole : définition et équation réduite",
+   "debut": 1,
+   "fin": 3
+  },
+  {
+   "n": 3,
+   "titre": "Tangente et propriété géométrique",
+   "debut": 4,
+   "fin": 4
+  },
+  {
+   "n": 4,
+   "titre": "Éléments d'une parabole, fiche et exercices",
+   "debut": 5,
+   "fin": 6
+  }
+ ],
+ "exercices": [
+  {
+   "titre": "Équation d'une parabole",
+   "enonce": "Foyer F(3/2 ; 0) et directrice x = −3/2. Donner l'équation de la parabole.",
+   "indice": "p = distance entre le foyer et la directrice ; le sommet est le milieu.",
+   "correction": "p = 3 et le sommet est O : <b>y² = 6x</b>."
+  },
+  {
+   "titre": "Foyer, directrice et tangente",
+   "enonce": "Éléments de la parabole x² = 8y ; tangente au point (4 ; 2).",
+   "indice": "2p = 8. Tangente : x·x₀ = p(y + y₀).",
+   "correction": "p = 4, foyer F(0 ; 2), directrice y = −2. Tangente en (4 ; 2) : 4x = 4(y + 2), soit <b>y = x − 2</b>."
+  },
+  {
+   "titre": "Parabole ouverte vers le bas",
+   "enonce": "Parabole de sommet O, d'axe (Oy), de foyer F(0 ; −1) : donner son équation.",
+   "indice": "Le foyer a pour ordonnée p/2.",
+   "correction": "p/2 = −1 donc p = −2 : <b>x² = −4y</b>."
+  },
+  {
+   "titre": "Sommet décalé",
+   "enonce": "(y − 1)² = 4(x + 2) : donner sommet, foyer et directrice.",
+   "indice": "2p = 4 donc p = 2.",
+   "correction": "Sommet S(−2 ; 1), foyer F(−1 ; 1), directrice <b>x = −3</b>."
+  },
+  {
+   "titre": "Reconnaître une parabole",
+   "enonce": "Montrer que y² − 4x + 2y + 9 = 0 est une parabole et donner ses éléments.",
+   "indice": "Mets y² + 2y sous forme canonique.",
+   "correction": "(y + 1)² = 4(x − 2) : sommet S(2 ; −1), p = 2, foyer F(3 ; −1), directrice x = 1."
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Une parabole est l'ensemble des points M tels que…",
+   "choix": [
+    "MF = e·MH avec e > 1",
+    "MF = MH",
+    "MF + MF′ = 2a",
+    "|MF − MF′| = 2a"
+   ],
+   "bonne": 1,
+   "explication": "Excentricité e = 1 : M est équidistant du foyer et de la directrice."
+  },
+  {
+   "q": "La parabole y² = 2px a pour foyer…",
+   "choix": [
+    "(p ; 0)",
+    "(p/2 ; 0)",
+    "(0 ; p/2)",
+    "(−p/2 ; 0)"
+   ],
+   "bonne": 1,
+   "explication": "Foyer (p/2 ; 0) et directrice x = −p/2."
+  },
+  {
+   "q": "La tangente à y² = 2px en M₀(x₀ ; y₀) a pour équation…",
+   "choix": [
+    "yy₀ = p(x + x₀)",
+    "yy₀ = 2p(x − x₀)",
+    "xx₀ = p(y + y₀)",
+    "y = px₀"
+   ],
+   "bonne": 0,
+   "explication": "On dérive 2yy′ = 2p, puis on utilise y₀² = 2px₀."
+  },
+  {
+   "q": "La tangente en M₀ est…",
+   "choix": [
+    "la médiatrice de [FH]",
+    "la parallèle à la directrice",
+    "la perpendiculaire à (FM₀)",
+    "l'axe focal"
+   ],
+   "bonne": 0,
+   "explication": "M₀F = M₀H, donc M₀ est sur la médiatrice de [FH], et c'est la tangente."
+  },
+  {
+   "q": "x² = −4y est une parabole…",
+   "choix": [
+    "ouverte vers le haut",
+    "ouverte vers le bas",
+    "ouverte vers la droite",
+    "ouverte vers la gauche"
+   ],
+   "bonne": 1,
+   "explication": "p = −2 < 0 : la parabole s'ouvre vers le bas."
+  }
+ ]
+}

@@ -1,0 +1,129 @@
+{
+ "n": 20,
+ "titre": "Chapitre 20 — Arithmétique (3/3) : Bézout, Gauss, Fermat, numération",
+ "pdf": "cours/maths-tle-ch20-arithmetique-bezout-gauss-fermat.pdf",
+ "pages": 6,
+ "taille": "0,5 Mo",
+ "note": "Théorèmes de Bézout et de Gauss, équations diophantiennes, petit théorème de Fermat, systèmes de numération.",
+ "lecons": [
+  {
+   "n": 1,
+   "titre": "Théorème de Bézout",
+   "debut": 1,
+   "fin": 2
+  },
+  {
+   "n": 2,
+   "titre": "Théorème de Gauss",
+   "debut": 2,
+   "fin": 2
+  },
+  {
+   "n": 3,
+   "titre": "Équations diophantiennes",
+   "debut": 3,
+   "fin": 3
+  },
+  {
+   "n": 4,
+   "titre": "Petit théorème de Fermat",
+   "debut": 3,
+   "fin": 4
+  },
+  {
+   "n": 5,
+   "titre": "Systèmes de numération, fiche et exercices",
+   "debut": 4,
+   "fin": 6
+  }
+ ],
+ "exercices": [
+  {
+   "titre": "Identité de Bézout",
+   "enonce": "Trouver u et v entiers relatifs tels que 17u + 12v = 1.",
+   "indice": "Algorithme d'Euclide puis remontée.",
+   "correction": "17 = 12 + 5 ; 12 = 2×5 + 2 ; 5 = 2×2 + 1. Alors 1 = 5 − 2×2 = 5×5 − 2×12 = 5×17 − 7×12 : <b>(u ; v) = (5 ; −7)</b>."
+  },
+  {
+   "titre": "Équation diophantienne",
+   "enonce": "Résoudre 7x − 11y = 3 dans ℤ².",
+   "indice": "(13 ; 8) est une solution particulière.",
+   "correction": "7(x − 13) = 11(y − 8) et Gauss : <b>x = 13 + 11k, y = 8 + 7k</b>, k ∈ ℤ."
+  },
+  {
+   "titre": "Utiliser Gauss",
+   "enonce": "Montrer que si 11 divise 7x alors 11 divise x.",
+   "indice": "11 et 7 sont premiers entre eux.",
+   "correction": "11 est premier avec 7, donc par Gauss 11 | 7x ⇒ 11 | x."
+  },
+  {
+   "titre": "Petit théorème de Fermat",
+   "enonce": "Reste de 2¹⁰⁰ par 11 et de 3¹⁰⁰ par 7.",
+   "indice": "2¹⁰ ≡ 1 [11] et 3⁶ ≡ 1 [7].",
+   "correction": "2¹⁰⁰ = (2¹⁰)¹⁰ ≡ 1 [11] : reste 1. 100 = 6×16 + 4 donc 3¹⁰⁰ ≡ 3⁴ = 81 ≡ 4 [7] : reste 4."
+  },
+  {
+   "titre": "Changement de base",
+   "enonce": "Écrire 156 en base 2.",
+   "indice": "Divisions successives par 2.",
+   "correction": "156 = <b>10011100</b> en base 2 (128 + 16 + 8 + 4 = 156)."
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Si a et b sont premiers entre eux, il existe u, v entiers tels que…",
+   "choix": [
+    "au + bv = 1",
+    "au + bv = ab",
+    "au = bv",
+    "a + b = 1"
+   ],
+   "bonne": 0,
+   "explication": "C'est le théorème de Bézout."
+  },
+  {
+   "q": "Théorème de Gauss : si a | bc et PGCD(a, b) = 1, alors…",
+   "choix": [
+    "a | b",
+    "a | c",
+    "a = c",
+    "b | c"
+   ],
+   "bonne": 1,
+   "explication": "a est premier avec b, donc il divise c."
+  },
+  {
+   "q": "L'équation 4x + 6y = 1 a-t-elle des solutions entières ?",
+   "choix": [
+    "oui",
+    "non, car PGCD(4, 6) = 2 ne divise pas 1",
+    "oui, une seule",
+    "oui, une infinité"
+   ],
+   "bonne": 1,
+   "explication": "Une solution existe si et seulement si PGCD(a, b) divise c."
+  },
+  {
+   "q": "Si p est premier et ne divise pas a, alors…",
+   "choix": [
+    "a^p ≡ 0 [p]",
+    "a^(p−1) ≡ 1 [p]",
+    "a ≡ 1 [p]",
+    "a^2 ≡ 1 [p]"
+   ],
+   "bonne": 1,
+   "explication": "Petit théorème de Fermat."
+  },
+  {
+   "q": "En base 2, 1001 vaut en base 10…",
+   "choix": [
+    "5",
+    "7",
+    "9",
+    "11"
+   ],
+   "bonne": 2,
+   "explication": "1×8 + 0×4 + 0×2 + 1 = 9."
+  }
+ ]
+}

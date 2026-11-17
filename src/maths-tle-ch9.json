@@ -1,0 +1,117 @@
+{
+ "n": 9,
+ "titre": "Chapitre 9 — Similitudes directes",
+ "pdf": "cours/maths-tle-ch9-similitudes-directes.pdf",
+ "pages": 5,
+ "taille": "0,3 Mo",
+ "note": "Translation, homothétie, rotation, similitude directe z' = az + b, éléments caractéristiques et propriétés.",
+ "lecons": [
+  {
+   "n": 1,
+   "titre": "Translation, homothétie, rotation",
+   "debut": 1,
+   "fin": 2
+  },
+  {
+   "n": 2,
+   "titre": "Similitudes directes : écriture complexe et éléments",
+   "debut": 2,
+   "fin": 3
+  },
+  {
+   "n": 3,
+   "titre": "Propriétés, fiche et exercices",
+   "debut": 3,
+   "fin": 5
+  }
+ ],
+ "exercices": [
+  {
+   "titre": "Éléments d'une similitude",
+   "enonce": "Donner la nature et les éléments caractéristiques de f : z' = (1 + i√3)z + 2.",
+   "indice": "a = 1 + i√3 ; rapport |a|, angle arg a, centre b/(1 − a).",
+   "correction": "a = 2e<sup>iπ/3</sup> : similitude directe de rapport 2 et d'angle π/3. Centre ω = 2/(1−a) = 2/(−i√3) = 2i√3/3."
+  },
+  {
+   "titre": "Translation ou similitude de centre O",
+   "enonce": "Donner la nature de g : z' = z + 2 + 3i et de h : z' = −5iz.",
+   "indice": "Regarde le coefficient de z.",
+   "correction": "g : coefficient 1 → translation de vecteur d'affixe 2 + 3i. h : a = −5i, |a| = 5, arg a = −π/2, centre 0 : similitude de centre O, rapport 5, angle −π/2."
+  },
+  {
+   "titre": "Similitude connaissant deux images",
+   "enonce": "Déterminer la similitude directe S telle que S(0) = 1 et S(1) = 2 + i, puis ses éléments.",
+   "indice": "S(0) = b. Puis S(1) = a + b.",
+   "correction": "b = 1, a + 1 = 2 + i donc a = 1 + i. S : z' = (1+i)z + 1. Rapport √2, angle π/4, centre ω = 1/(−i) = i."
+  },
+  {
+   "titre": "Expression analytique",
+   "enonce": "Écrire l'expression complexe puis analytique de la similitude de centre C(i), de rapport 2 et d'angle π/4.",
+   "indice": "z' = i + 2e<sup>iπ/4</sup>(z − i). Puis pose z = x + iy.",
+   "correction": "z' = i + √2(1+i)(z − i). Avec z = x + iy : x' = √2(x − y + 1) et y' = 1 + √2(x + y − 1)."
+  },
+  {
+   "titre": "Suite géométrique complexe",
+   "enonce": "z₀ = i et z<sub>n+1</sub> = (1+i)z<sub>n</sub> + 2i. On pose u<sub>n</sub> = z<sub>n</sub> + 2. Montrer que (u<sub>n</sub>) est géométrique et exprimer z<sub>n</sub>.",
+   "indice": "Calcule u<sub>n+1</sub> et factorise par (1+i).",
+   "correction": "u<sub>n+1</sub> = (1+i)z<sub>n</sub> + 2i + 2 = (1+i)(z<sub>n</sub> + 2) = (1+i)u<sub>n</sub>. u₀ = 2 + i, donc u<sub>n</sub> = (2+i)(1+i)<sup>n</sup> et <b>z<sub>n</sub> = (2+i)(1+i)<sup>n</sup> − 2</b>."
+  }
+ ],
+ "quiz": [
+  {
+   "q": "z' = z + 3 − 2i est…",
+   "choix": [
+    "une rotation",
+    "une homothétie",
+    "une translation",
+    "une symétrie"
+   ],
+   "bonne": 2,
+   "explication": "Coefficient 1 devant z : translation de vecteur d'affixe 3 − 2i."
+  },
+  {
+   "q": "Pour z' = az + b, le rapport de la similitude est…",
+   "choix": [
+    "arg a",
+    "|a|",
+    "b",
+    "|b|"
+   ],
+   "bonne": 1,
+   "explication": "k = |a| et θ = arg a."
+  },
+  {
+   "q": "Le centre de z' = az + b (a ≠ 1) est…",
+   "choix": [
+    "b/(1 − a)",
+    "b/a",
+    "−b",
+    "a/b"
+   ],
+   "bonne": 0,
+   "explication": "C'est le point fixe : ω = aω + b."
+  },
+  {
+   "q": "Une similitude de rapport 3 multiplie les aires par…",
+   "choix": [
+    "3",
+    "6",
+    "9",
+    "27"
+   ],
+   "bonne": 2,
+   "explication": "Les aires sont multipliées par k²."
+  },
+  {
+   "q": "z' = iz est une…",
+   "choix": [
+    "translation",
+    "rotation de centre O et d'angle π/2",
+    "homothétie",
+    "symétrie axiale"
+   ],
+   "bonne": 1,
+   "explication": "a = i : |a| = 1 et arg a = π/2, centre 0."
+  }
+ ]
+}

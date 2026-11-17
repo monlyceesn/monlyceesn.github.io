@@ -1,0 +1,123 @@
+{
+ "n": 19,
+ "titre": "Chapitre 19 — Arithmétique (2/3) : congruences, nombres premiers, PPCM",
+ "pdf": "cours/maths-tle-ch19-arithmetique-congruences-premiers.pdf",
+ "pages": 5,
+ "taille": "0,5 Mo",
+ "note": "Entiers premiers entre eux, congruences, nombres premiers, décomposition en facteurs premiers, PPCM.",
+ "lecons": [
+  {
+   "n": 1,
+   "titre": "Nombres premiers entre eux",
+   "debut": 1,
+   "fin": 1
+  },
+  {
+   "n": 2,
+   "titre": "Congruences dans ℤ",
+   "debut": 2,
+   "fin": 3
+  },
+  {
+   "n": 3,
+   "titre": "Nombres premiers et décomposition",
+   "debut": 3,
+   "fin": 4
+  },
+  {
+   "n": 4,
+   "titre": "PPCM et relation PGCD × PPCM",
+   "debut": 4,
+   "fin": 5
+  }
+ ],
+ "exercices": [
+  {
+   "titre": "Reste modulo 7",
+   "enonce": "Reste de la division de 50¹⁰⁰ par 7.",
+   "indice": "50 = 49 + 1.",
+   "correction": "50 ≡ 1 [7], donc 50¹⁰⁰ ≡ 1 [7] : le reste est <b>1</b>."
+  },
+  {
+   "titre": "Nombre premier ?",
+   "enonce": "Le nombre 367 est-il premier ?",
+   "indice": "√367 ≈ 19,2 : teste les nombres premiers jusqu'à 19.",
+   "correction": "Aucun des nombres 2, 3, 5, 7, 11, 13, 17, 19 ne divise 367 : <b>367 est premier</b>."
+  },
+  {
+   "titre": "Décomposition et diviseurs",
+   "enonce": "Décomposer 540 en facteurs premiers. Combien a-t-il de diviseurs ?",
+   "indice": "Nombre de diviseurs = produit des (exposants + 1).",
+   "correction": "540 = 2² × 3³ × 5, donc 3 × 4 × 2 = <b>24 diviseurs</b>."
+  },
+  {
+   "titre": "PPCM et PGCD",
+   "enonce": "Calculer PPCM(12, 18) et vérifier avec le PGCD.",
+   "indice": "Décompose en facteurs premiers.",
+   "correction": "12 = 2²×3 et 18 = 2×3² : PPCM = 36, PGCD = 6, et 6 × 36 = 216 = 12 × 18 ✓."
+  },
+  {
+   "titre": "Divisibilité par congruence",
+   "enonce": "Montrer que 4ⁿ + 5 est divisible par 3 pour tout entier naturel n.",
+   "indice": "4 ≡ 1 [3].",
+   "correction": "4ⁿ ≡ 1 [3] donc 4ⁿ + 5 ≡ 6 ≡ 0 [3]."
+  }
+ ],
+ "quiz": [
+  {
+   "q": "a ≡ b [n] équivaut à…",
+   "choix": [
+    "n divise a + b",
+    "n divise a − b",
+    "a divise n",
+    "a = b"
+   ],
+   "bonne": 1,
+   "explication": "Même reste dans la division par n ⇔ n divise a − b."
+  },
+  {
+   "q": "Quel est le reste de 100¹⁰⁰ + 50¹⁰⁰ dans la division par 7 ?",
+   "choix": [
+    "1",
+    "2",
+    "3",
+    "0"
+   ],
+   "bonne": 2,
+   "explication": "50¹⁰⁰ ≡ 1 et 100¹⁰⁰ ≡ 2 [7], la somme est ≡ 3."
+  },
+  {
+   "q": "Le nombre 1 est…",
+   "choix": [
+    "premier",
+    "non premier",
+    "pair premier",
+    "le plus petit nombre premier"
+   ],
+   "bonne": 1,
+   "explication": "Il n'a qu'un seul diviseur positif, donc il n'est pas premier."
+  },
+  {
+   "q": "Pour a, b non nuls, PGCD(a, b) × PPCM(a, b) = …",
+   "choix": [
+    "a + b",
+    "a × b",
+    "a − b",
+    "1"
+   ],
+   "bonne": 1,
+   "explication": "Le produit du PGCD et du PPCM vaut le produit des deux nombres."
+  },
+  {
+   "q": "Si a et b sont premiers entre eux, PPCM(a, b) = …",
+   "choix": [
+    "1",
+    "a + b",
+    "ab",
+    "a"
+   ],
+   "bonne": 2,
+   "explication": "PGCD = 1 donc PPCM = ab."
+  }
+ ]
+}

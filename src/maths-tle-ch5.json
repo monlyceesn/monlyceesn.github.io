@@ -1,0 +1,123 @@
+{
+ "n": 5,
+ "titre": "Chapitre 5 — Fonctions hyperboliques (sh, ch, th et réciproques)",
+ "pdf": "cours/maths-tle-ch5-fonctions-hyperboliques.pdf",
+ "pages": 5,
+ "taille": "0,2 Mo",
+ "note": "sh, ch, th, Argsh, Argch, Argth : définitions, variations, expressions avec ln, primitives.",
+ "lecons": [
+  {
+   "n": 1,
+   "titre": "Sinus et cosinus hyperboliques",
+   "debut": 1,
+   "fin": 2
+  },
+  {
+   "n": 2,
+   "titre": "Tangente hyperbolique",
+   "debut": 2,
+   "fin": 2
+  },
+  {
+   "n": 3,
+   "titre": "Fonctions réciproques",
+   "debut": 3,
+   "fin": 4
+  },
+  {
+   "n": 4,
+   "titre": "Fiche et exercices",
+   "debut": 5,
+   "fin": 5
+  }
+ ],
+ "exercices": [
+  {
+   "titre": "Formules de duplication",
+   "enonce": "Montrer que sh(2x) = 2 sh x ch x et ch(2x) = 2 ch²x − 1.",
+   "indice": "Remplace sh et ch par leur expression avec e<sup>x</sup> et e<sup>−x</sup>.",
+   "correction": "2 sh x ch x = 2 · (e<sup>x</sup>−e<sup>−x</sup>)/2 · (e<sup>x</sup>+e<sup>−x</sup>)/2 = (e<sup>2x</sup>−e<sup>−2x</sup>)/2 = sh 2x. 2ch²x − 1 = (e<sup>2x</sup>+2+e<sup>−2x</sup>)/2 − 1 = (e<sup>2x</sup>+e<sup>−2x</sup>)/2 = ch 2x."
+  },
+  {
+   "titre": "Résoudre sh x = 3/4",
+   "enonce": "Résoudre sh x = 3/4.",
+   "indice": "x = Argsh(3/4) = ln(3/4 + √(9/16 + 1)).",
+   "correction": "x = ln(3/4 + 5/4) = <b>ln 2</b>."
+  },
+  {
+   "titre": "Dérivée de Argsh(2x)",
+   "enonce": "Calculer la dérivée de f(x) = Argsh(2x).",
+   "indice": "(Argsh u)' = u'/√(u²+1).",
+   "correction": "f'(x) = 2/√(4x²+1)."
+  },
+  {
+   "titre": "Primitive de 1/√(x²+4)",
+   "enonce": "Trouver une primitive de g(x) = 1/√(x²+4).",
+   "indice": "Écris x²+4 = 4((x/2)²+1) pour te ramener à Argsh.",
+   "correction": "G(x) = Argsh(x/2) = ln(x/2 + √(x²/4 + 1))."
+  },
+  {
+   "titre": "Résoudre th x = 1/2",
+   "enonce": "Résoudre th x = 1/2.",
+   "indice": "x = Argth(1/2) = ½ ln((1+1/2)/(1−1/2)).",
+   "correction": "x = ½ ln 3."
+  }
+ ],
+ "quiz": [
+  {
+   "q": "ch²x − sh²x = …",
+   "choix": [
+    "0",
+    "1",
+    "−1",
+    "ch 2x"
+   ],
+   "bonne": 1,
+   "explication": "(ch x − sh x)(ch x + sh x) = e<sup>−x</sup>·e<sup>x</sup> = 1."
+  },
+  {
+   "q": "La dérivée de sh est…",
+   "choix": [
+    "ch",
+    "−ch",
+    "sh",
+    "th"
+   ],
+   "bonne": 0,
+   "explication": "sh' = ch et ch' = sh (sans signe moins, contrairement à sin et cos)."
+  },
+  {
+   "q": "ch x est toujours…",
+   "choix": [
+    "négatif",
+    "≤ 0",
+    "≥ 1",
+    "entre −1 et 1"
+   ],
+   "bonne": 2,
+   "explication": "ch a un minimum égal à 1 en 0."
+  },
+  {
+   "q": "Les asymptotes de th sont…",
+   "choix": [
+    "y = 0",
+    "y = ±1",
+    "x = ±1",
+    "y = ±π/2"
+   ],
+   "bonne": 1,
+   "explication": "th → ±1 en ±∞."
+  },
+  {
+   "q": "Argsh x = …",
+   "choix": [
+    "ln(x + √(x²+1))",
+    "ln(x + √(x²−1))",
+    "½ ln((1+x)/(1−x))",
+    "ln x"
+   ],
+   "bonne": 0,
+   "explication": "Obtenu en résolvant t² − 2xt − 1 = 0 avec t = e<sup>y</sup> &gt; 0."
+  }
+ ]
+}

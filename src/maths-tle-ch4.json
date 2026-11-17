@@ -1,0 +1,128 @@
+{
+ "n": 4,
+ "titre": "Chapitre 4 — Exponentielle et fonctions puissances",
+ "pdf": "cours/maths-tle-ch4-exponentielle-puissances.pdf",
+ "pages": 5,
+ "taille": "0,3 Mo",
+ "note": "Exponentielle, exponentielle de base a, fonctions puissances, croissances comparées.",
+ "lecons": [
+  {
+   "n": 1,
+   "titre": "La fonction exponentielle",
+   "debut": 1,
+   "fin": 3
+  },
+  {
+   "n": 2,
+   "titre": "Exponentielle de base a, puissances",
+   "debut": 3,
+   "fin": 4
+  },
+  {
+   "n": 3,
+   "titre": "Fiche et exercices",
+   "debut": 4,
+   "fin": 5
+  }
+ ],
+ "exercices": [
+  {
+   "titre": "Équation avec exponentielles",
+   "enonce": "Résoudre e<sup>2x</sup> − 3e<sup>x</sup> + 2 = 0.",
+   "indice": "Pose X = e<sup>x</sup> (X &gt; 0) pour obtenir une équation du second degré.",
+   "correction": "X² − 3X + 2 = 0 ⟺ (X−1)(X−2) = 0 : X = 1 ou X = 2, donc <b>x = 0 ou x = ln 2</b>."
+  },
+  {
+   "titre": "Dérivées avec exponentielles",
+   "enonce": "Dériver f(x) = e<sup>x²−3x</sup>, g(x) = x e<sup>−x</sup> et h(x) = e<sup>x</sup>/(1+e<sup>x</sup>).",
+   "indice": "(e<sup>u</sup>)' = u' e<sup>u</sup> ; produit puis quotient.",
+   "correction": "f'(x) = (2x−3)e<sup>x²−3x</sup> ; g'(x) = (1−x)e<sup>−x</sup> ; h'(x) = e<sup>x</sup>/(1+e<sup>x</sup>)² &gt; 0."
+  },
+  {
+   "titre": "Limites et croissances comparées",
+   "enonce": "Calculer lim<sub>x→+∞</sub>(e<sup>x</sup> − x²) et lim<sub>x→−∞</sub>(x² + x)e<sup>x</sup>.",
+   "indice": "Factorise par x² puis utilise e<sup>x</sup>/x² → +∞. Pour la seconde, x<sup>n</sup>e<sup>x</sup> → 0 en −∞.",
+   "correction": "e<sup>x</sup> − x² = x²(e<sup>x</sup>/x² − 1) → <b>+∞</b>. (x²+x)e<sup>x</sup> → <b>0</b>."
+  },
+  {
+   "titre": "Étude de x e<sup>−x</sup>",
+   "enonce": "Étudier les variations de f(x) = x e<sup>−x</sup> sur ℝ.",
+   "indice": "f'(x) = (1−x)e<sup>−x</sup> : étudie son signe.",
+   "correction": "f croissante sur ]−∞ ; 1], décroissante sur [1 ; +∞[. Maximum f(1) = 1/e ≈ 0,37. f → −∞ en −∞ et f → 0⁺ en +∞."
+  },
+  {
+   "titre": "Limite de (e<sup>3x</sup> − 1)/x",
+   "enonce": "Calculer lim<sub>x→0</sub> (e<sup>3x</sup> − 1)/x.",
+   "indice": "Écris (e<sup>3x</sup> − 1)/x = 3 × (e<sup>3x</sup> − 1)/(3x).",
+   "correction": "On pose X = 3x → 0 : le quotient tend vers 3 × 1 = <b>3</b>."
+  }
+ ],
+ "quiz": [
+  {
+   "q": "e<sup>ln 5</sup> vaut…",
+   "choix": [
+    "5",
+    "ln 5",
+    "e<sup>5</sup>",
+    "1/5"
+   ],
+   "bonne": 0,
+   "explication": "exp et ln sont réciproques : e<sup>ln a</sup> = a pour a &gt; 0."
+  },
+  {
+   "q": "La dérivée de e<sup>2x+1</sup> est…",
+   "choix": [
+    "e<sup>2x+1</sup>",
+    "2e<sup>2x+1</sup>",
+    "(2x+1)e<sup>2x</sup>",
+    "2e<sup>2x</sup>"
+   ],
+   "bonne": 1,
+   "explication": "(e<sup>u</sup>)' = u' e<sup>u</sup> avec u = 2x+1, u' = 2."
+  },
+  {
+   "q": "lim<sub>x→+∞</sub> e<sup>x</sup>/x² = …",
+   "choix": [
+    "0",
+    "1",
+    "+∞",
+    "−∞"
+   ],
+   "bonne": 2,
+   "explication": "Croissances comparées : l'exponentielle l'emporte sur toute puissance."
+  },
+  {
+   "q": "e<sup>x</sup> = e<sup>y</sup> équivaut à…",
+   "choix": [
+    "x = y",
+    "x = e<sup>y</sup>",
+    "x + y = 0",
+    "x = ln y"
+   ],
+   "bonne": 0,
+   "explication": "exp est strictement croissante donc injective."
+  },
+  {
+   "q": "Pour 0 &lt; a &lt; 1, x ↦ a<sup>x</sup> est…",
+   "choix": [
+    "croissante",
+    "décroissante",
+    "constante",
+    "négative"
+   ],
+   "bonne": 1,
+   "explication": "a<sup>x</sup> = e<sup>x ln a</sup> et ln a &lt; 0."
+  },
+  {
+   "q": "x<sup>α</sup> s'écrit…",
+   "choix": [
+    "α ln x",
+    "e<sup>α ln x</sup>",
+    "e<sup>x ln α</sup>",
+    "αx"
+   ],
+   "bonne": 1,
+   "explication": "Définition de la puissance réelle pour x &gt; 0."
+  }
+ ]
+}

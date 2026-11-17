@@ -1,0 +1,123 @@
+{
+ "n": 8,
+ "titre": "Chapitre 8 — Nombres complexes (3/3) : équations dans ℂ, racines n-ièmes",
+ "pdf": "cours/maths-tle-ch8-nombres-complexes-3.pdf",
+ "pages": 5,
+ "taille": "0,4 Mo",
+ "note": "Racines carrées, équations du second degré dans ℂ, racines n-ièmes de l'unité et d'un complexe.",
+ "lecons": [
+  {
+   "n": 1,
+   "titre": "Racines carrées d'un complexe",
+   "debut": 1,
+   "fin": 1
+  },
+  {
+   "n": 2,
+   "titre": "Équations du second degré",
+   "debut": 1,
+   "fin": 3
+  },
+  {
+   "n": 3,
+   "titre": "Racines n-ièmes",
+   "debut": 3,
+   "fin": 4
+  },
+  {
+   "n": 4,
+   "titre": "Fiche et exercices",
+   "debut": 4,
+   "fin": 5
+  }
+ ],
+ "exercices": [
+  {
+   "titre": "Racine carrée d'un complexe",
+   "enonce": "Résoudre dans ℂ : z² = −5 + 12i.",
+   "indice": "Pose z = a + ib : a² − b² = −5, 2ab = 12, a² + b² = |Z| = 13.",
+   "correction": "a² = 4, b² = 9, ab &gt; 0 : <b>S = {2 + 3i ; −2 − 3i}</b>."
+  },
+  {
+   "titre": "Second degré à discriminant négatif",
+   "enonce": "Résoudre z² − 2z + 5 = 0.",
+   "indice": "Δ = −16 = (4i)².",
+   "correction": "z = (2 ± 4i)/2 = <b>1 ± 2i</b>."
+  },
+  {
+   "titre": "Second degré à coefficients complexes",
+   "enonce": "Résoudre z² − (3 + i)z + 2 + 2i = 0.",
+   "indice": "Calcule Δ puis cherche δ tel que δ² = Δ.",
+   "correction": "Δ = 8+6i − 8 − 8i = −2i = (1−i)², δ = 1 − i. <b>z₁ = 2</b> et <b>z₂ = 1 + i</b>."
+  },
+  {
+   "titre": "Racines cubiques de l'unité",
+   "enonce": "Résoudre z³ = 1 et vérifier que la somme des racines est nulle.",
+   "indice": "z<sub>k</sub> = e<sup>2ikπ/3</sup>, k = 0, 1, 2.",
+   "correction": "S = {1 ; j ; j²} avec j = −1/2 + i√3/2. 1 + j + j² = 0."
+  },
+  {
+   "titre": "Racines cubiques de 8i",
+   "enonce": "Résoudre z³ = 8i.",
+   "indice": "8i = 8 e<sup>iπ/2</sup>.",
+   "correction": "z<sub>k</sub> = 2 e<sup>i(π/6 + 2kπ/3)</sup> : <b>√3 + i, −√3 + i, −2i</b>."
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Les solutions de z² = −9 dans ℂ sont…",
+   "choix": [
+    "3 et −3",
+    "3i et −3i",
+    "9i et −9i",
+    "pas de solution"
+   ],
+   "bonne": 1,
+   "explication": "z² = i²·9 donc z = ±3i."
+  },
+  {
+   "q": "Si Δ &lt; 0 (coefficients réels), les deux racines sont…",
+   "choix": [
+    "réelles",
+    "égales",
+    "conjuguées",
+    "imaginaires pures"
+   ],
+   "bonne": 2,
+   "explication": "z = (−b ± i√|Δ|)/2a : deux nombres conjugués."
+  },
+  {
+   "q": "Combien de racines n-ièmes de l'unité y a-t-il ?",
+   "choix": [
+    "1",
+    "2",
+    "n",
+    "n²"
+   ],
+   "bonne": 2,
+   "explication": "z<sub>k</sub> = e<sup>2ikπ/n</sup>, k = 0, …, n−1."
+  },
+  {
+   "q": "La somme des racines n-ièmes de l'unité vaut…",
+   "choix": [
+    "1",
+    "0",
+    "n",
+    "−1"
+   ],
+   "bonne": 1,
+   "explication": "Somme d'une suite géométrique de raison q ≠ 1 avec q<sup>n</sup> = 1."
+  },
+  {
+   "q": "Les racines 4-ièmes de l'unité sont…",
+   "choix": [
+    "1, 2, 3, 4",
+    "1, i, −1, −i",
+    "1, −1",
+    "i, −i"
+   ],
+   "bonne": 1,
+   "explication": "e<sup>2ikπ/4</sup> = i<sup>k</sup>."
+  }
+ ]
+}

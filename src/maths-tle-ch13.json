@@ -1,0 +1,123 @@
+{
+ "n": 13,
+ "titre": "Chapitre 13 — Équations différentielles",
+ "pdf": "cours/maths-tle-ch13-equations-differentielles.pdf",
+ "pages": 6,
+ "taille": "0,4 Mo",
+ "note": "Équations du premier et du second ordre à coefficients constants, conditions initiales.",
+ "lecons": [
+  {
+   "n": 1,
+   "titre": "Définition et vérification d'une solution",
+   "debut": 1,
+   "fin": 1
+  },
+  {
+   "n": 2,
+   "titre": "Premier ordre : ay′ + by = 0 et avec second membre",
+   "debut": 2,
+   "fin": 3
+  },
+  {
+   "n": 3,
+   "titre": "Second ordre homogène : équation caractéristique",
+   "debut": 3,
+   "fin": 4
+  },
+  {
+   "n": 4,
+   "titre": "Second ordre avec second membre, fiche et exercices",
+   "debut": 4,
+   "fin": 6
+  }
+ ],
+ "exercices": [
+  {
+   "titre": "Premier ordre homogène",
+   "enonce": "Résoudre 3y′ + 6y = 0 avec y(0) = 2.",
+   "indice": "Mets l'équation sous la forme y′ = −2y.",
+   "correction": "y = Ce<sup>−2x</sup> et y(0) = C = 2, donc <b>y = 2e<sup>−2x</sup></b>."
+  },
+  {
+   "titre": "Premier ordre avec second membre",
+   "enonce": "Résoudre y′ − 2y = 6 avec y(0) = 1.",
+   "indice": "Cherche une solution particulière constante k.",
+   "correction": "Solution particulière : −2k = 6, k = −3. Solution générale : Ce<sup>2x</sup> − 3. Avec y(0) = C − 3 = 1, C = 4 : <b>y = 4e<sup>2x</sup> − 3</b>."
+  },
+  {
+   "titre": "Second ordre, Δ > 0",
+   "enonce": "Résoudre y″ − 3y′ + 2y = 0 avec f(0) = 1 et f′(0) = 0.",
+   "indice": "Équation caractéristique r² − 3r + 2 = 0.",
+   "correction": "r₁ = 1, r₂ = 2, f = Ae<sup>x</sup> + Be<sup>2x</sup>. A + B = 1 et A + 2B = 0 donnent B = −1, A = 2 : <b>f(x) = 2e<sup>x</sup> − e<sup>2x</sup></b>."
+  },
+  {
+   "titre": "Second ordre, Δ < 0",
+   "enonce": "Résoudre y″ + 2y′ + 5y = 0 avec f(0) = 1 et f′(0) = 1.",
+   "indice": "Δ = −16, les racines sont −1 ± 2i.",
+   "correction": "f = e<sup>−x</sup>(A cos 2x + B sin 2x). f(0) = A = 1 ; f′(0) = −A + 2B = 1 donne B = 1. <b>f(x) = e<sup>−x</sup>(cos 2x + sin 2x)</b>."
+  },
+  {
+   "titre": "Avec second membre",
+   "enonce": "(E) : y″ − 2y′ + y = e<sup>x</sup>. Vérifier que g(x) = ½x²e<sup>x</sup> est solution, puis résoudre (E).",
+   "indice": "Calcule g′ et g″, puis résous l'équation homogène (racine double 1).",
+   "correction": "g″ − 2g′ + g = e<sup>x</sup>, donc g convient. Solutions de l'homogène : (Ax + B)e<sup>x</sup>. Solution générale : <b>y = (½x² + Ax + B)e<sup>x</sup></b>."
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Les solutions de ay′ + by = 0 sont les fonctions…",
+   "choix": [
+    "Ce<sup>bx/a</sup>",
+    "Ce<sup>−bx/a</sup>",
+    "C + e<sup>−bx/a</sup>",
+    "Cx"
+   ],
+   "bonne": 1,
+   "explication": "y′ = −(b/a)y, donc y = Ce<sup>−(b/a)x</sup>."
+  },
+  {
+   "q": "Pour y″ + 9y = 0, la solution générale est…",
+   "choix": [
+    "Ae<sup>3x</sup> + Be<sup>−3x</sup>",
+    "A cos 3x + B sin 3x",
+    "(Ax + B)e<sup>3x</sup>",
+    "A cos 9x + B sin 9x"
+   ],
+   "bonne": 1,
+   "explication": "r² + 9 = 0 donne r = ±3i : α = 0, β = 3."
+  },
+  {
+   "q": "Si Δ = 0, la solution générale de ay″ + by′ + cy = 0 est…",
+   "choix": [
+    "Ae<sup>r₁x</sup> + Be<sup>r₂x</sup>",
+    "(Ax + B)e<sup>r₀x</sup>",
+    "e<sup>r₀x</sup>",
+    "A cos r₀x + B sin r₀x"
+   ],
+   "bonne": 1,
+   "explication": "Pour une racine double r₀, on a (Ax + B)e<sup>r₀x</sup>."
+  },
+  {
+   "q": "La solution générale de l'équation avec second membre est…",
+   "choix": [
+    "une solution particulière seule",
+    "la somme d'une solution particulière et de la solution générale de l'homogène",
+    "le produit des deux",
+    "la solution de l'homogène seule"
+   ],
+   "bonne": 1,
+   "explication": "f est solution de (E) si et seulement si f − g est solution de l'homogène (E′)."
+  },
+  {
+   "q": "La solution de y′ = 3y avec y(0) = 2 est…",
+   "choix": [
+    "2e<sup>3x</sup>",
+    "3e<sup>2x</sup>",
+    "e<sup>3x</sup> + 1",
+    "2e<sup>−3x</sup>"
+   ],
+   "bonne": 0,
+   "explication": "y = Ce<sup>3x</sup> et y(0) = C = 2."
+  }
+ ]
+}

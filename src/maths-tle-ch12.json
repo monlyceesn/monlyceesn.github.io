@@ -1,0 +1,112 @@
+{
+ "n": 12,
+ "titre": "Chapitre 12 — Calcul intégral (3/3) : rectangles, trapèzes, sommes de Riemann, suites d'intégrales",
+ "pdf": "cours/maths-tle-ch12-calcul-integral-3.pdf",
+ "pages": 6,
+ "taille": "0,3 Mo",
+ "note": "Approximation d'une intégrale, sommes de Riemann et limites de suites, suites d'intégrales.",
+ "lecons": [
+  {
+   "n": 1,
+   "titre": "Méthode des rectangles",
+   "debut": 1,
+   "fin": 2
+  },
+  {
+   "n": 2,
+   "titre": "Sommes de Riemann et limites de suites",
+   "debut": 3,
+   "fin": 3
+  },
+  {
+   "n": 3,
+   "titre": "Méthode des trapèzes",
+   "debut": 4,
+   "fin": 4
+  },
+  {
+   "n": 4,
+   "titre": "Suites d'intégrales, fiche et exercices",
+   "debut": 4,
+   "fin": 6
+  }
+ ],
+ "exercices": [
+  {
+   "titre": "Limite par somme de Riemann",
+   "enonce": "Calculer lim<sub>n→+∞</sub> (1/n) Σ<sub>k=1</sub><sup>n</sup> √(k/n).",
+   "indice": "Reconnais une somme de Riemann de f(t) = √t sur [0 ; 1].",
+   "correction": "La limite est ∫<sub>0</sub><sup>1</sup> √t dt = [2t<sup>3/2</sup>/3]<sub>0</sub><sup>1</sup> = <b>2/3</b>."
+  },
+  {
+   "titre": "Somme de Riemann simple",
+   "enonce": "Calculer lim Σ<sub>k=1</sub><sup>n</sup> k/n².",
+   "indice": "Écris Σ k/n² = (1/n) Σ (k/n).",
+   "correction": "(1/n)Σ(k/n) → ∫<sub>0</sub><sup>1</sup> t dt = <b>1/2</b>. Vérification : Σk = n(n+1)/2, donc la somme vaut (n+1)/(2n) → 1/2."
+  },
+  {
+   "titre": "Encadrer π/4",
+   "enonce": "Encadrer ∫<sub>0</sub><sup>1</sup> dt/(1+t²) avec n = 4 (méthode des rectangles).",
+   "indice": "f(t) = 1/(1+t²) est décroissante : S''₄ ≤ ∫ ≤ S'₄.",
+   "correction": "S''₄ = ¼[16/17 + 4/5 + 16/25 + 1/2] ≈ 0,720 et S'₄ = S''₄ + ¼(f(0) − f(1)) ≈ 0,845. Donc <b>0,720 ≤ π/4 ≤ 0,845</b> (π/4 ≈ 0,785)."
+  },
+  {
+   "titre": "Encadrement d'une suite d'intégrales",
+   "enonce": "Montrer que I<sub>n</sub> = ∫<sub>0</sub><sup>1</sup> t<sup>n</sup>/(1+t) dt vérifie 1/(2(n+1)) ≤ I<sub>n</sub> ≤ 1/(n+1).",
+   "indice": "Pour t ∈ [0 ; 1], 1/2 ≤ 1/(1+t) ≤ 1.",
+   "correction": "On multiplie par t<sup>n</sup> ≥ 0 et on intègre : ½ · 1/(n+1) ≤ I<sub>n</sub> ≤ 1/(n+1). Par les gendarmes, I<sub>n</sub> → 0."
+  },
+  {
+   "titre": "Somme harmonique partielle",
+   "enonce": "Calculer lim (1/(n+1) + 1/(n+2) + … + 1/(2n)).",
+   "indice": "Mets 1/n en facteur : Σ 1/(n+k) = (1/n) Σ 1/(1 + k/n).",
+   "correction": "La somme tend vers ∫<sub>0</sub><sup>1</sup> dt/(1+t) = <b>ln 2</b>."
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Si f est croissante sur [a ; b], alors…",
+   "choix": [
+    "S″ₙ ≤ ∫f ≤ S′ₙ",
+    "S′ₙ ≤ ∫f ≤ S″ₙ",
+    "∫f = S′ₙ",
+    "∫f ≥ S″ₙ"
+   ],
+   "bonne": 1,
+   "explication": "Les rectangles de gauche sont sous la courbe, ceux de droite au-dessus."
+  },
+  {
+   "q": "(1/n) Σ<sub>k=1</sub><sup>n</sup> f(k/n) tend vers…",
+   "choix": [
+    "f(1)",
+    "∫<sub>0</sub><sup>1</sup> f(t) dt",
+    "f(0)",
+    "0"
+   ],
+   "bonne": 1,
+   "explication": "C'est une somme de Riemann de f sur [0 ; 1]."
+  },
+  {
+   "q": "La méthode des trapèzes donne en moyenne…",
+   "choix": [
+    "une approximation moins précise que les rectangles",
+    "la moyenne de S′ₙ et S″ₙ",
+    "la valeur exacte",
+    "un majorant"
+   ],
+   "bonne": 1,
+   "explication": "Tₙ = (S′ₙ + S″ₙ)/2, en général plus précis."
+  },
+  {
+   "q": "lim Σ<sub>k=1</sub><sup>n</sup> 1/(n+k) = …",
+   "choix": [
+    "0",
+    "1",
+    "ln 2",
+    "+∞"
+   ],
+   "bonne": 2,
+   "explication": "(1/n)Σ 1/(1+k/n) → ∫<sub>0</sub><sup>1</sup> dt/(1+t) = ln 2."
+  }
+ ]
+}

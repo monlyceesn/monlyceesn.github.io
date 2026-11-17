@@ -1,0 +1,128 @@
+{
+ "n": 2,
+ "titre": "Chapitre 2 — Fonctions circulaires réciproques (Arcsin, Arccos, Arctan)",
+ "pdf": "cours/maths-tle-ch2-fonctions-circulaires-reciproques.pdf",
+ "pages": 6,
+ "taille": "0,3 Mo",
+ "note": "Arcsin, Arccos, Arctan : définitions, valeurs remarquables, dérivées, variations.",
+ "lecons": [
+  {
+   "n": 1,
+   "titre": "Arcsinus",
+   "debut": 1,
+   "fin": 2
+  },
+  {
+   "n": 2,
+   "titre": "Arccosinus",
+   "debut": 3,
+   "fin": 4
+  },
+  {
+   "n": 3,
+   "titre": "Arctangente, fiche et exercices",
+   "debut": 4,
+   "fin": 6
+  }
+ ],
+ "exercices": [
+  {
+   "titre": "Valeurs de Arcsin, Arccos, Arctan",
+   "enonce": "Calculer Arcsin(1/2), Arccos(−1/2), Arctan(√3) et Arcsin(sin(7π/6)).",
+   "indice": "Cherche l'angle dans le bon intervalle : [−π/2 ; π/2] pour Arcsin, [0 ; π] pour Arccos, ]−π/2 ; π/2[ pour Arctan.",
+   "correction": "Arcsin(1/2) = π/6 ; Arccos(−1/2) = 2π/3 ; Arctan(√3) = π/3. sin(7π/6) = −1/2 donc Arcsin(sin 7π/6) = Arcsin(−1/2) = <b>−π/6</b> (et non 7π/6, hors de l'intervalle)."
+  },
+  {
+   "titre": "Sinus d'un Arccos",
+   "enonce": "Calculer sin(Arccos(3/5)).",
+   "indice": "Utilise sin(Arccos x) = √(1 − x²).",
+   "correction": "sin(Arccos 3/5) = √(1 − 9/25) = <b>4/5</b>."
+  },
+  {
+   "titre": "Dérivées avec Arcsin, Arccos, Arctan",
+   "enonce": "Dériver f(x) = Arctan(2x), g(x) = Arcsin(x²), h(x) = Arccos(1 − x).",
+   "indice": "(Arctan u)' = u'/(1+u²) ; (Arcsin u)' = u'/√(1−u²) ; (Arccos u)' = −u'/√(1−u²).",
+   "correction": "f'(x) = 2/(1+4x²) ; g'(x) = 2x/√(1−x⁴) sur ]−1 ; 1[ ; h'(x) = 1/√(2x−x²) sur ]0 ; 2[."
+  },
+  {
+   "titre": "Arctan x + Arctan(1/x)",
+   "enonce": "Montrer que pour tout x &gt; 0 : Arctan x + Arctan(1/x) = π/2.",
+   "indice": "Dérive la somme : elle est constante. Calcule sa valeur en x = 1.",
+   "correction": "f'(x) = 1/(1+x²) − 1/(x²+1) = 0 : f est constante sur ]0 ; +∞[, et f(1) = π/4 + π/4 = <b>π/2</b>."
+  },
+  {
+   "titre": "Résoudre Arcsin x = Arccos x",
+   "enonce": "Résoudre l'équation Arcsin x = Arccos x.",
+   "indice": "Utilise Arcsin x + Arccos x = π/2.",
+   "correction": "2·Arcsin x = π/2, donc Arcsin x = π/4 et <b>x = √2/2</b>."
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Quelle est la valeur de Arcsin(−1) ?",
+   "choix": [
+    "−π/2",
+    "π/2",
+    "−π",
+    "0"
+   ],
+   "bonne": 0,
+   "explication": "sin(−π/2) = −1 et −π/2 ∈ [−π/2 ; π/2]."
+  },
+  {
+   "q": "Arccos(−1/2) vaut…",
+   "choix": [
+    "π/3",
+    "−π/3",
+    "2π/3",
+    "−2π/3"
+   ],
+   "bonne": 2,
+   "explication": "Arccos est à valeurs dans [0 ; π] et cos(2π/3) = −1/2."
+  },
+  {
+   "q": "La dérivée de Arctan est…",
+   "choix": [
+    "1/√(1−x²)",
+    "1/(1+x²)",
+    "−1/(1+x²)",
+    "1+x²"
+   ],
+   "bonne": 1,
+   "explication": "(Arctan)'(x) = 1/(1+tan²y) = 1/(1+x²)."
+  },
+  {
+   "q": "Pour x ∈ [−1 ; 1], Arcsin x + Arccos x = …",
+   "choix": [
+    "0",
+    "π",
+    "π/2",
+    "x"
+   ],
+   "bonne": 2,
+   "explication": "La somme a une dérivée nulle donc elle est constante, égale à sa valeur en 0 : π/2."
+  },
+  {
+   "q": "Quelle fonction est ni paire ni impaire ?",
+   "choix": [
+    "Arcsin",
+    "Arccos",
+    "Arctan",
+    "aucune"
+   ],
+   "bonne": 1,
+   "explication": "Arccos(−x) = π − Arccos x."
+  },
+  {
+   "q": "Les asymptotes de la courbe de Arctan sont…",
+   "choix": [
+    "y = 0",
+    "x = ±π/2",
+    "y = ±π/2",
+    "y = ±1"
+   ],
+   "bonne": 2,
+   "explication": "lim Arctan = ±π/2 en ±∞ : deux asymptotes horizontales."
+  }
+ ]
+}

@@ -1,0 +1,129 @@
+{
+ "n": 14,
+ "titre": "Chapitre 14 — Courbes paramétrées",
+ "pdf": "cours/maths-tle-ch14-courbes-parametrees.pdf",
+ "pages": 7,
+ "taille": "0,3 Mo",
+ "note": "Tangente, symétries, périodicité, tableau de variations ; cycloïde, astroïde, courbe de Lissajous.",
+ "lecons": [
+  {
+   "n": 1,
+   "titre": "Définition, tangente, symétries, périodicité",
+   "debut": 1,
+   "fin": 3
+  },
+  {
+   "n": 2,
+   "titre": "Exemple : la cycloïde",
+   "debut": 3,
+   "fin": 3
+  },
+  {
+   "n": 3,
+   "titre": "Exemple : l'astroïde",
+   "debut": 4,
+   "fin": 5
+  },
+  {
+   "n": 4,
+   "titre": "Asymptotes et courbe de Lissajous",
+   "debut": 5,
+   "fin": 6
+  },
+  {
+   "n": 5,
+   "titre": "Fiche et exercices",
+   "debut": 6,
+   "fin": 7
+  }
+ ],
+ "exercices": [
+  {
+   "titre": "Équation cartésienne et tangente",
+   "enonce": "x(t) = 2cos t, y(t) = 3sin t. Trouver une équation cartésienne et un vecteur tangent en t = π/4.",
+   "indice": "Calcule (x/2)² + (y/3)².",
+   "correction": "(x/2)² + (y/3)² = cos²t + sin²t = 1 : c'est l'ellipse x²/4 + y²/9 = 1. v(t) = (−2 sin t ; 3 cos t), donc <b>v(π/4) = (−√2 ; 3√2/2)</b>."
+  },
+  {
+   "titre": "Tangentes horizontales et verticales",
+   "enonce": "x(t) = t², y(t) = t³ − 3t. Trouver les points à tangente horizontale ou verticale.",
+   "indice": "Étudie x′ = 2t et y′ = 3t² − 3.",
+   "correction": "Horizontale : y′ = 0 ⇔ t = ±1, points (1 ; −2) et (1 ; 2). Verticale : x′ = 0 ⇔ t = 0 avec y′(0) = −3 ≠ 0, point <b>O(0 ; 0)</b>."
+  },
+  {
+   "titre": "Réduire le domaine d'étude",
+   "enonce": "x(t) = sin 2t, y(t) = sin t. Réduire le domaine d'étude.",
+   "indice": "Période, puis t → −t, puis t → π − t.",
+   "correction": "Période 2π : [−π ; π]. t → −t : symétrie par rapport à O, domaine [0 ; π]. t → π − t : x → −x et y → y, symétrie par rapport à (Oy), domaine <b>[0 ; π/2]</b>."
+  },
+  {
+   "titre": "Cycloïde : tangente horizontale",
+   "enonce": "Cycloïde x = t − sin t, y = 1 − cos t. Trouver les points à tangente horizontale sur [0 ; 2π].",
+   "indice": "y′ = sin t. Ne pas oublier de vérifier que x′ ≠ 0.",
+   "correction": "y′ = 0 ⇔ t ∈ {0, π, 2π}. En t = π, x′ = 2 ≠ 0 : tangente horizontale en <b>M(π ; 2)</b>. En t = 0 et 2π, v = 0 : points de rebroussement."
+  },
+  {
+   "titre": "Asymptotes",
+   "enonce": "x(t) = 1/t, y(t) = 1 + t² (t ≠ 0). Déterminer les asymptotes.",
+   "indice": "Regarde les limites quand t → 0 et t → ±∞.",
+   "correction": "t → 0 : x → ±∞ et y → 1, asymptote horizontale <b>y = 1</b>. t → ±∞ : x → 0 et y → +∞, asymptote verticale <b>x = 0</b>."
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Un vecteur directeur de la tangente en M(t₀) est…",
+   "choix": [
+    "(x(t₀) ; y(t₀))",
+    "(x′(t₀) ; y′(t₀))",
+    "(y′(t₀) ; x′(t₀))",
+    "(x″(t₀) ; y″(t₀))"
+   ],
+   "bonne": 1,
+   "explication": "Le vecteur vitesse (x′ ; y′), lorsqu'il est non nul."
+  },
+  {
+   "q": "Si x(−t) = x(t) et y(−t) = −y(t), M(t) et M(−t) sont symétriques par rapport à…",
+   "choix": [
+    "l'axe (Oy)",
+    "l'axe (Ox)",
+    "l'origine O",
+    "la droite y = x"
+   ],
+   "bonne": 1,
+   "explication": "Les abscisses sont égales et les ordonnées opposées : symétrie par rapport à (Ox)."
+  },
+  {
+   "q": "Si x et y sont T-périodiques, on étudie la courbe sur…",
+   "choix": [
+    "un intervalle d'amplitude T",
+    "un intervalle d'amplitude 2T",
+    "[0 ; 1]",
+    "ℝ tout entier"
+   ],
+   "bonne": 0,
+   "explication": "M(t + T) = M(t), donc un intervalle d'amplitude T suffit."
+  },
+  {
+   "q": "La cycloïde est définie par…",
+   "choix": [
+    "x = R(t − sin t), y = R(1 − cos t)",
+    "x = cos³t, y = sin³t",
+    "x = R cos t, y = R sin t",
+    "x = cos 3t, y = sin 2t"
+   ],
+   "bonne": 0,
+   "explication": "C'est la trajectoire d'un point d'un cercle qui roule sans glisser sur une droite."
+  },
+  {
+   "q": "Si v(t₀) = (0 ; 0), le point M(t₀) est…",
+   "choix": [
+    "un point stationnaire",
+    "toujours un point d'inflexion",
+    "un point à tangente horizontale",
+    "hors de la courbe"
+   ],
+   "bonne": 0,
+   "explication": "Le vecteur vitesse s'annule : point stationnaire (souvent un rebroussement)."
+  }
+ ]
+}

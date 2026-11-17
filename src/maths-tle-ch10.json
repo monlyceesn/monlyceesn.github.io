@@ -1,0 +1,140 @@
+{
+ "n": 10,
+ "titre": "Chapitre 10 — Calcul intégral (1/3) : intégrale, propriétés, intégration par parties",
+ "pdf": "cours/maths-tle-ch10-calcul-integral-1.pdf",
+ "pages": 6,
+ "taille": "0,4 Mo",
+ "note": "Intégrale d'une fonction continue, Chasles, linéarité, signe, valeur moyenne, IPP, changement de variable, parité.",
+ "lecons": [
+  {
+   "n": 1,
+   "titre": "Primitives et définition de l'intégrale",
+   "debut": 1,
+   "fin": 2
+  },
+  {
+   "n": 2,
+   "titre": "Propriétés et valeur moyenne",
+   "debut": 2,
+   "fin": 3
+  },
+  {
+   "n": 3,
+   "titre": "Intégration par parties",
+   "debut": 4,
+   "fin": 4
+  },
+  {
+   "n": 4,
+   "titre": "Changement de variable, parité, fiche",
+   "debut": 4,
+   "fin": 6
+  }
+ ],
+ "exercices": [
+  {
+   "titre": "Primitives de la forme u'/u et u'u²",
+   "enonce": "Calculer ∫<sub>0</sub><sup>1</sup> 2t/(t²+1) dt et ∫<sub>0</sub><sup>π/2</sup> sin t cos² t dt.",
+   "indice": "Reconnais u'/u pour la première, −u'u² avec u = cos t pour la seconde.",
+   "correction": "[ln(t²+1)]<sub>0</sub><sup>1</sup> = <b>ln 2</b>. sin t cos²t → −cos³t/3 : [−cos³t/3]<sub>0</sub><sup>π/2</sup> = <b>1/3</b>."
+  },
+  {
+   "titre": "Intégrale d'une valeur absolue",
+   "enonce": "Calculer ∫<sub>−1</sub><sup>1</sup> |2x² + x − 1| dx.",
+   "indice": "Factorise 2x²+x−1 = (2x−1)(x+1), étudie son signe et coupe l'intégrale avec Chasles.",
+   "correction": "Négatif sur [−1 ; 1/2], positif sur [1/2 ; 1]. Avec F(x) = 2x³/3 + x²/2 − x : −[F]<sub>−1</sub><sup>1/2</sup> + [F]<sub>1/2</sub><sup>1</sup> = 27/24 + 11/24 = <b>19/12</b>."
+  },
+  {
+   "titre": "IPP : ∫ t ln t",
+   "enonce": "Calculer I = ∫<sub>1</sub><sup>e</sup> t ln t dt.",
+   "indice": "u' = t, v = ln t.",
+   "correction": "I = [t²/2 · ln t]<sub>1</sub><sup>e</sup> − ∫<sub>1</sub><sup>e</sup> t/2 dt = e²/2 − (e²−1)/4 = <b>(e² + 1)/4</b>."
+  },
+  {
+   "titre": "IPP : ∫ t e<sup>t</sup>",
+   "enonce": "Calculer J = ∫<sub>0</sub><sup>1</sup> t e<sup>t</sup> dt.",
+   "indice": "u' = e<sup>t</sup>, v = t.",
+   "correction": "J = [t e<sup>t</sup>]<sub>0</sub><sup>1</sup> − ∫<sub>0</sub><sup>1</sup> e<sup>t</sup> dt = e − (e − 1) = <b>1</b>."
+  },
+  {
+   "titre": "Changement de variable",
+   "enonce": "Calculer ∫<sub>−1</sub><sup>0</sup> t/√(2t+3) dt avec u = 2t + 3.",
+   "indice": "t = (u−3)/2, dt = du/2, bornes u = 1 et u = 3.",
+   "correction": "I = ∫<sub>1</sub><sup>3</sup> (u−3)/(4√u) du = ¼[2u<sup>3/2</sup>/3 − 6√u]<sub>1</sub><sup>3</sup> = <b>4/3 − √3</b>."
+  },
+  {
+   "titre": "Suite d'intégrales",
+   "enonce": "Pour n ≥ 2, W<sub>n</sub> = ∫<sub>0</sub><sup>π/2</sup> sin<sup>n</sup>x dx. Montrer que nW<sub>n</sub> = (n−1)W<sub>n−2</sub>.",
+   "indice": "IPP avec u' = sin x et v = sin<sup>n−1</sup>x, puis cos² = 1 − sin².",
+   "correction": "W<sub>n</sub> = (n−1)∫cos²x sin<sup>n−2</sup>x dx = (n−1)(W<sub>n−2</sub> − W<sub>n</sub>), d'où nW<sub>n</sub> = (n−1)W<sub>n−2</sub>."
+  }
+ ],
+ "quiz": [
+  {
+   "q": "∫<sub>a</sub><sup>b</sup> f(t) dt vaut…",
+   "choix": [
+    "F(a) − F(b)",
+    "F(b) − F(a)",
+    "F(a) + F(b)",
+    "f(b) − f(a)"
+   ],
+   "bonne": 1,
+   "explication": "F est une primitive de f."
+  },
+  {
+   "q": "Si f est impaire et continue sur [−a ; a], ∫<sub>−a</sub><sup>a</sup> f vaut…",
+   "choix": [
+    "2∫<sub>0</sub><sup>a</sup> f",
+    "0",
+    "a",
+    "f(a)"
+   ],
+   "bonne": 1,
+   "explication": "Les aires de part et d'autre de l'origine se compensent."
+  },
+  {
+   "q": "La valeur moyenne de f sur [a ; b] est…",
+   "choix": [
+    "∫f",
+    "(∫f)/(b−a)",
+    "(b−a)∫f",
+    "(f(a)+f(b))/2"
+   ],
+   "bonne": 1,
+   "explication": "μ = 1/(b−a) × ∫<sub>a</sub><sup>b</sup> f(t) dt."
+  },
+  {
+   "q": "La formule d'intégration par parties est…",
+   "choix": [
+    "∫u'v = [uv] − ∫uv'",
+    "∫u'v = [uv] + ∫uv'",
+    "∫uv = ∫u × ∫v",
+    "∫u'v = u'v"
+   ],
+   "bonne": 0,
+   "explication": "Elle vient de (uv)' = u'v + uv'."
+  },
+  {
+   "q": "Si ∫<sub>a</sub><sup>b</sup> f &gt; 0 (a &lt; b), alors…",
+   "choix": [
+    "f &gt; 0 partout",
+    "f est positive sur [a ; b]",
+    "on ne peut pas conclure sur le signe de f",
+    "f est croissante"
+   ],
+   "bonne": 2,
+   "explication": "La réciproque du théorème de positivité est fausse (exemple : cos sur [0 ; 3π/4])."
+  },
+  {
+   "q": "Dans un changement de variable u = at + b, les bornes…",
+   "choix": [
+    "restent les mêmes",
+    "sont aussi transformées",
+    "disparaissent",
+    "sont multipliées par a seulement"
+   ],
+   "bonne": 1,
+   "explication": "Les bornes a et b deviennent a·a+b et a·b+b."
+  }
+ ]
+}

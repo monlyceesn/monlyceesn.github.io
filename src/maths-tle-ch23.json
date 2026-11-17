@@ -1,0 +1,135 @@
+{
+ "n": 23,
+ "titre": "Chapitre 23 — Géométrie dans l'espace (1/2) : repère, produit scalaire, droites et plans",
+ "pdf": "cours/maths-tle-ch23-geometrie-espace-1.pdf",
+ "pages": 6,
+ "taille": "0,4 Mo",
+ "note": "Cours réécrit à partir de notes de Terminale S1 (2018-2019), complété ; à faire relire par un enseignant.",
+ "lecons": [
+  {
+   "n": 1,
+   "titre": "Vecteurs coplanaires, repère, orientation",
+   "debut": 1,
+   "fin": 1
+  },
+  {
+   "n": 2,
+   "titre": "Produit scalaire",
+   "debut": 2,
+   "fin": 2
+  },
+  {
+   "n": 3,
+   "titre": "Droites de l'espace",
+   "debut": 2,
+   "fin": 3
+  },
+  {
+   "n": 4,
+   "titre": "Plans de l'espace",
+   "debut": 3,
+   "fin": 4
+  },
+  {
+   "n": 5,
+   "titre": "Plan et sphère",
+   "debut": 4,
+   "fin": 5
+  },
+  {
+   "n": 6,
+   "titre": "Exercices corrigés",
+   "debut": 5,
+   "fin": 5
+  }
+ ],
+ "exercices": [
+  {
+   "titre": "Point sur une droite",
+   "enonce": "La droite D passe par A(1,2,3) et a pour vecteur directeur u(2,−1,1). Les points B(5,0,5) et C(3,1,5) appartiennent-ils à D ?",
+   "indice": "Écrire D sous forme paramétrique : (1+2t ; 2−t ; 3+t).",
+   "correction": "B : t=2 donne (5;0;5) donc B∈D. C : 1+2t=3 donne t=1 mais alors z=4≠5, donc C∉D."
+  },
+  {
+   "titre": "Équation d'un plan",
+   "enonce": "Donner l'équation du plan (P) passant par A(1,0,2) de vecteur normal n(2,−1,3). Le point B(3,1,1) lui appartient-il ?",
+   "indice": "M∈(P) ⇔ n·AM=0.",
+   "correction": "2(x−1)−y+3(z−2)=0 ⇔ 2x−y+3z−8=0. Pour B : 6−1+3−8=0, donc B∈(P)."
+  },
+  {
+   "titre": "Droite et plan sécants",
+   "enonce": "Intersection de la droite D : x=t, y=1+t, z=2−t avec le plan x+y+z−6=0.",
+   "indice": "Remplacer x, y, z dans l'équation du plan.",
+   "correction": "t+1+t+2−t−6=0 ⇔ t=3. Point d'intersection : (3 ; 4 ; −1)."
+  },
+  {
+   "titre": "Intersection de deux plans",
+   "enonce": "Les plans x+y−z=1 et x−y+z=3 sont-ils sécants ? Donner leur intersection.",
+   "indice": "Comparer les vecteurs normaux, puis additionner les équations.",
+   "correction": "Normaux (1,1,−1) et (1,−1,1) non colinéaires : sécants. 2x=4 donc x=2 ; y=z−1. Droite : (2 ; k−1 ; k), de vecteur directeur (0,1,1)."
+  },
+  {
+   "titre": "Plan et sphère",
+   "enonce": "Montrer que le plan 2x+y+2z−1=0 coupe la sphère de centre Ω(1,2,3) et de rayon 5 suivant un cercle, et donner son rayon.",
+   "indice": "Calculer d(Ω,(P)) = |ax₀+by₀+cz₀+d|/√(a²+b²+c²).",
+   "correction": "d=|2+2+6−1|/3=3<5, donc cercle de rayon r=√(25−9)=4."
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Deux vecteurs u et v sont orthogonaux si :",
+   "choix": [
+    "u·v=0",
+    "u·v=1",
+    "u=v",
+    "u∧v=0"
+   ],
+   "bonne": 0,
+   "explication": "Orthogonalité ⇔ produit scalaire nul."
+  },
+  {
+   "q": "Un vecteur normal au plan 3x−y+2z+5=0 est :",
+   "choix": [
+    "(3 ; −1 ; 2)",
+    "(3 ; 1 ; 2)",
+    "(5 ; 3 ; 2)",
+    "(−3 ; −1 ; 2)"
+   ],
+   "bonne": 0,
+   "explication": "Les coefficients de x, y, z donnent un vecteur normal : (3 ; −1 ; 2)."
+  },
+  {
+   "q": "Une droite de vecteur directeur u et un plan de vecteur normal n sont parallèles si :",
+   "choix": [
+    "u·n=0",
+    "u·n≠0",
+    "u=n",
+    "u∧n=0"
+   ],
+   "bonne": 0,
+   "explication": "u·n=0 signifie que u est dans la direction du plan."
+  },
+  {
+   "q": "Une sphère de rayon R et un plan à la distance d du centre. Si d<R, l'intersection est :",
+   "choix": [
+    "vide",
+    "un point",
+    "un cercle",
+    "une droite"
+   ],
+   "bonne": 2,
+   "explication": "Cercle de rayon √(R²−d²)."
+  },
+  {
+   "q": "Deux plans de vecteurs normaux non colinéaires sont :",
+   "choix": [
+    "parallèles",
+    "confondus",
+    "sécants selon une droite",
+    "disjoints"
+   ],
+   "bonne": 2,
+   "explication": "Normaux non colinéaires ⇒ plans sécants suivant une droite."
+  }
+ ]
+}

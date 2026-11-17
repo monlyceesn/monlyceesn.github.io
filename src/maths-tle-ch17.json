@@ -1,0 +1,123 @@
+{
+ "n": 17,
+ "titre": "Chapitre 17 — L'ellipse",
+ "pdf": "cours/maths-tle-ch17-ellipse.pdf",
+ "pages": 7,
+ "taille": "0,4 Mo",
+ "note": "Ellipse : équation réduite, bifocale, tangente, affinité, paramétrage, classification des courbes du second degré.",
+ "lecons": [
+  {
+   "n": 1,
+   "titre": "Définition et équation réduite",
+   "debut": 1,
+   "fin": 2
+  },
+  {
+   "n": 2,
+   "titre": "Définition bifocale et tangente",
+   "debut": 3,
+   "fin": 3
+  },
+  {
+   "n": 3,
+   "titre": "Cercles principal et secondaire, affinité, paramétrage",
+   "debut": 3,
+   "fin": 5
+  },
+  {
+   "n": 4,
+   "titre": "Classification, applications et exercices",
+   "debut": 5,
+   "fin": 7
+  }
+ ],
+ "exercices": [
+  {
+   "titre": "Éléments d'une ellipse",
+   "enonce": "9x² + 25y² = 225 : donner les éléments caractéristiques.",
+   "indice": "Divise par 225.",
+   "correction": "x²/25 + y²/9 = 1 : a = 5 > b = 3, c = 4, e = 4/5. Foyers (±4 ; 0), directrices x = ±25/4, sommets (±5 ; 0) et (0 ; ±3)."
+  },
+  {
+   "titre": "Axe focal vertical",
+   "enonce": "25x² + 9y² = 225 : axe focal et foyers.",
+   "indice": "Compare a² et b².",
+   "correction": "x²/9 + y²/25 = 1 : b = 5 > a = 3, axe focal (Oy), c = 4, foyers (0 ; ±4), e = 4/5, directrices y = ±25/4."
+  },
+  {
+   "titre": "Tangente à une ellipse",
+   "enonce": "Tangente à x²/8 + y²/2 = 1 au point (2 ; 1).",
+   "indice": "Formule xx₀/a² + yy₀/b² = 1.",
+   "correction": "4/8 + 1/2 = 1 ✓. Tangente : 2x/8 + y/2 = 1, soit <b>x + 2y = 4</b>."
+  },
+  {
+   "titre": "Paramétrage",
+   "enonce": "Paramétrer x²/16 + y²/4 = 1 et donner le point correspondant à θ = π/3.",
+   "indice": "x = a cos θ, y = b sin θ.",
+   "correction": "x = 4 cos θ, y = 2 sin θ. Pour θ = π/3 : <b>M(2 ; √3)</b>."
+  },
+  {
+   "titre": "Définition bifocale",
+   "enonce": "Ellipse de foyers F(3 ; 0), F′(−3 ; 0) telle que MF + MF′ = 10.",
+   "indice": "2a = 10 et c = 3.",
+   "correction": "a = 5, c = 3, b² = 25 − 9 = 16 : <b>x²/25 + y²/16 = 1</b>."
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Pour l'ellipse x²/a² + y²/b² = 1 avec a > b, on a…",
+   "choix": [
+    "c² = a² + b²",
+    "c² = a² − b²",
+    "c = a − b",
+    "c = ab"
+   ],
+   "bonne": 1,
+   "explication": "c² = a² − b² (hyperbole : a² + b²)."
+  },
+  {
+   "q": "L'excentricité d'une ellipse vérifie…",
+   "choix": [
+    "e > 1",
+    "e = 1",
+    "0 < e < 1",
+    "e < 0"
+   ],
+   "bonne": 2,
+   "explication": "e = c/a avec c < a."
+  },
+  {
+   "q": "M appartient à l'ellipse de foyers F, F′ si et seulement si…",
+   "choix": [
+    "MF + MF′ = 2a",
+    "|MF − MF′| = 2a",
+    "MF = MF′",
+    "MF·MF′ = a²"
+   ],
+   "bonne": 0,
+   "explication": "C'est la définition bifocale de l'ellipse."
+  },
+  {
+   "q": "Un paramétrage de x²/a² + y²/b² = 1 est…",
+   "choix": [
+    "x = a sin θ, y = b sin θ",
+    "x = a cos θ, y = b sin θ",
+    "x = b cos θ, y = a cos θ",
+    "x = cos θ, y = sin θ"
+   ],
+   "bonne": 1,
+   "explication": "M = (a cos θ ; b sin θ) est l'image de N sur le cercle principal par l'affinité de rapport b/a."
+  },
+  {
+   "q": "Pour 9x² + 25y² = 225, l'axe focal est…",
+   "choix": [
+    "(Oy)",
+    "(Ox)",
+    "la droite y = x",
+    "aucun"
+   ],
+   "bonne": 1,
+   "explication": "x²/25 + y²/9 = 1 : a² = 25 > b² = 9, l'axe focal est (Ox)."
+  }
+ ]
+}
