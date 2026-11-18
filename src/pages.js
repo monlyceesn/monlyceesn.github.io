@@ -80,6 +80,7 @@ ${NIVEAUX.map(n => `
     <section class="section" style="padding-top:0"><div class="wrap">
       <div class="tete rv"><span class="eyebrow">Tes outils</span><h2>Travaille <span>malin</span></h2></div>
       <div class="grille">
+        <a class="carte rv" href="#progression"><span class="fleche">→</span><span class="rond bg-corail">📊</span><b>Ma progression</b><small>Chapitres, quiz réussis, notions à revoir</small></a>
         <a class="carte rv" href="#conseils"><span class="fleche">→</span><span class="rond bg-jaune">⏱️</span><b>Minuteur de révision</b><small>25 min de travail, 5 min de pause</small></a>
         <a class="carte rv" style="--d:.08s" href="#conseils"><span class="fleche">→</span><span class="rond bg-vert">💡</span><b>Méthodes de travail</b><small>Apprendre, réviser, réussir le bac</small></a>
         <a class="carte rv" style="--d:.16s" href="#orientation"><span class="fleche">→</span><span class="rond bg-corail">🧭</span><b>Orientation</b><small>Pistes et checklist Campusen</small></a>
@@ -117,7 +118,7 @@ function pageClasse(c){
           const pm = progression(c.id, m.id);
           return `<a class="carte rv" style="--d:${i*.05}s" href="#${c.id}-${m.id}"><span class="fleche">→</span>
             <span class="rond ${COULEURS[i%3]}">${m.ico}</span><b>${m.nom}</b>
-            ${n ? `<span class="statut ok">${pm.total ? `${pm.fait}/${pm.total} fait` : n + " ressource(s)"}</span>` : `<span class="statut bientot">Bientôt</span>`}
+            ${n ? `<span class="statut ok">${pm.total ? `${pm.pct} %` : n + " ressource(s)"}</span>` : `<span class="statut bientot">Bientôt</span>`}
             ${jauge(pm)}</a>`;
         }).join("")}
       </div>
@@ -136,7 +137,7 @@ function pageMatiere(c, m, onglet, garderDefil){
   const idx = matieresDe(c).indexOf(m);
   afficher(entete(`<a href="#accueil">Accueil</a> › <a href="#${c.id}">${c.nom}</a> › ${m.nom}`,
       `<span class="rond ${COULEURS[idx%3]}">${m.ico}</span>${m.nom}`,
-      `${c.nom}${p.total ? ` · progression : <b>${p.fait}/${p.total}</b>` : ""}`, jauge(p)) + `
+      `${c.nom}${p.total ? ` · progression : <b>${p.pct} %</b>` : ""}`, jauge(p)) + `
     <section class="section" style="padding-top:26px"><div class="wrap">
       <div class="onglets">
         ${Object.keys(ONGLETS).map(k => `<button class="${k===ong?'actif':''}" data-o="${k}">${ONGLETS[k]}</button>`).join("")}
@@ -165,6 +166,7 @@ function pageMatiere(c, m, onglet, garderDefil){
       <div class="actions">
         <a class="btn plein" href="${x.pdf}" target="_blank" rel="noopener">📖 ${x.credit ? "Ouvrir le cours (PDF)" : "Ouvrir le fascicule"}</a>
         ${x.pdf.startsWith("http") ? "" : `<button class="btn" data-pdf="${x.pdf}" data-titre="${x.titre.replace(/"/g,"&quot;")}">${estTelecharge(x.pdf) && horsLignePossible() ? "✅ Disponible hors connexion" : "📥 Télécharger (" + x.taille + ")"}</button>`}
+        <button class="btn ${estEtudie(x) ? "plein" : ""}" data-etudie="${i}">${estEtudie(x) ? "✅ Chapitre étudié" : "☐ Marquer comme étudié"}</button>
       </div>
       ${x.leger ? "" : `<p style="font-size:.8rem;color:var(--gris);margin-top:8px">⚠️ Fichier lourd : télécharge-le de préférence en Wi-Fi.</p>`}
       <h4 style="margin:16px 0 4px;font-size:.95rem">${x.credit ? "Sommaire — lis une partie directement ici" : "Sommaire — lis une leçon directement ici"}</h4>
@@ -181,6 +183,7 @@ function pageMatiere(c, m, onglet, garderDefil){
       <div class="actions">
         <button class="btn plein" data-lire="${i}">📖 Lire le cours</button>
         ${x.pdf ? `<button class="btn" data-pdf="${x.pdf}" data-titre="${x.titre.replace(/"/g,"&quot;")} — ${c.court}">${estTelecharge(x.pdf) && horsLignePossible() ? "✅ Disponible hors connexion" : "📄 Télécharger le PDF"}</button>` : ""}
+        <button class="btn ${estEtudie(x) ? "plein" : ""}" data-etudie="${i}">${estEtudie(x) ? "✅ Chapitre étudié" : "☐ Marquer comme étudié"}</button>
       </div>
       <div class="lecture" id="lecture${i}" hidden></div>
     </div>`
@@ -190,6 +193,13 @@ function pageMatiere(c, m, onglet, garderDefil){
     memo.ecrire(`ouverts:${c.id}-${m.id}`, o);
   }));
   corps.querySelectorAll("[data-pdf]").forEach(b => b.addEventListener("click", () => telechargerPdf(b)));
+  corps.querySelectorAll("[data-etudie]").forEach(b => b.addEventListener("click", ev => {
+    ev.preventDefault();
+    const x = items[+b.dataset.etudie], k = `etudie:${idCours(x)}`, v = !memo.lire(k, false);
+    memo.ecrire(k, v);
+    if(v){ noterActivite(`📘 Chapitre étudié : ${titreCourt(x.titre)} (${m.nom} · ${c.court})`, `#${c.id}-${m.id}`); toast("Chapitre marqué comme étudié ✅"); }
+    pageMatiere(c, m, "cours", true);
+  }));
   corps.querySelectorAll("[data-lire]").forEach(b => b.addEventListener("click", () => {
     const x = items[+b.dataset.lire], zone = document.getElementById("lecture" + b.dataset.lire);
     if(zone.hidden){
@@ -233,6 +243,7 @@ function pageLecon(id, n){
   if(!f || !l) return pageAccueil();
   const c = trouverClasse(f.classe), m = trouverMatiere(f.matiere);
   memo.ecrire("derniereLecon", {id, n});
+  noterActivite(`📖 Leçon lue : ${titreCourt(l.titre)} (${m.nom} · ${c.court})`, `#lecon-${id}-${n}`);
   const nb = l.fin - l.debut + 1;
   const prec = f.lecons.find(x => x.n === n - 1), suiv = f.lecons.find(x => x.n === n + 1);
   afficher(entete(`<a href="#accueil">Accueil</a> › <a href="#${c.id}">${c.nom}</a> › <a href="#${c.id}-${m.id}">${m.nom}</a> › ${f.lecons.length > 4 ? "Leçon " + n : "Partie " + n}`,
@@ -591,6 +602,7 @@ function router(){
   if(h === "concours") return pageConcours();
   if(h === "telechargements") return pageTelechargements();
   if(h === "mentions") return pageMentions();
+  if(h === "progression") return pageProgression();
   const ml = h.match(/^lecon-(.+)-(\d+)$/);
   if(ml) return pageLecon(ml[1], +ml[2]);
   const c = trouverClasse(h);

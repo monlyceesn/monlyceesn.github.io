@@ -119,21 +119,33 @@ function rendreExercices(corps, c, m, items){
     if(b.dataset.a === "fait"){
       const k = `fait:${c.id}-${m.id}-${i}`, v = !memo.lire(k, false);
       memo.ecrire(k, v);
-      if(v) toast("Bravo ! Exercice marqué comme réussi 🎉");
+      if(v){ toast("Bravo ! Exercice marqué comme réussi 🎉"); noterActivite(`✏️ Exercice réussi : ${titreCourt(e.titre)} (${m.nom} · ${c.court})`, `#${c.id}-${m.id}`); }
       pageMatiere(c, m, "exercices", true);
     }
   }));
 }
 
-function rendreQuiz(corps, c, m, items){
+function rendreQuiz(corps, c, m, tous, filtre){
+  if(filtre === undefined && revoirQuiz && revoirQuiz.c === c.id && revoirQuiz.m === m.id) filtre = revoirQuiz.chap;
+  revoirQuiz = null;
+  const revision = filtre !== undefined && filtre !== null;
+  const items = revision ? tous.filter(q => memo.lire(cleQ(c.id, m.id, q), null) === 0 && (q.chap || m.nom) === filtre) : tous;
+  if(revision && !items.length){
+    corps.innerHTML = `<div class="vide">🎉 Plus aucune question ratée dans « ${filtre} ».<div class="actions" style="justify-content:center"><button class="btn plein" id="tout">Voir tout le quiz</button></div></div>`;
+    document.getElementById("tout").addEventListener("click", () => rendreQuiz(corps, c, m, tous, null)); return;
+  }
   let rep = 0, bons = 0;
+  const session = "quiz-" + Date.now();
   const meilleur = memo.lire(`quiz:${c.id}-${m.id}`, null);
-  corps.innerHTML = (meilleur !== null ? `<p class="sous">Ton meilleur score : <b>${meilleur}/${items.length}</b></p>` : "") +
+  corps.innerHTML = (revision ? `<div class="encadre" style="margin-bottom:14px"><b>🎯 Mode révision : ${filtre}</b><br>${items.length} question(s) ratée(s) à retravailler.
+      <div class="actions"><button class="btn" id="tout">Voir tout le quiz</button></div></div>`
+    : meilleur !== null ? `<p class="sous">Ton meilleur score : <b>${meilleur}/${items.length}</b></p>` : "") +
     items.map((q,i) => `<div class="qcm" data-q="${i}">
       <b>${i+1}. ${q.q}</b>
       <div class="choix">${q.choix.map((ch,j) => `<button data-j="${j}">${ch}</button>`).join("")}</div>
       <div class="zone"></div></div>`).join("") +
     `<div id="fin"></div>`;
+  if(revision) document.getElementById("tout").addEventListener("click", () => rendreQuiz(corps, c, m, tous, null));
   corps.querySelectorAll(".qcm").forEach(bloc => {
     const q = items[+bloc.dataset.q];
     bloc.querySelectorAll(".choix button").forEach(btn => btn.addEventListener("click", () => {
@@ -141,16 +153,18 @@ function rendreQuiz(corps, c, m, items){
       bloc.dataset.fini = 1; rep++;
       const j = +btn.dataset.j, ok = j === q.bonne;
       if(ok) bons++;
+      memo.ecrire(cleQ(c.id, m.id, q), ok ? 1 : 0);
+      noterActivite(`❓ ${revision ? "Révision" : "Quiz"} ${m.nom} · ${c.court} : ${bons} bonne(s) réponse(s) sur ${rep}`, `#${c.id}-${m.id}`, session);
       btn.classList.add(ok ? "bon" : "faux");
       bloc.querySelectorAll(".choix button")[q.bonne].classList.add("bon");
       bloc.querySelector(".zone").innerHTML = `<div class="bulle ${ok?'corr':'indice'}">${ok ? "✅ Bonne réponse !" : "❌ Pas tout à fait."} ${q.explication}</div>`;
       if(rep === items.length){
         const ancien = memo.lire(`quiz:${c.id}-${m.id}`, -1);
-        if(bons > ancien) memo.ecrire(`quiz:${c.id}-${m.id}`, bons);
+        if(!revision && bons > ancien) memo.ecrire(`quiz:${c.id}-${m.id}`, bons);
         document.getElementById("fin").innerHTML = `<div class="encadre"><span class="score">Score : ${bons}/${items.length}</span>
           ${bons === items.length ? " — Parfait ! 🏆" : " — Continue, tu progresses 💪"}
           <div class="actions"><button class="btn plein" id="rejouer">🔁 Recommencer</button></div></div>`;
-        document.getElementById("rejouer").addEventListener("click", () => pageMatiere(c, m, "quiz", true));
+        document.getElementById("rejouer").addEventListener("click", () => revision ? rendreQuiz(corps, c, m, tous, filtre) : pageMatiere(c, m, "quiz", true));
         toast(`Quiz terminé : ${bons}/${items.length}`);
       }
     }));
