@@ -540,6 +540,46 @@ window.addEventListener("scroll", () => {
   enTete.classList.toggle("defile", scrollY > 30);
 }, {passive:true});
 
+/* ---------- Mentions légales, crédits et contact ---------- */
+function pageMentions(){
+  afficher(entete(`<a href="#accueil">Accueil</a> › Mentions légales`, "Mentions légales et crédits",
+      "Qui publie ce site, d'où viennent les contenus et ce qu'on fait (ou pas) de tes données.") + `
+    <section class="section"><div class="wrap">
+      <h2 class="titre-bloc rv">Éditeur du site</h2>
+      <p class="rv">Mon Lycée SN est un projet éducatif <b>bénévole, gratuit et non commercial</b>, réalisé pour aider les lycéens du Sénégal.</p>
+      <p class="rv">Contact : <a href="mailto:monlyceesn@gmail.com">monlyceesn@gmail.com</a></p>
+
+      <h2 class="titre-bloc rv">Hébergement</h2>
+      <p class="rv">Le site est hébergé par <b>GitHub Pages</b> : GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.</p>
+
+      <h2 class="titre-bloc rv">Contenus et crédits</h2>
+      <ul class="etapes rv">
+        <li><b>Cours marqués « Mon Lycée SN »</b> (mathématiques et autres) : contenus originaux rédigés pour le site. Ils sont en cours de relecture par des enseignants : si tu trouves une erreur, écris-nous.</li>
+        <li><b>Fascicule de SVT de Terminale S2</b> : © M. Ndiaye, professeur de SVT, publié avec son autorisation. Merci à lui.</li>
+        <li><b>Sujets de concours et annales</b> : documents des écoles et organismes concernés, proposés uniquement pour s'entraîner. Si tu es titulaire des droits d'un document et souhaites son retrait, écris-nous : il sera retiré rapidement.</li>
+        <li><b>Informations officielles</b> (bac, orientation, concours) : vérifie toujours auprès des sources officielles, comme l'<a href="https://officedubac.sn">Office du Bac</a> et <a href="https://orientation.campusen.sn">Campusen</a>. Les dates peuvent changer.</li>
+      </ul>
+
+      <h2 class="titre-bloc rv">Utilisation des contenus</h2>
+      <p class="rv">Tu peux lire, télécharger et imprimer les cours gratuitement pour réviser ou enseigner. Il est interdit de les revendre ou de les republier ailleurs sans accord.</p>
+
+      <h2 class="titre-bloc rv">Tes données personnelles</h2>
+      <ul class="etapes rv">
+        <li><b>Pas de compte, pas de formulaire, pas de publicité, pas de mesure d'audience.</b></li>
+        <li>Ta progression, tes téléchargements et tes choix sont enregistrés <b>uniquement sur ton appareil</b> (stockage du navigateur). Ils ne sont jamais envoyés à Mon Lycée SN.</li>
+        <li>Pour tout effacer : supprime les données du site dans les réglages de ton navigateur.</li>
+        <li>Pour afficher les polices de caractères, ton navigateur contacte les serveurs de Google Fonts, qui reçoivent alors ton adresse IP.</li>
+      </ul>
+
+      <h2 class="titre-bloc rv">Responsabilité</h2>
+      <p class="rv">Les contenus sont une aide pour réviser. Ils ne remplacent ni ton professeur ni les programmes officiels. Malgré notre attention, des erreurs peuvent exister : signale-les pour qu'on les corrige.</p>
+
+      <div class="encadre rv" style="margin-top:22px"><b>✉️ Une erreur, une question, un cours à partager ?</b><br>
+        Écris à <a href="mailto:monlyceesn@gmail.com">monlyceesn@gmail.com</a>. Les enseignants qui veulent partager leurs cours sont les bienvenus.</div>
+      <p class="rv" style="font-size:.8rem;color:var(--gris);margin-top:16px">Dernière mise à jour : 18 novembre 2026.</p>
+    </div></section>`);
+}
+
 function router(){
   const h = location.hash.replace("#","") || "accueil";
   if(h === "classes"){ pageAccueil(); document.getElementById("classes").scrollIntoView(); return; }
@@ -550,6 +590,7 @@ function router(){
   if(h === "orientation") return pageOrientation();
   if(h === "concours") return pageConcours();
   if(h === "telechargements") return pageTelechargements();
+  if(h === "mentions") return pageMentions();
   const ml = h.match(/^lecon-(.+)-(\d+)$/);
   if(ml) return pageLecon(ml[1], +ml[2]);
   const c = trouverClasse(h);
