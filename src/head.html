@@ -403,6 +403,17 @@
   .puce.actif{background:var(--vert);border-color:var(--vert);color:#fff}
   .sous-titre-c{font-weight:700;margin:14px 0 4px;color:var(--texte)}
   .carte-outil{background:#fff;border:1px solid var(--bord);border-radius:20px;padding:18px}
+  .ligne-note{display:grid;grid-template-columns:1fr auto 92px;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--bord)}
+  .nom-note{font-weight:600}
+  .saisie-note{display:flex;align-items:center;gap:4px}
+  .saisie-note input{width:64px;padding:8px 6px;border:1.5px solid var(--bord);border-radius:10px;font:inherit;font-size:1rem;font-weight:700;text-align:center;background:#fff;color:var(--texte)}
+  .saisie-note input:focus{outline:none;border-color:var(--jaune)}
+  .saisie-note input.erreur{border-color:#d33}
+  .saisie-note small{color:var(--gris)}
+  .niv-note{font-size:.7rem;font-weight:600;text-align:right;color:var(--gris)}
+  .niv-note.fort{color:#1a7f37}
+  .niv-note.moyen{color:#7a4f00}
+  .niv-note.faible{color:#c0392b}
   .statut-2027{display:inline-block;margin-top:12px;padding:4px 10px;border-radius:999px;background:var(--jaune-clair);font-size:.78rem;font-weight:600}
   .annale{border:1px solid var(--bord);border-radius:14px;padding:12px;margin-top:8px}
   .annale b{display:block}.annale small{color:var(--gris);font-size:.78rem}
