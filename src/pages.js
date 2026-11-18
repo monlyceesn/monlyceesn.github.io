@@ -125,7 +125,7 @@ function pageClasse(c){
     </div></section>`);
 }
 
-const ONGLETS = {cours:"📘 Cours", exercices:"✏️ Exercices", quiz:"❓ Quiz", conseils:"💡 Conseils"};
+const ONGLETS = {cours:"📘 Chapitres", exercices:"✏️ Exercices", quiz:"❓ Quiz", conseils:"💡 Conseils"};
 
 function pageMatiere(c, m, onglet, garderDefil){
   memo.ecrire("dernier", {c:c.id, m:m.id});
@@ -154,6 +154,7 @@ function pageMatiere(c, m, onglet, garderDefil){
   }
   if(ong === "exercices") return rendreExercices(corps, c, m, items);
   if(ong === "quiz") return rendreQuiz(corps, c, m, items);
+  if(ong === "cours") return listeChapitres(corps, c, m, items);
   const ouverts = memo.lire(`ouverts:${c.id}-${m.id}`, items.length === 1 ? [0] : []);
   corps.innerHTML = items.map((x, i) => x.type === "fascicule" ? `
     <details class="boite-cours" data-i="${i}" ${ouverts.includes(i) ? "open" : ""}>
@@ -243,10 +244,12 @@ function pageLecon(id, n){
   if(!f || !l) return pageAccueil();
   const c = trouverClasse(f.classe), m = trouverMatiere(f.matiere);
   memo.ecrire("derniereLecon", {id, n});
+  memo.ecrire(`lu:${id}-${n}`, true);
+  const ic = liste(donnees(c.id, m.id), "cours").indexOf(f), lienC = ic >= 0 ? lienChap(c.id, m.id, ic) : `#${c.id}-${m.id}`;
   noterActivite(`📖 Leçon lue : ${titreCourt(l.titre)} (${m.nom} · ${c.court})`, `#lecon-${id}-${n}`);
   const nb = l.fin - l.debut + 1;
   const prec = f.lecons.find(x => x.n === n - 1), suiv = f.lecons.find(x => x.n === n + 1);
-  afficher(entete(`<a href="#accueil">Accueil</a> › <a href="#${c.id}">${c.nom}</a> › <a href="#${c.id}-${m.id}">${m.nom}</a> › ${f.lecons.length > 4 ? "Leçon " + n : "Partie " + n}`,
+  afficher(entete(`<a href="#accueil">Accueil</a> › <a href="#${c.id}">${c.nom}</a> › <a href="#${c.id}-${m.id}">${m.nom}</a> › <a href="${lienC}">${f.num ? "Chapitre " + f.num : "Chapitre"}</a> › ${f.lecons.length > 4 ? "Leçon " + n : "Partie " + n}`,
       `${f.lecons.length > 4 ? "Leçon " + n : f.titre}`, `${l.titre}<br><small>${f.credit || "Cours de " + f.auteur} · pages ${l.debut} à ${l.fin}</small>`) + `
     <section class="section" style="padding-top:18px"><div class="wrap">
       <div class="actions" style="justify-content:space-between;margin:0 0 14px">
@@ -258,8 +261,9 @@ function pageLecon(id, n){
         <div class="page-pdf" data-p="${l.debut + k}"><span>Page ${l.debut + k}</span></div>`).join("")}</div>
       <div class="actions" style="justify-content:space-between;margin-top:14px">
         ${prec ? `<a class="btn" href="#lecon-${id}-${prec.n}">◀ ${f.lecons.length > 4 ? "Leçon " + prec.n : "Partie précédente"}</a>` : "<span></span>"}
-        ${suiv ? `<a class="btn plein" href="#lecon-${id}-${suiv.n}">${f.lecons.length > 4 ? "Leçon " + suiv.n : "Partie suivante"} ▶</a>` : ""}
+        ${suiv ? `<a class="btn plein" href="#lecon-${id}-${suiv.n}">${f.lecons.length > 4 ? "Leçon " + suiv.n : "Partie suivante"} ▶</a>` : `<a class="btn plein" href="${lienC}">Fin du cours : exercices et quiz ▶</a>`}
       </div>
+      <div class="actions" style="justify-content:center;margin-top:10px"><a class="btn" href="${lienC}">↩ Retour au chapitre</a></div>
       <p style="font-size:.78rem;color:var(--gris);margin-top:14px">${f.note || `Document de ${f.auteur}, partagé avec son autorisation et affiché sans modification.`}</p>
     </div></section>`);
   const etat = document.getElementById("etatLecteur");
@@ -603,6 +607,7 @@ function router(){
   if(h === "telechargements") return pageTelechargements();
   if(h === "mentions") return pageMentions();
   if(h === "progression") return pageProgression();
+  if(h.startsWith("ch:")){ const [, cid, mid, i] = h.split(":"); return pageChapitre(cid, mid, +i); }
   const ml = h.match(/^lecon-(.+)-(\d+)$/);
   if(ml) return pageLecon(ml[1], +ml[2]);
   const c = trouverClasse(h);

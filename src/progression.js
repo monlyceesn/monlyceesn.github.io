@@ -63,12 +63,14 @@ function pageProgression(){
         <h3 style="margin:0">${m.ico} ${m.nom}</h3><b style="font-size:1.4rem">${p.pct} %</b></div>
       ${jauge(p)}
       <ul class="etapes" style="margin-top:10px">
-        ${co.length ? `<li>📘 Chapitres étudiés : <b>${nbCo} / ${co.length}</b></li>` : ""}
+        ${co.length ? `<li>📘 Chapitres terminés : <b>${nbCo} / ${co.length}</b> · commencés : <b>${co.filter(x => etatChapitre(c, m, x).commence && !estEtudie(x)).length}</b></li>` : ""}
         ${ex.length ? `<li>✏️ Exercices réussis : <b>${nbEx} / ${ex.length}</b></li>` : ""}
         ${qz.length ? `<li>❓ Questions de quiz réussies : <b>${nbQ} / ${qz.length}</b>${meilleur !== null ? ` · meilleur quiz complet : <b>${meilleur}/${qz.length}</b>` : ""}</li>` : ""}
       </ul>
       ${co.length ? `<details style="margin-top:8px"><summary>Voir le suivi des chapitres</summary>
-        <div>${co.map(x => `<div style="padding:4px 0">${estEtudie(x) ? "✅" : "⬜"} ${titreCourt(x.titre)}</div>`).join("")}</div></details>` : ""}
+        <div>${co.map((x, i) => { const st = etatChapitre(c, m, x);
+          return `<a href="${lienChap(c.id, m.id, i)}" style="display:flex;justify-content:space-between;gap:8px;padding:6px 0;color:inherit;text-decoration:none;border-bottom:1px solid var(--bord)">
+            <span>${st.termine ? "✅" : st.commence ? "⏳" : "⬜"} ${titreCourt(x.titre)}</span><small style="color:var(--gris)">${st.pct} %</small></a>`; }).join("")}</div></details>` : ""}
       <div class="actions"><a class="btn" href="#${c.id}-${m.id}">Continuer →</a></div>
     </div>`;
   };
@@ -78,7 +80,7 @@ function pageProgression(){
       ${actives.length ? actives.map(c => { const p = progressionClasse(c.id);
         return `<h2 class="titre-bloc rv">${c.nom} · ${p.pct} %</h2>${jauge(p)}
           ${matieresDe(c).map(m => blocMatiere(c, m)).join("")}`; }).join("")
-      : `<div class="vide">📊 Rien pour l'instant.<br>Marque un chapitre comme étudié, réussis un exercice ou fais un quiz : ta progression apparaîtra ici.
+      : `<div class="vide">📊 Rien pour l'instant.<br>Ouvre un chapitre, réussis un exercice ou fais un quiz : ta progression apparaîtra ici.
           <div class="actions" style="justify-content:center"><a class="btn plein" href="#classes" onclick="location.hash='accueil'">Choisir ma classe →</a></div></div>`}
 
       <h2 class="titre-bloc rv">🎯 Notions à revoir</h2>

@@ -55,6 +55,8 @@ const CONTENU = {
         ...__TLE_MORE_COURS_S2__,
         {
           titre: "Probabilités — cours complet",
+          chap: "Probabilités",
+          desc: "Vocabulaire du hasard, calcul de probabilités, probabilités conditionnelles, schéma de Bernoulli, variable aléatoire.",
           tpl: "tpl-proba-tle-s2",
           pdf: "probabilites-tle-s2.pdf",
           plan: ["Le vocabulaire du hasard", "Calculer une probabilité", "Probabilités conditionnelles",

@@ -88,6 +88,30 @@
     .burger.ouvert span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
   }
 
+
+  /* ---------- Chapitres ---------- */
+  .chap-ligne{display:grid;grid-template-columns:34px 1fr 18px;gap:12px;align-items:center;padding:14px 14px;background:var(--carte);border:1px solid var(--bord);border-radius:18px;margin-bottom:10px;text-decoration:none;color:inherit}
+  .chap-ligne:hover{border-color:var(--noir)}
+  .chap-txt b{display:block;line-height:1.3;font-size:.98rem}
+  .chap-txt small{display:block;color:var(--gris);font-size:.8rem;line-height:1.4;margin-top:3px}
+  .chap-txt .jauge{display:block;margin-top:8px;height:4px}
+  .fleche-chap{color:var(--gris)}
+  .etat{display:inline-block;font-size:.68rem;font-weight:600;padding:2px 9px;border-radius:100px;margin:7px 6px 0 0}
+  .etat.fini{background:var(--vert-clair);color:var(--vert)}
+  .etat.encours{background:var(--jaune-clair);color:#7a4f00}
+  .etat.neuf{border:1.5px solid var(--bord);color:var(--gris)}
+  .entete .etat.neuf{border-color:rgba(255,255,255,.35);color:#ddd}
+  .sommaire-chap{position:sticky;top:62px;z-index:5;background:var(--fond);padding:10px 0;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+  .sommaire-chap::-webkit-scrollbar{display:none}
+  .sommaire-chap a{flex:none;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:100px;border:1.5px solid var(--bord);background:var(--carte);color:var(--texte);text-decoration:none}
+  .bloc-chap{scroll-margin-top:124px;margin-top:22px}
+  .bloc-chap>h2{font-size:1.2rem;margin-bottom:10px}
+  .bloc-chap h3{font-size:1rem;margin:14px 0 6px}
+  .lecture-chap{line-height:1.75}
+  .lecture-chap img,.lecture-chap svg,.lecture-chap table{max-width:100%}
+  .lecture-chap table{display:block;overflow-x:auto}
+  .nav-chap{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:22px;flex-wrap:wrap}
+
   /* ---------- Héros (accueil) ---------- */
   .heros{min-height:100svh;background:radial-gradient(circle at 75% 40%,#13301f 0,var(--noir) 58%);color:#fff;
     display:flex;align-items:center;padding:110px 0 70px;position:relative;overflow:hidden}
