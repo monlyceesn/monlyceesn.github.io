@@ -403,6 +403,17 @@
   .puce.actif{background:var(--vert);border-color:var(--vert);color:#fff}
   .sous-titre-c{font-weight:700;margin:14px 0 4px;color:var(--texte)}
   .carte-outil{background:#fff;border:1px solid var(--bord);border-radius:20px;padding:18px}
+  .ligne-note{display:grid;grid-template-columns:1fr auto 92px;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--bord)}
+  .nom-note{font-weight:600}
+  .saisie-note{display:flex;align-items:center;gap:4px}
+  .saisie-note input{width:64px;padding:8px 6px;border:1.5px solid var(--bord);border-radius:10px;font:inherit;font-size:1rem;font-weight:700;text-align:center;background:#fff;color:var(--texte)}
+  .saisie-note input:focus{outline:none;border-color:var(--jaune)}
+  .saisie-note input.erreur{border-color:#d33}
+  .saisie-note small{color:var(--gris)}
+  .niv-note{font-size:.7rem;font-weight:600;text-align:right;color:var(--gris)}
+  .niv-note.fort{color:#1a7f37}
+  .niv-note.moyen{color:#7a4f00}
+  .niv-note.faible{color:#c0392b}
   .statut-2027{display:inline-block;margin-top:12px;padding:4px 10px;border-radius:999px;background:var(--jaune-clair);font-size:.78rem;font-weight:600}
   .annale{border:1px solid var(--bord);border-radius:14px;padding:12px;margin-top:8px}
   .annale b{display:block}.annale small{color:var(--gris);font-size:.78rem}
@@ -1779,7 +1790,8 @@ function pageConseils(){
 /* ---------- Orientation : profil + pistes + checklist ---------- */
 function pageOrientation(){
   const coches = memo.lire("campusen", []);
-  const profil = memo.lire("profil-orient", {serie:"", moyenne:"", fortes:[]});
+  const profil = Object.assign({serie:"", moyenne:"", fortes:[], notes:{}}, memo.lire("profil-orient", {}));
+  if(!profil.notes || typeof profil.notes !== "object") profil.notes = {};
   afficher(entete(`<a href="#accueil">Accueil</a> › Orientation`, "Orientation",
       "Trouve des pistes selon tes matières fortes et tes notes, puis prépare Campusen.") + `
     <section class="section"><div class="wrap">
@@ -1787,10 +1799,8 @@ function pageOrientation(){
       <div class="carte-outil rv">
         <p class="sous-titre-c" style="margin-top:0">1. Ma série</p>
         <div class="puces" id="o-serie">${["S1","S2","L1","L2"].map(x => `<button class="puce ${profil.serie===x?"actif":""}" data-v="${x}">${x}</button>`).join("")}</div>
-        <p class="sous-titre-c">2. Les matières où je suis à l'aise</p>
-        <div class="puces" id="o-fortes">${MATIERES_ORIENT.map(([k,n]) => `<button class="puce ${profil.fortes.includes(k)?"actif":""}" data-v="${k}">${n}</button>`).join("")}</div>
-        <p class="sous-titre-c">3. Ma moyenne générale actuelle</p>
-        <div class="puces" id="o-moy">${[["moins10","Moins de 10"],["10-12","10 à 12"],["12-14","12 à 14"],["plus14","Plus de 14"]].map(([k,n]) => `<button class="puce ${profil.moyenne===k?"actif":""}" data-v="${k}">${n}</button>`).join("")}</div>
+        <p class="sous-titre-c">2. Ma note dans chaque matière</p>
+        <div id="o-notes"></div>
         <p style="font-size:.78rem;color:var(--gris);margin-top:10px">Tes réponses restent sur cet appareil. Rien n'est envoyé.</p>
       </div>
       <div id="o-resultat"></div>
@@ -1837,40 +1847,84 @@ function pageOrientation(){
     </div></section>`);
 
   const sauver = () => memo.ecrire("profil-orient", profil);
-  const unique = (id, cle) => app.querySelectorAll(`#${id} .puce`).forEach(b => b.addEventListener("click", () => {
-    profil[cle] = profil[cle] === b.dataset.v ? "" : b.dataset.v;
-    app.querySelectorAll(`#${id} .puce`).forEach(x => x.classList.toggle("actif", x.dataset.v === profil[cle]));
-    sauver(); resultat();
+  const MATIERES_SERIE = {S1:["maths","pc","svt","francais","philo","hg","langues"], S2:["maths","pc","svt","francais","philo","hg","langues"],
+    L1:["francais","philo","hg","langues","maths"], L2:["francais","philo","hg","langues","maths","svt","pc"]};
+  const nomMat = k => MATIERES_ORIENT.find(m => m[0] === k)[1];
+  const lireNote = v => { const n = parseFloat(String(v).replace(",", ".")); return isNaN(n) || n < 0 || n > 20 ? null : n; };
+  const fmt = n => (Math.round(n * 100) / 100).toLocaleString("fr-FR");
+  const niveauNote = n => n === null ? "" : n >= 12 ? "fort" : n >= 10 ? "moyen" : "faible";
+  const libNiveau = {fort:"Point fort", moyen:"Correct", faible:"À renforcer"};
+  const matieresSerie = () => MATIERES_SERIE[profil.serie] || [];
+  const notesSerie = () => matieresSerie().map(k => [k, lireNote(profil.notes[k] ?? "")]).filter(([, n]) => n !== null);
+  function majProfil(){
+    const ns = notesSerie();
+    const moy = ns.length ? ns.reduce((t, [, n]) => t + n, 0) / ns.length : null;
+    profil.moyenne = moy === null ? "" : moy < 10 ? "moins10" : moy < 12 ? "10-12" : moy < 14 ? "12-14" : "plus14";
+    const forts = ns.filter(([, n]) => n >= 12).map(([k]) => k);
+    profil.fortes = forts.length ? forts : [...ns].sort((a, b) => b[1] - a[1]).slice(0, 2).map(([k]) => k);
+    sauver();
+    return moy;
+  }
+  function grilleNotes(){
+    const zone = document.getElementById("o-notes");
+    if(!profil.serie){ zone.innerHTML = `<p style="color:var(--gris);font-size:.88rem">👆 Choisis d'abord ta série : la liste de tes matières apparaîtra ici.</p>`; return; }
+    zone.innerHTML = `<p style="color:var(--gris);font-size:.82rem;margin-bottom:6px">Ta dernière moyenne dans chaque matière, sur 20. Laisse vide si tu ne sais pas.</p>` +
+      matieresSerie().map(k => { const n = lireNote(profil.notes[k] ?? ""), niv = niveauNote(n);
+        return `<label class="ligne-note"><span class="nom-note">${nomMat(k)}</span>
+          <span class="saisie-note"><input type="text" inputmode="decimal" maxlength="5" data-k="${k}" value="${n === null ? "" : String(n).replace(".", ",")}" placeholder="—" aria-label="Note de ${nomMat(k)} sur 20"><small>/20</small></span>
+          <span class="niv-note ${niv}" data-niv="${k}">${niv ? libNiveau[niv] : ""}</span></label>`; }).join("") +
+      `<div id="o-moyenne" class="encadre" style="margin-top:12px"></div>`;
+    zone.querySelectorAll("input[data-k]").forEach(inp => inp.addEventListener("input", () => {
+      const k = inp.dataset.k, brut = inp.value.trim(), n = lireNote(brut);
+      inp.classList.toggle("erreur", brut !== "" && n === null);
+      if(brut === "") delete profil.notes[k]; else if(n !== null) profil.notes[k] = n;
+      const niv = niveauNote(brut === "" ? null : n), el = zone.querySelector(`[data-niv="${k}"]`);
+      el.className = `niv-note ${niv}`; el.textContent = niv ? libNiveau[niv] : (brut !== "" ? "Entre 0 et 20" : "");
+      afficherMoyenne(majProfil()); resultat();
+    }));
+    afficherMoyenne(majProfil());
+  }
+  function afficherMoyenne(moy){
+    const el = document.getElementById("o-moyenne");
+    if(!el) return;
+    const ns = notesSerie();
+    el.innerHTML = moy === null ? "Entre au moins une note pour voir ta moyenne et tes pistes."
+      : `<b>Ta moyenne : ${fmt(moy)}/20</b> <small style="color:var(--gris)">(moyenne simple de ${ns.length} matière${ns.length > 1 ? "s" : ""}, sans les coefficients)</small>`;
+  }
+  app.querySelectorAll("#o-serie .puce").forEach(b => b.addEventListener("click", () => {
+    profil.serie = profil.serie === b.dataset.v ? "" : b.dataset.v;
+    app.querySelectorAll("#o-serie .puce").forEach(x => x.classList.toggle("actif", x.dataset.v === profil.serie));
+    grilleNotes(); resultat();
   }));
-  unique("o-serie", "serie"); unique("o-moy", "moyenne");
-  app.querySelectorAll("#o-fortes .puce").forEach(b => b.addEventListener("click", () => {
-    const v = b.dataset.v;
-    profil.fortes = profil.fortes.includes(v) ? profil.fortes.filter(x => x !== v) : [...profil.fortes, v];
-    b.classList.toggle("actif"); sauver(); resultat();
-  }));
+  grilleNotes();
 
   function resultat(){
     const zone = document.getElementById("o-resultat");
-    if(!profil.fortes.length && !profil.moyenne){
-      zone.innerHTML = `<div class="vide" style="margin-top:12px">👆 Choisis tes matières fortes et ta moyenne pour voir des pistes.</div>`; return;
+    const ns = notesSerie();
+    if(!profil.serie || !ns.length){
+      zone.innerHTML = `<div class="vide" style="margin-top:12px">👆 Choisis ta série et entre tes notes pour voir des pistes.</div>`; return;
     }
+    const notes = Object.fromEntries(ns);
     const estL = profil.serie.startsWith("L");
-    const pistes = PISTES_ORIENT.map(p => ({p, n: p.cles.filter(k => profil.fortes.includes(k)).length}))
-      .filter(x => x.n > 0 || x.p.cles.length === 0)
-      .sort((a,b) => b.n - a.n);
+    const pistes = PISTES_ORIENT.map(p => {
+      const connues = p.cles.filter(k => k in notes);
+      return {p, connues, score: connues.length ? connues.reduce((t, k) => t + notes[k], 0) / connues.length : null};
+    }).filter(x => x.score !== null || x.p.cles.length === 0)
+      .sort((a, b) => (b.score ?? -1) - (a.score ?? -1));
     const conseilMoy = CONSEILS_MOYENNE[profil.moyenne];
     zone.innerHTML = `
-      ${profil.fortes.length ? `<h3 class="niveau">Pistes qui correspondent à tes matières fortes</h3>
-      ${pistes.map(({p,n}) => `
+      <h3 class="niveau">Pistes classées selon tes notes</h3>
+      <p style="color:var(--gris);font-size:.82rem;margin-bottom:8px">Les pistes en haut de la liste correspondent aux matières où tes notes sont les meilleures.</p>
+      ${pistes.map(({p, connues, score}) => `
         <details class="boite-cours">
           <summary><span class="rond-cours" style="font-size:1.3rem">${p.ico}</span>
-            <span class="tete-cours"><b>${p.titre}</b><small>${p.cles.length ? `${n}/${p.cles.length} matières clés` : "Ouvert à tous les profils"}${estL && p.serieS ? " · souvent réservé aux séries S" : ""}</small></span></summary>
+            <span class="tete-cours"><b>${p.titre}</b><small>${score !== null ? `Tes notes dans les matières clés : ${fmt(score)}/20` : "Ouvert à tous les profils"}${estL && p.serieS ? " · souvent réservé aux séries S" : ""}</small></span></summary>
           <div class="contenu-cours">
-            ${p.cles.length ? `<p class="sous-titre-c">Matières clés</p><p>${p.cles.map(k => MATIERES_ORIENT.find(m => m[0]===k)[1]).join(", ")}</p>` : ""}
+            ${p.cles.length ? `<p class="sous-titre-c">Matières clés</p><p>${p.cles.map(k => `${nomMat(k)}${k in notes ? ` : <b>${fmt(notes[k])}/20</b>` : " : <i>note non renseignée</i>"}`).join(" · ")}</p>` : ""}
             <p class="sous-titre-c">Exemples de formations</p><p>${p.exemples}</p>
             <p class="sous-titre-c">À savoir</p><ul class="etapes">${p.savoir.map(l => `<li>${l}</li>`).join("")}</ul>
             ${estL && p.serieS ? `<div class="attention" style="margin-top:10px">Ces formations demandent en général un bac scientifique. Vérifie les séries acceptées sur Campusen ou auprès de l'établissement.</div>` : ""}
-          </div></details>`).join("")}` : ""}
+          </div></details>`).join("")}
       ${conseilMoy ? `<h3 class="niveau">Conseils selon ta moyenne</h3>
         <div class="encadre"><b>${conseilMoy.titre}</b><ul class="etapes" style="margin-top:8px">${conseilMoy.points.map(l => `<li>${l}</li>`).join("")}</ul></div>` : ""}`;
   }
