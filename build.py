@@ -28,24 +28,25 @@ LOGO = ('<svg viewBox="0 0 100 100" aria-hidden="true">'
         '<g class="toque"><path d="M50 8L88 23L50 38L12 23Z" fill="#fbbf24"/>'
         '<path d="M80 26V42" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>'
         '<circle cx="80" cy="45" r="4" fill="#fbbf24"/></g></svg>')
-js = "".join((src / f).read_text() for f in ["part1.js", "part2.js", "progression.js", "conseils.js", "pages.js", "part3.js", "part4.js", "demarrage.js"])
+js = "".join((src / f).read_text() for f in ["part1.js", "part2.js", "progression.js", "chapitres.js", "conseils.js", "pages.js", "part3.js", "part4.js", "demarrage.js"])
 js = "const LOGO_GRAND = " + json.dumps(LOGO) + ";\n" + js
 modeles = "".join(f'<template id="{c["tpl"]}">{(src / c["fichier"]).read_text()}</template>\n' for c in COURS)
 site = (src / "head.html").read_text().replace("__LOGO__", LOGO)
 site = site.replace('<template id="tpl-proba-tle-s2">__COURS_PROBA__</template>', modeles)
 site += "<script>\n" + js + "\n</script>\n</body>\n</html>\n"
+for e in proba["exercices"]: e["chap"] = "Probabilités"
 site = site.replace("__PROBA_EX__", json.dumps(proba["exercices"], ensure_ascii=False))
 for q in proba["quiz"]: q["chap"] = "Probabilités"
 site = site.replace("__PROBA_QUIZ__", json.dumps(proba["quiz"], ensure_ascii=False))
 if os.environ.get("ARTEFACT"):   # aperçu Claude : fichier trop lourd pour l'aperçu, on pointe vers GitHub
     fascicule_svt = dict(fascicule_svt, pdf="https://raw.githubusercontent.com/monlyceesn/monlyceesn.github.io/main/docs/" + fascicule_svt["pdf"])
-svt_cours = [dict(fascicule_svt, type="fascicule")]
-svt_ex = [dict(e, titre=f'{e["titre"]} <small style="color:var(--gris);font-weight:600">· {ch["titre"]}</small>')
+svt_cours = [dict(fascicule_svt, type="fascicule", chap="Fascicule SVT", chaps=[ch["titre"] for ch in svt["chapitres"]])]
+svt_ex = [dict(e, chap=ch["titre"], titre=f'{e["titre"]} <small style="color:var(--gris);font-weight:600">· {ch["titre"]}</small>')
           for ch in svt["chapitres"] for e in ch["exercices"]]
 svt_quiz = [dict(q, chap=ch["titre"]) for ch in svt["chapitres"] for q in ch["quiz"]]
 bary = json.loads((src / "barycentre-2nde-s.json").read_text())
 bary_cours = [{"type": "fascicule", "id": "bary-2nde", "classe": "2nde-s", "matiere": "maths",
-  "titre": "Le barycentre", "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "Version corrigée",
+  "titre": "Le barycentre", "chap": "Barycentre", "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "Version corrigée",
   "pdf": "cours/barycentre-2nde-s.pdf", "taille": "0,35 Mo", "pages": 10, "leger": True,
   "note": "Version réorganisée et corrigée, avec des explications simples (encadrés bleus). À faire relire par un enseignant.",
   "lecons": [{"n": 1, "titre": "Barycentre de deux points", "debut": 1, "fin": 5},
@@ -54,13 +55,15 @@ bary_cours = [{"type": "fascicule", "id": "bary-2nde", "classe": "2nde-s", "mati
              {"n": 4, "titre": "Exercice corrigé de synthèse", "debut": 9, "fin": 10}]}]
 vect = json.loads((src / "calcul-vectoriel-2nde-s.json").read_text())
 bary_cours.append({"type": "fascicule", "id": "vect-2nde", "classe": "2nde-s", "matiere": "maths",
-  "titre": "Le calcul vectoriel", "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "Version corrigée",
+  "titre": "Le calcul vectoriel", "chap": "Calcul vectoriel", "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "Version corrigée",
   "pdf": "cours/calcul-vectoriel-2nde-s.pdf", "taille": "0,32 Mo", "pages": 9, "leger": True,
   "note": "Version réorganisée et corrigée, avec des explications simples (encadrés bleus). À faire relire par un enseignant.",
   "lecons": [{"n": 1, "titre": "Addition de vecteurs", "debut": 1, "fin": 3},
              {"n": 2, "titre": "Multiplication par un réel, colinéarité", "debut": 3, "fin": 5},
              {"n": 3, "titre": "Base, repère et coordonnées", "debut": 6, "fin": 6},
              {"n": 4, "titre": "Vecteurs et figures (milieu, centre de gravité, Thalès)", "debut": 7, "fin": 9}]})
+for e in vect["exercices"]: e["chap"] = "Calcul vectoriel"
+for e in bary["exercices"]: e.setdefault("chap", "Barycentre")
 for e in vect["exercices"]: e["titre"] += ' <small style="color:var(--gris);font-weight:600">· Calcul vectoriel</small>'
 for e in bary["exercices"]:
     if "Barycentre</small>" not in e["titre"]: e["titre"] += ' <small style="color:var(--gris);font-weight:600">· Barycentre</small>'
@@ -69,7 +72,7 @@ bary["quiz"] = [dict(q, chap="Calcul vectoriel") for q in vect["quiz"]] + [dict(
 tle1 = json.loads((src / "maths-tle-ch1.json").read_text())
 def tle1_cours(classe):
     return [{"type": "fascicule", "id": f"maths-{classe}-ch1", "classe": classe, "matiere": "maths",
-  "titre": "Chapitre 1 — Continuité, dérivabilité et primitives (rappels et compléments)", "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "Réécrit à partir de notes de cours de Terminale S1",
+  "titre": "Chapitre 1 — Continuité, dérivabilité et primitives (rappels et compléments)", "chap": "Ch. 1 · Continuité, dérivabilité, primitives", "num": 1, "desc": tle1.get("note", ""), "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "Réécrit à partir de notes de cours de Terminale S1",
   "pdf": "cours/maths-tle-ch1-continuite-derivabilite.pdf", "taille": "0,4 Mo", "pages": 9, "leger": True,
   "note": "Cours réécrit proprement et illustré à partir de cahiers de cours de Terminale S1 (2018-2019), avec des explications simples (encadrés bleus). À faire relire par un professeur de mathématiques.",
   "lecons": [{"n": 1, "titre": "Continuité et théorème des valeurs intermédiaires", "debut": 1, "fin": 3},
@@ -77,6 +80,7 @@ def tle1_cours(classe):
              {"n": 3, "titre": "Rolle, accroissements finis, Cauchy", "debut": 5, "fin": 7},
              {"n": 4, "titre": "Rappels sur les primitives", "debut": 7, "fin": 8},
              {"n": 5, "titre": "L'essentiel à retenir et exercices corrigés", "debut": 8, "fin": 9}]}]
+for e in tle1["exercices"]: e["chap"] = "Ch. 1 · Continuité, dérivabilité, primitives"
 for e in tle1["exercices"]: e["titre"] += ' <small style="color:var(--gris);font-weight:600">· Chapitre 1</small>'
 site = site.replace("__TLE1_COURS_S1__", json.dumps(tle1_cours("tle-s1"), ensure_ascii=False))
 site = site.replace("__TLE1_COURS_S2__", json.dumps(tle1_cours("tle-s2"), ensure_ascii=False))
@@ -86,29 +90,33 @@ site = site.replace("__TLE1_QUIZ__", json.dumps(tle1["quiz"], ensure_ascii=False
 tle_more_cours, tle_more_cours_s2, tle_more_ex, tle_more_quiz = [], [], [], []
 for _n in range(2, 26):
     _d = json.loads((src / f"maths-tle-ch{_n}.json").read_text())
+    _court = _d["titre"].split(" — ", 1)[-1].split(" (")[0]
+    _chap = f"Ch. {_n} · {_court}"
     tle_more_cours.append({"type": "fascicule", "id": f"maths-tle-s1-ch{_n}", "classe": "tle-s1", "matiere": "maths",
-      "titre": _d["titre"], "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "Réécrit à partir de notes de cours de Terminale S1",
+      "titre": _d["titre"], "chap": _chap, "num": _n, "desc": _d.get("note", ""), "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "Réécrit à partir de notes de cours de Terminale S1",
       "pdf": _d["pdf"], "taille": _d["taille"], "pages": _d["pages"], "leger": True,
       "note": "Cours réécrit proprement et illustré à partir de cahiers de cours de Terminale S1 (2018-2019), avec des explications simples (encadrés bleus). À faire relire par un professeur de mathématiques.",
       "lecons": _d["lecons"]})
     tle_more_cours_s2.append({**tle_more_cours[-1], "id": f"maths-tle-s2-ch{_n}", "classe": "tle-s2"})
-    for e in _d["exercices"]: e["titre"] += f' <small style="color:var(--gris);font-weight:600">· Chapitre {_n}</small>'
+    for e in _d["exercices"]:
+        e["chap"] = _chap
+        e["titre"] += f' <small style="color:var(--gris);font-weight:600">· Chapitre {_n}</small>'
     tle_more_ex += _d["exercices"]
-    _court = _d["titre"].split(" — ", 1)[-1].split(" (")[0]
-    tle_more_quiz += [dict(q, chap=f"Ch. {_n} · {_court}") for q in _d["quiz"]]
+    tle_more_quiz += [dict(q, chap=_chap) for q in _d["quiz"]]
 site = site.replace("__TLE_MORE_COURS__", json.dumps(tle_more_cours, ensure_ascii=False))
 site = site.replace("__TLE_MORE_COURS_S2__", json.dumps(tle_more_cours_s2, ensure_ascii=False))
 site = site.replace("__TLE_MORE_EX__", json.dumps(tle_more_ex, ensure_ascii=False))
 site = site.replace("__TLE_MORE_QUIZ__", json.dumps(tle_more_quiz, ensure_ascii=False))
 hist2 = json.loads((src / "histoire-lecon1-2nde.json").read_text())
 hist2_cours = [{"type": "fascicule", "id": "hist-2nde-l1", "classe": "2nde-s", "matiere": "histoire",
-  "titre": "Leçon 1 — L'histoire : définition, objet et importance", "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "D'après le programme officiel",
+  "titre": "Leçon 1 — L'histoire : définition, objet et importance", "chap": "Leçon 1", "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "D'après le programme officiel",
   "pdf": "cours/histoire-lecon1-2nde.pdf", "taille": "0,2 Mo", "pages": 7, "leger": True,
   "note": "Cours rédigé à partir du programme officiel du ministère de l'Éducation (classe de Seconde, leçon 1), avec des explications simples (encadrés bleus). À faire relire par un professeur d'histoire-géographie.",
   "lecons": [{"n": 1, "titre": "Définition de l'histoire", "debut": 1, "fin": 2},
              {"n": 2, "titre": "L'objet de l'histoire (chronologie, périodes, sources)", "debut": 2, "fin": 4},
              {"n": 3, "titre": "L'importance de l'histoire et conclusion", "debut": 5, "fin": 5},
              {"n": 4, "titre": "L'essentiel à retenir et exercices corrigés", "debut": 6, "fin": 7}]}]
+for e in hist2["exercices"]: e["chap"] = "Leçon 1"
 for e in hist2["exercices"]: e["titre"] += ' <small style="color:var(--gris);font-weight:600">· Leçon 1</small>'
 site = site.replace("__HIST2_COURS__", json.dumps(hist2_cours, ensure_ascii=False))
 site = site.replace("__HIST2_EX__", json.dumps(hist2["exercices"], ensure_ascii=False))
