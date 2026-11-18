@@ -28,20 +28,21 @@ LOGO = ('<svg viewBox="0 0 100 100" aria-hidden="true">'
         '<g class="toque"><path d="M50 8L88 23L50 38L12 23Z" fill="#fbbf24"/>'
         '<path d="M80 26V42" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>'
         '<circle cx="80" cy="45" r="4" fill="#fbbf24"/></g></svg>')
-js = "".join((src / f).read_text() for f in ["part1.js", "part2.js", "conseils.js", "pages.js", "part3.js", "part4.js", "demarrage.js"])
+js = "".join((src / f).read_text() for f in ["part1.js", "part2.js", "progression.js", "conseils.js", "pages.js", "part3.js", "part4.js", "demarrage.js"])
 js = "const LOGO_GRAND = " + json.dumps(LOGO) + ";\n" + js
 modeles = "".join(f'<template id="{c["tpl"]}">{(src / c["fichier"]).read_text()}</template>\n' for c in COURS)
 site = (src / "head.html").read_text().replace("__LOGO__", LOGO)
 site = site.replace('<template id="tpl-proba-tle-s2">__COURS_PROBA__</template>', modeles)
 site += "<script>\n" + js + "\n</script>\n</body>\n</html>\n"
 site = site.replace("__PROBA_EX__", json.dumps(proba["exercices"], ensure_ascii=False))
+for q in proba["quiz"]: q["chap"] = "Probabilités"
 site = site.replace("__PROBA_QUIZ__", json.dumps(proba["quiz"], ensure_ascii=False))
 if os.environ.get("ARTEFACT"):   # aperçu Claude : fichier trop lourd pour l'aperçu, on pointe vers GitHub
     fascicule_svt = dict(fascicule_svt, pdf="https://raw.githubusercontent.com/monlyceesn/monlyceesn.github.io/main/docs/" + fascicule_svt["pdf"])
 svt_cours = [dict(fascicule_svt, type="fascicule")]
 svt_ex = [dict(e, titre=f'{e["titre"]} <small style="color:var(--gris);font-weight:600">· {ch["titre"]}</small>')
           for ch in svt["chapitres"] for e in ch["exercices"]]
-svt_quiz = [q for ch in svt["chapitres"] for q in ch["quiz"]]
+svt_quiz = [dict(q, chap=ch["titre"]) for ch in svt["chapitres"] for q in ch["quiz"]]
 bary = json.loads((src / "barycentre-2nde-s.json").read_text())
 bary_cours = [{"type": "fascicule", "id": "bary-2nde", "classe": "2nde-s", "matiere": "maths",
   "titre": "Le barycentre", "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "Version corrigée",
@@ -64,7 +65,7 @@ for e in vect["exercices"]: e["titre"] += ' <small style="color:var(--gris);font
 for e in bary["exercices"]:
     if "Barycentre</small>" not in e["titre"]: e["titre"] += ' <small style="color:var(--gris);font-weight:600">· Barycentre</small>'
 bary["exercices"] = vect["exercices"] + bary["exercices"]
-bary["quiz"] = vect["quiz"] + bary["quiz"]
+bary["quiz"] = [dict(q, chap="Calcul vectoriel") for q in vect["quiz"]] + [dict(q, chap="Barycentre") for q in bary["quiz"]]
 tle1 = json.loads((src / "maths-tle-ch1.json").read_text())
 def tle1_cours(classe):
     return [{"type": "fascicule", "id": f"maths-{classe}-ch1", "classe": classe, "matiere": "maths",
@@ -80,6 +81,7 @@ for e in tle1["exercices"]: e["titre"] += ' <small style="color:var(--gris);font
 site = site.replace("__TLE1_COURS_S1__", json.dumps(tle1_cours("tle-s1"), ensure_ascii=False))
 site = site.replace("__TLE1_COURS_S2__", json.dumps(tle1_cours("tle-s2"), ensure_ascii=False))
 site = site.replace("__TLE1_EX__", json.dumps(tle1["exercices"], ensure_ascii=False))
+for q in tle1["quiz"]: q["chap"] = "Ch. 1 · Continuité, dérivabilité, primitives"
 site = site.replace("__TLE1_QUIZ__", json.dumps(tle1["quiz"], ensure_ascii=False))
 tle_more_cours, tle_more_cours_s2, tle_more_ex, tle_more_quiz = [], [], [], []
 for _n in range(2, 26):
@@ -92,7 +94,8 @@ for _n in range(2, 26):
     tle_more_cours_s2.append({**tle_more_cours[-1], "id": f"maths-tle-s2-ch{_n}", "classe": "tle-s2"})
     for e in _d["exercices"]: e["titre"] += f' <small style="color:var(--gris);font-weight:600">· Chapitre {_n}</small>'
     tle_more_ex += _d["exercices"]
-    tle_more_quiz += _d["quiz"]
+    _court = _d["titre"].split(" — ", 1)[-1].split(" (")[0]
+    tle_more_quiz += [dict(q, chap=f"Ch. {_n} · {_court}") for q in _d["quiz"]]
 site = site.replace("__TLE_MORE_COURS__", json.dumps(tle_more_cours, ensure_ascii=False))
 site = site.replace("__TLE_MORE_COURS_S2__", json.dumps(tle_more_cours_s2, ensure_ascii=False))
 site = site.replace("__TLE_MORE_EX__", json.dumps(tle_more_ex, ensure_ascii=False))
@@ -109,6 +112,7 @@ hist2_cours = [{"type": "fascicule", "id": "hist-2nde-l1", "classe": "2nde-s", "
 for e in hist2["exercices"]: e["titre"] += ' <small style="color:var(--gris);font-weight:600">· Leçon 1</small>'
 site = site.replace("__HIST2_COURS__", json.dumps(hist2_cours, ensure_ascii=False))
 site = site.replace("__HIST2_EX__", json.dumps(hist2["exercices"], ensure_ascii=False))
+for q in hist2["quiz"]: q["chap"] = "Leçon 1"
 site = site.replace("__HIST2_QUIZ__", json.dumps(hist2["quiz"], ensure_ascii=False))
 site = site.replace("__BARY_COURS__", json.dumps(bary_cours, ensure_ascii=False))
 site = site.replace("__BARY_EX__", json.dumps(bary["exercices"], ensure_ascii=False))
