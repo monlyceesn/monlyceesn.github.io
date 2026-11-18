@@ -51,16 +51,13 @@ function pageAccueil(){
   afficher(`
     <section class="heros"><div class="wrap heros-grille">
       <div>
-        <div class="badge"><i></i>Programme sénégalais · Série S</div>
-        <h1 class="titre-heros display"><span class="l"><span>Réussis</span></span><span class="l"><span>ton bac</span></span></h1>
-        <p class="sous-heros">Cours, exercices, quiz et orientation — au même endroit.</p>
-        <div class="tribar"><i></i><i></i><i></i></div>
-        <p class="lead">De la Seconde S à la Terminale, séries L1, L2, S1 et S2 : des cours clairs, des exercices corrigés avec indices, des quiz pour t'entraîner et tout pour réussir ton orientation sur Campusen.</p>
+        <h1 class="titre-heros display"><span class="l"><span>Mon Lycée</span></span><span class="l"><span>SN</span></span></h1>
         <div class="ctas">
           <a class="btn jaune gros" href="#classes" data-defil="classes">Choisir ma classe →</a>
           <a class="btn clair gros" href="#orientation">Orientation</a>
           <button class="btn clair gros btn-installer" hidden onclick="installerAppli()">📲 Installer l'appli</button>
         </div>
+        <p class="sous-heros bas-heros">Cours · Exercices · Quiz · Orientation — tout dans une seule application</p>
       </div>
       <div class="scene" aria-hidden="true"><div class="logo-centre">${LOGO_GRAND}</div></div>
     </div>

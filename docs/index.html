@@ -97,6 +97,8 @@
   .titre-heros .l:nth-child(2) span{animation-delay:.12s;color:var(--jaune)}
   .titre-heros .l:nth-child(3) span{animation-delay:.24s}
   @keyframes glisse{to{transform:none}}
+  .bas-heros{margin:26px 0 0 !important}
+  .heros .titre-heros{margin-bottom:30px}
   .sous-heros{font-style:italic;font-weight:600;color:var(--jaune);font-size:clamp(1.1rem,2.6vw,1.45rem);margin:14px 0 18px;opacity:0;animation:monte .8s .45s forwards}
   .heros .tribar{transform:scaleX(0);transform-origin:left;animation:pousse .8s .6s var(--ease) forwards}
   @keyframes pousse{to{transform:none}}
@@ -1140,16 +1142,13 @@ function pageAccueil(){
   afficher(`
     <section class="heros"><div class="wrap heros-grille">
       <div>
-        <div class="badge"><i></i>Programme sénégalais · Série S</div>
-        <h1 class="titre-heros display"><span class="l"><span>Réussis</span></span><span class="l"><span>ton bac</span></span></h1>
-        <p class="sous-heros">Cours, exercices, quiz et orientation — au même endroit.</p>
-        <div class="tribar"><i></i><i></i><i></i></div>
-        <p class="lead">De la Seconde S à la Terminale, séries L1, L2, S1 et S2 : des cours clairs, des exercices corrigés avec indices, des quiz pour t'entraîner et tout pour réussir ton orientation sur Campusen.</p>
+        <h1 class="titre-heros display"><span class="l"><span>Mon Lycée</span></span><span class="l"><span>SN</span></span></h1>
         <div class="ctas">
           <a class="btn jaune gros" href="#classes" data-defil="classes">Choisir ma classe →</a>
           <a class="btn clair gros" href="#orientation">Orientation</a>
           <button class="btn clair gros btn-installer" hidden onclick="installerAppli()">📲 Installer l'appli</button>
         </div>
+        <p class="sous-heros bas-heros">Cours · Exercices · Quiz · Orientation — tout dans une seule application</p>
       </div>
       <div class="scene" aria-hidden="true"><div class="logo-centre">${LOGO_GRAND}</div></div>
     </div>
