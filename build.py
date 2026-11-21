@@ -46,18 +46,18 @@ svt_ex = [dict(e, chap=ch["titre"], titre=f'{e["titre"]} <small style="color:var
 svt_quiz = [dict(q, chap=ch["titre"]) for ch in svt["chapitres"] for q in ch["quiz"]]
 bary = json.loads((src / "barycentre-2nde-s.json").read_text())
 bary_cours = [{"type": "fascicule", "id": "bary-2nde", "classe": "2nde-s", "matiere": "maths",
-  "titre": "Le barycentre", "chap": "Barycentre", "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "Version corrigée",
+  "titre": "Le barycentre", "chap": "Barycentre", "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "Édition Mon Lycée SN",
   "pdf": "cours/barycentre-2nde-s.pdf", "taille": "0,35 Mo", "pages": 10, "leger": True,
-  "note": "Version réorganisée et corrigée, avec des explications simples (encadrés bleus). À faire relire par un enseignant.",
+  "note": "Cours avec explications simples (encadrés bleus), exemples corrigés, exercices et quiz.",
   "lecons": [{"n": 1, "titre": "Barycentre de deux points", "debut": 1, "fin": 5},
              {"n": 2, "titre": "Barycentre de trois points", "debut": 6, "fin": 7},
              {"n": 3, "titre": "Ensembles de points", "debut": 7, "fin": 8},
              {"n": 4, "titre": "Exercice corrigé de synthèse", "debut": 9, "fin": 10}]}]
 vect = json.loads((src / "calcul-vectoriel-2nde-s.json").read_text())
 bary_cours.append({"type": "fascicule", "id": "vect-2nde", "classe": "2nde-s", "matiere": "maths",
-  "titre": "Le calcul vectoriel", "chap": "Calcul vectoriel", "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "Version corrigée",
+  "titre": "Le calcul vectoriel", "chap": "Calcul vectoriel", "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "Édition Mon Lycée SN",
   "pdf": "cours/calcul-vectoriel-2nde-s.pdf", "taille": "0,32 Mo", "pages": 9, "leger": True,
-  "note": "Version réorganisée et corrigée, avec des explications simples (encadrés bleus). À faire relire par un enseignant.",
+  "note": "Cours avec explications simples (encadrés bleus), exemples corrigés, exercices et quiz.",
   "lecons": [{"n": 1, "titre": "Addition de vecteurs", "debut": 1, "fin": 3},
              {"n": 2, "titre": "Multiplication par un réel, colinéarité", "debut": 3, "fin": 5},
              {"n": 3, "titre": "Base, repère et coordonnées", "debut": 6, "fin": 6},
@@ -72,9 +72,9 @@ bary["quiz"] = [dict(q, chap="Calcul vectoriel") for q in vect["quiz"]] + [dict(
 tle1 = json.loads((src / "maths-tle-ch1.json").read_text())
 def tle1_cours(classe):
     return [{"type": "fascicule", "id": f"maths-{classe}-ch1", "classe": classe, "matiere": "maths",
-  "titre": "Chapitre 1 — Continuité, dérivabilité et primitives (rappels et compléments)", "chap": "Ch. 1 · Continuité, dérivabilité, primitives", "num": 1, "desc": tle1.get("note", ""), "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "Réécrit à partir de notes de cours de Terminale S1",
+  "titre": "Chapitre 1 — Continuité, dérivabilité et primitives (rappels et compléments)", "chap": "Ch. 1 · Continuité, dérivabilité, primitives", "num": 1, "desc": tle1.get("note", ""), "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "Édition Mon Lycée SN",
   "pdf": "cours/maths-tle-ch1-continuite-derivabilite.pdf", "taille": "0,4 Mo", "pages": 9, "leger": True,
-  "note": "Cours réécrit proprement et illustré à partir de cahiers de cours de Terminale S1 (2018-2019), avec des explications simples (encadrés bleus). À faire relire par un professeur de mathématiques.",
+  "note": "Cours avec explications simples (encadrés bleus), exemples corrigés, exercices et quiz.",
   "lecons": [{"n": 1, "titre": "Continuité et théorème des valeurs intermédiaires", "debut": 1, "fin": 3},
              {"n": 2, "titre": "Dérivabilité, bijection et fonction réciproque", "debut": 3, "fin": 5},
              {"n": 3, "titre": "Rolle, accroissements finis, Cauchy", "debut": 5, "fin": 7},
@@ -93,9 +93,9 @@ for _n in range(2, 26):
     _court = _d["titre"].split(" — ", 1)[-1].split(" (")[0]
     _chap = f"Ch. {_n} · {_court}"
     tle_more_cours.append({"type": "fascicule", "id": f"maths-tle-s1-ch{_n}", "classe": "tle-s1", "matiere": "maths",
-      "titre": _d["titre"], "chap": _chap, "num": _n, "desc": _d.get("note", ""), "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "Réécrit à partir de notes de cours de Terminale S1",
+      "titre": _d["titre"], "chap": _chap, "num": _n, "desc": _d.get("note", ""), "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "Édition Mon Lycée SN",
       "pdf": _d["pdf"], "taille": _d["taille"], "pages": _d["pages"], "leger": True,
-      "note": "Cours réécrit proprement et illustré à partir de cahiers de cours de Terminale S1 (2018-2019), avec des explications simples (encadrés bleus). À faire relire par un professeur de mathématiques.",
+      "note": "Cours avec explications simples (encadrés bleus), exemples corrigés, exercices et quiz.",
       "lecons": _d["lecons"]})
     tle_more_cours_s2.append({**tle_more_cours[-1], "id": f"maths-tle-s2-ch{_n}", "classe": "tle-s2"})
     for e in _d["exercices"]:
@@ -112,9 +112,9 @@ for _n in range(1, 11):
     _d = json.loads((src / f"maths-tle-l-ch{_n}.json").read_text())
     _chap = f"Ch. {_n} · " + _d["titre"].split(" — ", 1)[-1]
     tlel_l1.append({"type": "fascicule", "id": f"maths-tle-l1-ch{_n}", "classe": "tle-l1", "matiere": "maths",
-      "titre": _d["titre"], "chap": _chap, "num": _n, "desc": _d.get("note", ""), "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "Réécrit à partir d'un cours de mathématiques de Terminale L (2018)",
+      "titre": _d["titre"], "chap": _chap, "num": _n, "desc": _d.get("note", ""), "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "Édition Mon Lycée SN",
       "pdf": _d["pdf"], "taille": _d["taille"], "pages": _d["pages"], "leger": True,
-      "note": "Cours réécrit proprement à partir d'un plan de cours de Terminale L (2018), complété par des explications simples (encadrés bleus) et des exemples entièrement corrigés. À faire relire par un professeur de mathématiques.",
+      "note": "Cours avec explications simples (encadrés bleus), exemples corrigés, exercices et quiz.",
       "lecons": _d["lecons"]})
     tlel_l2.append({**tlel_l1[-1], "id": f"maths-tle-l2-ch{_n}", "classe": "tle-l2"})
     for e in _d["exercices"]:
@@ -128,9 +128,9 @@ site = site.replace("__TLEL_EX__", json.dumps(tlel_ex, ensure_ascii=False))
 site = site.replace("__TLEL_QUIZ__", json.dumps(tlel_quiz, ensure_ascii=False))
 hist2 = json.loads((src / "histoire-lecon1-2nde.json").read_text())
 hist2_cours = [{"type": "fascicule", "id": "hist-2nde-l1", "classe": "2nde-s", "matiere": "histoire",
-  "titre": "Leçon 1 — L'histoire : définition, objet et importance", "chap": "Leçon 1", "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "D'après le programme officiel",
+  "titre": "Leçon 1 — L'histoire : définition, objet et importance", "chap": "Leçon 1", "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "Édition Mon Lycée SN",
   "pdf": "cours/histoire-lecon1-2nde.pdf", "taille": "0,2 Mo", "pages": 7, "leger": True,
-  "note": "Cours rédigé à partir du programme officiel du ministère de l'Éducation (classe de Seconde, leçon 1), avec des explications simples (encadrés bleus). À faire relire par un professeur d'histoire-géographie.",
+  "note": "Cours avec explications simples (encadrés bleus), exemples corrigés, exercices et quiz.",
   "lecons": [{"n": 1, "titre": "Définition de l'histoire", "debut": 1, "fin": 2},
              {"n": 2, "titre": "L'objet de l'histoire (chronologie, périodes, sources)", "debut": 2, "fin": 4},
              {"n": 3, "titre": "L'importance de l'histoire et conclusion", "debut": 5, "fin": 5},
@@ -199,7 +199,7 @@ h2 {{ color:#000; border-bottom-color:#000; }}
 {contenu}
 <h2 class="saut">Exercices</h2>{exos}
 <h2>Corrigés</h2>{corr}
-<p class="pied">Cours original rédigé pour Mon Lycée SN. Document à faire relire par un enseignant avant diffusion.</p>
+<p class="pied">Mon Lycée SN · Probabilités · Terminale S2</p>
 </body></html>"""
     return en_gris(page).replace('class="couv"', 'class="couv nb"')
 
