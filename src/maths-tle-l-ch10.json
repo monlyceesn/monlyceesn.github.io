@@ -1,0 +1,123 @@
+{
+ "n": 10,
+ "titre": "Chapitre 10 — Probabilités",
+ "pdf": "cours/maths-tle-l-ch10-probabilites.pdf",
+ "pages": 4,
+ "taille": "0,3 Mo",
+ "note": "Cours réécrit à partir d'un cours de Terminale L (2018), complété ; à faire relire par un enseignant.",
+ "lecons": [
+  {
+   "n": 1,
+   "titre": "Vocabulaire des événements",
+   "debut": 1,
+   "fin": 1
+  },
+  {
+   "n": 2,
+   "titre": "Équiprobabilité et propriétés",
+   "debut": 1,
+   "fin": 3
+  },
+  {
+   "n": 3,
+   "titre": "Problème type du baccalauréat",
+   "debut": 3,
+   "fin": 3
+  },
+  {
+   "n": 4,
+   "titre": "Exercices corrigés",
+   "debut": 4,
+   "fin": 4
+  }
+ ],
+ "exercices": [
+  {
+   "titre": "Dé parfait",
+   "enonce": "Avec un dé parfait, probabilité d'obtenir un multiple de 3 ? un nombre premier ?",
+   "indice": "P = cas favorables / cas possibles.",
+   "correction": "Multiples de 3 : {3 ; 6}, P = 1/3. Premiers : {2 ; 3 ; 5}, P = 1/2."
+  },
+  {
+   "titre": "Réunion d'événements",
+   "enonce": "Dans une classe de 40 élèves, 25 aiment les maths (M), 18 la philosophie (P), 8 les deux. Calculer P(M ∪ P) et la probabilité de n'aimer ni l'une ni l'autre.",
+   "indice": "P(A∪B) = P(A) + P(B) − P(A∩B).",
+   "correction": "card(M∪P) = 35, P = 7/8 ; le contraire a pour probabilité 1/8."
+  },
+  {
+   "titre": "Deux cartes",
+   "enonce": "On tire 2 cartes simultanément dans un jeu de 32. Probabilité d'avoir deux rois ?",
+   "indice": "Cas possibles : C₃₂² ; cas favorables : C₄².",
+   "correction": "C₃₂² = 496, C₄² = 6 : P = 6/496 = 3/248."
+  },
+  {
+   "titre": "Pièce lancée trois fois",
+   "enonce": "On lance 3 fois une pièce équilibrée. Probabilité d'avoir au moins un « face » ?",
+   "indice": "Passe par l'événement contraire.",
+   "correction": "P = 1 − 1/8 = 7/8."
+  },
+  {
+   "titre": "Bureau de 12 personnes",
+   "enonce": "Dans un groupe de 12 personnes (5, 4 et 3 de trois nationalités), on élit président, vice-président et secrétaire. Probabilité qu'un membre de la nationalité à 3 personnes soit président ?",
+   "indice": "Univers : A₁₂³ = 1 320.",
+   "correction": "3 × 11 × 10 = 330 cas : P = 330/1320 = 1/4."
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Dans le cas d'équiprobabilité, P(A) vaut :",
+   "choix": [
+    "card(Ω)/card(A)",
+    "card(A)/card(Ω)",
+    "card(A) × card(Ω)",
+    "1 − card(A)"
+   ],
+   "bonne": 1,
+   "explication": "Cas favorables sur cas possibles."
+  },
+  {
+   "q": "P(Ā) vaut :",
+   "choix": [
+    "P(A) − 1",
+    "1 − P(A)",
+    "1/P(A)",
+    "P(A)²"
+   ],
+   "bonne": 1,
+   "explication": "L'événement contraire a pour probabilité 1 − P(A)."
+  },
+  {
+   "q": "Deux dés parfaits : P(somme = 7) vaut :",
+   "choix": [
+    "1/12",
+    "1/6",
+    "1/36",
+    "7/36"
+   ],
+   "bonne": 1,
+   "explication": "6 cas favorables sur 36."
+  },
+  {
+   "q": "Si A et B sont incompatibles, P(A ∪ B) vaut :",
+   "choix": [
+    "P(A) × P(B)",
+    "P(A) + P(B)",
+    "P(A) − P(B)",
+    "1"
+   ],
+   "bonne": 1,
+   "explication": "A ∩ B est vide : on additionne."
+  },
+  {
+   "q": "Une probabilité est toujours :",
+   "choix": [
+    "entre −1 et 1",
+    "entre 0 et 1",
+    "supérieure à 1",
+    "entière"
+   ],
+   "bonne": 1,
+   "explication": "0 ≤ P(A) ≤ 1."
+  }
+ ]
+}

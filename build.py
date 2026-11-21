@@ -107,6 +107,22 @@ site = site.replace("__TLE_MORE_COURS__", json.dumps(tle_more_cours, ensure_asci
 site = site.replace("__TLE_MORE_COURS_S2__", json.dumps(tle_more_cours_s2, ensure_ascii=False))
 site = site.replace("__TLE_MORE_EX__", json.dumps(tle_more_ex, ensure_ascii=False))
 site = site.replace("__TLE_MORE_QUIZ__", json.dumps(tle_more_quiz, ensure_ascii=False))
+tlel_l1, tlel_l2, tlel_ex, tlel_quiz = [], [], [], []
+for _n in range(1, 11):
+    _d = json.loads((src / f"maths-tle-l-ch{_n}.json").read_text())
+    tlel_l1.append({"type": "fascicule", "id": f"maths-tle-l1-ch{_n}", "classe": "tle-l1", "matiere": "maths",
+      "titre": _d["titre"], "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "Réécrit à partir d'un cours de mathématiques de Terminale L (2018)",
+      "pdf": _d["pdf"], "taille": _d["taille"], "pages": _d["pages"], "leger": True,
+      "note": "Cours réécrit proprement à partir d'un plan de cours de Terminale L (2018), complété par des explications simples (encadrés bleus) et des exemples entièrement corrigés. À faire relire par un professeur de mathématiques.",
+      "lecons": _d["lecons"]})
+    tlel_l2.append({**tlel_l1[-1], "id": f"maths-tle-l2-ch{_n}", "classe": "tle-l2"})
+    for e in _d["exercices"]: e["titre"] += f' <small style="color:var(--gris);font-weight:600">· Chapitre {_n}</small>'
+    tlel_ex += _d["exercices"]
+    tlel_quiz += _d["quiz"]
+site = site.replace("__TLEL_COURS_L1__", json.dumps(tlel_l1, ensure_ascii=False))
+site = site.replace("__TLEL_COURS_L2__", json.dumps(tlel_l2, ensure_ascii=False))
+site = site.replace("__TLEL_EX__", json.dumps(tlel_ex, ensure_ascii=False))
+site = site.replace("__TLEL_QUIZ__", json.dumps(tlel_quiz, ensure_ascii=False))
 hist2 = json.loads((src / "histoire-lecon1-2nde.json").read_text())
 hist2_cours = [{"type": "fascicule", "id": "hist-2nde-l1", "classe": "2nde-s", "matiere": "histoire",
   "titre": "Leçon 1 — L'histoire : définition, objet et importance", "chap": "Leçon 1", "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "D'après le programme officiel",

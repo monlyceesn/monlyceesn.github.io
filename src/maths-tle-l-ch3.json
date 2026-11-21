@@ -1,0 +1,117 @@
+{
+ "n": 3,
+ "titre": "Chapitre 3 — Limites",
+ "pdf": "cours/maths-tle-l-ch3-limites.pdf",
+ "pages": 3,
+ "taille": "0,2 Mo",
+ "note": "Cours réécrit à partir d'un cours de Terminale L (2018), complété ; à faire relire par un enseignant.",
+ "lecons": [
+  {
+   "n": 1,
+   "titre": "Limites en +∞ et −∞",
+   "debut": 1,
+   "fin": 1
+  },
+  {
+   "n": 2,
+   "titre": "Formes indéterminées",
+   "debut": 2,
+   "fin": 2
+  },
+  {
+   "n": 3,
+   "titre": "Limites en un réel ; asymptotes",
+   "debut": 2,
+   "fin": 3
+  },
+  {
+   "n": 4,
+   "titre": "Exercices corrigés",
+   "debut": 3,
+   "fin": 3
+  }
+ ],
+ "exercices": [
+  {
+   "titre": "Limites de polynôme et de fraction",
+   "enonce": "Calculer lim(x→−∞) (−2x³ + x) et lim(x→+∞) (3x² + 1)/(x² − x).",
+   "indice": "Garde le terme de plus haut degré.",
+   "correction": "−2x³ → +∞ quand x → −∞ ; la fraction tend vers 3x²/x² = 3."
+  },
+  {
+   "titre": "Forme indéterminée 0/0",
+   "enonce": "Calculer lim(x→2) (x² − 5x + 6)/(x − 2).",
+   "indice": "Factorise le numérateur.",
+   "correction": "x²−5x+6 = (x−2)(x−3) ; le quotient vaut x−3 → −1."
+  },
+  {
+   "titre": "Asymptotes",
+   "enonce": "Déterminer les asymptotes de f(x) = (3x − 1)/(x + 2).",
+   "indice": "Limite en ±∞ puis en −2 (signe du dénominateur).",
+   "correction": "Asymptote horizontale y = 3 ; asymptote verticale x = −2."
+  },
+  {
+   "titre": "Forme ∞ − ∞",
+   "enonce": "Calculer lim(x→+∞) (x³ − x²).",
+   "indice": "Factorise x³.",
+   "correction": "x³(1 − 1/x) → +∞ × 1 = +∞."
+  }
+ ],
+ "quiz": [
+  {
+   "q": "lim(x→+∞) (3x² − 2x + 1) vaut :",
+   "choix": [
+    "0",
+    "3",
+    "+∞",
+    "−∞"
+   ],
+   "bonne": 2,
+   "explication": "Terme dominant 3x² → +∞."
+  },
+  {
+   "q": "lim(x→+∞) (2x² − 3x + 1)/(x² + 5) vaut :",
+   "choix": [
+    "0",
+    "1",
+    "2",
+    "+∞"
+   ],
+   "bonne": 2,
+   "explication": "2x²/x² = 2."
+  },
+  {
+   "q": "lim(x→2) (x² − 4)/(x − 2) vaut :",
+   "choix": [
+    "0",
+    "2",
+    "4",
+    "+∞"
+   ],
+   "bonne": 2,
+   "explication": "(x−2)(x+2)/(x−2) = x+2 → 4."
+  },
+  {
+   "q": "Si lim(x→+∞) f(x) = 5, la droite y = 5 est :",
+   "choix": [
+    "une asymptote verticale",
+    "une asymptote horizontale",
+    "une tangente",
+    "un axe de symétrie"
+   ],
+   "bonne": 1,
+   "explication": "Limite finie en l'infini : asymptote horizontale."
+  },
+  {
+   "q": "Si lim(x→a) f(x) = +∞, la droite x = a est :",
+   "choix": [
+    "asymptote horizontale",
+    "asymptote verticale",
+    "l'axe des ordonnées",
+    "sans signification"
+   ],
+   "bonne": 1,
+   "explication": "Limite infinie en a : asymptote verticale."
+  }
+ ]
+}

@@ -1,0 +1,123 @@
+{
+ "n": 6,
+ "titre": "Chapitre 6 — Suites numériques",
+ "pdf": "cours/maths-tle-l-ch6-suites-numeriques.pdf",
+ "pages": 4,
+ "taille": "0,3 Mo",
+ "note": "Cours réécrit à partir d'un cours de Terminale L (2018), complété ; à faire relire par un enseignant. Une coquille de la source (deux valeurs de u₀) a été corrigée.",
+ "lecons": [
+  {
+   "n": 1,
+   "titre": "Généralités et sens de variation",
+   "debut": 1,
+   "fin": 1
+  },
+  {
+   "n": 2,
+   "titre": "Suites arithmétiques",
+   "debut": 2,
+   "fin": 2
+  },
+  {
+   "n": 3,
+   "titre": "Suites géométriques",
+   "debut": 2,
+   "fin": 3
+  },
+  {
+   "n": 4,
+   "titre": "Exercices corrigés",
+   "debut": 3,
+   "fin": 4
+  }
+ ],
+ "exercices": [
+  {
+   "titre": "Suite arithmétique",
+   "enonce": "u₀ = 7 et r = −2. Calculer u₅ et la somme u₀ + … + u₅.",
+   "indice": "uₙ = u₀ + nr ; S = (n+1)(u₀+uₙ)/2.",
+   "correction": "u₅ = −3 ; S = 6 × (7 − 3)/2 = 12."
+  },
+  {
+   "titre": "Suite géométrique",
+   "enonce": "u₀ = 1 et q = 3. Calculer u₄ et u₀ + … + u₄.",
+   "indice": "uₙ = u₀qⁿ ; S = u₀(1 − qⁿ⁺¹)/(1 − q).",
+   "correction": "u₄ = 81 ; S = (1 − 3⁵)/(1 − 3) = 121."
+  },
+  {
+   "titre": "Montrer qu'une suite est arithmétique",
+   "enonce": "Montrer que uₙ = 4n − 1 est arithmétique.",
+   "indice": "Calcule uₙ₊₁ − uₙ.",
+   "correction": "uₙ₊₁ − uₙ = 4 : raison 4, u₀ = −1."
+  },
+  {
+   "titre": "Retrouver r et u₀",
+   "enonce": "Suite arithmétique avec u₃ = 11 et u₇ = 23. Trouver r et u₀.",
+   "indice": "u₇ = u₃ + 4r.",
+   "correction": "r = 3 et u₀ = 11 − 9 = 2."
+  },
+  {
+   "titre": "Intérêts composés",
+   "enonce": "On place 2 000 € à 5 % par an. Capital après 10 ans ?",
+   "indice": "Le capital est multiplié par 1,05 chaque année.",
+   "correction": "2000 × 1,05¹⁰ ≈ 3 257,79 €."
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Dans une suite arithmétique, on passe d'un terme au suivant en :",
+   "choix": [
+    "multipliant",
+    "ajoutant r",
+    "élevant au carré",
+    "divisant"
+   ],
+   "bonne": 1,
+   "explication": "uₙ₊₁ = uₙ + r."
+  },
+  {
+   "q": "Dans une suite géométrique de raison q, uₙ vaut :",
+   "choix": [
+    "u₀ + nq",
+    "u₀ × qⁿ",
+    "u₀ × n q",
+    "u₀ / qⁿ"
+   ],
+   "bonne": 1,
+   "explication": "uₙ = u₀ qⁿ."
+  },
+  {
+   "q": "u₀ = 5 et r = 3 : u₁₀ vaut :",
+   "choix": [
+    "30",
+    "35",
+    "38",
+    "50"
+   ],
+   "bonne": 1,
+   "explication": "5 + 10 × 3 = 35."
+  },
+  {
+   "q": "Somme 3 + 6 + 12 + … (8 termes) :",
+   "choix": [
+    "381",
+    "765",
+    "1 530",
+    "512"
+   ],
+   "bonne": 1,
+   "explication": "3 × (2⁸ − 1) = 765."
+  },
+  {
+   "q": "Si uₙ₊₁ − uₙ > 0 pour tout n, la suite est :",
+   "choix": [
+    "décroissante",
+    "croissante",
+    "constante",
+    "géométrique"
+   ],
+   "bonne": 1,
+   "explication": "Différence positive : suite croissante."
+  }
+ ]
+}

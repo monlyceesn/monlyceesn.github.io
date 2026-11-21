@@ -1,0 +1,123 @@
+{
+ "n": 8,
+ "titre": "Chapitre 8 — Fonction exponentielle",
+ "pdf": "cours/maths-tle-l-ch8-fonction-exponentielle.pdf",
+ "pages": 4,
+ "taille": "0,3 Mo",
+ "note": "Cours réécrit à partir d'un cours de Terminale L (2018), complété ; à faire relire par un enseignant.",
+ "lecons": [
+  {
+   "n": 1,
+   "titre": "Définition et propriétés",
+   "debut": 1,
+   "fin": 2
+  },
+  {
+   "n": 2,
+   "titre": "Limites et dérivée ; étude de x eˣ",
+   "debut": 2,
+   "fin": 3
+  },
+  {
+   "n": 3,
+   "titre": "Équations et inéquations",
+   "debut": 3,
+   "fin": 3
+  },
+  {
+   "n": 4,
+   "titre": "Exercices corrigés",
+   "debut": 3,
+   "fin": 4
+  }
+ ],
+ "exercices": [
+  {
+   "titre": "Simplifier",
+   "enonce": "Simplifier (e^(x+1))² / e^(2x).",
+   "indice": "(eᵃ)ⁿ = eⁿᵃ et eᵃ/eᵇ = eᵃ⁻ᵇ.",
+   "correction": "e^(2x+2) / e^(2x) = e²."
+  },
+  {
+   "titre": "Dériver une exponentielle composée",
+   "enonce": "Dériver f(x) = e^(−x²).",
+   "indice": "(eᵘ)' = u' eᵘ.",
+   "correction": "u = −x², u' = −2x : f'(x) = −2x e^(−x²)."
+  },
+  {
+   "titre": "Équation avec e^x et e^(−x)",
+   "enonce": "Résoudre eˣ + e⁻ˣ = 2.",
+   "indice": "Multiplie par eˣ > 0.",
+   "correction": "e²ˣ + 1 = 2eˣ ⇔ (eˣ − 1)² = 0 ⇔ x = 0."
+  },
+  {
+   "titre": "Équation du second degré en eˣ",
+   "enonce": "Résoudre e²ˣ − 3eˣ + 2 = 0.",
+   "indice": "Pose X = eˣ.",
+   "correction": "X² − 3X + 2 = 0 : X = 1 ou 2, donc x = 0 ou x = ln 2."
+  },
+  {
+   "titre": "Inéquation",
+   "enonce": "Résoudre e^(−x+1) ≤ e³.",
+   "indice": "exp est strictement croissante.",
+   "correction": "−x + 1 ≤ 3 ⇔ x ≥ −2."
+  }
+ ],
+ "quiz": [
+  {
+   "q": "eˣ est :",
+   "choix": [
+    "parfois négatif",
+    "toujours strictement positif",
+    "nul en 0",
+    "décroissant"
+   ],
+   "bonne": 1,
+   "explication": "eˣ > 0 pour tout réel x."
+  },
+  {
+   "q": "e^a × e^b vaut :",
+   "choix": [
+    "e^(ab)",
+    "e^(a+b)",
+    "2e^(a+b)",
+    "e^a + e^b"
+   ],
+   "bonne": 1,
+   "explication": "On additionne les exposants."
+  },
+  {
+   "q": "La dérivée de e^(3x) est :",
+   "choix": [
+    "e^(3x)",
+    "3e^(3x)",
+    "3x e^(3x)",
+    "e^3"
+   ],
+   "bonne": 1,
+   "explication": "(eᵘ)' = u'eᵘ avec u = 3x."
+  },
+  {
+   "q": "eˣ = 5 équivaut à :",
+   "choix": [
+    "x = e⁵",
+    "x = ln 5",
+    "x = 5/e",
+    "x = 5"
+   ],
+   "bonne": 1,
+   "explication": "eˣ = y ⇔ x = ln y."
+  },
+  {
+   "q": "lim(x→−∞) eˣ vaut :",
+   "choix": [
+    "−∞",
+    "0",
+    "1",
+    "+∞"
+   ],
+   "bonne": 1,
+   "explication": "L'axe des abscisses est asymptote en −∞."
+  }
+ ]
+}

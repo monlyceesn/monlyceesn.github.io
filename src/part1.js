@@ -74,6 +74,22 @@ const CONTENU = {
       conseils: []
     }
   },
+  "tle-l1": {
+    "maths": {
+      cours: __TLEL_COURS_L1__,
+      exercices: __TLEL_EX__,
+      quiz: __TLEL_QUIZ__,
+      conseils: []
+    }
+  },
+  "tle-l2": {
+    "maths": {
+      cours: __TLEL_COURS_L2__,
+      exercices: __TLEL_EX__,
+      quiz: __TLEL_QUIZ__,
+      conseils: []
+    }
+  },
   "2nde-s": {
     "maths": {
       cours: __BARY_COURS__,

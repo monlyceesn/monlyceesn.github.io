@@ -1,0 +1,117 @@
+{
+ "n": 5,
+ "titre": "Chapitre 5 — Étude de fonctions",
+ "pdf": "cours/maths-tle-l-ch5-etude-fonctions.pdf",
+ "pages": 3,
+ "taille": "0,2 Mo",
+ "note": "Cours réécrit à partir d'un cours de Terminale L (2018), complété ; à faire relire par un enseignant.",
+ "lecons": [
+  {
+   "n": 1,
+   "titre": "Signe de f' et variations",
+   "debut": 1,
+   "fin": 1
+  },
+  {
+   "n": 2,
+   "titre": "Plan d'étude ; polynôme",
+   "debut": 2,
+   "fin": 2
+  },
+  {
+   "n": 3,
+   "titre": "Étude d'une fraction rationnelle",
+   "debut": 2,
+   "fin": 3
+  },
+  {
+   "n": 4,
+   "titre": "Exercices corrigés",
+   "debut": 3,
+   "fin": 3
+  }
+ ],
+ "exercices": [
+  {
+   "titre": "Variations d'un trinôme",
+   "enonce": "Tableau de variations de f(x) = x² − 4x + 3.",
+   "indice": "f'(x) = 2x − 4.",
+   "correction": "f décroît sur ]−∞ ; 2], croît sur [2 ; +∞[ ; minimum f(2) = −1."
+  },
+  {
+   "titre": "Variations d'un polynôme de degré 3",
+   "enonce": "Variations de f(x) = −x³ + 3x.",
+   "indice": "f'(x) = −3(x−1)(x+1).",
+   "correction": "f décroît, croît sur ]−1 ; 1[, puis décroît ; min f(−1) = −2, max f(1) = 2."
+  },
+  {
+   "titre": "Fonction homographique",
+   "enonce": "Sens de variation de f(x) = (3x − 1)/(x + 2) sur ]−2 ; +∞[.",
+   "indice": "Calcule f' avec la formule du quotient.",
+   "correction": "f'(x) = 7/(x+2)² > 0 : f strictement croissante."
+  },
+  {
+   "titre": "Étude complète",
+   "enonce": "Étudier f(x) = x³ − 3x² + 4 : dérivée, variations, extremums.",
+   "indice": "Factorise f'(x).",
+   "correction": "f'(x)=3x(x−2) ; croît jusqu'en 0 (max 4), décroît jusqu'en 2 (min 0), puis croît."
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Si f'(x) > 0 sur I, alors f est :",
+   "choix": [
+    "décroissante",
+    "croissante",
+    "constante",
+    "nulle"
+   ],
+   "bonne": 1,
+   "explication": "Dérivée positive ⇔ f croissante."
+  },
+  {
+   "q": "f'(a) = 0 avec changement de signe en a signifie :",
+   "choix": [
+    "asymptote",
+    "extremum local",
+    "point d'inflexion à tout coup",
+    "discontinuité"
+   ],
+   "bonne": 1,
+   "explication": "La courbe change de sens de variation."
+  },
+  {
+   "q": "f(x) = x² − 4x + 3 a un minimum en :",
+   "choix": [
+    "x = 1",
+    "x = 2",
+    "x = 3",
+    "x = 0"
+   ],
+   "bonne": 1,
+   "explication": "f'(x) = 2x − 4 = 0 en x = 2."
+  },
+  {
+   "q": "Pour f(x) = x + 2 − 4/(x − 1), la droite y = x + 2 est :",
+   "choix": [
+    "asymptote verticale",
+    "asymptote oblique",
+    "tangente en 0",
+    "axe de symétrie"
+   ],
+   "bonne": 1,
+   "explication": "f(x) − (x+2) = −4/(x−1) → 0."
+  },
+  {
+   "q": "La première étape d'une étude de fonction est :",
+   "choix": [
+    "tracer la courbe",
+    "l'ensemble de définition",
+    "le tableau de variations",
+    "les tangentes"
+   ],
+   "bonne": 1,
+   "explication": "On commence par préciser où f est définie."
+  }
+ ]
+}

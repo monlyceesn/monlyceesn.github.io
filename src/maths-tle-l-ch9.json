@@ -1,0 +1,123 @@
+{
+ "n": 9,
+ "titre": "Chapitre 9 — Dénombrement",
+ "pdf": "cours/maths-tle-l-ch9-denombrement.pdf",
+ "pages": 4,
+ "taille": "0,3 Mo",
+ "note": "Cours réécrit à partir d'un cours de Terminale L (2018), complété ; à faire relire par un enseignant.",
+ "lecons": [
+  {
+   "n": 1,
+   "titre": "Ensembles finis (réunion, intersection, complémentaire)",
+   "debut": 1,
+   "fin": 1
+  },
+  {
+   "n": 2,
+   "titre": "p-listes, arrangements, combinaisons",
+   "debut": 1,
+   "fin": 3
+  },
+  {
+   "n": 3,
+   "titre": "Exemples de tirages",
+   "debut": 3,
+   "fin": 3
+  },
+  {
+   "n": 4,
+   "titre": "Exercices corrigés",
+   "debut": 3,
+   "fin": 4
+  }
+ ],
+ "exercices": [
+  {
+   "titre": "Code de carte",
+   "enonce": "Combien de codes de carte bancaire à 4 chiffres existe-t-il ?",
+   "indice": "L'ordre compte et on peut répéter un chiffre.",
+   "correction": "10⁴ = 10 000."
+  },
+  {
+   "titre": "Podium",
+   "enonce": "8 coureurs participent à une course. Combien de podiums (1er, 2e, 3e) sont possibles ?",
+   "indice": "Ordre, sans répétition : arrangement.",
+   "correction": "A₈³ = 8 × 7 × 6 = 336."
+  },
+  {
+   "titre": "Comité",
+   "enonce": "Combien de comités de 3 personnes peut-on former parmi 8 ?",
+   "indice": "L'ordre ne compte pas : combinaison.",
+   "correction": "C₈³ = 56."
+  },
+  {
+   "titre": "Ranger des livres",
+   "enonce": "De combien de façons peut-on ranger 5 livres sur une étagère ?",
+   "indice": "Permutation : 5!.",
+   "correction": "5! = 120."
+  },
+  {
+   "titre": "Tirage dans un sac",
+   "enonce": "Un sac contient 5 boules rouges et 3 noires. On tire simultanément 3 boules. Combien de tirages contiennent au moins une noire ?",
+   "indice": "Total moins « aucune noire ».",
+   "correction": "C₈³ − C₅³ = 56 − 10 = 46."
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Le nombre de codes à 3 chiffres (0 à 9, répétitions permises) est :",
+   "choix": [
+    "30",
+    "720",
+    "1 000",
+    "120"
+   ],
+   "bonne": 2,
+   "explication": "10³ = 1 000."
+  },
+  {
+   "q": "Le nombre d'arrangements A₁₀³ vaut :",
+   "choix": [
+    "30",
+    "120",
+    "720",
+    "1 000"
+   ],
+   "bonne": 2,
+   "explication": "10 × 9 × 8 = 720."
+  },
+  {
+   "q": "Pour un tirage simultané de p éléments parmi n, on utilise :",
+   "choix": [
+    "nᵖ",
+    "Aₙᵖ",
+    "Cₙᵖ",
+    "n!"
+   ],
+   "bonne": 2,
+   "explication": "L'ordre ne compte pas : combinaison."
+  },
+  {
+   "q": "5! vaut :",
+   "choix": [
+    "25",
+    "60",
+    "120",
+    "720"
+   ],
+   "bonne": 2,
+   "explication": "5 × 4 × 3 × 2 × 1 = 120."
+  },
+  {
+   "q": "card(A ∪ B) est égal à :",
+   "choix": [
+    "card A + card B",
+    "card A + card B − card(A ∩ B)",
+    "card A × card B",
+    "card A − card B"
+   ],
+   "bonne": 1,
+   "explication": "Les éléments communs sont comptés deux fois : on les retire une fois."
+  }
+ ]
+}

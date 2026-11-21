@@ -1,0 +1,123 @@
+{
+ "n": 7,
+ "titre": "Chapitre 7 — Fonction logarithme népérien",
+ "pdf": "cours/maths-tle-l-ch7-logarithme-neperien.pdf",
+ "pages": 4,
+ "taille": "0,3 Mo",
+ "note": "Cours réécrit à partir d'un cours de Terminale L (2018), complété ; à faire relire par un enseignant.",
+ "lecons": [
+  {
+   "n": 1,
+   "titre": "Définition et propriétés",
+   "debut": 1,
+   "fin": 1
+  },
+  {
+   "n": 2,
+   "titre": "Limites et dérivée ; étude de ln x / x",
+   "debut": 2,
+   "fin": 3
+  },
+  {
+   "n": 3,
+   "titre": "Équations et inéquations",
+   "debut": 3,
+   "fin": 3
+  },
+  {
+   "n": 4,
+   "titre": "Exercices corrigés",
+   "debut": 4,
+   "fin": 4
+  }
+ ],
+ "exercices": [
+  {
+   "titre": "Ensemble de définition",
+   "enonce": "Déterminer le domaine de f(x) = ln(x² − 3x + 2).",
+   "indice": "Il faut x² − 3x + 2 > 0 : factorise.",
+   "correction": "(x−1)(x−2) > 0 ⇔ x < 1 ou x > 2 : ]−∞ ; 1[ ∪ ]2 ; +∞[."
+  },
+  {
+   "titre": "Simplifier une expression",
+   "enonce": "Simplifier 2 ln 3 + ln 4 − ln 6.",
+   "indice": "a·ln b = ln bᵃ ; somme → produit.",
+   "correction": "ln(9 × 4 / 6) = ln 6."
+  },
+  {
+   "titre": "Équation avec deux logarithmes",
+   "enonce": "Résoudre ln x + ln(x − 1) = ln 6.",
+   "indice": "Domaine x > 1, puis ln[x(x−1)] = ln 6.",
+   "correction": "x² − x − 6 = 0 donne x = 3 ou x = −2 ; seule 3 convient."
+  },
+  {
+   "titre": "Inéquation",
+   "enonce": "Résoudre ln(x − 1) < 2.",
+   "indice": "2 = ln e².",
+   "correction": "Domaine x > 1 ; x − 1 < e² ; solution ]1 ; 1 + e²[."
+  },
+  {
+   "titre": "Dérivée",
+   "enonce": "Dériver h(x) = ln(3x − 1) sur ]1/3 ; +∞[.",
+   "indice": "(ln u)' = u'/u.",
+   "correction": "h'(x) = 3/(3x − 1)."
+  }
+ ],
+ "quiz": [
+  {
+   "q": "ln est définie sur :",
+   "choix": [
+    "ℝ",
+    "]0 ; +∞[",
+    "[0 ; +∞[",
+    "ℝ*"
+   ],
+   "bonne": 1,
+   "explication": "On ne peut prendre le logarithme que d'un nombre strictement positif."
+  },
+  {
+   "q": "ln(ab) vaut (a, b > 0) :",
+   "choix": [
+    "ln a × ln b",
+    "ln a + ln b",
+    "ln a − ln b",
+    "a ln b"
+   ],
+   "bonne": 1,
+   "explication": "Le logarithme transforme les produits en sommes."
+  },
+  {
+   "q": "ln e vaut :",
+   "choix": [
+    "0",
+    "1",
+    "e",
+    "2,718"
+   ],
+   "bonne": 1,
+   "explication": "Par définition de e."
+  },
+  {
+   "q": "La dérivée de ln x est :",
+   "choix": [
+    "x",
+    "1/x",
+    "ln x",
+    "e^x"
+   ],
+   "bonne": 1,
+   "explication": "ln'(x) = 1/x."
+  },
+  {
+   "q": "ln x = 2 équivaut à :",
+   "choix": [
+    "x = 2",
+    "x = e²",
+    "x = 2e",
+    "x = ln 2"
+   ],
+   "bonne": 1,
+   "explication": "ln x = k ⇔ x = eᵏ."
+  }
+ ]
+}

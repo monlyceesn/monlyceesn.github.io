@@ -1,0 +1,117 @@
+{
+ "n": 2,
+ "titre": "Chapitre 2 — Factorisation des polynômes",
+ "pdf": "cours/maths-tle-l-ch2-factorisation-polynomes.pdf",
+ "pages": 5,
+ "taille": "0,3 Mo",
+ "note": "Cours réécrit à partir d'un cours de Terminale L (2018), complété ; à faire relire par un enseignant.",
+ "lecons": [
+  {
+   "n": 1,
+   "titre": "Polynômes et racines",
+   "debut": 1,
+   "fin": 1
+  },
+  {
+   "n": 2,
+   "titre": "Factoriser un polynôme de degré 3 (identification, Horner)",
+   "debut": 2,
+   "fin": 3
+  },
+  {
+   "n": 3,
+   "titre": "Équations et inéquations",
+   "debut": 3,
+   "fin": 4
+  },
+  {
+   "n": 4,
+   "titre": "Exercices corrigés",
+   "debut": 4,
+   "fin": 5
+  }
+ ],
+ "exercices": [
+  {
+   "titre": "Factorisation d'un polynôme de degré 3",
+   "enonce": "Factoriser P(x) = x³ − 6x² + 11x − 6.",
+   "indice": "P(1) = 0 : divise par (x − 1) (Horner ou identification).",
+   "correction": "P(1)=0 ; Horner : 1, −5, 6, reste 0 ; x²−5x+6=(x−2)(x−3). P(x)=(x−1)(x−2)(x−3)."
+  },
+  {
+   "titre": "Factorisation par groupement",
+   "enonce": "Résoudre x³ − x² − 4x + 4 = 0.",
+   "indice": "Groupe x³ − x² et −4x + 4.",
+   "correction": "x²(x−1) − 4(x−1) = (x−1)(x²−4) = (x−1)(x−2)(x+2). Solutions : −2 ; 1 ; 2."
+  },
+  {
+   "titre": "Inéquation avec racine double",
+   "enonce": "Résoudre x³ − 3x² + 4 ≤ 0.",
+   "indice": "x³−3x²+4 = (x+1)(x−2)². Le carré est toujours ≥ 0.",
+   "correction": "Le signe est celui de (x+1) sauf en x = 2 où l'expression est nulle. Solutions : ]−∞ ; −1] ∪ {2}."
+  },
+  {
+   "titre": "Inéquation avec fraction",
+   "enonce": "Résoudre (x² + x − 6)/(x − 1) ≥ 0.",
+   "indice": "x²+x−6 = (x−2)(x+3). Valeur interdite : 1.",
+   "correction": "Tableau de signes : solutions [−3 ; 1[ ∪ [2 ; +∞[."
+  }
+ ],
+ "quiz": [
+  {
+   "q": "α est racine de P signifie :",
+   "choix": [
+    "P(0) = α",
+    "P(α) = 0",
+    "P(x) = α",
+    "P'(α) = 0"
+   ],
+   "bonne": 1,
+   "explication": "Une racine annule le polynôme."
+  },
+  {
+   "q": "Si P(2) = 0, alors P(x) est factorisable par :",
+   "choix": [
+    "x + 2",
+    "x − 2",
+    "2x",
+    "x² − 2"
+   ],
+   "bonne": 1,
+   "explication": "Théorème du facteur : P(x) = (x − 2)Q(x)."
+  },
+  {
+   "q": "Pour P(x) = x³ − 3x² + 4, quelle est une racine évidente ?",
+   "choix": [
+    "1",
+    "0",
+    "−1",
+    "3"
+   ],
+   "bonne": 2,
+   "explication": "P(−1) = −1 − 3 + 4 = 0."
+  },
+  {
+   "q": "Dans un tableau de Horner, la dernière case est :",
+   "choix": [
+    "le quotient",
+    "le reste",
+    "la racine",
+    "le degré"
+   ],
+   "bonne": 1,
+   "explication": "Elle vaut P(α), donc 0 si α est racine."
+  },
+  {
+   "q": "Pour une fraction, une valeur qui annule le dénominateur donne un crochet :",
+   "choix": [
+    "fermé",
+    "ouvert",
+    "au choix",
+    "aucun"
+   ],
+   "bonne": 1,
+   "explication": "La fraction n'existe pas en ce point : on l'exclut."
+  }
+ ]
+}

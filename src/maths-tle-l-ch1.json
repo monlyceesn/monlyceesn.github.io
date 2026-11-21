@@ -1,0 +1,117 @@
+{
+ "n": 1,
+ "titre": "Chapitre 1 — Composition des applications",
+ "pdf": "cours/maths-tle-l-ch1-composition-applications.pdf",
+ "pages": 3,
+ "taille": "0,3 Mo",
+ "note": "Cours réécrit à partir d'un cours de Terminale L (2018), complété ; à faire relire par un enseignant.",
+ "lecons": [
+  {
+   "n": 1,
+   "titre": "Composée de deux fonctions",
+   "debut": 1,
+   "fin": 2
+  },
+  {
+   "n": 2,
+   "titre": "Ensemble de définition d'une composée",
+   "debut": 2,
+   "fin": 2
+  },
+  {
+   "n": 3,
+   "titre": "Décomposer une fonction",
+   "debut": 2,
+   "fin": 3
+  },
+  {
+   "n": 4,
+   "titre": "Exercices corrigés",
+   "debut": 3,
+   "fin": 3
+  }
+ ],
+ "exercices": [
+  {
+   "titre": "Composées de deux fonctions affines",
+   "enonce": "Soit f(x) = 3x − 2 et g(x) = 2x − 3. Calculer g∘f et f∘g.",
+   "indice": "(g∘f)(x) = g(f(x)) : remplace x par f(x) dans g.",
+   "correction": "(g∘f)(x) = 2(3x−2) − 3 = 6x − 7 ; (f∘g)(x) = 3(2x−3) − 2 = 6x − 11. On a g∘f ≠ f∘g."
+  },
+  {
+   "titre": "Une composée avec un carré",
+   "enonce": "Soit f(x) = 2x − 1 et g(x) = x². Calculer g∘f, f∘g, puis leurs valeurs en x = 3.",
+   "indice": "Calcule d'abord l'expression, puis remplace x par 3 (et vérifie en enchaînant les deux fonctions).",
+   "correction": "(g∘f)(x) = (2x−1)² = 4x²−4x+1, valeur 25. (f∘g)(x) = 2x²−1, valeur 17."
+  },
+  {
+   "titre": "Ensemble de définition",
+   "enonce": "Soit f(x) = x + 3 et g(x) = 2/x. Déterminer g∘f et son ensemble de définition.",
+   "indice": "Le dénominateur ne doit pas s'annuler.",
+   "correction": "(g∘f)(x) = 2/(x+3), définie pour x ≠ −3 : ℝ∖{−3}."
+  },
+  {
+   "titre": "Composer f avec elle-même",
+   "enonce": "Soit f(x) = 2x + 1. Calculer (f∘f)(x).",
+   "indice": "f∘f(x) = f(f(x)).",
+   "correction": "(f∘f)(x) = 2(2x+1)+1 = 4x + 3."
+  }
+ ],
+ "quiz": [
+  {
+   "q": "Que signifie (g∘f)(x) ?",
+   "choix": [
+    "f(g(x))",
+    "g(f(x))",
+    "f(x)·g(x)",
+    "g(x)+f(x)"
+   ],
+   "bonne": 1,
+   "explication": "(g∘f)(x) = g(f(x)) : on applique f d'abord."
+  },
+  {
+   "q": "Si f(x) = x + 1 et g(x) = x², alors (g∘f)(x) vaut :",
+   "choix": [
+    "x² + 1",
+    "(x+1)²",
+    "x² + x",
+    "x + 1 + x²"
+   ],
+   "bonne": 1,
+   "explication": "g(f(x)) = g(x+1) = (x+1)²."
+  },
+  {
+   "q": "Si f(x) = x + 1 et g(x) = x², alors (f∘g)(x) vaut :",
+   "choix": [
+    "x² + 1",
+    "(x+1)²",
+    "x²+x",
+    "x+1"
+   ],
+   "bonne": 0,
+   "explication": "f(g(x)) = f(x²) = x² + 1."
+  },
+  {
+   "q": "En général :",
+   "choix": [
+    "g∘f = f∘g",
+    "g∘f ≠ f∘g",
+    "g∘f n'existe jamais",
+    "g∘f = f + g"
+   ],
+   "bonne": 1,
+   "explication": "La composition n'est pas commutative."
+  },
+  {
+   "q": "f(x) = x − 2 et g(x) = 1/x. L'ensemble de définition de g∘f est :",
+   "choix": [
+    "ℝ",
+    "ℝ∖{0}",
+    "ℝ∖{2}",
+    "ℝ∖{−2}"
+   ],
+   "bonne": 2,
+   "explication": "(g∘f)(x) = 1/(x−2), définie si x ≠ 2."
+  }
+ ]
+}
