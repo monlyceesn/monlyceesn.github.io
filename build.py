@@ -110,15 +110,18 @@ site = site.replace("__TLE_MORE_QUIZ__", json.dumps(tle_more_quiz, ensure_ascii=
 tlel_l1, tlel_l2, tlel_ex, tlel_quiz = [], [], [], []
 for _n in range(1, 11):
     _d = json.loads((src / f"maths-tle-l-ch{_n}.json").read_text())
+    _chap = f"Ch. {_n} · " + _d["titre"].split(" — ", 1)[-1]
     tlel_l1.append({"type": "fascicule", "id": f"maths-tle-l1-ch{_n}", "classe": "tle-l1", "matiere": "maths",
-      "titre": _d["titre"], "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "Réécrit à partir d'un cours de mathématiques de Terminale L (2018)",
+      "titre": _d["titre"], "chap": _chap, "num": _n, "desc": _d.get("note", ""), "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "Réécrit à partir d'un cours de mathématiques de Terminale L (2018)",
       "pdf": _d["pdf"], "taille": _d["taille"], "pages": _d["pages"], "leger": True,
       "note": "Cours réécrit proprement à partir d'un plan de cours de Terminale L (2018), complété par des explications simples (encadrés bleus) et des exemples entièrement corrigés. À faire relire par un professeur de mathématiques.",
       "lecons": _d["lecons"]})
     tlel_l2.append({**tlel_l1[-1], "id": f"maths-tle-l2-ch{_n}", "classe": "tle-l2"})
-    for e in _d["exercices"]: e["titre"] += f' <small style="color:var(--gris);font-weight:600">· Chapitre {_n}</small>'
+    for e in _d["exercices"]:
+        e["chap"] = _chap
+        e["titre"] += f' <small style="color:var(--gris);font-weight:600">· Chapitre {_n}</small>'
     tlel_ex += _d["exercices"]
-    tlel_quiz += _d["quiz"]
+    tlel_quiz += [dict(q, chap=_chap) for q in _d["quiz"]]
 site = site.replace("__TLEL_COURS_L1__", json.dumps(tlel_l1, ensure_ascii=False))
 site = site.replace("__TLEL_COURS_L2__", json.dumps(tlel_l2, ensure_ascii=False))
 site = site.replace("__TLEL_EX__", json.dumps(tlel_ex, ensure_ascii=False))
