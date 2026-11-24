@@ -1,0 +1,107 @@
+[
+ {
+  "id": "seconde-s-01",
+  "titre": "Repérage de la droite et du plan",
+  "pdf": "cours/seconde-s-01-reperage.pdf",
+  "pages": 12,
+  "taille": "0,44 Mo"
+ },
+ {
+  "id": "seconde-s-02",
+  "titre": "Angles inscrits, radian, angles orientés",
+  "pdf": "cours/seconde-s-02-angles.pdf",
+  "pages": 7,
+  "taille": "0,21 Mo"
+ },
+ {
+  "id": "seconde-s-03",
+  "titre": "Trigonométrie",
+  "pdf": "cours/seconde-s-03-trigo.pdf",
+  "pages": 5,
+  "taille": "0,17 Mo"
+ },
+ {
+  "id": "seconde-s-04",
+  "titre": "Produit scalaire",
+  "pdf": "cours/seconde-s-04-produit-scalaire.pdf",
+  "pages": 7,
+  "taille": "0,35 Mo"
+ },
+ {
+  "id": "seconde-s-05",
+  "titre": "Transformations du plan",
+  "pdf": "cours/seconde-s-05-transformations.pdf",
+  "pages": 11,
+  "taille": "0,56 Mo"
+ },
+ {
+  "id": "seconde-s-06",
+  "titre": "Lieux géométriques",
+  "pdf": "cours/seconde-s-06-lieux.pdf",
+  "pages": 3,
+  "taille": "0,13 Mo"
+ },
+ {
+  "id": "seconde-s-07",
+  "titre": "Géométrie dans l'espace",
+  "pdf": "cours/seconde-s-07-espace.pdf",
+  "pages": 9,
+  "taille": "0,21 Mo"
+ },
+ {
+  "id": "seconde-s-08",
+  "titre": "Calcul dans ℝ",
+  "pdf": "cours/seconde-s-08-calcul-r.pdf",
+  "pages": 9,
+  "taille": "0,34 Mo"
+ },
+ {
+  "id": "seconde-s-09",
+  "titre": "Intervalles et calcul approché",
+  "pdf": "cours/seconde-s-09-intervalles.pdf",
+  "pages": 7,
+  "taille": "0,17 Mo"
+ },
+ {
+  "id": "seconde-s-10",
+  "titre": "Fonctions numériques : généralités",
+  "pdf": "cours/seconde-s-10-fonctions.pdf",
+  "pages": 8,
+  "taille": "0,29 Mo"
+ },
+ {
+  "id": "seconde-s-11",
+  "titre": "Étude des fonctions usuelles",
+  "pdf": "cours/seconde-s-11-fonctions-usuelles.pdf",
+  "pages": 10,
+  "taille": "0,30 Mo"
+ },
+ {
+  "id": "seconde-s-12",
+  "titre": "Équations et inéquations du second degré",
+  "pdf": "cours/seconde-s-12-second-degre.pdf",
+  "pages": 7,
+  "taille": "0,31 Mo"
+ },
+ {
+  "id": "seconde-s-13",
+  "titre": "Systèmes d'équations et d'inéquations du 1er degré",
+  "pdf": "cours/seconde-s-13-systemes.pdf",
+  "pages": 6,
+  "taille": "0,17 Mo"
+ },
+ {
+  "id": "seconde-s-14",
+  "titre": "Polynômes et fractions rationnelles",
+  "pdf": "cours/seconde-s-14-polynomes.pdf",
+  "pages": 7,
+  "taille": "0,22 Mo"
+ },
+ {
+  "id": "seconde-s-15",
+  "titre": "Statistique : quartiles, variance et écart-type",
+  "pdf": "cours/seconde-s-15-statistique.pdf",
+  "pages": 5,
+  "taille": "0,21 Mo"
+ }
+]

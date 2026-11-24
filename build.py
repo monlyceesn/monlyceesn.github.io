@@ -62,6 +62,14 @@ bary_cours.append({"type": "fascicule", "id": "vect-2nde", "classe": "2nde-s", "
              {"n": 2, "titre": "Multiplication par un réel, colinéarité", "debut": 3, "fin": 5},
              {"n": 3, "titre": "Base, repère et coordonnées", "debut": 6, "fin": 6},
              {"n": 4, "titre": "Vecteurs et figures (milieu, centre de gravité, Thalès)", "debut": 7, "fin": 9}]})
+_s2 = json.loads((src / "seconde-s.json").read_text())
+_s2_cours = [{"type": "fascicule", "id": c["id"], "classe": "2nde-s", "matiere": "maths",
+  "titre": c["titre"], "chap": c["titre"], "auteur": "Mon Lycée SN", "credit": "Cours Mon Lycée SN", "edition": "Édition Mon Lycée SN",
+  "pdf": c["pdf"], "taille": c["taille"], "pages": c["pages"], "leger": True,
+  "note": "Cours avec explications simples (encadrés bleus), propriétés et exemples corrigés.",
+  "lecons": [{"n": 1, "titre": c["titre"], "debut": 1, "fin": c["pages"]}]} for c in _s2]
+_ordre = {"seconde-s-01": 0}
+bary_cours = _s2_cours[:1] + [b for b in bary_cours if b["id"] == "vect-2nde"] + _s2_cours[1:] + [b for b in bary_cours if b["id"] == "bary-2nde"]
 for e in vect["exercices"]: e["chap"] = "Calcul vectoriel"
 for e in bary["exercices"]: e.setdefault("chap", "Barycentre")
 for e in vect["exercices"]: e["titre"] += ' <small style="color:var(--gris);font-weight:600">· Calcul vectoriel</small>'
