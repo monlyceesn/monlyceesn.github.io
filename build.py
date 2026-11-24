@@ -107,6 +107,22 @@ site = site.replace("__TLE_MORE_COURS__", json.dumps(tle_more_cours, ensure_asci
 site = site.replace("__TLE_MORE_COURS_S2__", json.dumps(tle_more_cours_s2, ensure_ascii=False))
 site = site.replace("__TLE_MORE_EX__", json.dumps(tle_more_ex, ensure_ascii=False))
 site = site.replace("__TLE_MORE_QUIZ__", json.dumps(tle_more_quiz, ensure_ascii=False))
+
+_ndi = json.loads((src / "ndiaye.json").read_text())
+def ndiaye_cours(cid):
+    out = []
+    for c in _ndi[cid]:
+        titre = c["titre"] + (" — cours de M. Ndiaye" if cid.startswith("tle") else "")
+        out.append({"type": "fascicule", "id": f"ndiaye-{cid}-ch{c['num']:02d}", "classe": cid, "matiere": "maths",
+          "titre": titre, "chap": "Cours de M. Dine Ndiaye · " + c["titre"],
+          "desc": "Cours de mathématiques de M. Dine Ndiaye, professeur de mathématiques.",
+          "auteur": "M. Dine Ndiaye, professeur de mathématiques", "edition": "Lycée Mbacké 2 · Inspection d'Académie de Diourbel",
+          "pdf": c["pdf"], "taille": c["taille"], "pages": c["pages"], "leger": True,
+          "note": "Cours rédigé par M. Dine Ndiaye, professeur de mathématiques, partagé avec les élèves du Sénégal avec son accord. Il reste sa propriété et est publié sans modification.",
+          "lecons": [{"n": 1, "titre": c["titre"], "debut": 1, "fin": c["pages"]}]})
+    return out
+for _k, _cid in (("__NDIAYE_1S1__", "1re-s1"), ("__NDIAYE_1S2__", "1re-s2"), ("__NDIAYE_TS1__", "tle-s1"), ("__NDIAYE_TS2__", "tle-s2")):
+    site = site.replace(_k, json.dumps(ndiaye_cours(_cid), ensure_ascii=False))
 tlel_l1, tlel_l2, tlel_ex, tlel_quiz = [], [], [], []
 for _n in range(1, 11):
     _d = json.loads((src / f"maths-tle-l-ch{_n}.json").read_text())

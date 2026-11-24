@@ -40,9 +40,11 @@ const CLASSES = [
 const matieresDe = c => c.matieres.map(id => MATIERES.find(m => m.id === id)).filter(Boolean);
 
 const CONTENU = {
+  "1re-s1": { "maths": { cours: __NDIAYE_1S1__, exercices: [], quiz: [], conseils: [] } },
+  "1re-s2": { "maths": { cours: __NDIAYE_1S2__, exercices: [], quiz: [], conseils: [] } },
   "tle-s1": {
     "maths": {
-      cours: [...__TLE1_COURS_S1__, ...__TLE_MORE_COURS__],
+      cours: [...__TLE1_COURS_S1__, ...__TLE_MORE_COURS__, ...__NDIAYE_TS1__],
       exercices: [...__TLE1_EX__, ...__TLE_MORE_EX__],
       quiz: [...__TLE1_QUIZ__, ...__TLE_MORE_QUIZ__],
       conseils: []
@@ -61,7 +63,8 @@ const CONTENU = {
           pdf: "probabilites-tle-s2.pdf",
           plan: ["Le vocabulaire du hasard", "Calculer une probabilité", "Probabilités conditionnelles",
                  "Le schéma de Bernoulli", "Variable aléatoire"]
-        }
+        },
+        ...__NDIAYE_TS2__
       ],
       exercices: [...__TLE1_EX__, ...__TLE_MORE_EX__, ...__PROBA_EX__],
       quiz: [...__TLE1_QUIZ__, ...__TLE_MORE_QUIZ__, ...__PROBA_QUIZ__],

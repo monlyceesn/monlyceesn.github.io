@@ -1,0 +1,360 @@
+{
+ "1re-s1": [
+  {
+   "num": 1,
+   "titre": "Polynômes réels",
+   "pdf": "cours/ndiaye-1re-s1-ch01-polynomes-reels.pdf",
+   "pages": 14,
+   "taille": "0,17 Mo"
+  },
+  {
+   "num": 2,
+   "titre": "Équations et inéquations irrationnelles – systèmes – programmation linéaire",
+   "pdf": "cours/ndiaye-1re-s1-ch02-equations-et-inequations-irrationnelle.pdf",
+   "pages": 18,
+   "taille": "0,23 Mo"
+  },
+  {
+   "num": 3,
+   "titre": "Applications",
+   "pdf": "cours/ndiaye-1re-s1-ch03-applications.pdf",
+   "pages": 15,
+   "taille": "0,18 Mo"
+  },
+  {
+   "num": 4,
+   "titre": "Généralités sur les fonctions",
+   "pdf": "cours/ndiaye-1re-s1-ch04-generalites-sur-les-fonctions.pdf",
+   "pages": 8,
+   "taille": "0,15 Mo"
+  },
+  {
+   "num": 5,
+   "titre": "Limites et continuité",
+   "pdf": "cours/ndiaye-1re-s1-ch05-limites-et-continuite.pdf",
+   "pages": 12,
+   "taille": "0,17 Mo"
+  },
+  {
+   "num": 6,
+   "titre": "Dérivation et étude de fonctions",
+   "pdf": "cours/ndiaye-1re-s1-ch06-derivation-et-etude-de-fonctions.pdf",
+   "pages": 18,
+   "taille": "0,23 Mo"
+  },
+  {
+   "num": 7,
+   "titre": "Primitives",
+   "pdf": "cours/ndiaye-1re-s1-ch07-primitives.pdf",
+   "pages": 9,
+   "taille": "0,14 Mo"
+  },
+  {
+   "num": 8,
+   "titre": "Suites numériques",
+   "pdf": "cours/ndiaye-1re-s1-ch08-suites-numeriques.pdf",
+   "pages": 17,
+   "taille": "0,20 Mo"
+  },
+  {
+   "num": 9,
+   "titre": "Dénombrement",
+   "pdf": "cours/ndiaye-1re-s1-ch09-denombrement.pdf",
+   "pages": 14,
+   "taille": "0,56 Mo"
+  },
+  {
+   "num": 10,
+   "titre": "Séries statistiques doubles",
+   "pdf": "cours/ndiaye-1re-s1-ch10-series-statistiques-doubles.pdf",
+   "pages": 10,
+   "taille": "0,13 Mo"
+  },
+  {
+   "num": 11,
+   "titre": "Compléments sur le calcul vectoriel et produit scalaire",
+   "pdf": "cours/ndiaye-1re-s1-ch11-complements-sur-le-calcul-vectoriel-et.pdf",
+   "pages": 17,
+   "taille": "0,21 Mo"
+  },
+  {
+   "num": 12,
+   "titre": "Angles orientés et trigonométrie",
+   "pdf": "cours/ndiaye-1re-s1-ch12-angles-orientes-et-trigonometrie.pdf",
+   "pages": 30,
+   "taille": "0,32 Mo"
+  },
+  {
+   "num": 13,
+   "titre": "Transformations du plan",
+   "pdf": "cours/ndiaye-1re-s1-ch13-transformations-du-plan.pdf",
+   "pages": 37,
+   "taille": "0,46 Mo"
+  },
+  {
+   "num": 14,
+   "titre": "Géométrie dans l'espace",
+   "pdf": "cours/ndiaye-1re-s1-ch14-geometrie-dans-l-espace.pdf",
+   "pages": 31,
+   "taille": "0,30 Mo"
+  }
+ ],
+ "1re-s2": [
+  {
+   "num": 1,
+   "titre": "Équations, inéquations et systèmes",
+   "pdf": "cours/ndiaye-1re-s2-ch01-equations-inequations-et-systemes.pdf",
+   "pages": 16,
+   "taille": "0,21 Mo"
+  },
+  {
+   "num": 2,
+   "titre": "Applications",
+   "pdf": "cours/ndiaye-1re-s2-ch02-applications.pdf",
+   "pages": 13,
+   "taille": "0,19 Mo"
+  },
+  {
+   "num": 3,
+   "titre": "Fonctions numériques d'une variable réelle",
+   "pdf": "cours/ndiaye-1re-s2-ch03-fonctions-numeriques-d-une-variable-re.pdf",
+   "pages": 15,
+   "taille": "0,26 Mo"
+  },
+  {
+   "num": 4,
+   "titre": "Limites et continuité",
+   "pdf": "cours/ndiaye-1re-s2-ch04-limites-et-continuite.pdf",
+   "pages": 16,
+   "taille": "0,17 Mo"
+  },
+  {
+   "num": 5,
+   "titre": "Dérivation et étude de fonctions",
+   "pdf": "cours/ndiaye-1re-s2-ch05-derivation-et-etude-de-fonctions.pdf",
+   "pages": 14,
+   "taille": "0,28 Mo"
+  },
+  {
+   "num": 6,
+   "titre": "Suites numériques",
+   "pdf": "cours/ndiaye-1re-s2-ch06-suites-numeriques.pdf",
+   "pages": 9,
+   "taille": "0,15 Mo"
+  },
+  {
+   "num": 7,
+   "titre": "Dénombrement",
+   "pdf": "cours/ndiaye-1re-s2-ch07-denombrement.pdf",
+   "pages": 9,
+   "taille": "0,16 Mo"
+  },
+  {
+   "num": 8,
+   "titre": "Barycentres et centre d'inertie",
+   "pdf": "cours/ndiaye-1re-s2-ch08-barycentres-et-centre-d-inertie.pdf",
+   "pages": 8,
+   "taille": "0,15 Mo"
+  },
+  {
+   "num": 9,
+   "titre": "Produit scalaire dans le plan",
+   "pdf": "cours/ndiaye-1re-s2-ch09-produit-scalaire-dans-le-plan.pdf",
+   "pages": 17,
+   "taille": "0,18 Mo"
+  },
+  {
+   "num": 10,
+   "titre": "Angles orientés et trigonométrie",
+   "pdf": "cours/ndiaye-1re-s2-ch10-angles-orientes-et-trigonometrie.pdf",
+   "pages": 16,
+   "taille": "0,18 Mo"
+  },
+  {
+   "num": 11,
+   "titre": "Transformations du plan",
+   "pdf": "cours/ndiaye-1re-s2-ch11-transformations-du-plan.pdf",
+   "pages": 10,
+   "taille": "0,15 Mo"
+  },
+  {
+   "num": 12,
+   "titre": "Géométrie dans l'espace",
+   "pdf": "cours/ndiaye-1re-s2-ch12-geometrie-dans-l-espace.pdf",
+   "pages": 10,
+   "taille": "0,15 Mo"
+  }
+ ],
+ "tle-s1": [
+  {
+   "num": 1,
+   "titre": "Les nombres complexes",
+   "pdf": "cours/ndiaye-tle-s1-ch01-les-nombres-complexes.pdf",
+   "pages": 19,
+   "taille": "0,19 Mo"
+  },
+  {
+   "num": 2,
+   "titre": "Calcul barycentrique et cocyclicité",
+   "pdf": "cours/ndiaye-tle-s1-ch02-calcul-barycentrique-et-cocyclicite.pdf",
+   "pages": 11,
+   "taille": "0,73 Mo"
+  },
+  {
+   "num": 3,
+   "titre": "Transformations du plan",
+   "pdf": "cours/ndiaye-tle-s1-ch03-transformations-du-plan.pdf",
+   "pages": 31,
+   "taille": "0,39 Mo"
+  },
+  {
+   "num": 4,
+   "titre": "Similitudes du plan",
+   "pdf": "cours/ndiaye-tle-s1-ch04-similitudes-du-plan.pdf",
+   "pages": 7,
+   "taille": "0,20 Mo"
+  },
+  {
+   "num": 5,
+   "titre": "Les coniques",
+   "pdf": "cours/ndiaye-tle-s1-ch05-les-coniques.pdf",
+   "pages": 15,
+   "taille": "0,18 Mo"
+  },
+  {
+   "num": 6,
+   "titre": "Arithmétique",
+   "pdf": "cours/ndiaye-tle-s1-ch06-arithmetique.pdf",
+   "pages": 23,
+   "taille": "0,34 Mo"
+  },
+  {
+   "num": 7,
+   "titre": "Géométrie dans l'espace : produit vectoriel et produit mixte",
+   "pdf": "cours/ndiaye-tle-s1-ch07-geometrie-dans-l-espace-produit-vector.pdf",
+   "pages": 28,
+   "taille": "1,54 Mo"
+  },
+  {
+   "num": 8,
+   "titre": "Applications élémentaires de l'espace",
+   "pdf": "cours/ndiaye-tle-s1-ch08-applications-elementaires-de-l-espace.pdf",
+   "pages": 18,
+   "taille": "0,19 Mo"
+  },
+  {
+   "num": 9,
+   "titre": "Primitives et compléments sur les suites",
+   "pdf": "cours/ndiaye-tle-s1-ch09-primitives-et-complements-sur-les-suit.pdf",
+   "pages": 18,
+   "taille": "0,22 Mo"
+  },
+  {
+   "num": 10,
+   "titre": "Fonctions usuelles : logarithme et exponentielle",
+   "pdf": "cours/ndiaye-tle-s1-ch10-fonctions-usuelles-logarithme-et-expon.pdf",
+   "pages": 21,
+   "taille": "0,20 Mo"
+  },
+  {
+   "num": 11,
+   "titre": "Calcul d'intégrales de fonctions continues",
+   "pdf": "cours/ndiaye-tle-s1-ch11-calcul-d-integrales-de-fonctions-conti.pdf",
+   "pages": 19,
+   "taille": "0,50 Mo"
+  },
+  {
+   "num": 12,
+   "titre": "Courbes paramétrées",
+   "pdf": "cours/ndiaye-tle-s1-ch12-courbes-parametrees.pdf",
+   "pages": 16,
+   "taille": "0,28 Mo"
+  },
+  {
+   "num": 13,
+   "titre": "Équations différentielles linéaires",
+   "pdf": "cours/ndiaye-tle-s1-ch13-equations-differentielles-lineaires.pdf",
+   "pages": 13,
+   "taille": "0,31 Mo"
+  },
+  {
+   "num": 14,
+   "titre": "Dénombrement et probabilités",
+   "pdf": "cours/ndiaye-tle-s1-ch14-denombrement-et-probabilites.pdf",
+   "pages": 29,
+   "taille": "0,42 Mo"
+  }
+ ],
+ "tle-s2": [
+  {
+   "num": 1,
+   "titre": "Compléments sur les fonctions numériques",
+   "pdf": "cours/ndiaye-tle-s2-ch01-complements-sur-les-fonctions-numeriqu.pdf",
+   "pages": 31,
+   "taille": "0,37 Mo"
+  },
+  {
+   "num": 2,
+   "titre": "Fonction logarithme népérien",
+   "pdf": "cours/ndiaye-tle-s2-ch02-fonction-logarithme-neperien.pdf",
+   "pages": 12,
+   "taille": "0,21 Mo"
+  },
+  {
+   "num": 3,
+   "titre": "Fonction exponentielle",
+   "pdf": "cours/ndiaye-tle-s2-ch03-fonction-exponentielle.pdf",
+   "pages": 6,
+   "taille": "0,14 Mo"
+  },
+  {
+   "num": 4,
+   "titre": "Suites numériques",
+   "pdf": "cours/ndiaye-tle-s2-ch04-suites-numeriques.pdf",
+   "pages": 18,
+   "taille": "0,25 Mo"
+  },
+  {
+   "num": 5,
+   "titre": "Calcul intégral",
+   "pdf": "cours/ndiaye-tle-s2-ch05-calcul-integral.pdf",
+   "pages": 14,
+   "taille": "0,18 Mo"
+  },
+  {
+   "num": 6,
+   "titre": "Équations différentielles",
+   "pdf": "cours/ndiaye-tle-s2-ch06-equations-differentielles.pdf",
+   "pages": 9,
+   "taille": "0,19 Mo"
+  },
+  {
+   "num": 7,
+   "titre": "Nombres complexes",
+   "pdf": "cours/ndiaye-tle-s2-ch07-nombres-complexes.pdf",
+   "pages": 24,
+   "taille": "0,28 Mo"
+  },
+  {
+   "num": 8,
+   "titre": "Transformations du plan",
+   "pdf": "cours/ndiaye-tle-s2-ch08-transformations-du-plan.pdf",
+   "pages": 9,
+   "taille": "0,14 Mo"
+  },
+  {
+   "num": 9,
+   "titre": "Probabilités",
+   "pdf": "cours/ndiaye-tle-s2-ch09-probabilites.pdf",
+   "pages": 20,
+   "taille": "0,23 Mo"
+  },
+  {
+   "num": 10,
+   "titre": "Séries statistiques doubles",
+   "pdf": "cours/ndiaye-tle-s2-ch10-series-statistiques-doubles.pdf",
+   "pages": 10,
+   "taille": "0,14 Mo"
+  }
+ ]
+}
