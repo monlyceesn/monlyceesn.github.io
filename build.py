@@ -114,11 +114,11 @@ def ndiaye_cours(cid):
     for c in _ndi[cid]:
         titre = c["titre"] + (" — cours de M. Ndiaye" if cid.startswith("tle") else "")
         out.append({"type": "fascicule", "id": f"ndiaye-{cid}-ch{c['num']:02d}", "classe": cid, "matiere": "maths",
-          "titre": titre, "chap": "Cours de M. Dine Ndiaye · " + c["titre"],
-          "desc": "Cours de mathématiques de M. Dine Ndiaye, professeur de mathématiques.",
-          "auteur": "M. Dine Ndiaye, professeur de mathématiques", "edition": "Lycée Mbacké 2 · Inspection d'Académie de Diourbel",
+          "titre": titre, "chap": "Cours de M. Diné Ndiaye · " + c["titre"],
+          "desc": "Cours de mathématiques de M. Diné Ndiaye, professeur de mathématiques au Lycée Mbacké 2.",
+          "auteur": "M. Diné Ndiaye, professeur de mathématiques au Lycée Mbacké 2", "edition": "Inspection d'Académie de Diourbel",
           "pdf": c["pdf"], "taille": c["taille"], "pages": c["pages"], "leger": True,
-          "note": "Cours rédigé par M. Dine Ndiaye, professeur de mathématiques, partagé avec les élèves du Sénégal avec son accord. Il reste sa propriété et est publié sans modification.",
+          "note": "Cours rédigé par M. Diné Ndiaye, professeur de mathématiques au Lycée Mbacké 2, partagé avec les élèves du Sénégal avec son accord. Il reste sa propriété et est publié sans modification.",
           "lecons": [{"n": 1, "titre": c["titre"], "debut": 1, "fin": c["pages"]}]})
     return out
 for _k, _cid in (("__NDIAYE_1S1__", "1re-s1"), ("__NDIAYE_1S2__", "1re-s2"), ("__NDIAYE_TS1__", "tle-s1"), ("__NDIAYE_TS2__", "tle-s2")):

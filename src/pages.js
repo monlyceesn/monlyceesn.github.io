@@ -612,7 +612,7 @@ function pageMentions(){
 
       <h2 class="titre-bloc rv">Contenus et crédits</h2>
       <ul class="etapes rv">
-        <li><b>Cours de M. Dine Ndiaye</b>, professeur de mathématiques (Lycée Mbacké 2, Inspection d'Académie de Diourbel) : cours de Première S1, Première S2, Terminale S1 et Terminale S2, publiés sans modification avec son accord. Ils restent sa propriété.</li>
+        <li><b>Cours de M. Diné Ndiaye</b>, professeur de mathématiques au Lycée Mbacké 2 (Inspection d'Académie de Diourbel) : cours de Première S1, Première S2, Terminale S1 et Terminale S2, publiés sans modification avec son accord. Ils restent sa propriété.</li>
         <li><b>Cours marqués « Mon Lycée SN »</b> (mathématiques et autres) : contenus originaux rédigés pour le site. Ils sont en cours de relecture par des enseignants : si tu trouves une erreur, écris-nous.</li>
         <li><b>Fascicule de SVT de Terminale S2</b> : © M. Ndiaye, professeur de SVT, publié avec son autorisation. Merci à lui.</li>
         <li><b>Sujets de concours et annales</b> : documents des écoles et organismes concernés, proposés uniquement pour s'entraîner. Si tu es titulaire des droits d'un document et souhaites son retrait, écris-nous : il sera retiré rapidement.</li>
